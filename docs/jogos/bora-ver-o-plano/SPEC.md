@@ -34,7 +34,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   | Vila Saúde | Receita certa | Pergunta de múltipla escolha no balcão da farmácia sobre o que os moradores contaram. |
   | Jardim Seguro | Mapa rasgado | Sem portão: cada conversa entrega um pedaço do mapa do bairro. Com os quatro pedaços, aparece um X no ponto onde o objeto está; é preciso parar ali e apertar A. |
   | Vale do Saber | Provinha | Três perguntas de múltipla escolha seguidas; um erro recomeça a provinha. |
-  | Vila Conquista | Qual é a casa? | Seis casas com número, cor da porta, varal, vaso na janela e cachorro. Cada fala elimina algumas; só com as quatro pistas sobra uma casa. |
+  | Vila Conquista | Qual é a casa? | Seis casas com número, cor da porta, varal, vaso na janela e cachorro. Cada fala elimina algumas; só com as quatro pistas sobra uma casa. As portas só atendem depois que todos os vizinhos foram ouvidos e, depois de uma porta errada, é preciso confirmar as pistas com um vizinho antes de bater de novo. |
   | Campo Verde | Receita da horta | Colher milho, feijão, arroz e mandioca na ordem que os agricultores contaram; um erro recomeça a colheita. |
 
 - **Recepção:** em cada bairro, uma moradora fica ao lado do ponto de chegada e explica o desafio na primeira visita; depois, basta conversar com ela de novo.
@@ -104,6 +104,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   "revisado": false
 }
 ```
+- **Objeto só depois do desafio:** nos bairros com portão, o objeto só pode ser pego com o portão aberto; no mapa rasgado, só com os quatro pedaços.
 - `responsavel` (opcional): quem aplica o desafio do portão. Fica no marcador `R`, ao lado do portão, e falar com essa pessoa abre o desafio. Na versão atual: líder comunitária (Praça), vigia na guarita (Centro), farmacêutico no balcão (Vila Saúde) e professora no quadro (Vale do Saber).
 - **Tipos de `desafio`:**
   - `senha`: `pergunta`, `respostas` (aceitas sem diferenciar maiúsculas, acentos ou espaços), `ajuda`

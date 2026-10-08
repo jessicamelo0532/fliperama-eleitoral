@@ -21,6 +21,8 @@ const VISAO = { largura: 160, altura: 120 };
 const TENTATIVAS_ATE_AJUDA = 2;
 const ALCANCE_ESCONDIDO = 10;
 const TOLERANCIA_ALINHAMENTO = 7;
+const PASSO_MAXIMO = 2;
+const CAIXA_JOGADORA = { x: 5, y: 10, largura: 6, altura: 6 };
 const CORES_DE_PESSOAS = 5;
 const COR_DA_GUIA = 4;
 
@@ -41,6 +43,7 @@ let interagirNaCena = () => {};
 let imagemCidade = null;
 let moverNoMapa = () => {};
 let confirmarNoMapa = () => {};
+let portasTrancadasEm = null;
 
 montarMoldura({ id: "bora-ver-o-plano", titulo: TITULO });
 iniciar();
@@ -365,13 +368,14 @@ function montarCena(fase) {
   const emBloco = ({ x, y }) => k.vec2(x * LARGURA_BLOCO, y * LARGURA_BLOCO);
   const largura = fase.mapa[0].length * LARGURA_BLOCO;
   const altura = fase.mapa.length * LARGURA_BLOCO;
-  const solido = () => [k.area({ shape: new k.Rect(k.vec2(0), 16, 16) }), k.body({ isStatic: true })];
+  const areaDoBloco = () => k.area({ shape: new k.Rect(k.vec2(0), 16, 16) });
+  const ocupados = new Set();
+  const chave = ({ x, y }) => `${x},${y}`;
+  const ocupar = (local) => ocupados.add(chave(local));
+  const liberar = (local) => ocupados.delete(chave(local));
+  const bloqueado = (x, y) => SOLIDOS.has(fase.mapa[y]?.[x] ?? "#") || ocupados.has(`${x},${y}`);
 
   k.add([k.sprite(`mapa-${fase.id}`), k.pos(0, 0), k.z(-1000)]);
-
-  fase.mapa.forEach((linha, y) => [...linha].forEach((caractere, x) => {
-    if (SOLIDOS.has(caractere)) k.add([k.pos(x * LARGURA_BLOCO, y * LARGURA_BLOCO), ...solido()]);
-  }));
 
   const interativos = [];
   const corpoMorador = () => k.area({ shape: new k.Rect(k.vec2(2, 8), 12, 8) });
@@ -382,8 +386,9 @@ function montarCena(fase) {
     if (!item || !local) return;
     const posicao = emBloco(local);
     const cor = (ordem + indiceFase) % COR_DA_GUIA;
+    ocupar(local);
     const morador = k.add([
-      k.sprite(`pessoa-${trajeDe(item.traje)}-${cor}`), k.pos(posicao), corpoMorador(), k.body({ isStatic: true }), k.z(posicao.y),
+      k.sprite(`pessoa-${trajeDe(item.traje)}-${cor}`), k.pos(posicao), corpoMorador(), k.z(posicao.y),
     ]);
     const estrela = k.add([k.sprite("estrela"), k.pos(posicao.x + 4, posicao.y - 9), k.z(5000), k.opacity(1)]);
     estrela.onUpdate(() => {
@@ -395,7 +400,8 @@ function montarCena(fase) {
 
   if (marcadores.pista) {
     const posicao = emBloco(marcadores.pista);
-    const morador = k.add([k.sprite(`pessoa-guia-${COR_DA_GUIA}`), k.pos(posicao), corpoMorador(), k.body({ isStatic: true }), k.z(posicao.y)]);
+    ocupar(marcadores.pista);
+    const morador = k.add([k.sprite(`pessoa-guia-${COR_DA_GUIA}`), k.pos(posicao), corpoMorador(), k.z(posicao.y)]);
     const balao = k.add([k.sprite("balao"), k.pos(posicao.x + 4, posicao.y - 8), k.z(5000), k.opacity(1)]);
     balao.onUpdate(() => { balao.opacity = objeto && !progresso.objetos.includes(objeto.id) ? 1 : 0; });
     interativos.push({ entidade: morador, acao: () => falarComGuia(objeto) });
@@ -410,9 +416,11 @@ function montarCena(fase) {
     if (progresso.portoes.includes(fase.id) || objetoAchado()) {
       k.add([k.sprite("portao", { frame: 1 }), k.pos(posicao), k.z(-500)]);
     } else {
-      const portao = k.add([k.sprite("portao", { frame: 0 }), k.pos(posicao), ...solido(), k.z(posicao.y)]);
+      ocupar(marcadores.portao);
+      const portao = k.add([k.sprite("portao", { frame: 0 }), k.pos(posicao), areaDoBloco(), k.z(posicao.y)]);
       tentarAbrir = () => resolverPortao(fase, objeto, () => {
         portao.destroy();
+        liberar(marcadores.portao);
         tentarAbrir = null;
         k.add([k.sprite("portao", { frame: 1 }), k.pos(posicao), k.z(-500)]);
       });
@@ -423,8 +431,9 @@ function montarCena(fase) {
   const responsavel = objeto?.responsavel;
   if (responsavel && marcadores.responsavel) {
     const posicao = emBloco(marcadores.responsavel);
+    ocupar(marcadores.responsavel);
     const pessoa = k.add([
-      k.sprite(`pessoa-${trajeDe(responsavel.traje)}-${indiceFase % CORES_DE_PESSOAS}`), k.pos(posicao), corpoMorador(), k.body({ isStatic: true }), k.z(posicao.y),
+      k.sprite(`pessoa-${trajeDe(responsavel.traje)}-${indiceFase % CORES_DE_PESSOAS}`), k.pos(posicao), corpoMorador(), k.z(posicao.y),
     ]);
     interativos.push({
       entidade: pessoa,
@@ -432,17 +441,27 @@ function montarCena(fase) {
     });
   }
 
+  const desafioCumprido = () => {
+    if (!desafio) return true;
+    if (["senha", "escolha", "provinha"].includes(desafio.tipo)) return progresso.portoes.includes(fase.id);
+    if (desafio.tipo === "mapa") return pedacosDoMapa(fase).every(Boolean);
+    return true;
+  };
+
   if (objeto && marcadores.objeto && !objetoAchado()) {
-    const posicao = emBloco(marcadores.objeto);
+    const local = marcadores.objeto;
+    const posicao = emBloco(local);
+    const pegar = (aoAchar) => { if (desafioCumprido()) acharObjeto(objeto, aoAchar); };
     if (desafio?.tipo === "caminho" || desafio?.tipo === "mapa") {
-      const ponto = k.add([k.pos(posicao), k.area({ shape: new k.Rect(k.vec2(0), 16, 16) })]);
-      interativos.push({ entidade: ponto, alcance: ALCANCE_ESCONDIDO, acao: () => acharObjeto(objeto, () => ponto.destroy()) });
+      const ponto = k.add([k.pos(posicao), areaDoBloco()]);
+      interativos.push({ entidade: ponto, alcance: ALCANCE_ESCONDIDO, acao: () => pegar(() => ponto.destroy()) });
     } else {
+      ocupar(local);
       const brilho = k.add([
         k.sprite("brilho", { anim: "piscar" }), k.pos(posicao.x + 4, posicao.y + 4),
-        k.area({ shape: new k.Rect(k.vec2(-4), 16, 16) }), k.body({ isStatic: true }), k.z(posicao.y),
+        k.area({ shape: new k.Rect(k.vec2(-4), 16, 16) }), k.z(posicao.y),
       ]);
-      interativos.push({ entidade: brilho, acao: () => acharObjeto(objeto, () => brilho.destroy()) });
+      interativos.push({ entidade: brilho, acao: () => pegar(() => { brilho.destroy(); liberar(local); }) });
     }
   }
 
@@ -456,7 +475,8 @@ function montarCena(fase) {
   if (desafio?.tipo === "colheita") {
     const colhidas = [];
     const plantas = Object.entries(marcadores.plantas).map(([letra, local]) => {
-      const planta = k.add([k.sprite(`planta-${letra}`, { frame: objetoAchado() ? 1 : 0 }), k.pos(emBloco(local)), ...solido(), k.z(local.y * LARGURA_BLOCO)]);
+      ocupar(local);
+      const planta = k.add([k.sprite(`planta-${letra}`, { frame: objetoAchado() ? 1 : 0 }), k.pos(emBloco(local)), areaDoBloco(), k.z(local.y * LARGURA_BLOCO)]);
       interativos.push({ entidade: planta, acao: () => colher(letra, planta) });
       return planta;
     });
@@ -487,7 +507,7 @@ function montarCena(fase) {
   const inicio = emBloco(marcadores.inicio);
   const jogadora = k.add([
     k.sprite(`jogadora-${progresso.jogadora ?? "cidada"}`), k.pos(inicio),
-    k.area({ shape: new k.Rect(k.vec2(5, 10), 6, 6) }), k.body(), k.z(inicio.y),
+    k.area({ shape: new k.Rect(k.vec2(CAIXA_JOGADORA.x, CAIXA_JOGADORA.y), CAIXA_JOGADORA.largura, CAIXA_JOGADORA.altura) }), k.z(inicio.y),
   ]);
 
   const chaveGuia = `guia-${fase.id}`;
@@ -512,6 +532,30 @@ function montarCena(fase) {
   };
   seguirComCamera(jogadora, largura, altura);
 
+  const cabe = (x, y) => {
+    const esquerda = Math.floor((x + CAIXA_JOGADORA.x) / LARGURA_BLOCO);
+    const direita = Math.floor((x + CAIXA_JOGADORA.x + CAIXA_JOGADORA.largura - 0.01) / LARGURA_BLOCO);
+    const topo = Math.floor((y + CAIXA_JOGADORA.y) / LARGURA_BLOCO);
+    const base = Math.floor((y + CAIXA_JOGADORA.y + CAIXA_JOGADORA.altura - 0.01) / LARGURA_BLOCO);
+    for (let by = topo; by <= base; by++) {
+      for (let bx = esquerda; bx <= direita; bx++) if (bloqueado(bx, by)) return false;
+    }
+    return true;
+  };
+
+  /* Anda em passos curtos, um eixo de cada vez, para nunca atravessar um bloco sólido. */
+  const andar = (vx, vy) => {
+    const dx = vx * k.dt();
+    const dy = vy * k.dt();
+    const passos = Math.max(1, Math.ceil(Math.max(Math.abs(dx), Math.abs(dy)) / PASSO_MAXIMO));
+    for (let i = 0; i < passos; i++) {
+      if (cabe(jogadora.pos.x + dx / passos, jogadora.pos.y)) jogadora.pos.x += dx / passos;
+      if (cabe(jogadora.pos.x, jogadora.pos.y + dy / passos)) jogadora.pos.y += dy / passos;
+    }
+  };
+
+  const olhando = k.vec2(0, 1);
+
   jogadora.onUpdate(() => {
     if (fecharSobreposicao) {
       if (jogadora.curAnim()) { jogadora.stop(); jogadora.frame = 0; }
@@ -523,8 +567,10 @@ function montarCena(fase) {
       const fator = dx && dy ? Math.SQRT1_2 : 1;
       const ajusteX = dy && !dx ? alinhar("x") : 0;
       const ajusteY = dx && !dy ? alinhar("y") : 0;
-      jogadora.move(dx * VELOCIDADE * fator + ajusteX, dy * VELOCIDADE * fator + ajusteY);
+      andar(dx * VELOCIDADE * fator + ajusteX, dy * VELOCIDADE * fator + ajusteY);
       if (dx) jogadora.flipX = dx < 0;
+      olhando.x = dx;
+      olhando.y = dy;
       if (jogadora.curAnim() !== "andar") jogadora.play("andar");
     } else if (jogadora.curAnim()) {
       jogadora.stop();
@@ -536,12 +582,16 @@ function montarCena(fase) {
     seguirComCamera(jogadora, largura, altura);
   });
 
+  /* Entre os próximos, dá preferência a quem está na frente da personagem. */
   interagirNaCena = () => {
     const perto = interativos
       .filter((item) => item.entidade.exists())
-      .map((item) => ({ ...item, distancia: centro(jogadora).dist(centro(item.entidade)) }))
+      .map((item) => {
+        const vetor = centro(item.entidade).sub(centro(jogadora));
+        return { ...item, distancia: vetor.len(), aFrente: vetor.dot(olhando) > 0 };
+      })
       .filter((item) => item.distancia <= (item.alcance ?? ALCANCE_CONVERSA))
-      .sort((a, b) => a.distancia - b.distancia)[0];
+      .sort((a, b) => (b.aFrente - a.aFrente) || (a.distancia - b.distancia))[0];
     perto?.acao();
   };
 }
@@ -593,6 +643,7 @@ function conversar(item, cor = 0) {
   const nova = !progresso.propostas.includes(item.id);
   const fase = FASES.find((f) => f.id === item.fase);
   const comMapa = conteudo.objetoDa(item.fase)?.desafio?.tipo === "mapa";
+  if (portasTrancadasEm === item.fase) portasTrancadasEm = null;
   if (nova) {
     progresso.propostas.push(item.id);
     salvarProgresso(progresso);
@@ -758,18 +809,40 @@ function perguntar(fase, desafio, abrir, fala) {
   mostrar();
 }
 
+/**
+ * Só dá para bater depois de ouvir todos os vizinhos; depois de uma porta errada,
+ * é preciso confirmar as pistas com um vizinho antes de tentar de novo.
+ */
 function baterNaPorta(letra, objeto) {
   if (progresso.objetos.includes(objeto.id)) return;
   const casa = faseAtual.casas?.[letra] ?? { numero: PORTAS.indexOf(letra) + 1, cor: 0 };
   const nome = `casa ${casa.numero}, de porta ${arte.NOMES_CORES_PORTAS[casa.cor]}`;
+  const faltam = conteudo.propostasDa(faseAtual.id).filter((item) => !progresso.propostas.includes(item.id)).length;
+  const avisar = (texto) => {
+    tocar("dialogo");
+    abrirSobreposicao({ rotulo: `Casa ${casa.numero}`, conteudo: [el("p", { class: "bvp-fala", text: texto })] });
+  };
+  if (faltam > 0) {
+    avisar(`Melhor não sair batendo em qualquer porta. Converse com os vizinhos primeiro: ${faltam === 1 ? "falta ouvir 1 pessoa" : `faltam ${faltam} pessoas`}.`);
+    return;
+  }
+  if (portasTrancadasEm === faseAtual.id) {
+    avisar("Depois de uma porta errada, confirme as pistas com um dos vizinhos antes de bater de novo.");
+    return;
+  }
   if (objeto.desafio.porta === letra) {
     acharObjeto(objeto, () => {});
     return;
   }
+  portasTrancadasEm = faseAtual.id;
   tocar("erro");
   abrirSobreposicao({
     rotulo: `Toc, toc… ${nome}`,
-    conteudo: [el("p", { class: "bvp-fala", text: "Ninguém aqui perdeu nada, não. Será que você ouviu direito o que o pessoal contou?" })],
+    conteudo: [
+      el("p", { class: "bvp-fala", text: "Ninguém aqui perdeu nada, não." }),
+      el("p", { class: "bvp-mensagem", text: "Volte, confirme as pistas com um vizinho e tente outra casa." }),
+      cadernoDePistas(faseAtual),
+    ],
   });
 }
 

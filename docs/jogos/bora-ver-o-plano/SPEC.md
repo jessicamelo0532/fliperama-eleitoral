@@ -131,7 +131,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
 - **Kaplay 3001.0.19**, importado por CDN com versão fixada (`https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs`), para mapa em grade, colisão, câmera e animação.
 - Mapas dos bairros definidos em código (matriz de caracteres), sem editor externo.
 - Caixa de diálogo, cartões, menu e controles de toque em HTML sobre o canvas, para que leitores de tela e teclado funcionem.
-- **Progresso salvo no navegador** (`localStorage`): personagem escolhida, propostas e objetos encontrados e bairros desbloqueados. Nenhum dado pessoal; botão "Recomeçar" apaga o progresso.
+- **Progresso salvo no navegador** (`localStorage`): personagem escolhida, propostas e objetos encontrados e bairros desbloqueados. Nenhum dado pessoal; os botões "Recomeçar" (na tela inicial) e "Jogar de novo" (no resultado final) apagam o progresso e mantêm a personagem escolhida.
 
 ## 9. Compartilhamento
 - Fase zerada: "Zerei o bairro {nome} no Bora Ver o Plano! Encontrei {n} propostas e o {objeto} perdido."

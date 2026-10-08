@@ -77,6 +77,17 @@ function mostrarTela() {
   if (k) k.go("parado");
 }
 
+/** Apaga o progresso, mantendo a personagem escolhida e o som, e volta ao início. */
+function recomecar() {
+  const { jogadora, som } = progresso;
+  apagarProgresso();
+  progresso = { ...carregarProgresso(), jogadora, som };
+  faseAtual = null;
+  portasTrancadasEm = null;
+  salvarProgresso(progresso);
+  telaInicio();
+}
+
 function telaInicio() {
   mostrarTela();
   let escolhida = progresso.jogadora ?? "cidada";
@@ -131,10 +142,7 @@ function telaInicio() {
               botao.textContent = "Apagar progresso?";
               return;
             }
-            apagarProgresso();
-            progresso = carregarProgresso();
-            faseAtual = null;
-            telaInicio();
+            recomecar();
           },
         }, "Recomeçar"))
     )
@@ -301,7 +309,7 @@ function telaFinal() {
     texto: `Você passou pelos ${FASES.length} bairros, conheceu ${total} propostas do plano de governo e achou todos os objetos perdidos.`,
     fontes,
     textoCompartilhar: `Zerei o Bora Ver o Plano e conheci as ${total} propostas do plano de Lula para 2026. Bora ver também?`,
-    aoJogarDeNovo: () => telaMapa(),
+    aoJogarDeNovo: recomecar,
   });
   tela.querySelector(".resultado__texto")?.after(
     el("p", { class: "bvp-voto pixel" },

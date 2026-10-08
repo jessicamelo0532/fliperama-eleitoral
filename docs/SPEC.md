@@ -8,7 +8,7 @@
 **Fliperama Eleitoral** é um portal de mini jogos de navegador, inspirado nos portais de jogos dos anos 2000 (estilo ojogos.com), em que cada jogo transmite informação política verificável sobre a eleição presidencial de 2026: propostas do presidente Lula, checagem de fato ou fake e investigações envolvendo Flávio Bolsonaro.
 
 - **Público:** eleitores jovens e adultos, majoritariamente no celular.
-- **Promessa:** "jogue em 1 minuto, saia sabendo um fato com fonte".
+- **Promessa:** "jogue e saia sabendo um fato com fonte".
 - **Prazo:** plataforma no ar em 1 dia; conteúdo congelado em **24/10/2026** (véspera do 2º turno, 25/10).
 
 ## 2. Objetivos e não-objetivos

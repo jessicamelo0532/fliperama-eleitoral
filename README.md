@@ -2,7 +2,7 @@
 
 ![Fliperama Eleitoral](assets/img/og-image.png)
 
-**Mini jogos de navegador sobre a eleição presidencial de 2026. Jogue em um minuto e saia sabendo um fato, sempre com fonte.**
+**Mini jogos para conhecer melhor os candidatos à Presidência em 2026. Jogue e saia sabendo um fato, sempre com fonte.**
 
 ▶ **Jogue em [jessicamelo0532.github.io/fliperama-eleitoral](https://jessicamelo0532.github.io/fliperama-eleitoral/)**
 

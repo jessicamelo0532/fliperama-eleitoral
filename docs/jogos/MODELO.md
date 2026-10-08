@@ -15,7 +15,7 @@ O que a pessoa faz e o que ela aprende.
 - O que a pessoa faz a cada rodada:
 - Como ganha ou perde:
 - Como termina:
-- Duração alvo de uma partida:
+- Duração estimada:
 
 ## 4. Controles
 - Teclado:

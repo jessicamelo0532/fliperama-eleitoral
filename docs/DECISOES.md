@@ -92,6 +92,17 @@ Registro das decisões do projeto. Para mudar uma decisão, crie uma nova entrad
 - **Por quê:** a autora prefere estruturar um canal dedicado antes de receber pedidos.
 - **Consequências:** erros são identificados na revisão contínua do conteúdo e na verificação semanal de links.
 
+### D18 — Verde, amarelo e estrelas na identidade visual
+- **Data:** 08/10/2026 · **Status:** aceita
+- **Decisão:** faixas verde e amarela no cabeçalho, no rodapé e na imagem de compartilhamento; estrelas vermelhas e douradas como elementos decorativos.
+- **Por quê:** reforçar o caráter de eleição presidencial brasileira sem perder a base arcade em vermelho e preto.
+- **Consequências:** as cores novas são apenas decorativas; textos e botões continuam com a paleta original e o contraste AA.
+
+### D19 — Apenas modo escuro
+- **Data:** 08/10/2026 · **Status:** aceita
+- **Decisão:** o site não terá modo claro nesta fase.
+- **Por quê:** o fundo escuro faz parte da identidade arcade, e um segundo tema dobraria os testes de cada jogo. Como as cores estão centralizadas em tokens, um modo claro pode ser acrescentado depois sem retrabalho.
+
 ---
 
 ## Modelo para nova decisão

@@ -150,6 +150,7 @@ O resto dos campos é definido na SPEC de cada jogo.
 
 - **Estilo:** arcade retrô.
 - **Cores:** fundo `#0B0B0F`, vermelho `#E10600`, vermelho escuro `#8A0000`, branco `#FFFFFF`, cinza `#B8B8C0` para texto secundário. Verde `#2ECC71` só para "acertou".
+- **Cores do Brasil (decorativas):** verde `#009C3B` e amarelo `#FFDF00` nas faixas do cabeçalho e do rodapé; estrelas em pixel art vermelhas e douradas (`#F2B705`) no topo da página inicial e na página 404.
 - **Fontes:** *Press Start 2P* em títulos e botões; *Inter* no corpo.
 - **Detalhes:** bordas pixeladas, scanline sutil opcional, botões que "afundam" ao clicar.
 - Nenhum rosto, foto, caricatura ou logo de partido; ícones e personagens são originais.

@@ -22,7 +22,7 @@ export function el(tag, atributos = {}, ...filhos) {
     else no.setAttribute(chave, valor === true ? "" : valor);
   }
   for (const filho of filhos.flat()) {
-    if (filho == null) continue;
+    if (filho == null || filho === false) continue;
     no.append(filho instanceof Node ? filho : document.createTextNode(String(filho)));
   }
   return no;

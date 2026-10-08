@@ -483,6 +483,15 @@ function montarCena(fase) {
     let erros = 0;
     const colher = (letra, planta) => {
       if (objetoAchado() || planta.frame === 1) return;
+      const faltam = faltamOuvir(fase);
+      if (faltam > 0) {
+        tocar("dialogo");
+        abrirSobreposicao({
+          rotulo: "Calma aí!",
+          conteudo: [el("p", { class: "bvp-fala", text: `Antes de colher, ouça quem trabalha na roça: ${faltam === 1 ? "falta 1 pessoa" : `faltam ${faltam} pessoas`}.` })],
+        });
+        return;
+      }
       if (desafio.ordem[colhidas.length] === letra) {
         planta.frame = 1;
         colhidas.push(letra);
@@ -817,7 +826,7 @@ function baterNaPorta(letra, objeto) {
   if (progresso.objetos.includes(objeto.id)) return;
   const casa = faseAtual.casas?.[letra] ?? { numero: PORTAS.indexOf(letra) + 1, cor: 0 };
   const nome = `casa ${casa.numero}, de porta ${arte.NOMES_CORES_PORTAS[casa.cor]}`;
-  const faltam = conteudo.propostasDa(faseAtual.id).filter((item) => !progresso.propostas.includes(item.id)).length;
+  const faltam = faltamOuvir(faseAtual);
   const avisar = (texto) => {
     tocar("dialogo");
     abrirSobreposicao({ rotulo: `Casa ${casa.numero}`, conteudo: [el("p", { class: "bvp-fala", text: texto })] });
@@ -905,6 +914,11 @@ function mostrarFaseZerada(fase) {
       },
     ].filter(Boolean),
   });
+}
+
+/** Quantas pessoas com estrela do bairro ainda não foram ouvidas. */
+function faltamOuvir(fase) {
+  return conteudo.propostasDa(fase.id).filter((item) => !progresso.propostas.includes(item.id)).length;
 }
 
 function pistasDa(fase) {

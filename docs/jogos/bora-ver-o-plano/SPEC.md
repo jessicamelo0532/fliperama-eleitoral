@@ -35,7 +35,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   | Jardim Seguro | Mapa rasgado | Sem portão: cada conversa entrega um pedaço do mapa do bairro. Com os quatro pedaços, aparece um X no ponto onde o objeto está; é preciso parar ali e apertar A. |
   | Vale do Saber | Provinha | Três perguntas de múltipla escolha seguidas; um erro recomeça a provinha. |
   | Vila Conquista | Qual é a casa? | Seis casas com número, cor da porta, varal, vaso na janela e cachorro. Cada fala elimina algumas; só com as quatro pistas sobra uma casa. As portas só atendem depois que todos os vizinhos foram ouvidos e, depois de uma porta errada, é preciso confirmar as pistas com um vizinho antes de bater de novo. |
-  | Campo Verde | Receita da horta | Colher milho, feijão, arroz e mandioca na ordem que os agricultores contaram; um erro recomeça a colheita. |
+  | Campo Verde | Receita da horta | Colher milho, feijão, arroz e mandioca na ordem que os agricultores contaram; um erro recomeça a colheita. Só dá para colher depois de ouvir os quatro agricultores. |
 
 - **Recepção:** em cada bairro, uma moradora fica ao lado do ponto de chegada e explica o desafio na primeira visita; depois, basta conversar com ela de novo.
 - **Respostas escritas:** aceitam sinônimos cadastrados (ex.: "carteira de trabalho" e "carteira trabalhista"), ignoram maiúsculas, acentos e palavras de ligação e toleram um erro de digitação em respostas longas.

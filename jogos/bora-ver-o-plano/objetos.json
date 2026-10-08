@@ -1,0 +1,225 @@
+[
+  {
+    "id": "obj-praca",
+    "fase": "praca",
+    "teste": true,
+    "objeto": "Cartão do Bolsa Família",
+    "guia": "Bem-vindo à Praça Central! Alguém perdeu uma coisa importante e ela ficou trancada atrás do portão. A Dona Lúcia, nossa líder comunitária, só abre com a senha, e cada pessoa com estrela sabe um pedaço dela. Converse com todo mundo e preste atenção na ordem!",
+    "responsavel": {
+      "nome": "Dona Lúcia",
+      "funcao": "Líder comunitária",
+      "traje": "lider"
+    },
+    "desafio": {
+      "tipo": "senha",
+      "pergunta": "Senha falada (teste): junte as partes que o pessoal contou, na ordem certa.",
+      "respostas": [
+        "BORA VER O PLANO"
+      ],
+      "ajuda": "São quatro partes. Fale com todo mundo que tem estrela e junte na ordem que eles disseram."
+    },
+    "texto": "Texto de teste. A descrição da realização será escrita e revisada na etapa de conteúdo.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "obj-centro",
+    "fase": "centro",
+    "teste": true,
+    "objeto": "Carteira de trabalho",
+    "guia": "Oi, seja bem-vindo ao Centro! O portão daqui só abre para quem resolve a adivinhação do vigia. O pessoal do bairro dá as dicas. Escute bem!",
+    "responsavel": {
+      "nome": "Seu Raimundo",
+      "funcao": "Vigia",
+      "traje": "vigia"
+    },
+    "desafio": {
+      "tipo": "senha",
+      "pergunta": "O que é, o que é? (teste) Tem capa, guarda a história de quem trabalha e todo mundo quer assinada.",
+      "respostas": [
+        "carteira de trabalho",
+        "carteira trabalhista",
+        "carteira profissional",
+        "CTPS"
+      ],
+      "ajuda": "Pense no documento onde ficam registrados os empregos de uma pessoa."
+    },
+    "texto": "Texto de teste. A descrição da realização será escrita e revisada na etapa de conteúdo.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "obj-saude",
+    "fase": "saude",
+    "teste": true,
+    "objeto": "Remédio da Farmácia Popular",
+    "guia": "Que bom te ver na Vila Saúde! O farmacêutico vai fazer uma pergunta no balcão, e a resposta está nas histórias dos moradores.",
+    "responsavel": {
+      "nome": "Seu Jorge",
+      "funcao": "Farmacêutico",
+      "traje": "farmaceutico"
+    },
+    "desafio": {
+      "tipo": "escolha",
+      "titulo": "Balcão da farmácia",
+      "pergunta": "Pergunta de teste: qual é a opção certa?",
+      "opcoes": [
+        "Opção A",
+        "Opção B",
+        "Opção C"
+      ],
+      "correta": 1,
+      "ajuda": "Releia o que os moradores contaram sobre o balcão da farmácia."
+    },
+    "texto": "Texto de teste. A descrição da realização será escrita e revisada na etapa de conteúdo.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "obj-seguranca",
+    "fase": "seguranca",
+    "teste": true,
+    "objeto": "Livro da Lei Maria da Penha",
+    "guia": "Bem-vindo ao Jardim Seguro! Alguém rasgou o mapa que mostra onde o objeto foi escondido. Cada pessoa com estrela guardou um pedaço. Junte os quatro e siga o X!",
+    "desafio": {
+      "tipo": "mapa",
+      "ajuda": "Com os quatro pedaços, o X aparece no mapa. Você pode ver o mapa no MENU. Pare em cima do X e aperte A."
+    },
+    "texto": "Texto de teste. A descrição da realização será escrita e revisada na etapa de conteúdo.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "obj-saber",
+    "fase": "saber",
+    "teste": true,
+    "objeto": "Crachá de Instituto Federal",
+    "guia": "Olá! No Vale do Saber, a professora aplica uma provinha de três perguntas sobre o que os moradores contam. Errou uma, começa de novo!",
+    "responsavel": {
+      "nome": "Professora Ana",
+      "funcao": "Professora",
+      "traje": "professora"
+    },
+    "desafio": {
+      "tipo": "provinha",
+      "titulo": "Provinha da professora",
+      "perguntas": [
+        {
+          "pergunta": "Pergunta de teste 1",
+          "opcoes": [
+            "Certa",
+            "Errada",
+            "Errada"
+          ],
+          "correta": 0
+        },
+        {
+          "pergunta": "Pergunta de teste 2",
+          "opcoes": [
+            "Errada",
+            "Errada",
+            "Certa"
+          ],
+          "correta": 2
+        },
+        {
+          "pergunta": "Pergunta de teste 3",
+          "opcoes": [
+            "Errada",
+            "Certa",
+            "Errada"
+          ],
+          "correta": 1
+        }
+      ],
+      "ajuda": "Cada morador contou a resposta de uma das perguntas. Confira o caderno de pistas."
+    },
+    "texto": "Texto de teste. A descrição da realização será escrita e revisada na etapa de conteúdo.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "obj-vila-conquista",
+    "fase": "vila-conquista",
+    "teste": true,
+    "objeto": "Chave do Minha Casa, Minha Vida",
+    "guia": "Bem-vindo! Alguém aqui do bairro perdeu uma coisa, mas em qual das seis casas? Cada vizinho lembra de um detalhe. Junte tudo e vá eliminando até sobrar uma casa.",
+    "desafio": {
+      "tipo": "casa",
+      "porta": "x",
+      "ajuda": "Use cada pista para riscar casas: varal, cachorro, vaso na janela e cor da porta. Só uma casa passa nas quatro."
+    },
+    "texto": "Texto de teste. A descrição da realização será escrita e revisada na etapa de conteúdo.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "obj-campo",
+    "fase": "campo",
+    "teste": true,
+    "objeto": "Prato do Fome Zero",
+    "guia": "Seja bem-vindo ao Campo Verde! Para montar o prato, é preciso colher tudo na ordem certa. Cada agricultor conhece uma parte da ordem. Junte as falas!",
+    "desafio": {
+      "tipo": "colheita",
+      "ordem": [
+        "j",
+        "r",
+        "m",
+        "n"
+      ],
+      "ajuda": "Comece pelo que vem primeiro e termine pelo que vem por último. O que sobra fica no meio, na ordem que os agricultores disseram."
+    },
+    "texto": "Texto de teste. A descrição da realização será escrita e revisada na etapa de conteúdo.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "revisado": true
+  }
+]

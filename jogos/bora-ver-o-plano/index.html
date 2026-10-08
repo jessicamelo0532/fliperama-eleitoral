@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bora Ver o Plano · Fliperama Eleitoral</title>
+  <meta name="description" content="Passeie pela cidade e descubra o que o plano de governo de Lula propõe para cada área.">
+  <meta name="theme-color" content="#8A0000">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header id="cabecalho" class="cabecalho"></header>
+
+  <main>
+    <div class="conteiner">
+      <div id="barra-jogo" class="barra-jogo"></div>
+      <div id="area-jogo" class="area-jogo moldura-pixel bvp">
+        <div id="tela" class="bvp-tela" aria-live="polite"></div>
+
+        <div id="palco" class="bvp-palco" hidden>
+          <div id="hud" class="bvp-hud" aria-live="polite"></div>
+          <div class="bvp-cena">
+            <canvas id="canvas" tabindex="0" role="img" aria-label="Mapa do bairro"></canvas>
+          </div>
+          <div class="bvp-controles" aria-label="Controles de toque">
+            <div class="bvp-direcional">
+              <button type="button" class="bvp-tecla bvp-tecla--cima" data-direcao="cima" aria-label="Andar para cima">▲</button>
+              <button type="button" class="bvp-tecla bvp-tecla--esquerda" data-direcao="esquerda" aria-label="Andar para a esquerda">◀</button>
+              <button type="button" class="bvp-tecla bvp-tecla--direita" data-direcao="direita" aria-label="Andar para a direita">▶</button>
+              <button type="button" class="bvp-tecla bvp-tecla--baixo" data-direcao="baixo" aria-label="Andar para baixo">▼</button>
+            </div>
+            <button type="button" id="botao-a" class="bvp-botao-a pixel" aria-label="Conversar">A</button>
+          </div>
+          <div id="sobreposicao" class="bvp-sobreposicao" hidden></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="rodape" class="rodape"></footer>
+
+  <noscript><p style="text-align:center;padding:16px">Ative o JavaScript para jogar.</p></noscript>
+  <script type="module" src="jogo.js"></script>
+</body>
+</html>

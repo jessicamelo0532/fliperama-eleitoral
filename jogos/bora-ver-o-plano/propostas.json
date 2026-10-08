@@ -1,0 +1,566 @@
+[
+  {
+    "id": "teste-praca-1",
+    "fase": "praca",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 1",
+    "abertura": "Ei, você soube dessa?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 1 do bairro Praça Central. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "A primeira parte da senha é BORA.",
+    "revisado": true
+  },
+  {
+    "id": "teste-praca-2",
+    "fase": "praca",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 2",
+    "abertura": "Olha só que interessante!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 2 do bairro Praça Central. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "A segunda parte da senha é VER.",
+    "revisado": true
+  },
+  {
+    "id": "teste-praca-3",
+    "fase": "praca",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 3",
+    "abertura": "Vem cá, deixa eu te contar!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 3 do bairro Praça Central. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "A terceira parte da senha é O.",
+    "revisado": true
+  },
+  {
+    "id": "teste-praca-4",
+    "fase": "praca",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 4",
+    "abertura": "Sabia disso?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 4 do bairro Praça Central. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "A última parte da senha é PLANO. Junte tudo, na ordem.",
+    "revisado": true
+  },
+  {
+    "id": "teste-centro-1",
+    "fase": "centro",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 1",
+    "abertura": "Ei, você soube dessa?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 1 do bairro Centro. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "A resposta tem a ver com trabalho.",
+    "revisado": true
+  },
+  {
+    "id": "teste-centro-2",
+    "fase": "centro",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 2",
+    "abertura": "Olha só que interessante!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 2 do bairro Centro. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Ela tem capa e páginas.",
+    "revisado": true
+  },
+  {
+    "id": "teste-centro-3",
+    "fase": "centro",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 3",
+    "abertura": "Vem cá, deixa eu te contar!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 3 do bairro Centro. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Muita gente guarda na gaveta com cuidado.",
+    "revisado": true
+  },
+  {
+    "id": "teste-centro-4",
+    "fase": "centro",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 4",
+    "abertura": "Sabia disso?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 4 do bairro Centro. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "A resposta tem duas palavras: a primeira é carteira.",
+    "revisado": true
+  },
+  {
+    "id": "teste-saude-1",
+    "fase": "saude",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 1",
+    "abertura": "Ei, você soube dessa?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 1 do bairro Vila Saúde. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Guarde esta: a resposta certa é a segunda opção.",
+    "revisado": true
+  },
+  {
+    "id": "teste-saude-2",
+    "fase": "saude",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 2",
+    "abertura": "Olha só que interessante!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 2 do bairro Vila Saúde. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Pista extra de teste.",
+    "revisado": true
+  },
+  {
+    "id": "teste-saude-3",
+    "fase": "saude",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 3",
+    "abertura": "Vem cá, deixa eu te contar!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 3 do bairro Vila Saúde. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Outra pista de teste.",
+    "revisado": true
+  },
+  {
+    "id": "teste-saude-4",
+    "fase": "saude",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 4",
+    "abertura": "Sabia disso?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 4 do bairro Vila Saúde. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Mais uma pista de teste.",
+    "revisado": true
+  },
+  {
+    "id": "teste-seguranca-1",
+    "fase": "seguranca",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 1",
+    "abertura": "Ei, você soube dessa?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 1 do bairro Jardim Seguro. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Achei este pedaço de mapa velho perto da praça. Acho que é o canto de cima, à esquerda. Fica com você!",
+    "revisado": true
+  },
+  {
+    "id": "teste-seguranca-2",
+    "fase": "seguranca",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 2",
+    "abertura": "Olha só que interessante!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 2 do bairro Jardim Seguro. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Olha só, um pedaço de mapa! Parece ser o canto de cima, à direita.",
+    "revisado": true
+  },
+  {
+    "id": "teste-seguranca-3",
+    "fase": "seguranca",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 3",
+    "abertura": "Vem cá, deixa eu te contar!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 3 do bairro Jardim Seguro. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Guardei este pedaço de mapa rasgado. É a parte de baixo, à esquerda.",
+    "revisado": true
+  },
+  {
+    "id": "teste-seguranca-4",
+    "fase": "seguranca",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 4",
+    "abertura": "Sabia disso?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 4 do bairro Jardim Seguro. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Este é o último pedaço do mapa, a parte de baixo, à direita. Com ele, o X aparece!",
+    "revisado": true
+  },
+  {
+    "id": "teste-saber-1",
+    "fase": "saber",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 1",
+    "abertura": "Ei, você soube dessa?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 1 do bairro Vale do Saber. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Teste: na pergunta 1, a resposta é a primeira opção.",
+    "revisado": true
+  },
+  {
+    "id": "teste-saber-2",
+    "fase": "saber",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 2",
+    "abertura": "Olha só que interessante!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 2 do bairro Vale do Saber. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Teste: na pergunta 2, a resposta é a terceira opção.",
+    "revisado": true
+  },
+  {
+    "id": "teste-saber-3",
+    "fase": "saber",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 3",
+    "abertura": "Vem cá, deixa eu te contar!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 3 do bairro Vale do Saber. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Teste: na pergunta 3, a resposta é a segunda opção.",
+    "revisado": true
+  },
+  {
+    "id": "teste-saber-4",
+    "fase": "saber",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 4",
+    "abertura": "Sabia disso?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 4 do bairro Vale do Saber. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Acerte as três seguidas!",
+    "revisado": true
+  },
+  {
+    "id": "teste-vila-conquista-1",
+    "fase": "vila-conquista",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 1",
+    "abertura": "Ei, você soube dessa?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 1 do bairro Vila Conquista. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Na frente da casa que você procura tem sempre um varal com roupa estendida.",
+    "revisado": true
+  },
+  {
+    "id": "teste-vila-conquista-2",
+    "fase": "vila-conquista",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 2",
+    "abertura": "Olha só que interessante!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 2 do bairro Vila Conquista. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Lá não tem cachorro, não. A dona da casa tem alergia!",
+    "revisado": true
+  },
+  {
+    "id": "teste-vila-conquista-3",
+    "fase": "vila-conquista",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 3",
+    "abertura": "Vem cá, deixa eu te contar!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 3 do bairro Vila Conquista. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Toda manhã eu vejo um vaso de flor na janela dela.",
+    "revisado": true
+  },
+  {
+    "id": "teste-vila-conquista-4",
+    "fase": "vila-conquista",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Personagem de teste 4",
+    "abertura": "Sabia disso?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 4 do bairro Vila Conquista. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "A porta dela não é azul, disso eu tenho certeza.",
+    "revisado": true
+  },
+  {
+    "id": "teste-campo-1",
+    "fase": "campo",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Agricultora Dona Rosa",
+    "traje": "agricultora",
+    "abertura": "Ei, você soube dessa?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 1 do bairro Campo Verde. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "O feijão abre a colheita aqui na roça. É sempre o primeiro a sair da terra.",
+    "revisado": true
+  },
+  {
+    "id": "teste-campo-2",
+    "fase": "campo",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Seu Antônio, da roça",
+    "traje": "agricultor",
+    "abertura": "Olha só que interessante!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 2 do bairro Campo Verde. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "A mandioca é teimosa, gosta de ficar mais tempo na terra. Ela sai por último.",
+    "revisado": true
+  },
+  {
+    "id": "teste-campo-3",
+    "fase": "campo",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Dona Cida, da feira",
+    "traje": "feirante",
+    "abertura": "Vem cá, deixa eu te contar!",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 3 do bairro Campo Verde. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "O milho a gente colhe logo depois do arroz, um atrás do outro.",
+    "revisado": true
+  },
+  {
+    "id": "teste-campo-4",
+    "fase": "campo",
+    "topico": 0,
+    "teste": true,
+    "personagem": "Zé, do sindicato rural",
+    "traje": "sindicalista",
+    "abertura": "Sabia disso?",
+    "lembranca": "Lembrança de teste: aqui entra a história curta da personagem ligando o tema a algo que já foi feito.",
+    "proposta": "Proposta de teste 4 do bairro Campo Verde. Este texto será substituído pelo conteúdo revisado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",
+        "data": "2026"
+      }
+    ],
+    "pista": "Colha com calma: se errar a ordem, a horta volta ao começo e tem que fazer tudo de novo.",
+    "revisado": true
+  }
+]

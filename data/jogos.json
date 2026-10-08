@@ -7,5 +7,14 @@
     "caminho": "jogos/_exemplo/",
     "miniatura": "assets/img/thumb-padrao.svg",
     "status": "rascunho"
+  },
+  {
+    "id": "bora-ver-o-plano",
+    "titulo": "Bora Ver o Plano",
+    "descricao": "Passeie pelos bairros, converse com quem mora em cada um e descubra as propostas do plano de governo de Lula.",
+    "categoria": "propostas",
+    "caminho": "jogos/bora-ver-o-plano/",
+    "miniatura": "assets/img/thumb-propostas.svg",
+    "status": "em-breve"
   }
 ]

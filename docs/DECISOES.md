@@ -103,6 +103,22 @@ Registro das decisões do projeto. Para mudar uma decisão, crie uma nova entrad
 - **Decisão:** o site não terá modo claro nesta fase.
 - **Por quê:** o fundo escuro faz parte da identidade arcade, e um segundo tema dobraria os testes de cada jogo. Como as cores estão centralizadas em tokens, um modo claro pode ser acrescentado depois sem retrabalho.
 
+### D20 — Primeiro jogo: Bora Ver o Plano
+- **Data:** 08/10/2026 · **Status:** aceita
+- **Decisão:** o primeiro jogo apresenta as propostas do plano de governo de Lula registrado no TSE em um RPG de exploração com sete bairros, que agrupam os 13 tópicos do plano. Cada bairro esconde um objeto ligado a uma realização dos governos Lula, e os bairros são desbloqueados em sequência. Especificação em `docs/jogos/bora-ver-o-plano/SPEC.md`.
+- **Por quê:** a exploração com diálogos acomoda bem textos informativos, e o desbloqueio em sequência incentiva a pessoa a conhecer todas as áreas do plano.
+- **Alternativas descartadas:** plataforma estilo Mario e labirinto estilo Pac-Man (menos espaço para leitura); quatro fases pelo índice temático do site do TSE (deixaria sete tópicos do plano de fora).
+
+### D21 — Kaplay no Bora Ver o Plano
+- **Data:** 08/10/2026 · **Status:** aceita
+- **Decisão:** usar Kaplay 3001.0.19 por CDN, com versão fixada, para mapa em grade, colisão e câmera. Diálogos, menus e controles de toque ficam em HTML sobre o canvas.
+- **Por quê:** a biblioteca resolve movimentação e colisão com pouco código, e o HTML mantém o texto acessível a teclado e leitores de tela.
+
+### D22 — Progresso de jogo salvo no navegador
+- **Data:** 08/10/2026 · **Status:** aceita
+- **Decisão:** jogos podem guardar progresso (fases desbloqueadas, itens encontrados, personagem escolhida) no `localStorage` do navegador, com opção de recomeçar.
+- **Por quê:** permite continuar depois sem cadastro. Nenhum dado pessoal é armazenado, o que mantém D08.
+
 ---
 
 ## Modelo para nova decisão

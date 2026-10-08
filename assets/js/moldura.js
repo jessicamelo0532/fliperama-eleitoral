@@ -55,7 +55,9 @@ export function preencherCabecalho() {
   cabecalho.className = "cabecalho";
   cabecalho.replaceChildren(
     el("div", { class: "conteiner" },
-      el("a", { class: "logo", href: urlDaRaiz("index.html") }, "FLIPERAMA ", el("span", {}, "ELEITORAL")),
+      el("a", { class: "logo", href: urlDaRaiz("index.html") },
+        el("img", { class: "bandeira", src: urlDaRaiz("assets/img/bandeira-brasil.svg"), alt: "", width: 30, height: 21 }),
+        "FLIPERAMA ", el("span", {}, "ELEITORAL")),
       el("nav", { class: "nav-topo", "aria-label": "Principal" },
         el("a", { href: urlDaRaiz("sobre.html") }, "SOBRE"))
     )

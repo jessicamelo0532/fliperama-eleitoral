@@ -1,0 +1,39 @@
+name: Verificação
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 11 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conteudo:
+    name: Conteúdo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: python3 .github/scripts/validar_conteudo.py
+
+  links:
+    name: Links das fontes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          failIfEmpty: false
+          args: >-
+            --no-progress
+            --accept '200..=299,403,429'
+            --exclude 'fonts\.(googleapis|gstatic)\.com'
+            --exclude 'goatcounter\.com|gc\.zgo\.at'
+            --exclude 'jessicamelo0532\.github\.io'
+            --exclude 'exemplo\.com'
+            --exclude-path '404\.html'
+            './**/*.html'
+            './jogos/**/*.json'

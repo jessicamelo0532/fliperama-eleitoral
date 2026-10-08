@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre · Fliperama Eleitoral</title>
+  <meta name="description" content="O que é o Fliperama Eleitoral, como escolhemos as fontes e como pedir uma correção.">
+  <meta name="theme-color" content="#8A0000">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fliperama Eleitoral">
+  <meta property="og:title" content="Sobre o Fliperama Eleitoral">
+  <meta property="og:description" content="Mini jogos sobre a eleição de 2026, sempre com fonte. Saiba como o conteúdo é feito.">
+  <meta property="og:url" content="https://jessicamelo0532.github.io/fliperama-eleitoral/sobre.html">
+  <meta property="og:image" content="https://jessicamelo0532.github.io/fliperama-eleitoral/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header id="cabecalho" class="cabecalho">
+    <div class="conteiner">
+      <a class="logo" href="index.html">FLIPERAMA <span>ELEITORAL</span></a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="conteiner texto">
+      <h1>Sobre o projeto</h1>
+
+      <p>O <strong>Fliperama Eleitoral</strong> é um portal de mini jogos de navegador sobre a eleição presidencial de 2026. A ideia é simples: jogar por um minuto e sair sabendo um fato, com a fonte ali do lado para conferir.</p>
+      <p>Os jogos tratam de propostas do presidente Lula, de checagem de notícias (fato ou fake) e de investigações envolvendo Flávio Bolsonaro. É um projeto independente e voluntário, sem anúncios, sem impulsionamento pago e sem vínculo com partidos ou campanhas.</p>
+
+      <h2>Como escolhemos as fontes</h2>
+      <ul>
+        <li><strong>Fontes oficiais primeiro:</strong> TSE (planos de governo registrados), Câmara, Senado, Diário Oficial, Portal da Transparência, tribunais e Ministério Público.</li>
+        <li><strong>Imprensa profissional e agências de checagem:</strong> veículos com redação e agências como Lupa, Aos Fatos, Comprova e Estadão Verifica.</li>
+        <li><strong>Regra mínima:</strong> cada informação tem pelo menos uma fonte oficial ou duas reportagens independentes.</li>
+        <li><strong>Linguagem cuidadosa:</strong> dizemos o que as fontes dizem. Quem foi investigado aparece como investigado; se um caso foi arquivado ou anulado, isso também aparece.</li>
+        <li><strong>Revisão humana:</strong> nenhum conteúdo vai ao ar sem ser conferido por uma pessoa.</li>
+      </ul>
+
+      <h2>Encontrou um erro?</h2>
+      <p>Escreva para <a id="email-sobre" href="#">o e-mail do projeto</a> com o link do jogo, o trecho e, se possível, uma fonte. Quem tem conta no GitHub também pode usar o <a id="formulario-erro" href="#">formulário de correção</a>. Erros confirmados são corrigidos em até 24 horas.</p>
+
+      <h2>Privacidade</h2>
+      <p>O site não usa cookies, não coleta dados pessoais e não exige cadastro.</p>
+      <p>Para saber quantas pessoas jogam, usamos o <a href="https://www.goatcounter.com/" target="_blank" rel="noopener noreferrer">GoatCounter</a>, um contador de acessos aberto e sem cookies. Ele registra apenas números agregados, como páginas visitadas e partidas concluídas, sem identificar quem visitou.</p>
+
+      <section class="destaque moldura-pixel" aria-label="Responsável">
+        <h3>Responsável pelo conteúdo</h3>
+        <p id="responsavel" style="margin:0"></p>
+      </section>
+    </div>
+  </main>
+
+  <footer id="rodape" class="rodape"></footer>
+
+  <script type="module">
+    import { CONFIG } from "./assets/js/config.js";
+    import { preencherCabecalho, preencherRodape, iniciarContador } from "./assets/js/moldura.js";
+    preencherCabecalho();
+    preencherRodape();
+    iniciarContador();
+    const link = document.getElementById("email-sobre");
+    link.href = `mailto:${CONFIG.email}`;
+    link.textContent = CONFIG.email;
+    const formulario = document.getElementById("formulario-erro");
+    formulario.href = `${CONFIG.repositorio}/issues/new?template=reportar-erro.yml`;
+    formulario.target = "_blank";
+    formulario.rel = "noopener noreferrer";
+    document.getElementById("responsavel").textContent =
+      `${CONFIG.responsavel} · Contato: ${CONFIG.email}`;
+  </script>
+</body>
+</html>

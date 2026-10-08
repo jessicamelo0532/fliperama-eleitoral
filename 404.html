@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página não encontrada · Fliperama Eleitoral</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#8A0000">
+  <link rel="icon" href="/fliperama-eleitoral/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/fliperama-eleitoral/assets/css/base.css">
+</head>
+<body>
+  <header id="cabecalho" class="cabecalho">
+    <div class="conteiner">
+      <a class="logo" href="/fliperama-eleitoral/">FLIPERAMA <span>ELEITORAL</span></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="conteiner">
+      <section class="resultado">
+        <img src="/fliperama-eleitoral/assets/img/favicon.svg" alt="" width="96" height="96" style="margin:0 auto 24px;image-rendering:pixelated">
+        <h1 class="resultado__titulo">GAME OVER</h1>
+        <p class="resultado__texto">Esta página não existe ou mudou de endereço.</p>
+        <p class="pixel piscar" style="font-size:12px">CONTINUAR?</p>
+        <div class="resultado__acoes">
+          <a class="botao" href="/fliperama-eleitoral/">Voltar ao fliperama</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="rodape" class="rodape"></footer>
+
+  <script type="module">
+    import { preencherCabecalho, preencherRodape, iniciarContador } from "/fliperama-eleitoral/assets/js/moldura.js";
+    preencherCabecalho();
+    preencherRodape();
+    iniciarContador();
+  </script>
+</body>
+</html>

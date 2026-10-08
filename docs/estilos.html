@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Componentes · Fliperama Eleitoral</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    .amostras { display: flex; flex-wrap: wrap; gap: var(--esp-4); margin-bottom: var(--esp-6); }
+    .amostra { width: 120px; font-size: 12px; color: var(--cor-texto-2); }
+    .amostra div { height: 48px; margin-bottom: var(--esp-2); border: 2px solid var(--cor-borda); }
+    section.bloco { margin-bottom: var(--esp-7); }
+  </style>
+</head>
+<body>
+  <header id="cabecalho" class="cabecalho"></header>
+  <main>
+    <div class="conteiner">
+      <h1>Componentes</h1>
+      <p>Página de conferência do design system. Não é linkada no site.</p>
+
+      <section class="bloco">
+        <h2>Cores</h2>
+        <div class="amostras">
+          <div class="amostra"><div style="background:var(--cor-fundo)"></div>fundo #0B0B0F</div>
+          <div class="amostra"><div style="background:var(--cor-superficie)"></div>superfície</div>
+          <div class="amostra"><div style="background:var(--cor-vermelho)"></div>vermelho #E10600</div>
+          <div class="amostra"><div style="background:var(--cor-vermelho-claro)"></div>vermelho claro</div>
+          <div class="amostra"><div style="background:var(--cor-vermelho-escuro)"></div>vermelho escuro</div>
+          <div class="amostra"><div style="background:var(--cor-branco)"></div>branco</div>
+          <div class="amostra"><div style="background:var(--cor-texto-2)"></div>texto 2 #B8B8C0</div>
+          <div class="amostra"><div style="background:var(--cor-acerto)"></div>acerto</div>
+        </div>
+      </section>
+
+      <section class="bloco">
+        <h2>Tipografia</h2>
+        <h1>Título H1</h1>
+        <h2>Título H2</h2>
+        <h3>Título H3</h3>
+        <p>Texto corrido em Inter, para leitura confortável no celular. <a href="#">Link de exemplo</a>.</p>
+      </section>
+
+      <section class="bloco">
+        <h2>Botões</h2>
+        <div class="amostras">
+          <button class="botao" type="button">Jogar</button>
+          <button class="botao botao--claro" type="button">Compartilhar</button>
+          <button class="botao botao--fantasma" type="button">Mais jogos</button>
+          <button class="botao" type="button" disabled>Desativado</button>
+        </div>
+      </section>
+
+      <section class="bloco">
+        <h2>Filtros e categorias</h2>
+        <ul class="filtros" style="justify-content:flex-start">
+          <li><button class="filtro" type="button" aria-pressed="true">Todos</button></li>
+          <li><button class="filtro" type="button" aria-pressed="false">Propostas</button></li>
+        </ul>
+        <div class="amostras">
+          <span class="categoria categoria--propostas">Propostas</span>
+          <span class="categoria categoria--fato-ou-fake">Fato ou Fake</span>
+          <span class="categoria categoria--investigacoes">Investigações</span>
+        </div>
+      </section>
+
+      <section class="bloco">
+        <h2>Cards</h2>
+        <div class="grade">
+          <article class="card moldura-pixel">
+            <img class="card__miniatura" src="../assets/img/thumb-fato-ou-fake.svg" alt="">
+            <div class="card__corpo">
+              <h3 class="card__titulo">Jogo publicado</h3>
+              <p class="card__descricao">Descrição de uma linha.</p>
+              <div class="card__rodape"><span class="categoria categoria--fato-ou-fake">Fato ou Fake</span><a class="botao" href="#">Jogar</a></div>
+            </div>
+          </article>
+          <article class="card card--em-breve moldura-pixel">
+            <img class="card__miniatura" src="../assets/img/thumb-propostas.svg" alt="">
+            <span class="selo-em-breve">EM BREVE</span>
+            <div class="card__corpo">
+              <h3 class="card__titulo">Jogo em breve</h3>
+              <p class="card__descricao">Descrição de uma linha.</p>
+              <div class="card__rodape"><span class="categoria categoria--propostas">Propostas</span></div>
+            </div>
+          </article>
+          <article class="card moldura-pixel">
+            <img class="card__miniatura" src="../assets/img/thumb-investigacoes.svg" alt="">
+            <div class="card__corpo">
+              <h3 class="card__titulo">Investigações</h3>
+              <p class="card__descricao">Miniatura de investigações.</p>
+              <div class="card__rodape"><span class="categoria categoria--investigacoes">Investigações</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="bloco">
+        <h2>Fontes e resultado</h2>
+        <div id="demo-fontes"></div>
+        <div id="demo-resultado" class="moldura-pixel" style="margin-top:32px"></div>
+      </section>
+    </div>
+  </main>
+  <footer id="rodape" class="rodape"></footer>
+
+  <script type="module">
+    import { preencherCabecalho, preencherRodape, renderFontes, mostrarResultado } from "../assets/js/moldura.js";
+    preencherCabecalho();
+    preencherRodape();
+    const fontes = [{ titulo: "Fonte de exemplo", veiculo: "TSE", url: "https://www.tse.jus.br/", data: "2026-10-08" }];
+    renderFontes(document.getElementById("demo-fontes"), fontes);
+    mostrarResultado({ alvo: document.getElementById("demo-resultado"), titulo: "8/10", texto: "Frase de resultado de exemplo.", fontes });
+  </script>
+</body>
+</html>

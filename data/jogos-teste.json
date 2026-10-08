@@ -1,0 +1,37 @@
+[
+  {
+    "id": "teste-publicado",
+    "titulo": "Jogo de teste",
+    "descricao": "Card fictício publicado, só para conferir o layout.",
+    "categoria": "fato-ou-fake",
+    "caminho": "jogos/_exemplo/",
+    "miniatura": "assets/img/thumb-fato-ou-fake.svg",
+    "status": "publicado"
+  },
+  {
+    "id": "teste-em-breve-1",
+    "titulo": "Em breve 1",
+    "descricao": "Card fictício em breve, categoria Propostas.",
+    "categoria": "propostas",
+    "caminho": "#",
+    "miniatura": "assets/img/thumb-propostas.svg",
+    "status": "em-breve"
+  },
+  {
+    "id": "teste-em-breve-2",
+    "titulo": "Em breve 2",
+    "descricao": "Card fictício em breve, categoria Investigações.",
+    "categoria": "investigacoes",
+    "caminho": "#",
+    "miniatura": "assets/img/thumb-investigacoes.svg",
+    "status": "em-breve"
+  },
+  {
+    "id": "teste-rascunho",
+    "titulo": "Jogo em rascunho",
+    "descricao": "Card fictício em rascunho; não é exibido no portal.",
+    "categoria": "propostas",
+    "caminho": "#",
+    "status": "rascunho"
+  }
+]

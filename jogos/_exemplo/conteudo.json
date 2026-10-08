@@ -1,0 +1,16 @@
+[
+  {
+    "id": "t001",
+    "texto": "Item de teste revisado.",
+    "fontes": [
+      { "titulo": "Tribunal Superior Eleitoral", "veiculo": "TSE", "url": "https://www.tse.jus.br/", "data": "2026-10-08" }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "t002",
+    "texto": "Item de teste pendente de revisão.",
+    "fontes": [],
+    "revisado": false
+  }
+]

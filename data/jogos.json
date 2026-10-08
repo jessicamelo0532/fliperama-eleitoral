@@ -1,0 +1,11 @@
+[
+  {
+    "id": "exemplo",
+    "titulo": "Jogo de exemplo",
+    "descricao": "Demonstração do contrato de jogo. Não aparece no portal.",
+    "categoria": "fato-ou-fake",
+    "caminho": "jogos/_exemplo/",
+    "miniatura": "assets/img/thumb-padrao.svg",
+    "status": "rascunho"
+  }
+]

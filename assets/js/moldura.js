@@ -69,8 +69,7 @@ export function preencherRodape() {
   rodape.replaceChildren(
     el("div", { class: "conteiner" },
       el("span", {},
-        "Conteúdo com fontes. Encontrou um erro? Escreva para ",
-        el("a", { href: `mailto:${CONFIG.email}` }, CONFIG.email), "."),
+        "Conteúdo com fontes verificáveis."),
       el("a", { href: urlDaRaiz("sobre.html") }, "Sobre o projeto")
     )
   );

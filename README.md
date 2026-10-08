@@ -27,7 +27,7 @@ Numa eleição marcada pela desinformação, acredito que a melhor forma de faze
 - **Fontes confiáveis:** órgãos oficiais (TSE, Câmara, Senado, tribunais, Portal da Transparência), imprensa profissional e agências de checagem.
 - **Linguagem precisa:** cada fato é descrito como as fontes o descrevem, com data e situação atual.
 - **Revisão antes de publicar:** nenhum conteúdo entra em um jogo sem ser conferido com as fontes.
-- **Correções em até 24 horas**, quando um erro é confirmado.
+- **Correções registradas:** erros identificados são corrigidos e documentados.
 
 As regras completas estão em [docs/CONTEUDO.md](docs/CONTEUDO.md).
 
@@ -35,13 +35,9 @@ As regras completas estão em [docs/CONTEUDO.md](docs/CONTEUDO.md).
 
 Os primeiros jogos estão em desenvolvimento e serão publicados no site ao longo da campanha.
 
-## Encontrou um erro?
-
-Abra um relato pelo [formulário de correção](https://github.com/jessicamelo0532/fliperama-eleitoral/issues/new?template=reportar-erro.yml) ou use o e-mail indicado na [página Sobre](https://jessicamelo0532.github.io/fliperama-eleitoral/sobre.html).
-
 ## Privacidade
 
-O site não usa cookies, não coleta dados pessoais e não exige cadastro. As visitas são contadas de forma agregada e anônima com o [GoatCounter](https://www.goatcounter.com/).
+O site não usa cookies, não coleta dados pessoais e não exige cadastro.
 
 ## Tecnologia
 

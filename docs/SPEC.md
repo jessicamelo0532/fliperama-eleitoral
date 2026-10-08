@@ -35,11 +35,11 @@
 - Card de jogo publicado: miniatura, título, descrição de 1 linha, categoria, botão "JOGAR".
 - Card de jogo **em breve**: miniatura escurecida, título e selo "EM BREVE", sem botão.
 - Estado vazio: se não houver nenhum jogo, mostrar "INSERT COIN — os primeiros jogos chegam em breve".
-- Rodapé: link para Sobre e aviso "Conteúdo com fontes. Encontrou um erro? Escreva para [e-mail do projeto]".
+- Rodapé: aviso "Conteúdo com fontes verificáveis." e link para Sobre.
 
 ### RF2 — Página Sobre (sobre.html)
-- O que é o projeto, como as fontes são escolhidas (resumo de `CONTEUDO.md`), como pedir correção.
-- E-mail do projeto e nome da responsável (exigência legal: propaganda não pode ser anônima).
+- O que é o projeto e como as fontes são escolhidas (resumo de `CONTEUDO.md`).
+- Link para o repositório público, onde estão autoria e contato (D15).
 
 ### RF3 — Moldura comum (`assets/js/moldura.js` + `assets/css/base.css`)
 Funções e componentes que qualquer jogo pode usar:
@@ -61,7 +61,7 @@ Meta tags Open Graph, `og-image.png` 1200×630 e favicon pixelado no portal e na
 
 ### RF6 — Métricas de acesso
 - Contagem de visitas por página e dos eventos `jogo-<id>-inicio`, `jogo-<id>-fim` e `jogo-<id>-compartilhar` (`assets/js/contador.js`).
-- Ativada pelo campo `goatcounter` em `assets/js/config.js`.
+- Ativada pelo campo `goatcounter` em `assets/js/config.js`; desligada até a conclusão da plataforma e dos primeiros jogos.
 
 ### RF8 — Página de erro 404
 Página "GAME OVER" com botão de volta ao portal, servida pelo GitHub Pages para endereços inexistentes.
@@ -71,8 +71,8 @@ Workflow `.github/workflows/verificacao.yml`:
 - **Conteúdo:** valida catálogo e JSON dos jogos (estrutura, ids únicos, `revisado` booleano, item revisado com fonte, URLs https). Bloqueia em caso de erro.
 - **Links das fontes:** verifica se os links do site e das fontes respondem. Roda a cada envio e toda segunda-feira.
 
-### RF10 — Formulário de correção
-Formulário de issue `reportar-erro` no GitHub, linkado na página Sobre, como alternativa ao e-mail.
+### RF10 — Canal de correções
+Adiado (D17). Será um formulário próprio, linkado no rodapé e na página Sobre.
 
 ### RF7 — Portão de revisão de conteúdo
 Todo item de conteúdo de qualquer jogo tem `"revisado": true|false`. `carregarConteudo` descarta os não revisados. Apenas a responsável pelo conteúdo marca um item como revisado.
@@ -98,8 +98,7 @@ fliperama-eleitoral/
 ├── 404.html
 ├── .github/
 │   ├── workflows/verificacao.yml
-│   ├── scripts/validar_conteudo.py
-│   └── ISSUE_TEMPLATE/reportar-erro.yml
+│   └── scripts/validar_conteudo.py
 ├── assets/
 │   ├── css/base.css          # tokens, reset, componentes
 │   ├── js/config.js          # contato, URL e código do contador
@@ -171,6 +170,6 @@ O resto dos campos é definido na SPEC de cada jogo.
 - [ ] Catálogo mostra corretamente cards `publicado`, `em-breve` e o estado vazio.
 - [ ] Filtros funcionam por toque e teclado.
 - [ ] `jogos/_exemplo/` demonstra toda a moldura e passa no portão de revisão.
-- [ ] Página Sobre com e-mail e responsável.
+- [ ] Página Sobre com link para autoria e contato no repositório.
 - [ ] Link colado no WhatsApp mostra título, descrição e imagem.
 - [ ] Checklist legal de `docs/CONTEUDO.md` cumprido.

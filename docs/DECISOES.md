@@ -16,7 +16,7 @@ Registro das decisões do projeto. Para mudar uma decisão, crie uma nova entrad
 - **Por quê:** gratuito, publica a cada push e não expõe o nome da responsável no endereço. Domínio próprio pode ser apontado depois.
 
 ### D03 — Autoria: identificada na página Sobre, não no link
-- **Data:** 08/10/2026 · **Status:** aceita
+- **Data:** 08/10/2026 · **Status:** substituída por D15
 - **Decisão:** link e página inicial mostram só "Fliperama Eleitoral". A página Sobre traz e-mail do projeto e nome da responsável.
 - **Por quê:** a lei eleitoral proíbe propaganda anônima na internet (Lei 9.504/97, art. 57-D). Essa forma cumpre a lei com exposição mínima.
 
@@ -35,7 +35,7 @@ Registro das decisões do projeto. Para mudar uma decisão, crie uma nova entrad
 - **Por quê:** nenhum conteúdo é publicado sem verificação humana.
 
 ### D07 — Rótulo da categoria: "Investigações" em vez de "Escândalos"
-- **Data:** 08/10/2026 · **Status:** proposta (responsável pode trocar)
+- **Data:** 08/10/2026 · **Status:** aceita
 - **Por quê:** "Investigações" descreve o fato sem juízo de valor e reduz risco jurídico. O conteúdo dentro continua o mesmo.
 
 ### D08 — Sem dados pessoais, cookies ou analytics
@@ -60,9 +60,9 @@ Registro das decisões do projeto. Para mudar uma decisão, crie uma nova entrad
 - **Alternativas descartadas:** Google Analytics (cookies e perfilamento, exige consentimento); Plausible (pago); não medir (sem evidência de alcance).
 - **Consequências:** a página Sobre informa o uso do contador; o domínio `gc.zgo.at` passa a ser a única dependência externa além do Google Fonts.
 
-### D12 — Verificação automática e formulário de correção
+### D12 — Verificação automática
 - **Data:** 08/10/2026 · **Status:** aceita
-- **Decisão:** um único workflow do GitHub Actions valida o conteúdo e verifica os links das fontes; pedidos de correção chegam por e-mail ou por formulário de issue.
+- **Decisão:** um único workflow do GitHub Actions valida o conteúdo e verifica os links das fontes.
 - **Por quê:** detectar JSON inválido e fontes quebradas antes do público, com o mínimo de infraestrutura.
 - **Alternativas descartadas:** testes de interface automatizados e múltiplos workflows (complexidade desnecessária nesta fase).
 
@@ -76,6 +76,21 @@ Registro das decisões do projeto. Para mudar uma decisão, crie uma nova entrad
 - **Decisão:** repositório `jessicamelo0532/fliperama-eleitoral`, publicado em `https://jessicamelo0532.github.io/fliperama-eleitoral/`.
 - **Por quê:** o projeto passa a compor o portfólio da autora desde o início.
 - **Consequências:** o endereço do site contém o usuário pessoal; `404.html` usa o prefixo `/fliperama-eleitoral/`; um domínio próprio pode ser apontado depois sem mudar o código, exceto esse prefixo.
+
+### D15 — Autoria e contato no repositório
+- **Data:** 08/10/2026 · **Status:** aceita
+- **Decisão:** o site não exibe e-mail nem nome; a página Sobre aponta para o repositório público, onde estão autoria e contato.
+- **Por quê:** concentrar autoria e contato em um único lugar, sem expor dados pessoais nas páginas do site. A autoria segue identificável: o endereço do site traz o usuário do GitHub e o repositório informa a autora.
+
+### D16 — Ativação do contador adiada
+- **Data:** 08/10/2026 · **Status:** aceita
+- **Decisão:** a integração com GoatCounter (D11) permanece no código, desligada, e será ativada depois que a plataforma e os primeiros jogos estiverem prontos. Os textos sobre o contador voltam à página Sobre e ao README na ativação.
+
+### D17 — Canal público de correções adiado
+- **Data:** 08/10/2026 · **Status:** aceita
+- **Decisão:** o site não oferece, por ora, canal para envio de correções. Um formulário próprio será criado mais adiante. As issues do repositório ficam desativadas.
+- **Por quê:** a autora prefere estruturar um canal dedicado antes de receber pedidos.
+- **Consequências:** erros são identificados na revisão contínua do conteúdo e na verificação semanal de links.
 
 ---
 

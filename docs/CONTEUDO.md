@@ -40,12 +40,12 @@ Vale para todo texto factual dos jogos: perguntas, propostas, eventos, explicaç
 
 ## 4. Correções depois de publicado
 
-- Pedidos chegam pelo e-mail do projeto ou pelo formulário `reportar-erro` do GitHub, ambos linkados na página Sobre.
-- Erro confirmado: corrigir em até 24 h e registrar em `docs/CORRECOES.md` (data, item, o que mudou).
+- Canal público de pedidos: a definir (D17).
+- Erro identificado: corrigir em até 24 h e registrar em `docs/CORRECOES.md` (data, item, o que mudou).
 
 ## 5. Checklist legal (antes de cada publicação)
 
-- [ ] Página Sobre identifica a responsável e tem contato (proibido anonimato — Lei 9.504/97, art. 57-D)
+- [ ] Autoria identificável: página Sobre aponta para o repositório com autoria e contato (proibido anonimato — Lei 9.504/97, art. 57-D)
 - [ ] Nenhum anúncio ou impulsionamento pago (só candidatos e partidos podem impulsionar — art. 57-C)
 - [ ] Nenhum conteúdo sabidamente falso ou descontextualizado sobre candidato (Res. TSE 23.610/2019)
 - [ ] Nenhuma imagem, áudio ou vídeo gerado por IA de pessoa real; qualquer conteúdo feito com IA está rotulado

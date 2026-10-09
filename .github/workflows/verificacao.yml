@@ -34,6 +34,7 @@ jobs:
             --exclude 'goatcounter\.com|gc\.zgo\.at'
             --exclude 'jessicamelo0532\.github\.io'
             --exclude 'exemplo\.com'
+            --exclude 'planalto\.gov\.br'
             --exclude-path '404\.html'
             './**/*.html'
             './jogos/**/*.json'

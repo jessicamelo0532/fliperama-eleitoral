@@ -203,6 +203,18 @@
   .bvp-cheio .bvp-controles, .bvp-deitado .bvp-controles { display: contents; }
   .bvp-cheio .bvp-direcional, .bvp-deitado .bvp-direcional { grid-column: 1; grid-row: 2; align-self: end; margin: 0 var(--esp-2) var(--esp-3); }
   .bvp-cheio .bvp-botao-a, .bvp-deitado .bvp-botao-a { grid-column: 3; grid-row: 2; align-self: end; margin: 0 var(--esp-3) var(--esp-4); }
+  .bvp-cheio .bvp-tela:not([hidden]), .bvp-deitado .bvp-tela:not([hidden]) { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .bvp-cheio .bvp-mapa, .bvp-deitado .bvp-mapa {
+    flex: 1; min-height: 0; width: 100%; max-width: none;
+    display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(0, 220px); grid-template-rows: auto minmax(0, 1fr); gap: 4px var(--esp-3);
+  }
+  .bvp-cheio .bvp-mapa__topo, .bvp-deitado .bvp-mapa__topo { grid-column: 1 / -1; }
+  .bvp-cheio .bvp-cidade, .bvp-deitado .bvp-cidade { grid-column: 2; grid-row: 2; width: auto; height: 100%; max-width: 100%; justify-self: center; }
+  .bvp-cheio .bvp-mapa .bvp-direcional, .bvp-deitado .bvp-mapa .bvp-direcional { margin: 0 0 var(--esp-2); }
+  .bvp-cheio .bvp-painel, .bvp-deitado .bvp-painel { grid-column: 3; grid-row: 2; align-self: start; margin: 0; grid-template-columns: minmax(0, 1fr); }
+  .bvp-cheio .bvp-painel .botao, .bvp-deitado .bvp-painel .botao { grid-column: 1; grid-row: auto; margin-top: var(--esp-2); }
+  .bvp-cheio .bvp-mapa .bvp-botao-a, .bvp-deitado .bvp-mapa .bvp-botao-a { justify-self: end; margin: 0 var(--esp-3) var(--esp-3) 0; }
+  .bvp-cheio .bvp-acoes, .bvp-deitado .bvp-acoes { grid-column: 1; grid-row: 2; align-self: start; margin: 0; }
 }
 @media (hover: hover) and (pointer: fine) and (min-width: 721px) {
   .bvp-cheio .bvp-direcional, .bvp-cheio .bvp-botao-a { display: none; }

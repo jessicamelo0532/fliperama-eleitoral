@@ -53,7 +53,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
 - **Teclado:** uma tecla por ação: setas para andar; Espaço para conversar, entrar e interagir; Esc para o menu.
 - **Toque (celular):** direcional na tela (canto inferior esquerdo) e botão L (canto inferior direito), com área de toque de pelo menos 44 px.
 - **Tela cheia:** botão TELA CHEIA no topo do bairro e do mapa; onde o navegador não oferece tela cheia (iPhone), o jogo ocupa toda a janela. O mesmo botão vira SAIR.
-- **Celular deitado:** com o aparelho na horizontal, o jogo ocupa a tela inteira, com o direcional à esquerda da cena e o botão L à direita.
+- **Celular deitado:** com o aparelho na horizontal, o jogo ocupa a tela inteira, com o direcional à esquerda da cena e o botão L à direita. No mapa da cidade, o painel do bairro fica à direita, acima do botão L, sem precisar rolar a tela.
 
 ## 5. Telas
 1. **Início:** título, como jogar, aviso de que as personagens são fictícias, escolha da personagem, botão JOGAR.

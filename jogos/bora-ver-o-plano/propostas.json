@@ -600,7 +600,7 @@
     "idade": "adulta",
     "abertura": "Oi! Tô indo pro trabalho, mas dá tempo de prosear.",
     "lembranca": "Em 2024, uma lei criou a Política Nacional de Cuidados. No meu trabalho, vejo a falta que isso fazia.",
-    "proposta": "O plano propõe apoiar as Cuidotecas, que acolhem crianças de 3 a 12 anos fora do horário escolar.",
+    "proposta": "O plano propõe apoiar as Cuidotecas, que acolhem crianças de 3 a 12 anos em horários alternativos aos da escola.",
     "pista": "A segunda parte da senha é VER.",
     "fontes": [
       {
@@ -616,10 +616,10 @@
         "data": "23/12/2024"
       },
       {
-        "titulo": "Cuidoteca (folder do Plano Nacional de Cuidados)",
+        "titulo": "Edital de Chamamento Público MDS nº 19/2025 (Cuidotecas)",
         "veiculo": "Ministério do Desenvolvimento e Assistência Social (gov.br)",
-        "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/brasil-que-cuida/acoes/acoes-em-destaque/cuidotecas/folder-cuidoteca-site.pdf",
-        "data": "consultado em 09/10/2026"
+        "url": "https://www.gov.br/mds/pt-br/orgaos/SNCF/cuidotecas/edital_cuidoteca.pdf",
+        "data": "25/08/2025"
       }
     ],
     "revisado": false

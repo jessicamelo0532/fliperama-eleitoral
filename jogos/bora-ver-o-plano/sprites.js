@@ -76,6 +76,23 @@ const BALAO = [
   ".w......",
 ];
 
+const MARCA_X = [
+  "rr..........rr",
+  "rrr........rrr",
+  ".rrr......rrr.",
+  "..rrr....rrr..",
+  "...rrr..rrr...",
+  "....rrrrrr....",
+  ".....rrrr.....",
+  ".....rrrr.....",
+  "....rrrrrr....",
+  "...rrr..rrr...",
+  "..rrr....rrr..",
+  ".rrr......rrr.",
+  "rrr........rrr",
+  "rr..........rr",
+];
+
 const BRILHO_A = ["...w....", "...w....", ".wwyww..", "...w....", "...w....", "........"];
 const BRILHO_B = ["........", ".w...w..", "..wyw...", ".w...w..", "........", "........"];
 
@@ -253,6 +270,7 @@ export const TRAJES = {
   },
   professora: {
     longo: false,
+    cabeloFixo: true,
     oculos: true,
     cabeca: ["......hhh.......", ".....hhhhhh.....", "....hhhhhhhh...."],
     tronco: ["....rrrrrrrr....", "...srrrrrrrrll..", "...srrrrrrrrll..", "....rrrrrrrr...."],
@@ -309,10 +327,12 @@ export function imagemPessoa(nomeTraje, indice, escala = 1, aparencia = {}) {
   const paleta = PALETAS_MORADORES[indice % PALETAS_MORADORES.length];
   const grisalho = aparencia.idade === "idosa" ? { h: CABELO_GRISALHO } : {};
   const cores = { k: "#1A1A1A", m: "#7A3B2E", p: "#2A2A2A", ...paleta, ...grisalho, ...traje.cores };
-  const longo = aparencia.genero ? aparencia.genero === "f" : traje.longo ?? indice % 2 === 1;
+  const longo = aparencia.genero && !traje.cabeloFixo ? aparencia.genero === "f" : traje.longo ?? indice % 2 === 1;
   return imagemDeMatrizes([quadroPessoa(traje, longo)], cores, 16, 16, escala);
 }
 
+/** X vermelho pintado no chão, onde o mapa rasgado aponta. */
+export const imagemMarcaX = () => imagemDeMatrizes([MARCA_X], { r: "#E10600" }, 14, 14);
 export const imagemEstrela = () => imagemDeMatrizes([ESTRELA], { y: "#FFDF00" }, 8, 8);
 export const imagemBalao = () => imagemDeMatrizes([BALAO], { w: "#FFFFFF", k: "#1A1A1A" }, 8, 8);
 export const imagemBrilho = () => imagemDeMatrizes([BRILHO_A, BRILHO_B], { w: "#FFFFFF", y: "#FFDF00" }, 8, 8);

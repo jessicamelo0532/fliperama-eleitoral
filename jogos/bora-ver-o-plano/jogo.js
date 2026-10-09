@@ -361,6 +361,7 @@ function iniciarMotor() {
     if (!k.getSprite(nome)) k.loadSprite(nome, arte.imagemPessoa(alguem.traje, alguem.cor, 1, alguem));
   }));
   k.loadSprite("estrela", arte.imagemEstrela());
+  k.loadSprite("marca-x", arte.imagemMarcaX());
   k.loadSprite("balao", arte.imagemBalao());
   k.loadSprite("brilho", arte.imagemBrilho(), { sliceX: 2, anims: { piscar: { from: 0, to: 1, loop: true, speed: 3 } } });
   k.loadSprite("portao", arte.imagemPortao(), { sliceX: 2 });
@@ -461,7 +462,11 @@ function montarCena(fase) {
     const pegar = (aoAchar) => { if (desafioCumprido()) acharObjeto(objeto, aoAchar); };
     if (desafio?.tipo === "caminho" || desafio?.tipo === "mapa") {
       const ponto = k.add([k.pos(posicao), areaDoBloco()]);
-      interativos.push({ entidade: ponto, alcance: ALCANCE_ESCONDIDO, acao: () => pegar(() => ponto.destroy()) });
+      const marca = desafio.tipo === "mapa"
+        ? k.add([k.sprite("marca-x"), k.pos(posicao.x + 1, posicao.y + 1), k.z(-400), k.opacity(0)])
+        : null;
+      marca?.onUpdate(() => { marca.opacity = desafioCumprido() ? 0.85 : 0; });
+      interativos.push({ entidade: ponto, alcance: ALCANCE_ESCONDIDO, acao: () => pegar(() => { ponto.destroy(); marca?.destroy(); }) });
     } else {
       ocupar(local);
       const brilho = k.add([
@@ -668,7 +673,8 @@ function quemFala(nome, alguem) {
   return { rotulo: nome, retrato: arte.imagemPessoa(alguem.traje, alguem.cor, 4, alguem) };
 }
 
-const nomeDoResponsavel = (responsavel) => `${responsavel.nome} · ${responsavel.funcao}`;
+/** "Seu Jorge · Farmacêutico"; quando a função já está no nome ("Professora Ana"), mostra só o nome. */
+const nomeDoResponsavel = ({ nome, funcao }) => (nome.toLowerCase().includes(funcao.toLowerCase()) ? nome : `${nome} · ${funcao}`);
 
 function falarComResponsavel(responsavel, alguem) {
   tocar("dialogo");

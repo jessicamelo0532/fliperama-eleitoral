@@ -34,7 +34,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   | Vila Saúde | Receita certa | Pergunta de múltipla escolha no balcão da farmácia sobre o que os moradores contaram. |
   | Vila Conquista | Qual é a casa? | Seis casas com número, cor da porta, varal, vaso na janela e cachorro. Cada fala elimina algumas; só com as quatro pistas sobra uma casa. As portas só atendem depois que todos os vizinhos foram ouvidos e, depois de uma porta errada, é preciso confirmar as pistas com um vizinho antes de bater de novo. |
   | Campo Verde | Receita da horta | Colher milho, feijão, arroz e mandioca na ordem que os agricultores contaram; um erro recomeça a colheita. Só dá para colher depois de ouvir os quatro agricultores. |
-  | Jardim Seguro | Mapa rasgado | Sem portão: cada conversa entrega um pedaço do mapa do bairro. Com os quatro pedaços, aparece um X no ponto onde o objeto está; é preciso parar ali e interagir (L no celular, Espaço no computador). |
+  | Jardim Seguro | Mapa rasgado | Sem portão: cada conversa entrega um pedaço do mapa do bairro. Com os quatro pedaços, aparece um X no mapa e também no chão do bairro, no ponto onde o objeto está; é preciso parar ali e interagir (L no celular, Espaço no computador). |
   | Centro | Adivinhação | "O que é, o que é?" no portão; cada conversa dá uma dica da resposta. |
 
 - **Recepção:** em cada bairro, a guia do bairro fica ao lado do ponto de chegada e explica o desafio na primeira visita; depois, basta conversar com ela de novo.

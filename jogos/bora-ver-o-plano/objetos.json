@@ -284,11 +284,11 @@
       "titulo": "Provinha da professora",
       "perguntas": [
         {
-          "pergunta": "Quantos novos Institutos Federais o plano prevê?",
+          "pergunta": "Quantos Institutos Federais a mais o plano prevê?",
           "opcoes": [
-            "111",
-            "11",
-            "1.111"
+            "Mais 111",
+            "Mais 11",
+            "Mais 1.111"
           ],
           "correta": 0
         },

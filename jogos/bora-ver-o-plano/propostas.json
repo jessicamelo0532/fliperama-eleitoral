@@ -572,7 +572,7 @@
     "genero": "f",
     "idade": "adulta",
     "abertura": "Oi, chega mais!",
-    "lembranca": "Quando meus filhos eram pequenos, o Bolsa Família, criado em 2004, garantiu a comida lá em casa.",
+    "lembranca": "Quando meus filhos eram pequenos, o Bolsa Família garantiu a comida lá em casa. Em 2023, ele voltou com lei nova.",
     "proposta": "O plano propõe seguir enfrentando a pobreza infantil e garantir o direito de toda criança brincar.",
     "pista": "A primeira parte da senha é BORA.",
     "fontes": [
@@ -583,7 +583,13 @@
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 10.836, de 9 de janeiro de 2004 (cria o Bolsa Família)",
+        "titulo": "Lei nº 14.601, de 19 de junho de 2023 (institui o Programa Bolsa Família)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14601.htm",
+        "data": "19/06/2023"
+      },
+      {
+        "titulo": "Lei nº 10.836, de 9 de janeiro de 2004 (criou o Bolsa Família; revogada em 2021)",
         "veiculo": "Planalto",
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.836.htm",
         "data": "09/01/2004"
@@ -659,7 +665,7 @@
     "genero": "f",
     "idade": "idosa",
     "abertura": "Olá, que bom te ver por aqui!",
-    "lembranca": "Em 2003, veio o Estatuto do Idoso. Desde então, nossos direitos estão escritos em lei.",
+    "lembranca": "Em 2003, veio o estatuto que hoje se chama Estatuto da Pessoa Idosa. Nossos direitos estão escritos em lei.",
     "proposta": "O plano propõe ampliar os Centros-Dia e os espaços para envelhecer com saúde, como academias públicas e praças.",
     "pista": "A última parte da senha é PLANO. Junte tudo, na ordem.",
     "fontes": [
@@ -740,7 +746,7 @@
     "genero": "f",
     "idade": "adulta",
     "abertura": "Bom dia! Vim buscar meu menino na escola.",
-    "lembranca": "O Fundeb, regulamentado em 2007, ajuda a manter a escola pública e a valorizar quem ensina.",
+    "lembranca": "O Fundeb começou em 2007, no governo Lula. Ele ajuda a manter a escola pública e a valorizar quem ensina.",
     "proposta": "O plano diz que a expansão da educação em tempo integral terá absoluta prioridade.",
     "pista": "Escola o dia inteiro: essa é a prioridade do plano.",
     "fontes": [
@@ -751,10 +757,16 @@
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 11.494, de 20 de junho de 2007 (regulamenta o Fundeb)",
+        "titulo": "Lei nº 11.494, de 20 de junho de 2007 (primeira lei do Fundeb)",
         "veiculo": "Planalto",
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11494.htm",
         "data": "20/06/2007"
+      },
+      {
+        "titulo": "Lei nº 14.113, de 25 de dezembro de 2020 (lei atual do Fundeb)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l14113.htm",
+        "data": "25/12/2020"
       }
     ],
     "revisado": false
@@ -767,7 +779,7 @@
     "genero": "f",
     "idade": "jovem",
     "abertura": "Opa! Tô indo pro treino.",
-    "lembranca": "Eu treino com o Bolsa Atleta, criado em 2004 por uma lei do governo Lula.",
+    "lembranca": "Treino com o Bolsa Atleta, criado em 2004 no governo Lula. Desde 2023, ele está na Lei Geral do Esporte.",
     "proposta": "O plano prevê continuar ampliando e fortalecendo o Bolsa Atleta, que chegou a 11 mil atletas em 2026.",
     "pista": "A Professora Ana pergunta sobre institutos, poupança e escola. Acerte as três!",
     "fontes": [
@@ -778,7 +790,13 @@
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 10.891, de 9 de julho de 2004 (institui a Bolsa-Atleta)",
+        "titulo": "Lei nº 14.597, de 14 de junho de 2023 (Lei Geral do Esporte, com a Bolsa-Atleta)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14597.htm",
+        "data": "14/06/2023"
+      },
+      {
+        "titulo": "Lei nº 10.891, de 9 de julho de 2004 (criou a Bolsa-Atleta; revogada pela Lei 14.597/2023)",
         "veiculo": "Planalto",
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.891.htm",
         "data": "09/07/2004"
@@ -1017,7 +1035,7 @@
     "genero": "f",
     "idade": "idosa",
     "abertura": "Bom dia! Cuidado pra não pisar na horta.",
-    "lembranca": "Desde 2003, o PAA compra o que a agricultura familiar planta. Minha colheita vai pra quem precisa.",
+    "lembranca": "Desde 2003, o PAA compra o que a agricultura familiar planta. Em 2023, ele ganhou lei nova.",
     "proposta": "O plano prevê expandir o Plano Safra da Agricultura Familiar, priorizando os alimentos da cesta básica.",
     "pista": "O feijão abre a colheita aqui na roça. É sempre o primeiro.",
     "fontes": [
@@ -1028,7 +1046,13 @@
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 10.696, de 2 de julho de 2003 (art. 19: Programa de Aquisição de Alimentos)",
+        "titulo": "Lei nº 14.628, de 20 de julho de 2023 (institui o PAA e o Cozinha Solidária)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14628.htm",
+        "data": "20/07/2023"
+      },
+      {
+        "titulo": "Lei nº 10.696, de 2 de julho de 2003 (art. 19 criou o PAA; revogado em 2021)",
         "veiculo": "Planalto",
         "url": "https://www.planalto.gov.br/ccivil_03/leis/2003/l10.696.htm",
         "data": "02/07/2003"
@@ -1073,7 +1097,7 @@
     "genero": "f",
     "idade": "adulta",
     "abertura": "Olha, trouxe verdura da feira!",
-    "lembranca": "A luz chegou no sítio dos meus pais pelo Luz para Todos, criado em 2003.",
+    "lembranca": "A luz chegou no sítio dos meus pais pelo Luz para Todos, criado em 2003. Em 2023, o programa ganhou decreto novo.",
     "proposta": "O plano prevê garantir a segurança energética e combater a pobreza energética.",
     "pista": "O milho a gente colhe logo depois do arroz.",
     "fontes": [
@@ -1084,7 +1108,19 @@
         "data": "2026"
       },
       {
-        "titulo": "Decreto nº 4.873, de 11 de novembro de 2003 (institui o Luz para Todos)",
+        "titulo": "Decreto nº 11.628, de 4 de agosto de 2023 (Luz para Todos)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11628.htm",
+        "data": "04/08/2023"
+      },
+      {
+        "titulo": "Decreto nº 12.964, de 8 de maio de 2026 (altera o Luz para Todos)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/decreto/d12964.htm",
+        "data": "08/05/2026"
+      },
+      {
+        "titulo": "Decreto nº 4.873, de 11 de novembro de 2003 (criou o Luz para Todos; revogado em 2019)",
         "veiculo": "Planalto",
         "url": "https://www.planalto.gov.br/ccivil_03/decreto/2003/d4873.htm",
         "data": "11/11/2003"
@@ -1128,7 +1164,7 @@
     "genero": "m",
     "idade": "adulta",
     "abertura": "Opa, tudo certo por aí?",
-    "lembranca": "Em 2007, o governo Lula criou o PAC. Foi com obra dele que minha rua ganhou asfalto.",
+    "lembranca": "Em 2007, o governo Lula criou o PAC. Em 2023, veio o Novo PAC, e minha rua ganhou asfalto.",
     "proposta": "O plano prevê investir na urbanização de favelas e periferias e na reforma de espaços públicos.",
     "pista": "Achei um pedaço de mapa: o canto de cima, à esquerda. Fica com você!",
     "fontes": [
@@ -1139,7 +1175,13 @@
         "data": "2026"
       },
       {
-        "titulo": "Decreto nº 6.025, de 22 de janeiro de 2007 (institui o PAC)",
+        "titulo": "Decreto nº 11.632, de 11 de agosto de 2023 (institui o Novo PAC)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/decreto/d11632.htm",
+        "data": "11/08/2023"
+      },
+      {
+        "titulo": "Decreto nº 6.025, de 22 de janeiro de 2007 (criou o PAC; revogado pelo Decreto 11.632/2023)",
         "veiculo": "Planalto",
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/decreto/d6025.htm",
         "data": "22/01/2007"
@@ -1166,10 +1208,16 @@
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 11.129, de 30 de junho de 2005 (institui o ProJovem)",
+        "titulo": "Lei nº 11.129, de 30 de junho de 2005 (criou o ProJovem)",
         "veiculo": "Planalto",
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2005/lei/l11129.htm",
         "data": "30/06/2005"
+      },
+      {
+        "titulo": "Lei nº 11.692, de 10 de junho de 2008 (lei atual do Projovem)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11692.htm",
+        "data": "10/06/2008"
       }
     ],
     "revisado": false

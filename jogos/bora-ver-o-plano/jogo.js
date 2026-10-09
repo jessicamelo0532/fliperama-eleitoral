@@ -77,11 +77,11 @@ function mostrarTela() {
   if (k) k.go("parado");
 }
 
-/** Apaga o progresso, mantendo a personagem escolhida e o som, e volta ao início. */
+/** Apaga todo o progresso (só a preferência de som fica) e volta à escolha da personagem. */
 function recomecar() {
-  const { jogadora, som } = progresso;
+  const { som } = progresso;
   apagarProgresso();
-  progresso = { ...carregarProgresso(), jogadora, som };
+  progresso = { ...carregarProgresso(), som };
   faseAtual = null;
   portasTrancadasEm = null;
   salvarProgresso(progresso);
@@ -90,6 +90,7 @@ function recomecar() {
 
 function telaInicio() {
   mostrarTela();
+  window.scrollTo({ top: 0 });
   let escolhida = progresso.jogadora ?? "cidada";
   const temProgresso = progresso.propostas.length > 0 || progresso.objetos.length > 0;
 
@@ -126,7 +127,7 @@ function telaInicio() {
         el("dt", {}, el("kbd", {}, "Esc")), el("dd", {}, "menu")),
       el("dl", { class: "bvp-teclas bvp-teclas--toque", "aria-label": "Controles no celular" },
         el("dt", {}, el("kbd", {}, "✚")), el("dd", {}, "andar com o direcional"),
-        el("dt", {}, el("kbd", {}, "A")), el("dd", {}, "falar, entrar e interagir"),
+        el("dt", {}, el("kbd", {}, "L")), el("dd", {}, "falar, entrar e interagir"),
         el("dt", {}, el("kbd", {}, "MENU")), el("dd", {}, "menu, mapa e caderno")),
       el("p", { class: "bvp-aviso", text: "Personagens e histórias fictícias. Propostas e fatos com fonte." }),
       el("p", { class: "bvp-rotulo pixel", text: "Escolha quem vai passear" }),
@@ -274,9 +275,9 @@ function telaMapa(selecionada) {
           onclick: (evento) => { if (evento.detail === 0) moverNoMapa(direcao); },
         }, seta))),
     el("button", {
-      type: "button", class: "bvp-botao-a pixel", "aria-label": "Botão A",
+      type: "button", class: "bvp-botao-a pixel", "aria-label": "Botão L",
       onclick: () => confirmarNoMapa(),
-    }, "A"));
+    }, "L"));
 
   tela.replaceChildren(
     el("div", { class: "bvp-mapa" },
@@ -355,9 +356,10 @@ function iniciarMotor() {
     k.loadSprite(`jogadora-${id}`, arte.imagemJogadora(id), {
       sliceX: 2, anims: { andar: { from: 0, to: 1, loop: true, speed: 7 } },
     }));
-  Object.keys(arte.TRAJES).forEach((traje) => {
-    for (let i = 0; i < CORES_DE_PESSOAS; i++) k.loadSprite(`pessoa-${traje}-${i}`, arte.imagemPessoa(traje, i));
-  });
+  FASES.forEach((fase) => pessoasDaFase(fase).forEach((alguem) => {
+    const nome = spritePessoa(alguem);
+    if (!k.getSprite(nome)) k.loadSprite(nome, arte.imagemPessoa(alguem.traje, alguem.cor, 1, alguem));
+  }));
   k.loadSprite("estrela", arte.imagemEstrela());
   k.loadSprite("balao", arte.imagemBalao());
   k.loadSprite("brilho", arte.imagemBrilho(), { sliceX: 2, anims: { piscar: { from: 0, to: 1, loop: true, speed: 3 } } });
@@ -393,23 +395,21 @@ function montarCena(fase) {
     const local = marcadores.personagens[slot];
     if (!item || !local) return;
     const posicao = emBloco(local);
-    const cor = (ordem + indiceFase) % COR_DA_GUIA;
+    const alguem = pessoaDaProposta(item, ordem, indiceFase);
     ocupar(local);
-    const morador = k.add([
-      k.sprite(`pessoa-${trajeDe(item.traje)}-${cor}`), k.pos(posicao), corpoMorador(), k.z(posicao.y),
-    ]);
+    const morador = k.add([k.sprite(spritePessoa(alguem)), k.pos(posicao), corpoMorador(), k.z(posicao.y)]);
     const estrela = k.add([k.sprite("estrela"), k.pos(posicao.x + 4, posicao.y - 9), k.z(5000), k.opacity(1)]);
     estrela.onUpdate(() => {
       estrela.pos.y = posicao.y - 9 + Math.sin(k.time() * 4) * 1.5;
       estrela.opacity = progresso.propostas.includes(item.id) ? 0 : 1;
     });
-    interativos.push({ entidade: morador, acao: () => conversar(item, cor) });
+    interativos.push({ entidade: morador, acao: () => conversar(item, alguem) });
   });
 
   if (marcadores.pista) {
     const posicao = emBloco(marcadores.pista);
     ocupar(marcadores.pista);
-    const morador = k.add([k.sprite(`pessoa-guia-${COR_DA_GUIA}`), k.pos(posicao), corpoMorador(), k.z(posicao.y)]);
+    const morador = k.add([k.sprite(spritePessoa(GUIA)), k.pos(posicao), corpoMorador(), k.z(posicao.y)]);
     const balao = k.add([k.sprite("balao"), k.pos(posicao.x + 4, posicao.y - 8), k.z(5000), k.opacity(1)]);
     balao.onUpdate(() => { balao.opacity = objeto && !progresso.objetos.includes(objeto.id) ? 1 : 0; });
     interativos.push({ entidade: morador, acao: () => falarComGuia(objeto) });
@@ -440,12 +440,11 @@ function montarCena(fase) {
   if (responsavel && marcadores.responsavel) {
     const posicao = emBloco(marcadores.responsavel);
     ocupar(marcadores.responsavel);
-    const pessoa = k.add([
-      k.sprite(`pessoa-${trajeDe(responsavel.traje)}-${indiceFase % CORES_DE_PESSOAS}`), k.pos(posicao), corpoMorador(), k.z(posicao.y),
-    ]);
+    const alguem = pessoaResponsavel(responsavel, indiceFase);
+    const pessoa = k.add([k.sprite(spritePessoa(alguem)), k.pos(posicao), corpoMorador(), k.z(posicao.y)]);
     interativos.push({
       entidade: pessoa,
-      acao: () => (tentarAbrir ? tentarAbrir() : falarComResponsavel(responsavel, indiceFase % CORES_DE_PESSOAS)),
+      acao: () => (tentarAbrir ? tentarAbrir() : falarComResponsavel(responsavel, alguem)),
     });
   }
 
@@ -641,22 +640,45 @@ function mapaDoTesouro(fase) {
 
 const trajeDe = (nome) => (nome && arte.TRAJES[nome] ? nome : "morador");
 
+const GUIA = { traje: "guia", cor: COR_DA_GUIA, genero: "f", idade: "adulta" };
+
+const pessoaDaProposta = (item, ordem, indiceFase) => ({
+  traje: trajeDe(item.traje), cor: (ordem + indiceFase) % COR_DA_GUIA, genero: item.genero, idade: item.idade,
+});
+
+const pessoaResponsavel = (responsavel, indiceFase) => ({
+  traje: trajeDe(responsavel.traje), cor: indiceFase % CORES_DE_PESSOAS, genero: responsavel.genero, idade: responsavel.idade,
+});
+
+const spritePessoa = ({ traje, cor, genero, idade }) => `pessoa-${traje}-${cor}-${genero ?? "x"}-${idade ?? "x"}`;
+
+/** Todas as pessoas que aparecem num bairro, para carregar os desenhos antes de entrar. */
+function pessoasDaFase(fase) {
+  const indiceFase = FASES.indexOf(fase);
+  const responsavel = conteudo.objetoDa(fase.id)?.responsavel;
+  return [
+    GUIA,
+    ...conteudo.propostasDa(fase.id).slice(0, 4).map((item, ordem) => pessoaDaProposta(item, ordem, indiceFase)),
+    ...(responsavel ? [pessoaResponsavel(responsavel, indiceFase)] : []),
+  ];
+}
+
 /** Retrato e nome de quem fala, para o topo da caixa de diálogo. */
-function quemFala(nome, traje, cor) {
-  return { rotulo: nome, retrato: arte.imagemPessoa(trajeDe(traje), cor, 4) };
+function quemFala(nome, alguem) {
+  return { rotulo: nome, retrato: arte.imagemPessoa(alguem.traje, alguem.cor, 4, alguem) };
 }
 
 const nomeDoResponsavel = (responsavel) => `${responsavel.nome} · ${responsavel.funcao}`;
 
-function falarComResponsavel(responsavel, cor) {
+function falarComResponsavel(responsavel, alguem) {
   tocar("dialogo");
   abrirSobreposicao({
-    ...quemFala(nomeDoResponsavel(responsavel), responsavel.traje, cor),
+    ...quemFala(nomeDoResponsavel(responsavel), alguem),
     conteudo: [el("p", { class: "bvp-fala", text: "Pode passar! O que você procura está logo ali." })],
   });
 }
 
-function conversar(item, cor = 0) {
+function conversar(item, alguem) {
   const nova = !progresso.propostas.includes(item.id);
   const fase = FASES.find((f) => f.id === item.fase);
   const comMapa = conteudo.objetoDa(item.fase)?.desafio?.tipo === "mapa";
@@ -668,7 +690,7 @@ function conversar(item, cor = 0) {
   }
   tocar(nova ? "proposta" : "dialogo");
   abrirSobreposicao({
-    ...quemFala(item.personagem, item.traje, cor),
+    ...quemFala(item.personagem, alguem),
     conteudo: [
       el("p", { class: "bvp-fala", text: item.abertura }),
       item.lembranca && el("p", { class: "bvp-lembranca", text: item.lembranca }),
@@ -685,7 +707,7 @@ function falarComGuia(objeto) {
   tocar("dialogo");
   const achado = objeto && progresso.objetos.includes(objeto.id);
   abrirSobreposicao({
-    ...quemFala("Guia do bairro", "guia", COR_DA_GUIA),
+    ...quemFala("Guia do bairro", GUIA),
     conteudo: [el("p", { class: "bvp-fala", text: !objeto ? "Que dia bonito para passear!" : achado ? "Você achou! Que bom, alguém vai ficar feliz." : objeto.guia })],
   });
 }
@@ -731,7 +753,7 @@ function resolverPortao(fase, objeto, aoAbrir) {
   const desafio = objeto.desafio;
   const responsavel = objeto.responsavel;
   const fala = responsavel
-    ? quemFala(nomeDoResponsavel(responsavel), responsavel.traje, FASES.indexOf(fase) % CORES_DE_PESSOAS)
+    ? quemFala(nomeDoResponsavel(responsavel), pessoaResponsavel(responsavel, FASES.indexOf(fase)))
     : null;
   const abrir = () => {
     progresso.portoes.push(fase.id);

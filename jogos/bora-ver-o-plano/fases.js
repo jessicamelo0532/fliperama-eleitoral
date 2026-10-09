@@ -9,6 +9,7 @@
  *   1–4  personagens com propostas        H  personagem da pista
  *   O  objeto perdido        G  portão com senha        R  responsável pelo desafio
  *   Q  guarita               L  balcão da farmácia      K  quadro-negro
+ *   E  escola
  *   u v w x y z  portas das casas (Vila Conquista); detalhes de cada casa em `casas`
  *   m j r n  plantações: milho, feijão, arroz e mandioca (Campo Verde)
  */
@@ -56,7 +57,7 @@ export const FASES = [
       "T====,========,====T",
       "T....,........,.RK.T",
       "T.cccccccc....cGc..T",
-      "T.c......c....cOc..T",
+      "T.c.EEEE.c....cOc..T",
       "T.c..3...c....ccc..T",
       "T.cccc.ccc.........T",
       "T..........PH...4..T",
@@ -202,7 +203,7 @@ export const FASES = [
 export const LARGURA_BLOCO = 16;
 export const PORTAS = ["u", "v", "w", "x", "y", "z"];
 export const PLANTAS = ["m", "j", "r", "n"];
-export const SOLIDOS = new Set(["#", "T", "b", "~", "c", "Q", "L", "K", ...PORTAS]);
+export const SOLIDOS = new Set(["#", "T", "b", "~", "c", "Q", "L", "K", "E", ...PORTAS]);
 
 /** Posições, em blocos, dos marcadores de um mapa. */
 export function lerMarcadores(mapa) {

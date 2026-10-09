@@ -34,11 +34,12 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   | Vila Saúde | Receita certa | Pergunta de múltipla escolha no balcão da farmácia sobre o que os moradores contaram. |
   | Vila Conquista | Qual é a casa? | Seis casas com número, cor da porta, varal, vaso na janela e cachorro. Cada fala elimina algumas; só com as quatro pistas sobra uma casa. As portas só atendem depois que todos os vizinhos foram ouvidos e, depois de uma porta errada, é preciso confirmar as pistas com um vizinho antes de bater de novo. |
   | Campo Verde | Receita da horta | Colher milho, feijão, arroz e mandioca na ordem que os agricultores contaram; um erro recomeça a colheita. Só dá para colher depois de ouvir os quatro agricultores. |
-  | Jardim Seguro | Mapa rasgado | Sem portão: cada conversa entrega um pedaço do mapa do bairro. Com os quatro pedaços, aparece um X no ponto onde o objeto está; é preciso parar ali e apertar A. |
+  | Jardim Seguro | Mapa rasgado | Sem portão: cada conversa entrega um pedaço do mapa do bairro. Com os quatro pedaços, aparece um X no ponto onde o objeto está; é preciso parar ali e interagir (L no celular, Espaço no computador). |
   | Centro | Adivinhação | "O que é, o que é?" no portão; cada conversa dá uma dica da resposta. |
 
 - **Recepção:** em cada bairro, a guia do bairro fica ao lado do ponto de chegada e explica o desafio na primeira visita; depois, basta conversar com ela de novo.
 - **Tratamento neutro:** saudações e falas não marcam gênero, porque quem joga pode ser a Cidadã ou o Cidadão.
+- **Coerência com o cenário:** cada fala combina com o lugar onde a personagem está (quem vai buscar o filho fica na frente da escola, ninguém oferece um banco que não existe).
 - **Respostas escritas:** aceitam sinônimos cadastrados (ex.: "carteira de trabalho" e "carteira trabalhista"), ignoram maiúsculas, acentos e palavras de ligação e toleram um erro de digitação em respostas longas.
 - **Ajuda:** depois de dois erros no mesmo desafio, aparece uma ajuda extra, que dá uma pista e nunca a resposta. As pistas encontradas ficam no "caderno de pistas", no menu e na tela do desafio.
 - **Ao achar o objeto:** aparece um cartão com o objeto, um texto curto sobre a realização e a fonte.
@@ -49,7 +50,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
 
 ## 4. Controles
 - **Teclado:** uma tecla por ação: setas para andar; Espaço para conversar, entrar e interagir; Esc para o menu.
-- **Toque (celular):** direcional na tela (canto inferior esquerdo) e botão A (canto inferior direito), com área de toque de pelo menos 44 px.
+- **Toque (celular):** direcional na tela (canto inferior esquerdo) e botão L (canto inferior direito), com área de toque de pelo menos 44 px.
 
 ## 5. Telas
 1. **Início:** título, como jogar, aviso de que as personagens são fictícias, escolha da personagem, botão JOGAR.
@@ -71,6 +72,8 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   "topico": 2,
   "personagem": "Agente comunitária",
   "traje": "guia",
+  "genero": "f",
+  "idade": "adulta",
   "abertura": "Ei, você soube dessa?",
   "lembranca": "Lembrança curta da personagem, com fato verificável.",
   "proposta": "Texto curto da proposta, fiel ao plano.",
@@ -88,6 +91,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
 ```
 - `fase` ∈ `praca` | `centro` | `saude` | `seguranca` | `saber` | `vila-conquista` | `campo`
 - `topico`: número do tópico no plano (1 a 13).
+- `genero` (`f` ou `m`) e `idade` (`jovem`, `adulta` ou `idosa`): definem a aparência da personagem — mulheres têm cabelo até os ombros e pessoas idosas, cabelo grisalho — e precisam combinar com o nome e com a fala.
 - `traje` (opcional): roupa da profissão — `guia`, `lider`, `vigia`, `farmaceutico`, `professora`, `agricultora`, `agricultor`, `feirante`, `sindicalista` ou `morador` (padrão).
 - **Separação entre fala e fato:** `abertura` traz só a saudação, sem afirmação factual. `proposta` segue o plano ("O plano prevê…", "O plano propõe…"). `lembranca` é a história da personagem fictícia; todo fato citado nela (programa, ano, valor) precisa estar nas `fontes` do item.
 - **Personagens fictícias:** a tela inicial informa que as personagens e suas histórias são fictícias e que propostas e fatos têm fonte.
@@ -98,7 +102,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   "fase": "praca",
   "objeto": "Cartão do Bolsa Família",
   "guia": "Fala da guia do bairro que explica o desafio.",
-  "responsavel": { "nome": "Seu Jorge", "funcao": "Farmacêutico", "traje": "farmaceutico" },
+  "responsavel": { "nome": "Seu Jorge", "funcao": "Farmacêutico", "traje": "farmaceutico", "genero": "m", "idade": "adulta" },
   "desafio": { "tipo": "senha", "pergunta": "…", "respostas": ["…"], "ajuda": "…" },
   "texto": "Texto curto sobre a realização, fiel às fontes.",
   "fontes": [],
@@ -132,7 +136,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
 - **Kaplay 3001.0.19**, importado por CDN com versão fixada (`https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs`), para mapa em grade, colisão, câmera e animação.
 - Mapas dos bairros definidos em código (matriz de caracteres), sem editor externo.
 - Caixa de diálogo, cartões, menu e controles de toque em HTML sobre o canvas, para que leitores de tela e teclado funcionem.
-- **Progresso salvo no navegador** (`localStorage`): personagem escolhida, propostas e objetos encontrados e bairros desbloqueados. Nenhum dado pessoal; os botões "Recomeçar" (na tela inicial) e "Jogar de novo" (no resultado final) apagam o progresso e mantêm a personagem escolhida.
+- **Progresso salvo no navegador** (`localStorage`): personagem escolhida, propostas e objetos encontrados e bairros desbloqueados. Nenhum dado pessoal; os botões "Recomeçar" (na tela inicial) e "Jogar de novo" (no resultado final) apagam todo o progresso e voltam à escolha da personagem.
 
 ## 9. Compartilhamento
 - Fase zerada: "Zerei o bairro {nome} no Bora Ver o Plano! Encontrei {n} propostas e o {objeto} perdido."

@@ -52,7 +52,7 @@ export const JOGADORAS = {
 const PALETAS_MORADORES = [
   { h: "#3B2416", s: "#E0AC69", r: "#FFFFFF", c: "#5B6C8F" },
   { h: "#1E1E1E", s: "#8D5524", r: "#E67E22", c: "#34495E" },
-  { h: "#B0B0B0", s: "#F1C27D", r: "#8E44AD", c: "#2C3E50" },
+  { h: "#3B2A1A", s: "#F1C27D", r: "#8E44AD", c: "#2C3E50" },
   { h: "#5A3A1A", s: "#C68642", r: "#16A085", c: "#3D3D3D" },
   { h: "#111111", s: "#6B3E26", r: "#C0392B", c: "#2B4C7E" },
 ];
@@ -282,8 +282,13 @@ export const TRAJES = {
   },
 };
 
+/* Cabelo comprido dos dois lados do rosto, até os ombros. */
+function comCabeloComprido(corpo) {
+  return corpo.map((linha, y) => (y < 3 || y > 8 ? linha : `${linha.slice(0, 3)}h${linha.slice(4, 12)}h${linha.slice(13)}`));
+}
+
 function quadroPessoa(traje, longo) {
-  const corpo = longo ? [...CABELO_LONGO, ...PERSONAGEM_CORPO.slice(CABELO_LONGO.length)] : [...PERSONAGEM_CORPO];
+  const corpo = longo ? comCabeloComprido(PERSONAGEM_CORPO) : [...PERSONAGEM_CORPO];
   if (traje.cabeca) traje.cabeca.forEach((linha, i) => { corpo[i] = linha; });
   if (traje.oculos) corpo[4] = corpo[4].slice(0, 4) + "kkkskkk" + corpo[4].slice(11);
   if (traje.tronco) traje.tronco.forEach((linha, i) => { corpo[8 + i] = linha; });
@@ -291,16 +296,20 @@ function quadroPessoa(traje, longo) {
   return [...corpo, traje.pernas ?? PERNAS_A[0], ...PERNAS_A.slice(1)];
 }
 
+const CABELO_GRISALHO = "#CFCFCF";
+
 /**
  * Pessoa da cidade com a roupa da profissão.
  * @param {string} nomeTraje chave de TRAJES
- * @param {number} indice escolhe a paleta de pele e cabelo
+ * @param {number} indice escolhe a paleta de pele e roupa
+ * @param {{genero?: "f"|"m", idade?: "jovem"|"adulta"|"idosa"}} [aparencia] mulheres têm cabelo comprido e pessoas idosas, grisalho
  */
-export function imagemPessoa(nomeTraje, indice, escala = 1) {
+export function imagemPessoa(nomeTraje, indice, escala = 1, aparencia = {}) {
   const traje = TRAJES[nomeTraje] ?? TRAJES.morador;
   const paleta = PALETAS_MORADORES[indice % PALETAS_MORADORES.length];
-  const cores = { k: "#1A1A1A", m: "#7A3B2E", p: "#2A2A2A", ...paleta, ...traje.cores };
-  const longo = traje.longo ?? indice % 2 === 1;
+  const grisalho = aparencia.idade === "idosa" ? { h: CABELO_GRISALHO } : {};
+  const cores = { k: "#1A1A1A", m: "#7A3B2E", p: "#2A2A2A", ...paleta, ...grisalho, ...traje.cores };
+  const longo = aparencia.genero ? aparencia.genero === "f" : traje.longo ?? indice % 2 === 1;
   return imagemDeMatrizes([quadroPessoa(traje, longo)], cores, 16, 16, escala);
 }
 
@@ -447,6 +456,14 @@ function desenharBloco(contexto, caractere, x, y, mapa, destaque, casas) {
     case "c":
       ret("#8B5A2B", 0, 6, 16, 2); ret("#8B5A2B", 0, 11, 16, 2); ret("#A0522D", 2, 3, 2, 12); ret("#A0522D", 12, 3, 2, 12);
       break;
+    case "E": {
+      const meio = mapa[y][x - 1] === "E" && mapa[y][x + 1] === "E" && (mapa[y][x - 2] !== "E" || mapa[y][x + 2] !== "E");
+      ret("#F3E3B5", 0, 2, 16, 14); ret("#C0392B", 0, 0, 16, 4); ret("#00000030", 0, 4, 16, 1);
+      if (meio && mapa[y][x - 2] !== "E") { ret("#8B5A2B", 9, 8, 7, 8); ret("#1A1A1A", 14, 12, 1, 1); }
+      else if (meio) { ret("#8B5A2B", 0, 8, 7, 8); ret("#1A1A1A", 1, 12, 1, 1); }
+      else { ret("#5DADE2", 4, 7, 8, 5); ret("#FFFFFF", 7, 7, 1, 5); }
+      break;
+    }
     case "Q":
       ret("#1F2E4D", 1, 0, 14, 3); ret("#5A6B8C", 2, 3, 12, 12); ret("#5DADE2", 4, 5, 8, 5); ret("#C9D3E6", 4, 11, 8, 1);
       break;

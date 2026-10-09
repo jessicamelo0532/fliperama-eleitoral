@@ -8,7 +8,9 @@
     "responsavel": {
       "nome": "Dona Lúcia",
       "funcao": "Líder comunitária",
-      "traje": "lider"
+      "traje": "lider",
+      "genero": "f",
+      "idade": "adulta"
     },
     "desafio": {
       "tipo": "senha",
@@ -38,7 +40,9 @@
     "responsavel": {
       "nome": "Seu Raimundo",
       "funcao": "Vigia",
-      "traje": "vigia"
+      "traje": "vigia",
+      "genero": "m",
+      "idade": "adulta"
     },
     "desafio": {
       "tipo": "senha",
@@ -71,7 +75,9 @@
     "responsavel": {
       "nome": "Seu Jorge",
       "funcao": "Farmacêutico",
-      "traje": "farmaceutico"
+      "traje": "farmaceutico",
+      "genero": "m",
+      "idade": "adulta"
     },
     "desafio": {
       "tipo": "escolha",
@@ -104,7 +110,7 @@
     "guia": "Boas-vindas ao Jardim Seguro! Alguém rasgou o mapa que mostra onde o objeto foi escondido. Cada pessoa com estrela guardou um pedaço. Junte os quatro e siga o X!",
     "desafio": {
       "tipo": "mapa",
-      "ajuda": "Com os quatro pedaços, o X aparece no mapa. Você pode ver o mapa no MENU. Pare em cima do X e aperte A."
+      "ajuda": "Com os quatro pedaços, o X aparece no mapa. Você pode ver o mapa no MENU. Pare em cima do X e aperte L (no celular) ou Espaço (no computador)."
     },
     "texto": "Texto de teste. A descrição da realização será escrita e revisada na etapa de conteúdo.",
     "fontes": [
@@ -126,7 +132,9 @@
     "responsavel": {
       "nome": "Professora Ana",
       "funcao": "Professora",
-      "traje": "professora"
+      "traje": "professora",
+      "genero": "f",
+      "idade": "adulta"
     },
     "desafio": {
       "tipo": "provinha",
@@ -230,7 +238,9 @@
     "responsavel": {
       "nome": "Dona Lúcia",
       "funcao": "Líder comunitária",
-      "traje": "lider"
+      "traje": "lider",
+      "genero": "f",
+      "idade": "adulta"
     },
     "desafio": {
       "tipo": "senha",
@@ -265,7 +275,9 @@
     "responsavel": {
       "nome": "Professora Ana",
       "funcao": "Professora",
-      "traje": "professora"
+      "traje": "professora",
+      "genero": "f",
+      "idade": "adulta"
     },
     "desafio": {
       "tipo": "provinha",
@@ -320,7 +332,9 @@
     "responsavel": {
       "nome": "Seu Jorge",
       "funcao": "Farmacêutico",
-      "traje": "farmaceutico"
+      "traje": "farmaceutico",
+      "genero": "m",
+      "idade": "adulta"
     },
     "desafio": {
       "tipo": "escolha",
@@ -417,7 +431,7 @@
     "guia": "Boas-vindas ao Jardim Seguro! Rasgaram o mapa que mostra onde o objeto está. Cada pessoa com estrela tem um pedaço.",
     "desafio": {
       "tipo": "mapa",
-      "ajuda": "Com os quatro pedaços, o X aparece no mapa. Você pode ver o mapa no MENU. Pare em cima do X e aperte A."
+      "ajuda": "Com os quatro pedaços, o X aparece no mapa. Você pode ver o mapa no MENU. Pare em cima do X e aperte L (no celular) ou Espaço (no computador)."
     },
     "texto": "Sancionada por Lula em 7 de agosto de 2006, a Lei 11.340, a Lei Maria da Penha, criou mecanismos para coibir a violência doméstica e familiar contra a mulher.",
     "fontes": [
@@ -438,7 +452,9 @@
     "responsavel": {
       "nome": "Seu Raimundo",
       "funcao": "Vigia",
-      "traje": "vigia"
+      "traje": "vigia",
+      "genero": "m",
+      "idade": "adulta"
     },
     "desafio": {
       "tipo": "senha",

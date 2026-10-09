@@ -701,9 +701,9 @@ function conversar(item, alguem) {
       el("p", { class: "bvp-fala", text: item.abertura }),
       item.lembranca && el("p", { class: "bvp-lembranca", text: item.lembranca }),
       el("p", { class: "bvp-proposta" }, el("span", { class: "bvp-selo pixel", text: nova ? "★ PROPOSTA ENCONTRADA" : "★ PROPOSTA" }), el("br"), item.proposta),
-      renderFontes(null, item.fontes, "Fonte"),
       item.pista && el("p", { class: "bvp-pista" }, el("span", { class: "bvp-selo pixel", text: "✎ PISTA ANOTADA" }), el("br"), item.pista),
       comMapa && mapaDoTesouro(fase),
+      renderFontes(null, item.fontes, "Fonte"),
     ],
     aoFechar: () => verificarFase(),
   });
@@ -761,6 +761,16 @@ function resolverPortao(fase, objeto, aoAbrir) {
   const fala = responsavel
     ? quemFala(nomeDoResponsavel(responsavel), pessoaResponsavel(responsavel, FASES.indexOf(fase)))
     : null;
+  const faltam = faltamOuvir(fase);
+  if (faltam > 0) {
+    tocar("dialogo");
+    abrirSobreposicao({
+      rotulo: "Portão trancado",
+      ...fala,
+      conteudo: [el("p", { class: "bvp-fala", text: `Antes do desafio, converse com o pessoal do bairro: ${faltam === 1 ? "falta 1 pessoa" : `faltam ${faltam} pessoas`}.` })],
+    });
+    return;
+  }
   const abrir = () => {
     progresso.portoes.push(fase.id);
     salvarProgresso(progresso);
@@ -1123,6 +1133,12 @@ function ligarControles() {
     ["pointerup", "pointercancel", "lostpointercapture"].forEach((tipo) => botao.addEventListener(tipo, soltar));
     botao.addEventListener("contextmenu", (evento) => evento.preventDefault());
   });
+  /* Botões de toque ficam vermelhos só enquanto estão apertados. */
+  const botaoDeToque = (evento) => evento.target.closest?.(".bvp-botao-a, .bvp-tecla");
+  document.addEventListener("pointerdown", (evento) => botaoDeToque(evento)?.classList.add("ativo"));
+  ["pointerup", "pointercancel", "pointerleave"].forEach((tipo) =>
+    document.addEventListener(tipo, (evento) => botaoDeToque(evento)?.classList.remove("ativo"), true));
+
   const botaoA = document.getElementById("botao-a");
   botaoA.addEventListener("pointerdown", (evento) => { evento.preventDefault(); interagir(); });
   botaoA.addEventListener("click", (evento) => { if (evento.detail === 0) interagir(); });

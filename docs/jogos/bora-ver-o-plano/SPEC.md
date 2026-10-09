@@ -41,6 +41,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
 - **Tratamento neutro:** saudações e falas não marcam gênero, porque quem joga pode ser a Cidadã ou o Cidadão.
 - **Coerência com o cenário:** cada fala combina com o lugar onde a personagem está (quem vai buscar o filho fica na frente da escola, ninguém oferece um banco que não existe).
 - **Respostas escritas:** aceitam sinônimos cadastrados (ex.: "carteira de trabalho" e "carteira trabalhista"), ignoram maiúsculas, acentos e palavras de ligação e toleram um erro de digitação em respostas longas.
+- **Desafios do portão:** a senha, a adivinhação, o balcão da farmácia e a provinha só começam depois que todas as pessoas com estrela do bairro foram ouvidas.
 - **Ajuda:** depois de dois erros no mesmo desafio, aparece uma ajuda extra, que dá uma pista e nunca a resposta. As pistas encontradas ficam no "caderno de pistas", no menu e na tela do desafio.
 - **Ao achar o objeto:** aparece um cartão com o objeto, um texto curto sobre a realização e a fonte.
 - **Progresso:** contadores "Propostas encontradas: x/y" e "Objeto perdido: encontrado/não encontrado" sempre visíveis.
@@ -56,7 +57,7 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
 1. **Início:** título, como jogar, aviso de que as personagens são fictícias, escolha da personagem, botão JOGAR.
 2. **Mapa da cidade:** desenho da cidade com os sete bairros, cadeado nos bloqueados, sinal nos zerados e a personagem no bairro atual; painel com o bairro escolhido e o botão "Entrar no bairro".
 3. **Bairro:** cenário explorável, contadores e botões de som, mapa e menu.
-4. **Diálogo:** caixa com retrato, nome e profissão do personagem, saudação, lembrança, proposta com fonte (plano no TSE, página) e pista anotada.
+4. **Diálogo:** caixa com retrato, nome e profissão do personagem, saudação, lembrança, proposta, pista anotada e, por último, as fontes (plano no TSE com a página e as leis citadas).
 4a. **Desafio:** campo de resposta (senha, adivinhação) ou opções de múltipla escolha (receita certa, provinha), com o caderno de pistas.
 5. **Objeto encontrado:** cartão com o desenho do objeto, nome, texto sobre a realização e fonte.
 6. **Menu do bairro:** caderno de pistas, propostas já encontradas no bairro e volta ao mapa.

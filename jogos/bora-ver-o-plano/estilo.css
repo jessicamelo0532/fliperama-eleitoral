@@ -163,18 +163,21 @@
   font-size: 16px; color: var(--cor-branco); background: var(--cor-superficie-2);
   border: 2px solid var(--cor-borda); touch-action: none; cursor: pointer;
 }
-.bvp-tecla.ativo { background: var(--cor-vermelho); }
+.bvp-tecla:active, .bvp-tecla.ativo { background: var(--cor-vermelho); border-color: var(--cor-vermelho-escuro); }
 .bvp-tecla--cima { grid-area: cima; }
 .bvp-tecla--esquerda { grid-area: esquerda; }
 .bvp-tecla--direita { grid-area: direita; }
 .bvp-tecla--baixo { grid-area: baixo; }
 .bvp-botao-a {
   width: 72px; height: 72px; border-radius: 50%; font-size: 18px;
-  color: var(--cor-branco); background: var(--cor-vermelho);
-  border: 4px solid var(--cor-vermelho-escuro); box-shadow: 0 4px 0 var(--cor-vermelho-escuro);
+  color: var(--cor-branco); background: var(--cor-superficie-2);
+  border: 4px solid var(--cor-borda); box-shadow: 0 4px 0 var(--cor-borda);
   touch-action: none; cursor: pointer;
 }
-.bvp-botao-a:active { transform: translateY(4px); box-shadow: none; }
+.bvp-botao-a:active, .bvp-botao-a.ativo {
+  background: var(--cor-vermelho); border-color: var(--cor-vermelho-escuro);
+  transform: translateY(4px); box-shadow: none;
+}
 @media (hover: hover) and (pointer: fine) and (min-width: 721px) {
   .bvp-controles { display: none; }
 }

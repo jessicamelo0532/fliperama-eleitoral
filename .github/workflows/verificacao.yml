@@ -37,3 +37,9 @@ jobs:
             --exclude-path '404\.html'
             './**/*.html'
             './jogos/**/*.json'
+      - name: Lista os links com erro
+        if: failure()
+        run: |
+          grep -E '^\* \[' lychee/out.md | head -40 | while IFS= read -r linha; do
+            echo "::error title=Link com erro::$linha"
+          done

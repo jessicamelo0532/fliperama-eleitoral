@@ -4,7 +4,10 @@
 
 let contexto = null;
 let ativo = false;
+let saidaGeral = null;
 let saidaMusica = null;
+let musicaPausada = false;
+let foraDeVista = false;
 let agendador = null;
 let proximoTempo = 0;
 let passo = 0;
@@ -68,23 +71,46 @@ function garantirContexto() {
   const Contexto = window.AudioContext || window.webkitAudioContext;
   if (!Contexto) return null;
   contexto = new Contexto();
+  saidaGeral = contexto.createGain();
+  saidaGeral.connect(contexto.destination);
   saidaMusica = contexto.createGain();
   saidaMusica.gain.value = 0.5;
-  saidaMusica.connect(contexto.destination);
+  saidaMusica.connect(saidaGeral);
   return contexto;
 }
 
-/* Com a tela bloqueada ou o navegador em segundo plano, o áudio fica suspenso. */
-function retomarSeVisivel() {
-  if (contexto && ativo && document.visibilityState === "visible") contexto.resume?.();
+const escondido = () => foraDeVista || document.visibilityState === "hidden";
+
+/*
+ * Com a tela bloqueada, outra aba ou outro aplicativo à frente, o áudio é silenciado e suspenso,
+ * e a música volta de onde parou quando o jogo reaparece.
+ */
+function silenciar() {
+  foraDeVista = true;
+  if (!contexto) return;
+  if (agendador) musicaPausada = true;
+  pararMusica();
+  saidaGeral.gain.setValueAtTime(0, contexto.currentTime);
+  contexto.suspend?.();
 }
 
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "hidden") contexto?.suspend?.();
-  else retomarSeVisivel();
-});
-window.addEventListener("pagehide", () => contexto?.suspend?.());
+function retomarSeVisivel() {
+  if (document.visibilityState === "visible") foraDeVista = false;
+  if (!contexto || !ativo || escondido()) return;
+  contexto.resume?.();
+  saidaGeral.gain.setValueAtTime(1, contexto.currentTime);
+  if (musicaPausada) {
+    musicaPausada = false;
+    tocarMusica();
+  }
+}
+
+document.addEventListener("visibilitychange", () => (document.visibilityState === "hidden" ? silenciar() : retomarSeVisivel()));
+document.addEventListener("freeze", silenciar);
+window.addEventListener("pagehide", silenciar);
+window.addEventListener("blur", silenciar);
 window.addEventListener("pageshow", retomarSeVisivel);
+window.addEventListener("focus", retomarSeVisivel);
 document.addEventListener("pointerdown", retomarSeVisivel, true);
 
 function nota(destino, tipo, freq, inicio, duracao, volume) {
@@ -101,6 +127,10 @@ function nota(destino, tipo, freq, inicio, duracao, volume) {
 }
 
 function agendar() {
+  if (escondido()) {
+    silenciar();
+    return;
+  }
   while (proximoTempo < contexto.currentTime + 0.15) {
     const melodia = MELODIA[passo % MELODIA.length];
     if (melodia) nota(saidaMusica, "triangle", frequencia(melodia), proximoTempo, DURACAO_PASSO * 1.8, 0.035);
@@ -117,6 +147,7 @@ function agendar() {
 export function definirSom(ligado) {
   ativo = ligado;
   if (!ligado) {
+    musicaPausada = false;
     pararMusica();
     return;
   }
@@ -130,6 +161,10 @@ export function somLigado() {
 
 export function tocarMusica() {
   if (!ativo || agendador || !garantirContexto()) return;
+  if (escondido()) {
+    musicaPausada = true;
+    return;
+  }
   retomarSeVisivel();
   proximoTempo = contexto.currentTime + 0.1;
   passo = 0;
@@ -158,7 +193,7 @@ function bateria(tipo, inicio) {
   filtro.frequency.value = tipo === "b" ? 180 : 1800;
   ganho.gain.setValueAtTime(tipo === "b" ? 0.35 : 0.12, inicio);
   ganho.gain.exponentialRampToValueAtTime(0.001, inicio + (tipo === "b" ? 0.12 : 0.08));
-  fonte.connect(filtro).connect(ganho).connect(contexto.destination);
+  fonte.connect(filtro).connect(ganho).connect(saidaGeral);
   fonte.start(inicio);
   fonte.stop(inicio + 0.2);
 }
@@ -168,7 +203,7 @@ function bateria(tipo, inicio) {
  * A música de fundo pausa durante a fanfarra e volta em seguida.
  */
 export function tocarVitoria(nome) {
-  if (!ativo || !garantirContexto()) return;
+  if (!ativo || !garantirContexto() || escondido()) return;
   const { passo: duracaoPasso, vozes, bateria: ritmo } = VITORIAS[nome];
   const tocandoMusica = Boolean(agendador);
   pararMusica();
@@ -179,7 +214,7 @@ export function tocarVitoria(nome) {
       if (!valor || notas[i - 1] === valor) return;
       let tamanho = 1;
       while (notas[i + tamanho] === valor) tamanho++;
-      nota(contexto.destination, tipo, frequencia(valor), inicio + i * duracaoPasso, tamanho * duracaoPasso * 0.95, volume);
+      nota(saidaGeral, tipo, frequencia(valor), inicio + i * duracaoPasso, tamanho * duracaoPasso * 0.95, volume);
     });
     fim = Math.max(fim, notas.length * duracaoPasso);
   });
@@ -188,10 +223,10 @@ export function tocarVitoria(nome) {
 }
 
 export function tocar(nome) {
-  if (!ativo || !garantirContexto()) return;
+  if (!ativo || !garantirContexto() || escondido()) return;
   let instante = contexto.currentTime;
   for (const [freq, duracao] of EFEITOS[nome] ?? []) {
-    nota(contexto.destination, "square", freq, instante, duracao, 0.05);
+    nota(saidaGeral, "square", freq, instante, duracao, 0.05);
     instante += duracao;
   }
 }

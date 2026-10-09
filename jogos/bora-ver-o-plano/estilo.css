@@ -181,3 +181,29 @@
 @media (hover: hover) and (pointer: fine) and (min-width: 721px) {
   .bvp-controles { display: none; }
 }
+
+/* ---------- Tela cheia e celular deitado ---------- */
+.area-jogo.bvp-cheio, .area-jogo.bvp-deitado {
+  position: fixed; inset: 0; z-index: 100; margin: 0; max-width: none; width: 100%; height: 100%;
+  padding: var(--esp-2); overflow-y: auto; display: flex; flex-direction: column; background: var(--cor-fundo);
+}
+.bvp-cheio .bvp-palco:not([hidden]), .bvp-deitado .bvp-palco:not([hidden]) {
+  flex: 1; min-height: 0; width: 100%; max-width: none;
+  display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.bvp-cheio .bvp-cena, .bvp-deitado .bvp-cena { width: 100%; height: auto; max-height: 100%; align-self: center; justify-self: center; }
+.bvp-cheio .bvp-hud, .bvp-deitado .bvp-hud { margin-bottom: var(--esp-2); }
+@media (orientation: landscape) {
+  .bvp-cheio .bvp-palco:not([hidden]), .bvp-deitado .bvp-palco:not([hidden]) {
+    grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto minmax(0, 1fr);
+  }
+  .bvp-cheio .bvp-hud, .bvp-deitado .bvp-hud { grid-column: 1 / -1; padding: 4px var(--esp-3); margin-bottom: 4px; }
+  .bvp-cheio .bvp-hud__nome, .bvp-deitado .bvp-hud__nome { min-width: 0; }
+  .bvp-cheio .bvp-cena, .bvp-deitado .bvp-cena { grid-column: 2; grid-row: 2; width: auto; height: 100%; max-width: 100%; }
+  .bvp-cheio .bvp-controles, .bvp-deitado .bvp-controles { display: contents; }
+  .bvp-cheio .bvp-direcional, .bvp-deitado .bvp-direcional { grid-column: 1; grid-row: 2; align-self: end; margin: 0 var(--esp-2) var(--esp-3); }
+  .bvp-cheio .bvp-botao-a, .bvp-deitado .bvp-botao-a { grid-column: 3; grid-row: 2; align-self: end; margin: 0 var(--esp-3) var(--esp-4); }
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 721px) {
+  .bvp-cheio .bvp-direcional, .bvp-cheio .bvp-botao-a { display: none; }
+}

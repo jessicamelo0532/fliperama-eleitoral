@@ -283,7 +283,7 @@ function telaMapa(selecionada) {
     el("div", { class: "bvp-mapa" },
       el("div", { class: "bvp-mapa__topo" },
         el("p", { class: "bvp-rotulo pixel", text: "Mapa da cidade" }),
-        botaoSom()),
+        el("span", { class: "bvp-hud__botoes" }, botaoTelaCheia(), botaoSom())),
       el("div", { class: "bvp-cidade" },
         el("img", { class: "bvp-cidade__fundo", src: imagemCidade, alt: "Mapa da cidade com os sete bairros ligados por ruas" }),
         pontos,
@@ -1073,6 +1073,7 @@ function atualizarHud() {
     objeto && el("span", { class: "bvp-hud__item" }, achouObjeto ? "Objeto ✓" : "Objeto ?"),
     el("span", { class: "bvp-hud__botoes" },
       botaoSom(),
+      botaoTelaCheia(),
       el("button", { class: "bvp-hud__botao pixel", type: "button", onclick: () => telaMapa(faseAtual) }, "MAPA"),
       el("button", { class: "bvp-hud__botao pixel", type: "button", onclick: abrirMenu, "aria-label": "Abrir menu" }, "MENU"))
   );
@@ -1089,7 +1090,57 @@ function interagir() {
   interagirNaCena();
 }
 
+/* ---------- Tela cheia e celular deitado ---------- */
+
+const areaJogo = document.getElementById("area-jogo");
+const CELULAR_DEITADO = window.matchMedia("(orientation: landscape) and (max-height: 520px) and (pointer: coarse)");
+
+const emTelaCheia = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement || areaJogo.classList.contains("bvp-imersivo"));
+
+function atualizarModoDeTela() {
+  areaJogo.classList.toggle("bvp-cheio", emTelaCheia());
+  areaJogo.classList.toggle("bvp-deitado", CELULAR_DEITADO.matches);
+  document.querySelectorAll("[data-tela-cheia]").forEach((botao) => {
+    botao.textContent = emTelaCheia() ? "SAIR" : "TELA CHEIA";
+    botao.setAttribute("aria-label", emTelaCheia() ? "Sair da tela cheia" : "Tela cheia");
+  });
+}
+
+/** Usa a tela cheia do navegador; onde ela não existe (iPhone), ocupa a janela inteira. */
+async function alternarTelaCheia() {
+  if (document.fullscreenElement || document.webkitFullscreenElement) {
+    await (document.exitFullscreen?.() ?? document.webkitExitFullscreen?.());
+  } else if (areaJogo.classList.contains("bvp-imersivo")) {
+    areaJogo.classList.remove("bvp-imersivo");
+  } else {
+    const pedir = areaJogo.requestFullscreen?.bind(areaJogo) ?? areaJogo.webkitRequestFullscreen?.bind(areaJogo);
+    try {
+      if (!pedir) throw new Error("sem tela cheia");
+      await pedir();
+    } catch {
+      areaJogo.classList.add("bvp-imersivo");
+    }
+  }
+  atualizarModoDeTela();
+  canvas.focus({ preventScroll: true });
+}
+
+function botaoTelaCheia() {
+  return el("button", {
+    class: "bvp-hud__botao pixel", type: "button", "data-tela-cheia": "",
+    "aria-label": emTelaCheia() ? "Sair da tela cheia" : "Tela cheia", onclick: alternarTelaCheia,
+  }, emTelaCheia() ? "SAIR" : "TELA CHEIA");
+}
+
+function ligarModoDeTela() {
+  document.addEventListener("fullscreenchange", atualizarModoDeTela);
+  document.addEventListener("webkitfullscreenchange", atualizarModoDeTela);
+  CELULAR_DEITADO.addEventListener("change", atualizarModoDeTela);
+  atualizarModoDeTela();
+}
+
 function ligarControles() {
+  ligarModoDeTela();
   window.addEventListener("keydown", (evento) => {
     if (palco.hidden) {
       if (tela.dataset.modo !== "mapa" || evento.target.closest?.("input, textarea")) return;

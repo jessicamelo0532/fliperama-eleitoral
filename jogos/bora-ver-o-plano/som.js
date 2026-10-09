@@ -74,6 +74,19 @@ function garantirContexto() {
   return contexto;
 }
 
+/* Com a tela bloqueada ou o navegador em segundo plano, o áudio fica suspenso. */
+function retomarSeVisivel() {
+  if (contexto && ativo && document.visibilityState === "visible") contexto.resume?.();
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") contexto?.suspend?.();
+  else retomarSeVisivel();
+});
+window.addEventListener("pagehide", () => contexto?.suspend?.());
+window.addEventListener("pageshow", retomarSeVisivel);
+document.addEventListener("pointerdown", retomarSeVisivel, true);
+
 function nota(destino, tipo, freq, inicio, duracao, volume) {
   const oscilador = contexto.createOscillator();
   const ganho = contexto.createGain();
@@ -107,7 +120,8 @@ export function definirSom(ligado) {
     pararMusica();
     return;
   }
-  garantirContexto()?.resume?.();
+  garantirContexto();
+  retomarSeVisivel();
 }
 
 export function somLigado() {
@@ -116,7 +130,7 @@ export function somLigado() {
 
 export function tocarMusica() {
   if (!ativo || agendador || !garantirContexto()) return;
-  contexto.resume?.();
+  retomarSeVisivel();
   proximoTempo = contexto.currentTime + 0.1;
   passo = 0;
   agendador = setInterval(agendar, 40);

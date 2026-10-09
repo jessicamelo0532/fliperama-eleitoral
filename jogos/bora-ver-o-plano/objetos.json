@@ -221,5 +221,245 @@
       }
     ],
     "revisado": true
+  },
+  {
+    "id": "objeto-praca",
+    "fase": "praca",
+    "objeto": "Cartão do Bolsa Família",
+    "guia": "Bem-vindo à Praça Central! Alguém perdeu uma coisa importante e ela ficou trancada atrás do portão. A Dona Lúcia, nossa líder comunitária, só abre com a senha, e cada pessoa com estrela sabe um pedaço dela. Converse com todo mundo e preste atenção na ordem!",
+    "responsavel": {
+      "nome": "Dona Lúcia",
+      "funcao": "Líder comunitária",
+      "traje": "lider"
+    },
+    "desafio": {
+      "tipo": "senha",
+      "pergunta": "A Dona Lúcia só abre o portão com a senha. Junte as partes que o pessoal contou, na ordem certa.",
+      "respostas": [
+        "BORA VER O PLANO"
+      ],
+      "ajuda": "São quatro partes. Fale com todo mundo que tem estrela e junte na ordem que eles disseram."
+    },
+    "texto": "O Bolsa Família foi criado em 9 de janeiro de 2004, pela Lei 10.836, sancionada por Lula. Em 2023, a Lei 14.601 instituiu o programa de novo.",
+    "fontes": [
+      {
+        "titulo": "Lei nº 10.836, de 9 de janeiro de 2004 (cria o Bolsa Família)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.836.htm",
+        "data": "09/01/2004"
+      },
+      {
+        "titulo": "Lei nº 14.601, de 19 de junho de 2023 (institui o Programa Bolsa Família)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14601.htm",
+        "data": "19/06/2023"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "objeto-centro",
+    "fase": "centro",
+    "objeto": "Carteira de trabalho",
+    "guia": "Oi, seja bem-vindo ao Centro! O portão daqui só abre para quem resolve a adivinhação do vigia. O pessoal do bairro dá as dicas. Escute bem!",
+    "responsavel": {
+      "nome": "Seu Raimundo",
+      "funcao": "Vigia",
+      "traje": "vigia"
+    },
+    "desafio": {
+      "tipo": "senha",
+      "pergunta": "O que é, o que é? Tem capa, guarda a história de quem trabalha e todo mundo quer assinada.",
+      "respostas": [
+        "carteira de trabalho",
+        "carteira trabalhista",
+        "carteira profissional",
+        "CTPS"
+      ],
+      "ajuda": "Pense no documento onde ficam registrados os empregos de uma pessoa."
+    },
+    "texto": "Em 28 de agosto de 2023, a Lei 14.663, sancionada por Lula, passou a reajustar o salário mínimo pela inflação mais o crescimento da economia.",
+    "fontes": [
+      {
+        "titulo": "Lei nº 14.663, de 28 de agosto de 2023 (valorização do salário mínimo)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14663.htm",
+        "data": "28/08/2023"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "objeto-saude",
+    "fase": "saude",
+    "objeto": "Remédio da Farmácia Popular",
+    "guia": "Que bom te ver na Vila Saúde! O farmacêutico vai fazer uma pergunta no balcão, e a resposta está nas histórias dos moradores.",
+    "responsavel": {
+      "nome": "Seu Jorge",
+      "funcao": "Farmacêutico",
+      "traje": "farmaceutico"
+    },
+    "desafio": {
+      "tipo": "escolha",
+      "titulo": "Balcão da farmácia",
+      "pergunta": "Segundo o plano de governo, como o Farmácia Popular vai continuar?",
+      "opcoes": [
+        "Com desconto de metade do preço",
+        "100% gratuito",
+        "Só para quem mora nas capitais"
+      ],
+      "correta": 1,
+      "ajuda": "Releia o que a neta do Seu Zeca contou sobre o remédio do avô."
+    },
+    "texto": "O Farmácia Popular foi instituído em 20 de maio de 2004, por decreto assinado por Lula. Segundo o Ministério da Saúde, os medicamentos do programa são fornecidos de graça.",
+    "fontes": [
+      {
+        "titulo": "Decreto nº 5.090, de 20 de maio de 2004 (institui o Farmácia Popular do Brasil)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/decreto/d5090.htm",
+        "data": "20/05/2004"
+      },
+      {
+        "titulo": "Farmácia Popular",
+        "veiculo": "Ministério da Saúde (gov.br)",
+        "url": "https://www.gov.br/saude/pt-br/composicao/sectics/farmacia-popular",
+        "data": "consultado em 08/10/2026"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "objeto-seguranca",
+    "fase": "seguranca",
+    "objeto": "Livro da Lei Maria da Penha",
+    "guia": "Bem-vindo ao Jardim Seguro! Alguém rasgou o mapa que mostra onde o objeto foi escondido. Cada pessoa com estrela guardou um pedaço. Junte os quatro e siga o X!",
+    "desafio": {
+      "tipo": "mapa",
+      "ajuda": "Com os quatro pedaços, o X aparece no mapa. Você pode ver o mapa no MENU. Pare em cima do X e aperte A."
+    },
+    "texto": "Sancionada por Lula em 7 de agosto de 2006, a Lei 11.340, a Lei Maria da Penha, criou mecanismos para coibir a violência doméstica e familiar contra a mulher.",
+    "fontes": [
+      {
+        "titulo": "Lei nº 11.340, de 7 de agosto de 2006 (Lei Maria da Penha)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm",
+        "data": "07/08/2006"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "objeto-saber",
+    "fase": "saber",
+    "objeto": "Crachá de Instituto Federal",
+    "guia": "Olá! No Vale do Saber, a professora aplica uma provinha de três perguntas sobre o que os moradores contam. Errou uma, começa de novo!",
+    "responsavel": {
+      "nome": "Professora Ana",
+      "funcao": "Professora",
+      "traje": "professora"
+    },
+    "desafio": {
+      "tipo": "provinha",
+      "titulo": "Provinha da professora",
+      "perguntas": [
+        {
+          "pergunta": "Quantos novos Institutos Federais o plano prevê?",
+          "opcoes": [
+            "111",
+            "11",
+            "1.111"
+          ],
+          "correta": 0
+        },
+        {
+          "pergunta": "Qual poupança para estudantes do ensino médio o plano quer continuar?",
+          "opcoes": [
+            "Bolsa-Atleta",
+            "Luz para Todos",
+            "Pé-de-Meia"
+          ],
+          "correta": 2
+        },
+        {
+          "pergunta": "O que terá absoluta prioridade na educação, segundo o plano?",
+          "opcoes": [
+            "Escola só de manhã",
+            "Educação em tempo integral",
+            "Mais provas"
+          ],
+          "correta": 1
+        }
+      ],
+      "ajuda": "Cada morador contou a resposta de uma das perguntas. Confira o caderno de pistas."
+    },
+    "texto": "Em 29 de dezembro de 2008, a Lei 11.892, sancionada por Lula, criou os Institutos Federais de Educação, Ciência e Tecnologia.",
+    "fontes": [
+      {
+        "titulo": "Lei nº 11.892, de 29 de dezembro de 2008 (cria os Institutos Federais)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11892.htm",
+        "data": "29/12/2008"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "objeto-vila-conquista",
+    "fase": "vila-conquista",
+    "objeto": "Chave do Minha Casa, Minha Vida",
+    "guia": "Bem-vindo! Alguém aqui do bairro perdeu uma coisa, mas em qual das seis casas? Cada vizinho lembra de um detalhe. Junte tudo e vá eliminando até sobrar uma casa.",
+    "desafio": {
+      "tipo": "casa",
+      "porta": "x",
+      "ajuda": "Use cada pista para riscar casas: varal, cachorro, vaso na janela e cor da porta. Só uma casa passa nas quatro."
+    },
+    "texto": "O Minha Casa, Minha Vida foi criado em 2009, no governo Lula, pela Lei 11.977. Em 2023, o programa ganhou nova lei, a 14.620.",
+    "fontes": [
+      {
+        "titulo": "Lei nº 11.977, de 7 de julho de 2009 (Minha Casa, Minha Vida)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l11977.htm",
+        "data": "07/07/2009"
+      },
+      {
+        "titulo": "Lei nº 14.620, de 13 de julho de 2023 (Minha Casa, Minha Vida)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14620.htm",
+        "data": "13/07/2023"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "objeto-campo",
+    "fase": "campo",
+    "objeto": "Prato do Fome Zero",
+    "guia": "Seja bem-vindo ao Campo Verde! Para montar o prato, é preciso colher tudo na ordem certa. Cada agricultor conhece uma parte da ordem. Junte as falas!",
+    "desafio": {
+      "tipo": "colheita",
+      "ordem": [
+        "j",
+        "r",
+        "m",
+        "n"
+      ],
+      "ajuda": "Comece pelo que vem primeiro e termine pelo que vem por último. O que sobra fica no meio, na ordem que os agricultores disseram."
+    },
+    "texto": "Em 2006, a Lei 11.346, sancionada por Lula, criou o Sistema Nacional de Segurança Alimentar e Nutricional. Em julho de 2026, relatório da ONU confirmou que o Brasil segue fora do Mapa da Fome.",
+    "fontes": [
+      {
+        "titulo": "Lei nº 11.346, de 15 de setembro de 2006 (Sistema Nacional de Segurança Alimentar e Nutricional)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11346.htm",
+        "data": "15/09/2006"
+      },
+      {
+        "titulo": "Relatório da ONU confirma que Brasil permanece fora do Mapa da Fome e aponta melhora em indicadores",
+        "veiculo": "Ministério do Desenvolvimento e Assistência Social (gov.br)",
+        "url": "https://www.gov.br/mds/pt-br/noticias/relatorio-da-onu-confirma-que-brasil-permanece-fora-do-mapa-da-fome-e-aponta-melhora-em-indicadores",
+        "data": "21/07/2026"
+      }
+    ],
+    "revisado": false
   }
 ]

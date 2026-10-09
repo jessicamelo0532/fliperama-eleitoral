@@ -569,15 +569,15 @@
     "topico": 2,
     "personagem": "Dona Neide, cozinheira comunitária",
     "traje": "feirante",
-    "abertura": "Oi, chega mais! Tá servida de um cafezinho?",
-    "lembranca": "Quando meus filhos eram pequenos, foi o Bolsa Família, criado em 2004, que ajudou a pôr comida na mesa lá de casa.",
-    "proposta": "O plano propõe fomentar a construção de cozinhas solidárias, restaurantes populares e lavanderias públicas.",
+    "abertura": "Oi, chega mais! Aceita um cafezinho?",
+    "lembranca": "Quando meus filhos eram pequenos, o Bolsa Família, criado em 2004, garantiu a comida lá em casa.",
+    "proposta": "O plano propõe seguir enfrentando a pobreza infantil e garantir o direito de toda criança brincar.",
     "pista": "A primeira parte da senha é BORA.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=26",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=24",
         "data": "2026"
       },
       {
@@ -593,23 +593,23 @@
     "id": "praca02",
     "fase": "praca",
     "topico": 2,
-    "personagem": "Seu Osvaldo, aposentado",
-    "abertura": "Bom dia! Senta aqui no banco comigo.",
-    "lembranca": "Minha aposentadoria é de um salário mínimo. Desde 2023, a lei garante reajuste pela inflação mais o crescimento da economia.",
-    "proposta": "O plano propõe ampliar o apoio aos municípios para expandir os Centros-Dia e espaços de envelhecimento saudável, como academias públicas e praças.",
+    "personagem": "Patrícia, diarista e mãe",
+    "abertura": "Oi! Tô indo pro trabalho, mas dá tempo de prosear.",
+    "lembranca": "Em 2024, uma lei criou a Política Nacional de Cuidados. Quem cuida também precisa de cuidado!",
+    "proposta": "O plano propõe apoiar as Cuidotecas, que acolhem crianças de 3 a 12 anos e liberam o tempo das mulheres que cuidam delas.",
     "pista": "A segunda parte da senha é VER.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=22",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=26",
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 14.663, de 28 de agosto de 2023 (valorização do salário mínimo)",
+        "titulo": "Lei nº 15.069, de 23 de dezembro de 2024 (Política Nacional de Cuidados)",
         "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14663.htm",
-        "data": "28/08/2023"
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l15069.htm",
+        "data": "23/12/2024"
       }
     ],
     "revisado": false
@@ -620,8 +620,8 @@
     "topico": 1,
     "personagem": "Júlia, estudante",
     "abertura": "E aí, tudo bem?",
-    "lembranca": "Minha mãe ganha R$ 4 mil por mês e, desde janeiro de 2026, não paga mais Imposto de Renda, por causa de uma lei de 2025.",
-    "proposta": "O plano propõe uma Política Nacional de Letramento Digital, para preparar pessoas de todas as idades a usar a internet com senso crítico e combater a desinformação.",
+    "lembranca": "Em 2023, uma lei criou a Política Nacional de Educação Digital. Na escola, aprendi a desconfiar de notícia falsa.",
+    "proposta": "O plano propõe uma Política Nacional de Letramento Digital, para todas as idades usarem a internet com senso crítico e combaterem a desinformação.",
     "pista": "A terceira parte da senha é O.",
     "fontes": [
       {
@@ -631,10 +631,10 @@
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 15.270, de 26 de novembro de 2025 (redução do Imposto de Renda até R$ 5 mil)",
+        "titulo": "Lei nº 14.533, de 11 de janeiro de 2023 (Política Nacional de Educação Digital)",
         "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15270.htm",
-        "data": "26/11/2025"
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14533.htm",
+        "data": "11/01/2023"
       }
     ],
     "revisado": false
@@ -644,122 +644,122 @@
     "fase": "praca",
     "topico": 2,
     "personagem": "Dona Fátima, avó de quatro netos",
-    "abertura": "Olá, meu bem! Que bom te ver por aqui.",
-    "lembranca": "Em 2023, uma nova lei instituiu o Bolsa Família de novo. É ele que ajuda a criar meus netos.",
-    "proposta": "O plano propõe continuar ampliando as políticas para as crianças, enfrentando a pobreza infantil e garantindo o direito ao brincar.",
+    "abertura": "Olá, que bom te ver por aqui!",
+    "lembranca": "Em 2003, veio o Estatuto do Idoso. Desde então, nossos direitos estão escritos em lei.",
+    "proposta": "O plano propõe ampliar os Centros-Dia e os espaços para envelhecer com saúde, como academias públicas e praças.",
     "pista": "A última parte da senha é PLANO. Junte tudo, na ordem.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=24",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=22",
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 14.601, de 19 de junho de 2023 (institui o Programa Bolsa Família)",
+        "titulo": "Lei nº 10.741, de 1º de outubro de 2003 (Estatuto da Pessoa Idosa)",
         "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14601.htm",
-        "data": "19/06/2023"
+        "url": "https://www.planalto.gov.br/ccivil_03/leis/2003/l10.741.htm",
+        "data": "01/10/2003"
       }
     ],
     "revisado": false
   },
   {
-    "id": "centro01",
-    "fase": "centro",
-    "topico": 12,
-    "personagem": "Rose, caixa de supermercado",
-    "abertura": "Opa! Tô no meu intervalo, dá pra prosear um pouco.",
-    "lembranca": "Desde a lei de 2023, o salário mínimo é reajustado pela inflação mais o crescimento da economia. No meu contracheque fez diferença.",
-    "proposta": "O plano prevê manter a ação no Senado pelo fim da escala 6x1 e pela jornada de 40 horas semanais, sem redução de salário.",
-    "pista": "A resposta tem a ver com trabalho.",
+    "id": "saber01",
+    "fase": "saber",
+    "topico": 4,
+    "personagem": "Larissa, técnica em informática",
+    "abertura": "Oi! Saí agora da aula.",
+    "lembranca": "Minha irmã estuda num campus federal no interior. O Reuni, de 2007, ajudou a expandir as universidades federais.",
+    "proposta": "O plano prevê mais 111 Institutos Federais, com novos campi em 106 municípios de todos os estados.",
+    "pista": "Grava esse número: mais 111 Institutos Federais.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=75",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=33",
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 14.663, de 28 de agosto de 2023 (valorização do salário mínimo)",
+        "titulo": "Decreto nº 6.096, de 24 de abril de 2007 (institui o Reuni)",
         "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14663.htm",
-        "data": "28/08/2023"
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/decreto/d6096.htm",
+        "data": "24/04/2007"
       }
     ],
     "revisado": false
   },
   {
-    "id": "centro02",
-    "fase": "centro",
-    "topico": 12,
-    "personagem": "Cláudia, costureira",
-    "abertura": "Oi, querida! Cuidado com as agulhas aí.",
-    "lembranca": "Em 2023, a Lei da Igualdade Salarial tratou da igualdade de salário entre mulheres e homens. Pra nós, costureiras, isso importa.",
-    "proposta": "O plano propõe avançar na igualdade de salários entre mulheres e homens, fortalecendo a Lei de Igualdade Salarial.",
-    "pista": "Ela tem capa e páginas.",
+    "id": "saber02",
+    "fase": "saber",
+    "topico": 4,
+    "personagem": "Kauã, estudante do ensino médio",
+    "abertura": "E aí! Tô indo pra escola.",
+    "lembranca": "Desde 2024, uma lei garante poupança a quem estuda no ensino médio público. Eu recebo o meu Pé-de-Meia.",
+    "proposta": "O plano prevê dar continuidade e fortalecer o Pé-de-Meia.",
+    "pista": "A poupança do ensino médio se chama Pé-de-Meia. Não esquece!",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=75",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=32",
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 14.611, de 3 de julho de 2023 (igualdade salarial entre mulheres e homens)",
+        "titulo": "Lei nº 14.818, de 16 de janeiro de 2024 (poupança para estudantes do ensino médio)",
         "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14611.htm",
-        "data": "03/07/2023"
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14818.htm",
+        "data": "16/01/2024"
       }
     ],
     "revisado": false
   },
   {
-    "id": "centro03",
-    "fase": "centro",
-    "topico": 8,
-    "personagem": "Seu Jair, dono de mercadinho",
-    "abertura": "Bom dia! Pode entrar, a casa é sua.",
-    "lembranca": "Em 2023, eu limpei meu nome pelo Desenrola Brasil, o programa do governo para renegociar dívidas atrasadas.",
-    "proposta": "O plano prevê acompanhar o endividamento das famílias e manter o controle dos gastos excessivos com apostas on-line.",
-    "pista": "Muita gente guarda na gaveta com cuidado.",
+    "id": "saber03",
+    "fase": "saber",
+    "topico": 4,
+    "personagem": "Dona Socorro, mãe de aluno",
+    "abertura": "Bom dia! Vim buscar meu menino.",
+    "lembranca": "O Fundeb, regulamentado em 2007, ajuda a manter a escola pública e a valorizar quem ensina.",
+    "proposta": "O plano diz que a expansão da educação em tempo integral terá absoluta prioridade.",
+    "pista": "Escola o dia inteiro: essa é a prioridade do plano.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=49",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=31",
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 14.690, de 3 de outubro de 2023 (Desenrola Brasil)",
+        "titulo": "Lei nº 11.494, de 20 de junho de 2007 (regulamenta o Fundeb)",
         "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14690.htm",
-        "data": "03/10/2023"
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11494.htm",
+        "data": "20/06/2007"
       }
     ],
     "revisado": false
   },
   {
-    "id": "centro04",
-    "fase": "centro",
-    "topico": 13,
-    "personagem": "Marcos, petroleiro",
-    "abertura": "Fala, tudo certo?",
-    "lembranca": "Em 2010, uma lei criou as regras de partilha para explorar o petróleo do pré-sal. Foi no pré-sal que eu arrumei emprego.",
-    "proposta": "O plano propõe proteger as fronteiras, a Amazônia e a Amazônia Azul, como é chamado o mar brasileiro.",
-    "pista": "A resposta tem duas palavras: a primeira é carteira.",
+    "id": "saber04",
+    "fase": "saber",
+    "topico": 6,
+    "personagem": "Thaís, jogadora de futebol",
+    "abertura": "Opa! Tô indo pro treino.",
+    "lembranca": "Eu treino com o Bolsa Atleta, criado em 2004 por uma lei do governo Lula.",
+    "proposta": "O plano prevê continuar ampliando e fortalecendo o Bolsa Atleta, que chegou a 11 mil atletas em 2026.",
+    "pista": "A Professora Ana pergunta sobre institutos, poupança e escola. Acerte as três!",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=79",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=43",
         "data": "2026"
       },
       {
-        "titulo": "Lei nº 12.351, de 22 de dezembro de 2010 (partilha do pré-sal)",
+        "titulo": "Lei nº 10.891, de 9 de julho de 2004 (institui a Bolsa-Atleta)",
         "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12351.htm",
-        "data": "22/12/2010"
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.891.htm",
+        "data": "09/07/2004"
       }
     ],
     "revisado": false
@@ -769,10 +769,10 @@
     "fase": "saude",
     "topico": 5,
     "personagem": "Tânia, neta do Seu Zeca",
-    "abertura": "Oi! Tô indo buscar o remédio do meu avô.",
-    "lembranca": "Meu avô tem pressão alta e diabetes e precisa de remédio todo dia. Pelo Farmácia Popular, criado em 2004, ele retira de graça.",
-    "proposta": "O plano prevê manter o Farmácia Popular 100% gratuito e ampliar os locais de retirada nas periferias das grandes cidades.",
-    "pista": "Guarde bem o que eu contei: o Seu Jorge do balcão sempre pergunta sobre o Farmácia Popular.",
+    "abertura": "Oi! Vou buscar o remédio do meu avô.",
+    "lembranca": "Meu avô tem pressão alta e diabetes. Pelo Farmácia Popular, criado em 2004, ele pega o remédio de graça.",
+    "proposta": "O plano prevê manter o Farmácia Popular 100% gratuito e abrir mais locais de retirada nas periferias.",
+    "pista": "O Seu Jorge do balcão sempre pergunta sobre o Farmácia Popular.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
@@ -800,9 +800,9 @@
     "fase": "saude",
     "topico": 5,
     "personagem": "Seu Elias, motorista de ambulância",
-    "abertura": "Ô, boa tarde! Tô de plantão hoje.",
-    "lembranca": "Eu dirijo ambulância do SAMU, serviço criado em 2004. Quando chamam, a gente corre pra salvar vida.",
-    "proposta": "O plano prevê impulsionar o Agora Tem Especialistas, com terceiro turno nos serviços de saúde, Carretas da Saúde e mutirões de consultas, exames e cirurgias.",
+    "abertura": "Boa tarde! Tô de plantão.",
+    "lembranca": "Dirijo ambulância do SAMU, criado em 2004. Quando chamam, a gente corre.",
+    "proposta": "O plano prevê ampliar o Agora Tem Especialistas, com mutirões e Carretas da Saúde para consultas, exames e cirurgias.",
     "pista": "Dizem que a pergunta do balcão é sobre o preço do remédio.",
     "fontes": [
       {
@@ -824,11 +824,11 @@
     "id": "saude03",
     "fase": "saude",
     "topico": 5,
-    "personagem": "Dra. Bia, dentista do posto",
-    "abertura": "Oi, abre um sorrisão pra mim!",
-    "lembranca": "Eu trabalho no Brasil Sorridente, programa criado em 2004 que leva atendimento de dentista pelo SUS.",
-    "proposta": "O plano prevê manter o apoio aos municípios para que ofereçam saúde bucal a todos, como manda a lei aprovada neste mandato.",
-    "pista": "Quem pagava pelo remédio antes, hoje não paga nada. É isso que o plano quer manter.",
+    "personagem": "Dra. Helena, dentista do posto",
+    "abertura": "Oi, abre um sorrisão!",
+    "lembranca": "Trabalho no Brasil Sorridente, criado em 2004, que leva atendimento de dentista pelo SUS.",
+    "proposta": "O plano prevê apoiar os municípios para que todos tenham acesso à saúde bucal.",
+    "pista": "Quem pagava remédio antes, hoje não paga nada. É isso que o plano quer manter.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
@@ -851,9 +851,9 @@
     "topico": 5,
     "personagem": "Seu Raul, agente de saúde",
     "abertura": "E aí, tudo bem com a saúde?",
-    "lembranca": "Em 2023, uma lei reforçou o Mais Médicos com a formação de especialistas. A médica do nosso posto veio pelo programa.",
-    "proposta": "O plano propõe intensificar o uso da saúde digital nos postos, com teleconsultas, teleorientação e teleacolhimento.",
-    "pista": "Desconto pela metade? Só nas capitais? Nada disso. Escute quem falou do Farmácia Popular.",
+    "lembranca": "Em 2023, uma lei reforçou o Mais Médicos. A médica do nosso posto veio pelo programa.",
+    "proposta": "O plano propõe mais teleconsultas e atendimento a distância nos postos de saúde.",
+    "pista": "Desconto? Só nas capitais? Nada disso. Lembre do Farmácia Popular.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
@@ -871,219 +871,13 @@
     "revisado": false
   },
   {
-    "id": "seguranca01",
-    "fase": "seguranca",
-    "topico": 3,
-    "personagem": "Kelly, vendedora",
-    "abertura": "Oi! Cuidado com a bolsa, viu?",
-    "lembranca": "Quando roubaram meu celular, bloqueei tudo pelo Celular Seguro, lançado pelo governo federal em dezembro de 2023.",
-    "proposta": "O plano prevê continuar expandindo o Celular Seguro, que já tem mais de 4 milhões de usuários cadastrados.",
-    "pista": "Achei este pedaço de mapa velho perto da praça. Acho que é o canto de cima, à esquerda. Fica com você!",
-    "fontes": [
-      {
-        "titulo": "Programa de Governo — Lula (Eleições 2026)",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=29",
-        "data": "2026"
-      },
-      {
-        "titulo": "Celular Seguro: mais de 3,8 mil aparelhos são bloqueados em uma semana",
-        "veiculo": "Agência Brasil",
-        "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2023-12/celular-seguro-mais-de-38-mil-aparelhos-sao-bloqueados-em-uma-semana",
-        "data": "26/12/2023"
-      },
-      {
-        "titulo": "Celular Seguro bloqueia mais de 4 mil aparelhos em uma semana",
-        "veiculo": "Metrópoles",
-        "url": "https://www.metropoles.com/brasil/celular-seguro-bloqueia-mais-de-4-mil-aparelhos-em-uma-semana",
-        "data": "27/12/2023"
-      }
-    ],
-    "revisado": false
-  },
-  {
-    "id": "seguranca02",
-    "fase": "seguranca",
-    "topico": 3,
-    "personagem": "Seu Valdir, porteiro",
-    "abertura": "Boa noite, quer dizer, boa tarde! Tô no turno trocado.",
-    "lembranca": "Em 2003, o Estatuto do Desarmamento criou regras para registro, posse e venda de armas de fogo e munição.",
-    "proposta": "O plano prevê manter o controle de armas e munições e aprimorar o rastreamento delas.",
-    "pista": "Olha só, um pedaço de mapa! Parece ser o canto de cima, à direita.",
-    "fontes": [
-      {
-        "titulo": "Programa de Governo — Lula (Eleições 2026)",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=28",
-        "data": "2026"
-      },
-      {
-        "titulo": "Lei nº 10.826, de 22 de dezembro de 2003 (Estatuto do Desarmamento)",
-        "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/leis/2003/l10.826.htm",
-        "data": "22/12/2003"
-      }
-    ],
-    "revisado": false
-  },
-  {
-    "id": "seguranca03",
-    "fase": "seguranca",
-    "topico": 3,
-    "personagem": "Dona Rita, moradora antiga",
-    "abertura": "Oi, minha filha! Moro aqui há trinta anos.",
-    "lembranca": "Em 2004, foi criada a Força Nacional de Segurança Pública, para os estados trabalharem junto com o governo federal.",
-    "proposta": "O plano prevê criar o Ministério da Segurança Pública depois que a PEC da Segurança Pública for aprovada.",
-    "pista": "Guardei este pedaço de mapa rasgado. É a parte de baixo, à esquerda.",
-    "fontes": [
-      {
-        "titulo": "Programa de Governo — Lula (Eleições 2026)",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=30",
-        "data": "2026"
-      },
-      {
-        "titulo": "Decreto nº 5.289, de 29 de novembro de 2004 (Força Nacional de Segurança Pública)",
-        "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/decreto/d5289.htm",
-        "data": "29/11/2004"
-      }
-    ],
-    "revisado": false
-  },
-  {
-    "id": "seguranca04",
-    "fase": "seguranca",
-    "topico": 3,
-    "personagem": "Toninho, técnico do time do bairro",
-    "abertura": "Fala, craque!",
-    "lembranca": "O Pronasci, programa de segurança criado em 2007, apoiou programas de polícia comunitária.",
-    "proposta": "O plano propõe criar, com estados e municípios, programas de policiamento de proximidade, aproximando polícias e comunidades.",
-    "pista": "Este é o último pedaço do mapa, a parte de baixo, à direita. Com ele, o X aparece!",
-    "fontes": [
-      {
-        "titulo": "Programa de Governo — Lula (Eleições 2026)",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=30",
-        "data": "2026"
-      },
-      {
-        "titulo": "Lei nº 11.530, de 24 de outubro de 2007 (institui o Pronasci)",
-        "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11530.htm",
-        "data": "24/10/2007"
-      }
-    ],
-    "revisado": false
-  },
-  {
-    "id": "saber01",
-    "fase": "saber",
-    "topico": 4,
-    "personagem": "Larissa, técnica em informática",
-    "abertura": "Oi! Acabei de sair da aula.",
-    "lembranca": "Minha irmã estuda num campus de universidade federal no interior. O Reuni, de 2007, apoiou a expansão dessas universidades.",
-    "proposta": "O plano prevê mais 111 Institutos Federais, com novos campi em 106 municípios de todos os estados.",
-    "pista": "Grava esse número: o plano fala em mais 111 Institutos Federais.",
-    "fontes": [
-      {
-        "titulo": "Programa de Governo — Lula (Eleições 2026)",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=33",
-        "data": "2026"
-      },
-      {
-        "titulo": "Decreto nº 6.096, de 24 de abril de 2007 (institui o Reuni)",
-        "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/decreto/d6096.htm",
-        "data": "24/04/2007"
-      }
-    ],
-    "revisado": false
-  },
-  {
-    "id": "saber02",
-    "fase": "saber",
-    "topico": 4,
-    "personagem": "Davi, estudante do ensino médio",
-    "abertura": "E aí! Tô indo pra escola.",
-    "lembranca": "Desde 2024, uma lei garante uma poupança para quem estuda no ensino médio público. Eu recebo o meu Pé-de-Meia.",
-    "proposta": "O plano prevê dar continuidade e fortalecer o Pé-de-Meia.",
-    "pista": "A poupança de quem estuda no ensino médio se chama Pé-de-Meia. Não esquece!",
-    "fontes": [
-      {
-        "titulo": "Programa de Governo — Lula (Eleições 2026)",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=32",
-        "data": "2026"
-      },
-      {
-        "titulo": "Lei nº 14.818, de 16 de janeiro de 2024 (poupança para estudantes do ensino médio)",
-        "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14818.htm",
-        "data": "16/01/2024"
-      }
-    ],
-    "revisado": false
-  },
-  {
-    "id": "saber03",
-    "fase": "saber",
-    "topico": 4,
-    "personagem": "Dona Socorro, mãe de aluno",
-    "abertura": "Bom dia! Vim buscar meu menino.",
-    "lembranca": "O Fundeb, regulamentado por lei em 2007, ajuda a manter a educação básica e a valorizar os profissionais da educação.",
-    "proposta": "O plano diz que a expansão da educação em tempo integral terá absoluta prioridade no novo mandato.",
-    "pista": "Escola o dia inteiro: é isso que o plano põe em primeiro lugar.",
-    "fontes": [
-      {
-        "titulo": "Programa de Governo — Lula (Eleições 2026)",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=31",
-        "data": "2026"
-      },
-      {
-        "titulo": "Lei nº 11.494, de 20 de junho de 2007 (regulamenta o Fundeb)",
-        "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11494.htm",
-        "data": "20/06/2007"
-      }
-    ],
-    "revisado": false
-  },
-  {
-    "id": "saber04",
-    "fase": "saber",
-    "topico": 6,
-    "personagem": "Bia, jogadora de futebol",
-    "abertura": "Opa! Tô indo pro treino.",
-    "lembranca": "Eu treino com a Bolsa-Atleta, criada em 2004 por uma lei do governo Lula.",
-    "proposta": "O plano prevê realizar a Copa do Mundo de Futebol Feminino no próximo mandato, pela primeira vez na América do Sul.",
-    "pista": "A Professora Ana pergunta sobre o que a turma contou: institutos, poupança e escola. Acerte as três seguidas!",
-    "fontes": [
-      {
-        "titulo": "Programa de Governo — Lula (Eleições 2026)",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=43",
-        "data": "2026"
-      },
-      {
-        "titulo": "Lei nº 10.891, de 9 de julho de 2004 (institui a Bolsa-Atleta)",
-        "veiculo": "Planalto",
-        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/lei/l10.891.htm",
-        "data": "09/07/2004"
-      }
-    ],
-    "revisado": false
-  },
-  {
     "id": "vila-conquista01",
     "fase": "vila-conquista",
     "topico": 7,
     "personagem": "Dona Mara, moradora nova",
-    "abertura": "Oi! Mudei faz pouco tempo, ainda tô arrumando as coisas.",
-    "lembranca": "Minha casa é do Minha Casa, Minha Vida, programa criado em 2009, no governo Lula.",
-    "proposta": "O plano prevê novos instrumentos para ampliar o acesso à moradia, como a Compra Assistida, que permite, em casos excepcionais, comprar imóveis já prontos.",
+    "abertura": "Oi! Mudei faz pouco tempo.",
+    "lembranca": "Minha casa é do Minha Casa, Minha Vida, criado em 2009, no governo Lula.",
+    "proposta": "O plano prevê a Compra Assistida, que permite, em casos excepcionais, comprar imóveis já prontos.",
     "pista": "Na frente da casa que você procura tem sempre um varal com roupa estendida.",
     "fontes": [
       {
@@ -1107,7 +901,7 @@
     "topico": 7,
     "personagem": "Seu Nonato, pedreiro",
     "abertura": "Bom dia! Cuidado com o cimento fresco.",
-    "lembranca": "Em 2023, o Minha Casa, Minha Vida ganhou lei nova. Desde então, trabalho é o que não falta pra mim.",
+    "lembranca": "Em 2023, o Minha Casa, Minha Vida ganhou lei nova. Trabalho não falta!",
     "proposta": "O plano propõe aprimorar e ampliar o Reforma Casa Brasil.",
     "pista": "Lá não tem cachorro, não. A dona da casa tem alergia!",
     "fontes": [
@@ -1131,9 +925,9 @@
     "fase": "vila-conquista",
     "topico": 7,
     "personagem": "Luana, mãe de gêmeos",
-    "abertura": "Oi! Os meninos tão dormindo, fala baixinho.",
-    "lembranca": "Em 2007, uma lei criou as diretrizes nacionais do saneamento básico. Hoje tem esgoto na minha rua.",
-    "proposta": "O plano prevê continuar apoiando estados e municípios para levar água tratada e esgoto a todos, priorizando as periferias.",
+    "abertura": "Oi! Fala baixinho, os gêmeos tão dormindo.",
+    "lembranca": "Em 2007, saiu a lei com as diretrizes do saneamento básico. Hoje tem esgoto na minha rua.",
+    "proposta": "O plano prevê apoiar estados e municípios a levar água tratada e esgoto a todos, priorizando as periferias.",
     "pista": "Toda manhã eu vejo um vaso de flor na janela dela.",
     "fontes": [
       {
@@ -1155,10 +949,10 @@
     "id": "vila-conquista04",
     "fase": "vila-conquista",
     "topico": 7,
-    "personagem": "Seu Dito, do mutirão",
-    "abertura": "Ô, de casa! Quer dizer, ô, da rua!",
-    "lembranca": "Em 2005, uma lei criou o Sistema e o Fundo Nacional de Habitação de Interesse Social, para a moradia popular.",
-    "proposta": "O plano prevê novas rodadas de seleção do Periferia Viva, para apoiar mais projetos de urbanização nas periferias.",
+    "personagem": "Dona Graça, assistente social",
+    "abertura": "Oi! Tô visitando as casas hoje.",
+    "lembranca": "Em 2005, uma lei criou o Fundo Nacional de Habitação de Interesse Social, para a moradia popular.",
+    "proposta": "O plano prevê novas seleções do Periferia Viva, para apoiar mais obras nas periferias.",
     "pista": "A porta dela não é azul, disso eu tenho certeza.",
     "fontes": [
       {
@@ -1182,10 +976,10 @@
     "topico": 9,
     "personagem": "Agricultora Dona Rosa",
     "traje": "agricultora",
-    "abertura": "Bom dia, filha! Cuidado pra não pisar na horta.",
-    "lembranca": "Desde 2003, o PAA compra alimentos da agricultura familiar. Muito do que eu planto vai pra quem precisa.",
-    "proposta": "O plano prevê expandir o Plano Safra da Agricultura Familiar, com juros adequados e prioridade para os alimentos da cesta básica.",
-    "pista": "O feijão abre a colheita aqui na roça. É sempre o primeiro a sair da terra.",
+    "abertura": "Bom dia! Cuidado pra não pisar na horta.",
+    "lembranca": "Desde 2003, o PAA compra o que a agricultura familiar planta. Minha colheita vai pra quem precisa.",
+    "proposta": "O plano prevê expandir o Plano Safra da Agricultura Familiar, priorizando os alimentos da cesta básica.",
+    "pista": "O feijão abre a colheita aqui na roça. É sempre o primeiro.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
@@ -1209,9 +1003,9 @@
     "personagem": "Seu Antônio, da roça",
     "traje": "agricultor",
     "abertura": "Ô, bom dia! Chegou na hora do café.",
-    "lembranca": "Desde 2009, uma lei manda as escolas comprarem parte da merenda da agricultura familiar. Meu feijão vai pra escola.",
-    "proposta": "O plano prevê continuar apoiando estados e municípios a comprar 45% da alimentação escolar da agricultura familiar.",
-    "pista": "A mandioca é teimosa, gosta de ficar mais tempo na terra. Ela sai por último.",
+    "lembranca": "Desde 2009, a lei manda a escola comprar parte da merenda da agricultura familiar. Meu feijão vai pra lá.",
+    "proposta": "O plano prevê ajudar estados e municípios a comprar 45% da merenda da agricultura familiar.",
+    "pista": "A mandioca é teimosa, gosta de ficar na terra. Ela sai por último.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
@@ -1234,10 +1028,10 @@
     "topico": 10,
     "personagem": "Dona Cida, da feira",
     "traje": "feirante",
-    "abertura": "Olha a verdura fresquinha! Vem ver!",
-    "lembranca": "A luz chegou no sítio dos meus pais pelo Luz para Todos, programa criado em 2003.",
-    "proposta": "O plano prevê garantir a segurança energética, avançar na transição energética justa e combater a pobreza energética.",
-    "pista": "O milho a gente colhe logo depois do arroz, um atrás do outro.",
+    "abertura": "Olha a verdura fresquinha!",
+    "lembranca": "A luz chegou no sítio dos meus pais pelo Luz para Todos, criado em 2003.",
+    "proposta": "O plano prevê garantir a segurança energética e combater a pobreza energética.",
+    "pista": "O milho a gente colhe logo depois do arroz.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
@@ -1260,10 +1054,10 @@
     "topico": 11,
     "personagem": "Zé, do sindicato rural",
     "traje": "sindicalista",
-    "abertura": "Salve, companheira! Tudo em paz?",
+    "abertura": "Salve! Tudo em paz?",
     "lembranca": "Em 2008, o governo Lula criou o Fundo Amazônia, gerido pelo BNDES.",
-    "proposta": "O plano reafirma a meta de chegar ao desmatamento líquido zero até 2030.",
-    "pista": "Colha com calma: se errar a ordem, a horta volta ao começo e tem que fazer tudo de novo.",
+    "proposta": "O plano reafirma a meta de desmatamento líquido zero até 2030.",
+    "pista": "Colha com calma: se errar a ordem, a horta volta ao começo.",
     "fontes": [
       {
         "titulo": "Programa de Governo — Lula (Eleições 2026)",
@@ -1276,6 +1070,212 @@
         "veiculo": "Planalto",
         "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/decreto/d6527.htm",
         "data": "01/08/2008"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "seguranca01",
+    "fase": "seguranca",
+    "topico": 3,
+    "personagem": "Seu Geraldo, dono de oficina",
+    "abertura": "Opa, tudo certo por aí?",
+    "lembranca": "Em 2004, foi criada a Força Nacional, para o governo federal e os estados trabalharem juntos na segurança.",
+    "proposta": "O plano prevê continuar atacando o dinheiro do crime organizado, que já teve R$ 35,8 bilhões de prejuízo desde 2023.",
+    "pista": "Achei um pedaço de mapa: o canto de cima, à esquerda. Fica com você!",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=27",
+        "data": "2026"
+      },
+      {
+        "titulo": "Decreto nº 5.289, de 29 de novembro de 2004 (Força Nacional de Segurança Pública)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2004/decreto/d5289.htm",
+        "data": "29/11/2004"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "seguranca02",
+    "fase": "seguranca",
+    "topico": 3,
+    "personagem": "Bruno, educador social",
+    "abertura": "E aí, beleza?",
+    "lembranca": "Comecei no ProJovem, programa para jovens criado em 2005. Hoje ajudo a molecada do bairro.",
+    "proposta": "O plano prevê fortalecer a prevenção da violência, protegendo a juventude negra e apoiando a mediação de conflitos nas comunidades.",
+    "pista": "Olha, um pedaço de mapa! É o canto de cima, à direita.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=29",
+        "data": "2026"
+      },
+      {
+        "titulo": "Lei nº 11.129, de 30 de junho de 2005 (institui o ProJovem)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2005/lei/l11129.htm",
+        "data": "30/06/2005"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "seguranca03",
+    "fase": "seguranca",
+    "topico": 3,
+    "personagem": "Dona Lurdes, aposentada",
+    "abertura": "Oi! Senta aqui um pouquinho.",
+    "lembranca": "Meu neto bloqueou o celular roubado pelo Celular Seguro, lançado em dezembro de 2023.",
+    "proposta": "O plano prevê intensificar o combate a golpes, fraudes bancárias e à venda de celular roubado.",
+    "pista": "Guardei este pedaço de mapa: a parte de baixo, à esquerda.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=29",
+        "data": "2026"
+      },
+      {
+        "titulo": "Celular Seguro: mais de 3,8 mil aparelhos são bloqueados em uma semana",
+        "veiculo": "Agência Brasil",
+        "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2023-12/celular-seguro-mais-de-38-mil-aparelhos-sao-bloqueados-em-uma-semana",
+        "data": "26/12/2023"
+      },
+      {
+        "titulo": "Celular Seguro bloqueia mais de 4 mil aparelhos em uma semana",
+        "veiculo": "Metrópoles",
+        "url": "https://www.metropoles.com/brasil/celular-seguro-bloqueia-mais-de-4-mil-aparelhos-em-uma-semana",
+        "data": "27/12/2023"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "seguranca04",
+    "fase": "seguranca",
+    "topico": 3,
+    "personagem": "Toninho, técnico do time do bairro",
+    "abertura": "Fala, craque!",
+    "lembranca": "O Pronasci, criado em 2007, apoiou programas de polícia comunitária.",
+    "proposta": "O plano propõe o policiamento de proximidade, aproximando polícia e comunidade.",
+    "pista": "Último pedaço do mapa: a parte de baixo, à direita. Agora o X aparece!",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=30",
+        "data": "2026"
+      },
+      {
+        "titulo": "Lei nº 11.530, de 24 de outubro de 2007 (institui o Pronasci)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/lei/l11530.htm",
+        "data": "24/10/2007"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "centro01",
+    "fase": "centro",
+    "topico": 12,
+    "personagem": "Wesley, motoboy de aplicativo",
+    "abertura": "Fala! Rapidinho, que tenho entrega.",
+    "lembranca": "Sou MEI. Essa forma de ter CNPJ foi criada por uma lei de 2008, do governo Lula.",
+    "proposta": "O plano propõe ampliar o crédito, a qualificação e a proteção social de trabalhadores autônomos e pequenos empreendedores.",
+    "pista": "A resposta tem a ver com trabalho.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=76",
+        "data": "2026"
+      },
+      {
+        "titulo": "Lei Complementar nº 128, de 19 de dezembro de 2008 (cria o Microempreendedor Individual)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp128.htm",
+        "data": "19/12/2008"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "centro02",
+    "fase": "centro",
+    "topico": 12,
+    "personagem": "Cláudia, costureira",
+    "abertura": "Oi! Cuidado com as agulhas aí.",
+    "lembranca": "Em 2023, a Lei da Igualdade Salarial tratou do salário igual entre mulheres e homens.",
+    "proposta": "O plano propõe avançar na igualdade de salários entre mulheres e homens.",
+    "pista": "Ela tem capa e páginas.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=75",
+        "data": "2026"
+      },
+      {
+        "titulo": "Lei nº 14.611, de 3 de julho de 2023 (igualdade salarial entre mulheres e homens)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14611.htm",
+        "data": "03/07/2023"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "centro03",
+    "fase": "centro",
+    "topico": 8,
+    "personagem": "Seu Jair, dono de mercadinho",
+    "abertura": "Bom dia! Pode entrar.",
+    "lembranca": "Em 2023, limpei meu nome pelo Desenrola Brasil, que renegociou dívidas atrasadas.",
+    "proposta": "O plano prevê acompanhar o endividamento das famílias e controlar gastos excessivos com apostas on-line.",
+    "pista": "Muita gente guarda na gaveta com cuidado.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=49",
+        "data": "2026"
+      },
+      {
+        "titulo": "Lei nº 14.690, de 3 de outubro de 2023 (Desenrola Brasil)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14690.htm",
+        "data": "03/10/2023"
+      }
+    ],
+    "revisado": false
+  },
+  {
+    "id": "centro04",
+    "fase": "centro",
+    "topico": 13,
+    "personagem": "Marcos, petroleiro",
+    "abertura": "Fala, tudo certo?",
+    "lembranca": "Em 2010, uma lei criou a partilha do pré-sal. Foi no pré-sal que arrumei emprego.",
+    "proposta": "O plano propõe proteger as fronteiras, a Amazônia e a Amazônia Azul, o nosso mar.",
+    "pista": "A resposta tem duas palavras: a primeira é carteira.",
+    "fontes": [
+      {
+        "titulo": "Programa de Governo — Lula (Eleições 2026)",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf#page=79",
+        "data": "2026"
+      },
+      {
+        "titulo": "Lei nº 12.351, de 22 de dezembro de 2010 (partilha do pré-sal)",
+        "veiculo": "Planalto",
+        "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12351.htm",
+        "data": "22/12/2010"
       }
     ],
     "revisado": false

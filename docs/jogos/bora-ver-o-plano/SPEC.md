@@ -15,14 +15,14 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   | Fase | Bairro | Tópicos do plano | Objeto perdido |
   |---|---|---|---|
   | 1 | Praça Central | 1. Democracia, participação social e modernização do Estado · 2. Combater as desigualdades | Cartão do Bolsa Família |
-  | 2 | Centro | 8. Economia sustentável, produtiva e digital · 12. Valorizar o trabalho · 13. Soberania nacional | Carteira de trabalho |
+  | 2 | Vale do Saber | 4. Educação · 6. Cultura e esporte | Crachá de Instituto Federal |
   | 3 | Vila Saúde | 5. Saúde | Remédio da Farmácia Popular |
-  | 4 | Jardim Seguro | 3. Segurança pública | Livro da Lei Maria da Penha |
-  | 5 | Vale do Saber | 4. Educação · 6. Cultura e esporte | Crachá de Instituto Federal |
-  | 6 | Vila Conquista | 7. Direito à cidade | Chave do Minha Casa, Minha Vida |
-  | 7 | Campo Verde | 9. Segurança alimentar e produção agrícola · 10. Segurança energética · 11. Sustentabilidade ambiental e climática | Prato do Fome Zero |
+  | 4 | Vila Conquista | 7. Direito à cidade | Chave do Minha Casa, Minha Vida |
+  | 5 | Campo Verde | 9. Segurança alimentar e produção agrícola · 10. Segurança energética · 11. Sustentabilidade ambiental e climática | Prato do Fome Zero |
+  | 6 | Jardim Seguro | 3. Segurança pública | Livro da Lei Maria da Penha |
+  | 7 | Centro | 8. Economia sustentável, produtiva e digital · 12. Valorizar o trabalho · 13. Soberania nacional | Carteira de trabalho |
 
-- **Como começa:** tela inicial, escolha entre duas personagens (cidadã ou cidadão) e mapa da cidade desenhado, com os sete bairros ligados por ruas. Só a Praça Central (fase 1) está aberta.
+- **Como começa:** tela inicial, escolha entre duas personagens (cidadã ou cidadão) e mapa da cidade desenhado, com os sete bairros ligados por ruas e o Centro, último bairro, no meio da cidade. Só a Praça Central (fase 1) está aberta.
 - **Ordem das fases:** em sequência; os demais bairros aparecem com cadeado até serem desbloqueados. No mapa, a personagem anda pelas ruas de um bairro a outro com as setas, o direcional ou um toque no bairro; os bloqueados não deixam passar.
 - **A cada fase:** a pessoa anda pelo bairro (visão de cima, estilo RPG retrô) e conversa com personagens marcados com uma estrela. Cada conversa traz, nesta ordem: uma saudação, uma lembrança curta da personagem que liga o tema a uma realização dos governos Lula, a proposta do plano com a fonte e uma pista do desafio do bairro.
 - **Objeto perdido e desafio:** cada bairro esconde um objeto ligado a uma realização dos governos Lula. Para achá-lo, é preciso resolver o desafio do bairro, que só se resolve com as pistas das conversas:
@@ -30,14 +30,15 @@ A pessoa passeia por uma cidade fictícia, bairro a bairro, conversando com mora
   | Bairro | Desafio | Como funciona |
   |---|---|---|
   | Praça Central | Senha falada | Cada morador diz um pedaço da senha e a ordem dele; a senha abre o portão. |
-  | Centro | Adivinhação | "O que é, o que é?" no portão; cada conversa dá uma dica da resposta. |
-  | Vila Saúde | Receita certa | Pergunta de múltipla escolha no balcão da farmácia sobre o que os moradores contaram. |
-  | Jardim Seguro | Mapa rasgado | Sem portão: cada conversa entrega um pedaço do mapa do bairro. Com os quatro pedaços, aparece um X no ponto onde o objeto está; é preciso parar ali e apertar A. |
   | Vale do Saber | Provinha | Três perguntas de múltipla escolha seguidas; um erro recomeça a provinha. |
+  | Vila Saúde | Receita certa | Pergunta de múltipla escolha no balcão da farmácia sobre o que os moradores contaram. |
   | Vila Conquista | Qual é a casa? | Seis casas com número, cor da porta, varal, vaso na janela e cachorro. Cada fala elimina algumas; só com as quatro pistas sobra uma casa. As portas só atendem depois que todos os vizinhos foram ouvidos e, depois de uma porta errada, é preciso confirmar as pistas com um vizinho antes de bater de novo. |
   | Campo Verde | Receita da horta | Colher milho, feijão, arroz e mandioca na ordem que os agricultores contaram; um erro recomeça a colheita. Só dá para colher depois de ouvir os quatro agricultores. |
+  | Jardim Seguro | Mapa rasgado | Sem portão: cada conversa entrega um pedaço do mapa do bairro. Com os quatro pedaços, aparece um X no ponto onde o objeto está; é preciso parar ali e apertar A. |
+  | Centro | Adivinhação | "O que é, o que é?" no portão; cada conversa dá uma dica da resposta. |
 
-- **Recepção:** em cada bairro, uma moradora fica ao lado do ponto de chegada e explica o desafio na primeira visita; depois, basta conversar com ela de novo.
+- **Recepção:** em cada bairro, a guia do bairro fica ao lado do ponto de chegada e explica o desafio na primeira visita; depois, basta conversar com ela de novo.
+- **Tratamento neutro:** saudações e falas não marcam gênero, porque quem joga pode ser a Cidadã ou o Cidadão.
 - **Respostas escritas:** aceitam sinônimos cadastrados (ex.: "carteira de trabalho" e "carteira trabalhista"), ignoram maiúsculas, acentos e palavras de ligação e toleram um erro de digitação em respostas longas.
 - **Ajuda:** depois de dois erros no mesmo desafio, aparece uma ajuda extra, que dá uma pista e nunca a resposta. As pistas encontradas ficam no "caderno de pistas", no menu e na tela do desafio.
 - **Ao achar o objeto:** aparece um cartão com o objeto, um texto curto sobre a realização e a fonte.

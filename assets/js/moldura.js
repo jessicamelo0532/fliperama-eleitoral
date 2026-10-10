@@ -54,13 +54,21 @@ export function preencherCabecalho() {
   cabecalho.className = "cabecalho";
   cabecalho.replaceChildren(
     el("div", { class: "conteiner" },
-      el("a", { class: "logo", href: urlDaRaiz("index.html") },
+      el("div", { class: "logo" },
         el("img", { class: "bandeira", src: urlDaRaiz("assets/img/bandeira-brasil.svg"), alt: "", width: 30, height: 21 }),
         "FLIPERAMA ", el("span", {}, "ELEITORAL")),
       el("nav", { class: "nav-topo", "aria-label": "Principal" },
-        el("a", { href: urlDaRaiz("sobre.html") }, "SOBRE"))
+        linkDoTopo("index.html", "INÍCIO"),
+        linkDoTopo("sobre.html", "SOBRE"))
     )
   );
+}
+
+function linkDoTopo(caminho, rotulo) {
+  const destino = urlDaRaiz(caminho);
+  const atual = new URL(location.href);
+  const naPagina = atual.pathname === new URL(destino).pathname || (caminho === "index.html" && atual.href === RAIZ.href);
+  return el("a", { href: destino, "aria-current": naPagina ? "page" : null }, rotulo);
 }
 
 export function preencherRodape() {

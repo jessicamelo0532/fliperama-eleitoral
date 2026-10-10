@@ -113,17 +113,18 @@ export const JUIZ = {
 
 /* ---------- Itens de cada fase (desenhados dentro de uma casa de 8 px) ---------- */
 
-/* Itens de 4x4 px com contorno escuro, para se destacarem do piso. (x, y) é o canto da casa. */
+/* Itens pequenos com contorno ou cor forte, para se destacarem do piso. (x, y) é o canto da casa. */
 const DESENHO_ITENS = {
   moeda: { paleta: { o: "#3a2a05", a: "#f2c14e", l: "#fff1a8" }, linhas: [".oo.", "oalo", "oaao", ".oo."] },
   bombom: { paleta: { o: "#2a0f18", p: "#ff6fae", c: "#5b3216", w: "#ffffff" }, linhas: ["p..p", "ocwo", "occo", "p..p"] },
   cedula: { paleta: { o: "#0c2a14", v: "#5fd07a", l: "#c9f5d3" }, linhas: ["oooo", "vlvv", "vvlv", "oooo"] },
-  caneta: { paleta: { o: "#14161d", w: "#ffffff", r: "#ff4b3a" }, linhas: ["..rr", ".wwr", "oww.", "oo.."] },
+  caneta: { paleta: { b: "#1f5fe0", B: "#0f3a9e", w: "#e8f0fb", t: "#9fb8dd", k: "#14161d" }, linhas: ["....bB", "...wbB", "..wtw.", ".wtw..", "kww...", "k....."] },
 };
 
 export function desenharItem(ctx, tipo, x, y) {
   const item = DESENHO_ITENS[tipo];
-  ctx.drawImage(sprite(`item-${tipo}`, item.linhas, item.paleta), x + 2, y + 2);
+  const imagem = sprite(`item-${tipo}`, item.linhas, item.paleta);
+  ctx.drawImage(imagem, x + Math.floor((8 - imagem.width) / 2), y + Math.floor((8 - imagem.height) / 2));
 }
 
 /* ---------- Bônus ---------- */

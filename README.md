@@ -2,7 +2,7 @@
 
 ![Fliperama Eleitoral](assets/img/og-image.png)
 
-**Mini jogos para conhecer melhor os candidatos à Presidência em 2026. Informação em jogo, sempre com fonte.**
+**Mini jogos sobre os candidatos à Presidência em 2026, partidário ao Presidente Lula. Jogue e saia sabendo um fato, sempre com fonte.**
 
 ▶ **Jogue em [jessicamelo0532.github.io/fliperama-eleitoral](https://jessicamelo0532.github.io/fliperama-eleitoral/)**
 
@@ -10,11 +10,8 @@
 
 ## Sobre o projeto
 
-O Fliperama Eleitoral reúne jogos rápidos, no espírito dos portais de jogos online dos anos 2000, para levar informação política de um jeito leve e direto. Os jogos tratam de três temas:
+O Fliperama Eleitoral reúne jogos rápidos, na estética dos portais de jogos online dos anos 2000, para levar informação política de um jeito leve e direto. Os jogos tratam de três temas:
 
-- **Propostas** do presidente Lula para o próximo mandato
-- **Fato ou Fake**: checagem do que circula nas redes
-- **Investigações** envolvendo o senador Flávio Bolsonaro
 
 ## Por que este projeto existe
 
@@ -27,11 +24,8 @@ Numa eleição marcada pela desinformação, acredito que a melhor forma de faze
 - **Fontes confiáveis:** órgãos oficiais (TSE, Câmara, Senado, tribunais, Portal da Transparência), imprensa profissional e agências de checagem.
 - **Linguagem precisa:** cada fato é descrito como as fontes o descrevem, com data e situação atual.
 - **Revisão antes de publicar:** nenhum conteúdo entra em um jogo sem ser conferido com as fontes.
-- **Correções registradas:** erros identificados são corrigidos e documentados.
+- **Correções registradas:** erros identificados são corrigidos e testados.
 
-## Jogos
-
-Os primeiros jogos estão em desenvolvimento e serão publicados no site ao longo da campanha.
 
 ## Privacidade
 
@@ -67,6 +61,6 @@ Depois, abra `http://localhost:8000`.
 
 ## Autoria
 
-Criado e mantido por **Jéssica Lopes Melo**, bibliotecária e estudante de Sistemas de Informação.
+Criado e mantido por **Jéssica Lopes Melo**, bibliotecária e graduanda em Sistemas de Informação.
 
 Projeto independente e voluntário, sem vínculo com partidos ou campanhas e sem impulsionamento pago.

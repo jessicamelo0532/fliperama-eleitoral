@@ -13,13 +13,19 @@
       "nome": "Contracheque",
       "valor": 50000
     },
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Em 2020, o MP do Rio denunciou o então deputado por peculato, lavagem e organização criminosa. O STJ anulou as provas, e a denúncia foi arquivada em 2022.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "titulo": "Gilmar nega pedido para reabrir ação contra Flávio por \"rachadinha\"",
+        "veiculo": "Poder360",
+        "url": "https://www.poder360.com.br/poder-justica/gilmar-nega-pedido-para-reabrir-acao-contra-flavio-por-rachadinha/",
+        "data": "2025-02-27"
+      },
+      {
+        "titulo": "STJ anula provas de investigações contra Flávio Bolsonaro",
+        "veiculo": "Congresso em Foco",
+        "url": "https://www.congressoemfoco.com.br/area/justica/stj-anula-provas-de-investigacoes-contra-flavio-bolsonaro",
+        "data": "2021-11-25"
       }
     ],
     "revisado": true
@@ -29,7 +35,7 @@
     "tipo": "bonus",
     "fase": "rachadinha",
     "nome": "Contracheque",
-    "vidaReal": "Em 2018, um relatório do Coaf apontou R$ 1,2 milhão em movimentações atípicas nas contas de um ex-assessor do então deputado. Foi o ponto de partida da investigação do MP do Rio.",
+    "vidaReal": "Em 2018, o Coaf apontou R$ 1,2 milhão em movimentações atípicas nas contas de um ex-assessor do então deputado. Foi o início da investigação.",
     "fontes": [
       {
         "titulo": "Gilmar nega pedido para reabrir ação contra Flávio por \"rachadinha\"",
@@ -54,13 +60,19 @@
       "nome": "Mansão",
       "valor": 0
     },
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Em 2019, o MP do Rio disse que uma loja de chocolates do senador teria servido para lavar dinheiro. A acusação caiu com o arquivamento do caso, em 2022.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "titulo": "Filho de Bolsonaro lavou dinheiro em loja de chocolates, diz acusação",
+        "veiculo": "Diário de Notícias",
+        "url": "https://www.dn.pt/mundo/filho-de-bolsonaro-lavou-dinheiro-em-loja-de-chocolates-diz-acusacao-11637727.html",
+        "data": "2019-12-19"
+      },
+      {
+        "titulo": "Gilmar nega pedido para reabrir ação contra Flávio por \"rachadinha\"",
+        "veiculo": "Poder360",
+        "url": "https://www.poder360.com.br/poder-justica/gilmar-nega-pedido-para-reabrir-acao-contra-flavio-por-rachadinha/",
+        "data": "2025-02-27"
       }
     ],
     "revisado": true
@@ -70,13 +82,13 @@
     "tipo": "bonus",
     "fase": "chocolateria",
     "nome": "A mansão",
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Em 2021, o senador comprou uma casa de R$ 5,97 milhões em Brasília, parte financiada pelo BRB. Ele diz que está \"tudo dentro da lei\".",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "titulo": "Quatro perguntas sobre a nova mansão de Flávio Bolsonaro e o caso da rachadinha",
+        "veiculo": "Correio Braziliense / BBC News Brasil",
+        "url": "https://www.correiobraziliense.com.br/politica/2021/03/4909677-quatro-perguntas-sobre-a-nova-mansao-de-flavio-bolsonaro-e-o-caso-da-rachadinha.html",
+        "data": "2021-03-02"
       }
     ],
     "revisado": true
@@ -95,13 +107,19 @@
       "nome": "Claquete",
       "valor": 200000
     },
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Em 2026, áudios mostraram o senador cobrando do dono do Banco Master dinheiro para um filme sobre o pai. Ele é investigado no STF e diz que não há irregularidade.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "titulo": "Caso Dark Horse: documentos mostram Flávio Bolsonaro como investigado",
+        "veiculo": "Agência Brasil",
+        "url": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/politica/audio/2026-09/dark-horse-documentos-mostram-flavio-bolsonaro-como-investigado",
+        "data": "2026-09-11"
+      },
+      {
+        "titulo": "Flávio Bolsonaro, Vorcaro, Master: o escândalo do filme Dark Horse",
+        "veiculo": "Agência Pública",
+        "url": "https://apublica.org/2026/05/flavio-bolsonaro-vorcaro-master-escandalo-filme-dark-horse-azarao/",
+        "data": "2026-05-14"
       }
     ],
     "revisado": true
@@ -111,7 +129,7 @@
     "tipo": "bonus",
     "fase": "patrocinio",
     "nome": "Claquete",
-    "vidaReal": "O filme sobre o pai tem orçamento de R$ 134 milhões, segundo a Agência Pública. Para comparar: \"Ainda Estou Aqui\" custou cerca de R$ 45 milhões.",
+    "vidaReal": "O filme sobre o pai tem orçamento de R$ 134 milhões, segundo a Agência Pública.",
     "fontes": [
       {
         "titulo": "Flávio Bolsonaro, Vorcaro, Master: o escândalo do filme Dark Horse",
@@ -137,13 +155,19 @@
       "valor": 500000
     },
     "juizAnulaSempre": true,
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "No Jornal Nacional, em agosto de 2026, o candidato prometeu anistia ao pai ainda na transição. Se ela não passar, diz que dará indulto aos condenados do 8 de janeiro.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "titulo": "Flávio Bolsonaro promete anistia ao pai e se esquiva de resultado eleitoral e do Master no JN",
+        "veiculo": "Bem Paraná",
+        "url": "https://www.bemparana.com.br/eleicoes-2026/flavio-bolsonaro-promete-anistia-ao-pai-e-se-esquiva-de-resultado-eleitoral-e-do-master-no-jn/",
+        "data": "2026-08-28"
+      },
+      {
+        "titulo": "8/1: \"sem anistia, darei indulto a todo mundo\", diz Flávio",
+        "veiculo": "SBT News",
+        "url": "https://sbtnews.sbt.com.br/noticia/politica/8-1-sem-anistia-darei-indulto-a-todo-mundo-diz-flavio",
+        "data": "2026-09-29"
       }
     ],
     "revisado": true

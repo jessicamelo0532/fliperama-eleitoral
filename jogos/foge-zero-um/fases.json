@@ -1,0 +1,115 @@
+[
+  {
+    "id": "rachadinha",
+    "tipo": "fase",
+    "nome": "Rachadinha",
+    "item": "moeda",
+    "meta": 6000000,
+    "apresentacao": "Na Assembleia, cada assessor recebe o salário inteiro. O Herdeiro só pede uma parte de volta. Coisa pouca, todo mês.",
+    "nesta": "Cada moeda é um pedaço de salário. Recolha tudo antes que a fiscalização chegue.",
+    "bonus": {
+      "tipo": "contracheque",
+      "nome": "Contracheque",
+      "valor": 50000
+    },
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "chocolateria",
+    "tipo": "fase",
+    "nome": "Chocolateria",
+    "item": "bombom",
+    "valorItem": 2000,
+    "apresentacao": "Dinheiro vivo demais chama atenção. Uma loja de bombons resolve: tudo vira venda de chocolate.",
+    "nesta": "Cada bombom vale R$ 2 mil e a fiscalização ficou mais rápida. Uma mansão aparece no meio do labirinto.",
+    "bonus": {
+      "tipo": "mansao",
+      "nome": "Mansão",
+      "valor": 0
+    },
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "mansao",
+    "tipo": "bonus",
+    "fase": "chocolateria",
+    "nome": "A mansão",
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "patrocinio",
+    "tipo": "fase",
+    "nome": "Patrocínio",
+    "item": "cedula",
+    "valorItem": 5000,
+    "apresentacao": "Um filme sobre o pai pede orçamento de cinema. Sorte que tem banqueiro amigo. Dinheiro público? Imagina.",
+    "nesta": "Cada cédula vale R$ 5 mil e a liminar dura menos.",
+    "bonus": {
+      "tipo": "claquete",
+      "nome": "Claquete",
+      "valor": 200000
+    },
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "indulto",
+    "tipo": "fase",
+    "nome": "Indulto",
+    "item": "caneta",
+    "valorItem": 10000,
+    "apresentacao": "Ainda nem ganhou e já está com a caneta na mão: anistia para o pai, antes da posse. Se não passar, indulto para os condenados do 8 de janeiro.",
+    "nesta": "Cada caneta vale R$ 10 mil. Nesta fase, o juiz Absolvino anula o processo a cada flagra.",
+    "bonus": {
+      "tipo": "decreto",
+      "nome": "Decreto",
+      "valor": 500000
+    },
+    "juizAnulaSempre": true,
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  }
+]

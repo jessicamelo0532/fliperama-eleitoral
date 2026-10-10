@@ -10,7 +10,7 @@
 
 ## Sobre o projeto
 
-O Fliperama Eleitoral reúne jogos rápidos, na estética dos portais de jogos online dos anos 2000, para levar informação política de um jeito leve e direto. Os jogos tratam de três temas:
+O Fliperama Eleitoral reúne jogos rápidos, na estética dos portais de jogos online dos anos 2000, para levar informação política de um jeito leve e direto.
 
 
 ## Por que este projeto existe

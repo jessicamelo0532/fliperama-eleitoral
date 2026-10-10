@@ -29,8 +29,6 @@ Numa eleição marcada pela desinformação, acredito que a melhor forma de faze
 - **Revisão antes de publicar:** nenhum conteúdo entra em um jogo sem ser conferido com as fontes.
 - **Correções registradas:** erros identificados são corrigidos e documentados.
 
-As regras completas estão em [docs/CONTEUDO.md](docs/CONTEUDO.md).
-
 ## Jogos
 
 Os primeiros jogos estão em desenvolvimento e serão publicados no site ao longo da campanha.
@@ -64,16 +62,8 @@ Depois, abra `http://localhost:8000`.
 ├── sobre.html          sobre o projeto
 ├── assets/             estilos, scripts e imagens
 ├── data/jogos.json     catálogo de jogos
-├── jogos/              um diretório por jogo
-└── docs/               especificação, decisões e regras de conteúdo
+└── jogos/              um diretório por jogo
 ```
-
-### Documentação
-
-- [Especificação](docs/SPEC.md)
-- [Registro de decisões](docs/DECISOES.md)
-- [Regras de conteúdo](docs/CONTEUDO.md)
-- [Modelo de especificação de jogo](docs/jogos/MODELO.md)
 
 ## Autoria
 

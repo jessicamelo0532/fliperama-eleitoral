@@ -1,6 +1,5 @@
 /**
  * Componentes e utilitários compartilhados pelas páginas e pelos jogos.
- * Implementa o contrato de jogo descrito em docs/SPEC.md §8.
  */
 
 import { CONFIG } from "./config.js";

@@ -1,5 +1,5 @@
 /**
- * Jogo de exemplo: implementação de referência do contrato de jogo (docs/SPEC.md §8).
+ * Jogo de exemplo: implementação de referência do contrato comum dos jogos.
  */
 
 import {

@@ -39,6 +39,8 @@ Os primeiros jogos estão em desenvolvimento e serão publicados no site ao long
 
 O site não usa cookies, não coleta dados pessoais e não exige cadastro.
 
+As visitas são contadas de forma agregada com o [GoatCounter](https://www.goatcounter.com/), que não usa cookies nem identifica quem acessa. A contagem inclui as páginas visitadas e quando um jogo é iniciado, concluído ou compartilhado.
+
 ## Tecnologia
 
 - HTML, CSS e JavaScript puros, sem frameworks e sem etapa de build

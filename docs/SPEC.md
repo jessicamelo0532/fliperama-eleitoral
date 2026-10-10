@@ -61,7 +61,7 @@ Meta tags Open Graph, `og-image.png` 1200×630 e favicon pixelado no portal e na
 
 ### RF6 — Métricas de acesso
 - Contagem de visitas por página e dos eventos `jogo-<id>-inicio`, `jogo-<id>-fim` e `jogo-<id>-compartilhar` (`assets/js/contador.js`).
-- Ativada pelo campo `goatcounter` em `assets/js/config.js`; desligada até a conclusão da plataforma e dos primeiros jogos.
+- Ativada pelo campo `goatcounter` em `assets/js/config.js`. Informada apenas no README (D23).
 
 ### RF8 — Página de erro 404
 Página "GAME OVER" com botão de volta ao portal, servida pelo GitHub Pages para endereços inexistentes.

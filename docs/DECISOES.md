@@ -119,6 +119,12 @@ Registro das decisões do projeto. Para mudar uma decisão, crie uma nova entrad
 - **Decisão:** jogos podem guardar progresso (fases desbloqueadas, itens encontrados, personagem escolhida) no `localStorage` do navegador, com opção de recomeçar.
 - **Por quê:** permite continuar depois sem cadastro. Nenhum dado pessoal é armazenado, o que mantém D08.
 
+### D23 — Contador ativado e informado só no README
+- **Data:** 09/10/2026 · **Status:** aceita
+- **Decisão:** a contagem com GoatCounter (D11) passa a funcionar em todas as páginas, com a conta `jessicamelo0532`. O aviso sobre a contagem fica apenas no README; a página Sobre e as páginas dos jogos não tratam do assunto. Substitui a parte de D11 e D16 que previa o texto na página Sobre.
+- **Por quê:** manter as páginas do site curtas e focadas nos jogos. A contagem não usa cookies nem dados pessoais, então a afirmação de privacidade da página Sobre continua verdadeira.
+- **Alternativas descartadas:** aviso na página Sobre (texto a mais para quem joga).
+
 ---
 
 ## Modelo para nova decisão

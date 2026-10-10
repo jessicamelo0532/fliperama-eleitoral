@@ -8,5 +8,5 @@ export const CONFIG = {
   repositorio: "https://github.com/jessicamelo0532/fliperama-eleitoral",
 
   /** Código da conta no GoatCounter (ex.: "fliperama" para fliperama.goatcounter.com). Vazio desativa a contagem. */
-  goatcounter: "",
+  goatcounter: "jessicamelo0532",
 };

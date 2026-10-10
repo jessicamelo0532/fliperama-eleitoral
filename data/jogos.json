@@ -3,7 +3,7 @@
     "id": "exemplo",
     "titulo": "Jogo de exemplo",
     "descricao": "Demonstração do contrato de jogo. Não aparece no portal.",
-    "categoria": "fato-ou-fake",
+    "categoria": "arcade",
     "caminho": "jogos/_exemplo/",
     "miniatura": "assets/img/thumb-padrao.svg",
     "status": "rascunho"
@@ -12,7 +12,7 @@
     "id": "bora-ver-o-plano",
     "titulo": "Bora Ver o Plano",
     "descricao": "Passeie pelos bairros, converse com quem mora em cada um e descubra as propostas do plano de governo de Lula.",
-    "categoria": "propostas",
+    "categoria": "aventura",
     "caminho": "jogos/bora-ver-o-plano/",
     "miniatura": "assets/img/capa-bora-ver-o-plano.png",
     "status": "publicado"
@@ -21,7 +21,7 @@
     "id": "foge-zero-um",
     "titulo": "Foge, Zero-Um!",
     "descricao": "Fuja da fiscalização pelos corredores do poder e veja, ao fim de cada fase, o que aconteceu na vida real.",
-    "categoria": "investigacoes",
+    "categoria": "arcade",
     "caminho": "jogos/foge-zero-um/",
     "miniatura": "assets/img/capa-foge-zero-um.png",
     "status": "publicado"

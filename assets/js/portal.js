@@ -7,9 +7,8 @@ import { el, preencherCabecalho, preencherRodape, iniciarContador } from "./mold
 
 const CATEGORIAS = [
   { id: "todos", nome: "Todos" },
-  { id: "propostas", nome: "Propostas" },
-  { id: "fato-ou-fake", nome: "Fato ou Fake" },
-  { id: "investigacoes", nome: "Investigações" },
+  { id: "aventura", nome: "Aventura" },
+  { id: "arcade", nome: "Arcade" },
 ];
 const NOME_CATEGORIA = Object.fromEntries(CATEGORIAS.map((c) => [c.id, c.nome]));
 const VISIVEIS = new Set(["publicado", "em-breve"]);

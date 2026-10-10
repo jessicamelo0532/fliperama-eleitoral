@@ -24,23 +24,23 @@ const COR = { marmore: "#efe7d6", veio: "#d6ccb4", contorno: "#3d3526", sombra: 
 
 const FISCAIS = [
   {
-    id: "PF", sigla: "PF", nome: "Polícia Federal", descricao: "vai direto atrás de você.",
-    cor: "#2b313b", sombra: "#191d24", letra: "#f2c14e", canto: [W - 2, -4], casa: [9, 7],
+    id: "PF", nome: "Polícia Federal", descricao: "vai direto atrás de você.",
+    canto: [W - 2, -4], casa: [9, 7],
     flagra: ["Operação deflagrada!", "A Polícia Federal bateu na porta às 6 da manhã."],
   },
   {
-    id: "MP", sigla: "MP", nome: "Ministério Público", descricao: "tenta te cercar pela frente.",
-    cor: "#b02a1e", sombra: "#7a1a12", letra: "#fff4e6", canto: [1, -4], casa: [9, 9],
+    id: "MP", nome: "Ministério Público", descricao: "tenta te cercar pela frente.",
+    canto: [1, -4], casa: [9, 9],
     flagra: ["Denúncia oferecida!", "O Ministério Público juntou as provas."],
   },
   {
-    id: "TV", sigla: "TV", nome: "Imprensa", descricao: "aparece de onde você não espera.",
-    cor: "#7442b3", sombra: "#4e2a7d", letra: "#fff4e6", canto: [W - 1, H + 1], casa: [8, 9],
+    id: "TV", nome: "Imprensa", descricao: "aparece de onde você não espera.",
+    canto: [W - 1, H + 1], casa: [8, 9],
     flagra: ["Furo de reportagem!", "Sua cara vai estar no jornal de amanhã."],
   },
   {
-    id: "COAF", sigla: "$", nome: "Coaf", descricao: "chega perto e recua.",
-    cor: "#2f6ad6", sombra: "#1d4592", letra: "#fff4e6", canto: [0, H + 1], casa: [10, 9],
+    id: "COAF", nome: "Coaf", descricao: "chega perto e recua.",
+    canto: [0, H + 1], casa: [10, 9],
     flagra: ["Movimentação atípica!", "O Coaf achou depósitos que não fecham a conta."],
   },
 ];

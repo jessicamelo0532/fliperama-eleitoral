@@ -50,39 +50,46 @@ export function spriteHerdeiro(direcao, passo) {
 
 /* ---------- Fiscais ---------- */
 
-/* Letras 3x5 para os crachás. */
-const LETRAS = {
-  P: ["111", "101", "111", "100", "100"], F: ["111", "100", "110", "100", "100"],
-  M: ["101", "111", "111", "101", "101"], T: ["111", "010", "010", "010", "010"],
-  V: ["101", "101", "101", "101", "010"], $: ["011", "110", "010", "011", "110"],
-  z: ["000", "111", "010", "100", "111"], Z: ["111", "001", "010", "100", "111"],
+/* Cada órgão tem um boneco próprio; a última linha (pernas) alterna para dar o passo. */
+const FISCAIS_DESENHO = {
+  PF: {
+    paleta: { b: "#3a8bff", k: "#1d2027", K: "#2e333d", s: "#d9a07a", o: "#14161d", y: "#f2c14e", l: "#14161d" },
+    linhas: ["....bbbb....", "...kkkkkk...", "..kkkkkkkkk.", "...ssssss...", "...soosso...", "...ssssss...", ".kyyykyyykk.", ".kykykykkkk.", ".kyyykyykkk.", ".kykkkykkkk.", "..KKKKKKKK.."],
+  },
+  MP: {
+    paleta: { h: "#3a2a1e", s: "#c98a62", o: "#14161d", v: "#8a1f2b", w: "#f4f1ea", r: "#d23c28", g: "#f2c14e", l: "#14161d" },
+    linhas: ["............", "...hhhhhh...", "..hhhhhhhh..", "..hssssssh..", "...soosso...", "...ssssss...", "..vvvwwvvv..", ".vvvvwwvvrrr", ".vvvvvvvvrgr", ".vvvvvvvvrrr", "..vvvvvvvv.."],
+  },
+  TV: {
+    paleta: { h: "#1a1410", s: "#e6b48e", o: "#14161d", c: "#8a8a92", m: "#22222a", r: "#ff3b30", p: "#7442b3", i: "#c9c9d1", k: "#3a3a46", w: "#f4f1ea", l: "#14161d" },
+    linhas: ["............", "....hhhhhh..", "cccchhhhhhh.", "cmmcssssss..", "cmmcsossos.i", "crccssssss.i", "..pppppppp.k", ".ppppppppppk", ".pppwppppp..", ".pppppppppp.", "..pppppppp.."],
+  },
+  COAF: {
+    paleta: { g: "#c9c9d1", G: "#8a8a92", a: "#a8dcf0", v: "#2e9e4f", h: "#7a4a22", l: "#14161d" },
+    linhas: ["...gggggg...", "..gaaaaaag..", ".gaaavvaaag.", ".gaavvaaaag.", ".gaaavvaaag.", ".gaaaavvaag.", ".gaaavvaaag.", "..gaaaaaag..", "...GGGGGGh..", ".........hh.", "............"],
+  },
 };
 
+const PERNAS = { PF: ["..ll....ll..", "...ll..ll..."], COAF: ["...ll..ll...", "....l..l...."] };
+
+function emCinza(cor, piscando) {
+  if (piscando) return "#f4f1ea";
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(cor.slice(i, i + 2), 16));
+  const tom = Math.round(((r + g + b) / 3) * 0.6 + 70);
+  return `rgb(${tom}, ${tom}, ${tom + 10})`;
+}
+
+/** Fiscal parado ou andando; com a liminar ativa, fica cinza (e pisca quando ela está acabando). */
 export function spriteFiscal(fiscal, direcao, passo, sirene, suspenso, piscando) {
-  const chave = ["fiscal", fiscal.id, direcao, passo, sirene, suspenso, piscando].join("-");
+  const chave = ["fiscal", fiscal.id, passo, sirene, suspenso, piscando].join("-");
   if (cache.has(chave)) return cache.get(chave);
-  const grade = [
-    ".....ss.....", "..cccccccc..", ".cccccccccc.", "ccwwccccwwcc", "ccwwccccwwcc", "cccccccccccc",
-    "cccccccccccc", "cccccccccccc", "cccccccccccc", "cccccccccccc", "dddddddddddd",
-    passo ? "..dd..dd..dd" : "dd..dd..dd..",
-  ].map((linha) => linha.split(""));
-  if (suspenso) grade[0] = "............".split("");
-  const olhos = { 0: [[2, 3], [8, 3]], 1: [[2, 4], [8, 4]], 2: [[2, 4], [9, 4]], 3: [[3, 4], [9, 4]] }[direcao < 0 ? 2 : direcao];
-  olhos.forEach(([x, y]) => { grade[y][x] = "p"; });
-  const rotulo = suspenso ? "zZ" : fiscal.sigla;
-  const largura = rotulo.length * 4 - 1;
-  const x0 = Math.round((12 - largura) / 2);
-  [...rotulo].forEach((letra, k) => {
-    const desenho = LETRAS[letra];
-    if (!desenho) return;
-    for (let y = 0; y < 5; y++) {
-      for (let x = 0; x < 3; x++) if (desenho[y][x] === "1") grade[5 + y][x0 + k * 4 + x] = "t";
-    }
-  });
-  const paleta = suspenso
-    ? { c: piscando ? "#f4f1ea" : "#8f9caa", d: piscando ? "#c9c2b0" : "#66727f", w: "#f4f1ea", p: "#1f2a36", t: piscando ? "#d23c28" : "#1f2a36" }
-    : { c: fiscal.cor, d: fiscal.sombra, w: "#ffffff", p: "#0d1014", t: fiscal.letra, s: sirene ? "#ff4b3a" : "#3a8bff" };
-  return sprite(chave, grade.map((linha) => linha.join("")), paleta);
+  const desenho = FISCAIS_DESENHO[fiscal.id];
+  const pernas = PERNAS[fiscal.id] ?? PERNAS.PF;
+  const linhas = [...desenho.linhas, pernas[passo ? 1 : 0]];
+  let paleta = { ...desenho.paleta };
+  if (fiscal.id === "PF") paleta.b = sirene ? "#ff4b3a" : "#3a8bff";
+  if (suspenso) paleta = Object.fromEntries(Object.entries(paleta).map(([letra, cor]) => [letra, emCinza(cor, piscando)]));
+  return sprite(chave, linhas, paleta);
 }
 
 /* Fiscal arquivado volta para a sala como uma pasta de processo. */

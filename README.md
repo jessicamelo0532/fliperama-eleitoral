@@ -2,7 +2,7 @@
 
 ![Fliperama Eleitoral](assets/img/og-image.png)
 
-**Mini jogos sobre os candidatos à Presidência em 2026, partidário ao Presidente Lula. Jogue e saia sabendo um fato, sempre com fonte.**
+**Portal de mini jogos sobre as eleições presidenciais de 2026, partidário ao Presidente Lula. Jogue e saia sabendo um fato, sempre com fonte.**
 
 ▶ **Jogue em [jessicamelo0532.github.io/fliperama-eleitoral](https://jessicamelo0532.github.io/fliperama-eleitoral/)**
 

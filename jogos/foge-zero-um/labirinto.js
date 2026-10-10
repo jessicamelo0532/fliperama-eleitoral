@@ -108,7 +108,7 @@ export const MAPAS = {
  */
 export const RITMO = {
   rachadinha: { inicio: [9, 15], chao: "#0e3b2c", velocidade: 7.2, fiscalizacao: 5.0, liminar: 10, saida: [0, 4, 10, 17], ondas: [11, 15, 11, 15, 9], bonusEm: [60, 130] },
-  chocolateria: { inicio: [9, 17], chao: "#3a2410", velocidade: 7.4, fiscalizacao: 5.4, liminar: 9, saida: [0, 3, 8, 14], ondas: [11, 15, 11, 15, 9], bonusEm: [70] },
+  chocolateria: { inicio: [9, 17], chao: "#1d2433", velocidade: 7.4, fiscalizacao: 5.4, liminar: 9, saida: [0, 3, 8, 14], ondas: [11, 15, 11, 15, 9], bonusEm: [70] },
   patrocinio: { inicio: [9, 17], chao: "#151b29", velocidade: 7.4, fiscalizacao: 5.6, liminar: 8, saida: [0, 3, 8, 14], ondas: [10, 15, 10, 15, 8], bonusEm: [70, 140] },
   indulto: { inicio: [9, 17], chao: "#0b3a3b", velocidade: 7.8, fiscalizacao: 6.0, liminar: 7, saida: [0, 2, 6, 11], ondas: [9, 16, 9, 16, 7], bonusEm: [70, 140] },
 };

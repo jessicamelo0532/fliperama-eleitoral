@@ -29,16 +29,14 @@ export function sprite(chave, linhas, paleta, espelhar = false) {
 /* ---------- Herdeiro Zero-Um ---------- */
 
 const PALETA_HERDEIRO = {
-  h: "#2b2118", s: "#d9a07a", S: "#b97a55", k: "#1a1410", n: "#33508c", N: "#22375f",
-  w: "#f4f1ea", g: "#f2c14e", b: "#7a4a22", l: "#14161d",
+  h: "#b08850", s: "#e6b48e", S: "#c08a62", k: "#1a1410", n: "#5b8ee6", N: "#3f6fc4",
+  w: "#f4f1ea", r: "#d23c28", g: "#f2c14e", b: "#7a4a22", l: "#14161d", o: "#1a1410",
 };
 
-const TRONCO_COM_NUMERO = ["..nnnwwnnn..", "..ngggnngn..", "..ngngnggnk.", "..ngngnngbbb", "..NgggNNgbgb"];
-
 const HERDEIRO = {
-  baixo: ["....hhhh....", "...hhhhhhh..", "...hsssss...", "...skssks...", "...ssSSss...", ...TRONCO_COM_NUMERO],
-  lado: ["....hhhh....", "...hhhhhhh..", "...hhsssss..", "...hssksk...", "...ssssSs...", "..nnnwnnnn..", "..nnnnnnnn..", "..nnnnnnnnk.", "..nnnnnnnbbb", "..NNNNNNNbgb"],
-  cima: ["....hhhh....", "...hhhhhh...", "...hhhhhh...", "...hhhhhh...", "...shhhhs...", ...TRONCO_COM_NUMERO],
+  baixo: ["...oooooo...", "..ohhhhhho..", "..ohsssss...", "...skssks...", "...ssSSss...", "..nnwrrwnn..", "..ngnrrnnn..", "..nnnrrnnnk.", "..nnnnnnnbbb", "..NNNNNNNbgb"],
+  lado: ["...oooooo...", "..ohhhhhho..", "..ohhsssss..", "...hssksk...", "...ssssSs...", "..nnnwrnnn..", "..ngnnrnnn..", "..nnnnrnnnk.", "..nnnnnnnbbb", "..NNNNNNNbgb"],
+  cima: ["...oooooo...", "..ohhhhhho..", "..ohhhhhho..", "...hhhhhh...", "...shhhhs...", "..nnnnnnnn..", "..nnnnnnnn..", "..nnnnnnnnk.", "..nnnnnnnbbb", "..NNNNNNNbgb"],
   pernasA: ["...ll..ll...", "...ll..ll..."],
   pernasB: ["...ll..ll...", "..ll....ll.."],
 };
@@ -108,25 +106,18 @@ export const JUIZ = {
 
 /* ---------- Itens de cada fase (desenhados dentro de uma casa de 8 px) ---------- */
 
-export const ITENS = {
-  moeda: (ctx, x, y) => {
-    ctx.fillStyle = "#9a6d0f"; ctx.fillRect(x, y + 1, 2, 2);
-    ctx.fillStyle = "#f2c14e"; ctx.fillRect(x, y, 2, 2);
-  },
-  bombom: (ctx, x, y) => {
-    ctx.fillStyle = "#5b3216"; ctx.fillRect(x - 1, y, 3, 3);
-    ctx.fillStyle = "#c98a4b"; ctx.fillRect(x - 1, y, 1, 1);
-  },
-  cedula: (ctx, x, y) => {
-    ctx.fillStyle = "#2f7d4a"; ctx.fillRect(x - 1, y, 4, 2);
-    ctx.fillStyle = "#9cc7a8"; ctx.fillRect(x, y, 2, 1);
-  },
-  caneta: (ctx, x, y) => {
-    ctx.fillStyle = "#2f6ad6"; ctx.fillRect(x, y - 1, 1, 3);
-    ctx.fillStyle = "#f2c14e"; ctx.fillRect(x, y - 1, 1, 1);
-    ctx.fillStyle = "#14161d"; ctx.fillRect(x, y + 2, 1, 1);
-  },
+/* Itens de 4x4 px com contorno escuro, para se destacarem do piso. (x, y) é o canto da casa. */
+const DESENHO_ITENS = {
+  moeda: { paleta: { o: "#3a2a05", a: "#f2c14e", l: "#fff1a8" }, linhas: [".oo.", "oalo", "oaao", ".oo."] },
+  bombom: { paleta: { o: "#2a0f18", p: "#ff6fae", c: "#5b3216", w: "#ffffff" }, linhas: ["p..p", "ocwo", "occo", "p..p"] },
+  cedula: { paleta: { o: "#0c2a14", v: "#5fd07a", l: "#c9f5d3" }, linhas: ["oooo", "vlvv", "vvlv", "oooo"] },
+  caneta: { paleta: { o: "#14161d", w: "#ffffff", r: "#ff4b3a" }, linhas: ["..rr", ".wwr", "oww.", "oo.."] },
 };
+
+export function desenharItem(ctx, tipo, x, y) {
+  const item = DESENHO_ITENS[tipo];
+  ctx.drawImage(sprite(`item-${tipo}`, item.linhas, item.paleta), x + 2, y + 2);
+}
 
 /* ---------- Bônus ---------- */
 

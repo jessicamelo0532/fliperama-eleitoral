@@ -17,11 +17,40 @@
 .fzu-elenco li { display: grid; grid-template-columns: 32px 1fr; gap: var(--esp-3); align-items: center; }
 .fzu-icone { width: 28px; height: 28px; image-rendering: pixelated; justify-self: center; }
 .fzu-inicio__dica { margin: var(--esp-3) 0 0; color: var(--cor-texto-2); font-size: 14px; }
+.fzu-inicio__acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--esp-4); margin-top: var(--esp-4); }
 .fzu-inicio__aviso { margin: var(--esp-4) 0 0; padding-top: var(--esp-3); border-top: 2px dotted var(--cor-borda); color: var(--cor-texto-2); font-size: 13px; }
 .fzu-so-teclado { display: none; }
 @media (hover: hover) and (pointer: fine) {
   .fzu-so-teclado { display: block; }
   .fzu-so-toque { display: none; }
+}
+
+/* ---------- Mapa da campanha ---------- */
+.fzu-mapa { max-width: 640px; margin: 0 auto; }
+.fzu-mapa__topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2) var(--esp-3); margin-bottom: var(--esp-3); }
+.fzu-mapa__rotulo { margin: 0; font-size: 10px; color: var(--cor-amarelo); }
+.fzu-mapa__quadro { position: relative; width: 100%; aspect-ratio: 4 / 3; border: 4px solid var(--cor-borda); }
+.fzu-mapa__fundo { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+.fzu-ponto {
+  position: absolute; transform: translate(-50%, -50%); width: 44px; height: 44px; display: grid; place-items: center;
+  font-size: 13px; color: var(--cor-branco); background: var(--cor-vermelho); cursor: pointer;
+  border: 3px solid var(--cor-fundo); box-shadow: 0 0 0 3px var(--cor-branco), 4px 4px 0 3px var(--cor-fundo);
+}
+.fzu-ponto--bloqueada { background: var(--cor-superficie-2); box-shadow: 0 0 0 3px var(--cor-borda); }
+.fzu-ponto--concluida { background: var(--cor-verde); box-shadow: 0 0 0 3px var(--cor-acerto), 4px 4px 0 3px var(--cor-fundo); }
+.fzu-ponto[aria-current="true"] { outline: 3px solid var(--cor-amarelo); outline-offset: 4px; }
+.fzu-mapa__boneco { position: absolute; width: 36px; height: 36px; transform: translate(-50%, -110%); image-rendering: pixelated; pointer-events: none; z-index: 2; }
+.fzu-painel {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--esp-1) var(--esp-4);
+  margin-top: var(--esp-4); padding: var(--esp-3) var(--esp-4); background: var(--cor-superficie-2); border-left: 6px solid var(--cor-vermelho);
+}
+.fzu-painel p { margin: 0; }
+.fzu-painel__nome { font-size: 11px; grid-column: 1; }
+.fzu-painel__situacao { font-size: 14px; color: var(--cor-texto-2); grid-column: 1; }
+.fzu-painel .botao { grid-column: 2; grid-row: 1 / span 2; }
+@media (max-width: 420px) {
+  .fzu-painel { grid-template-columns: 1fr; }
+  .fzu-painel .botao { grid-column: 1; grid-row: auto; margin-top: var(--esp-2); }
 }
 
 /* ---------- Placar ---------- */
@@ -41,8 +70,9 @@
 
 /* ---------- Labirinto ---------- */
 .fzu-cena {
-  position: relative; margin: 0 auto; aspect-ratio: 152 / 168;
-  width: min(100%, calc((100svh - 300px) * 152 / 168)); min-width: min(100%, 240px);
+  --proporcao: 0.905;
+  position: relative; margin: 0 auto; aspect-ratio: var(--proporcao);
+  width: min(100%, calc((100svh - 300px) * var(--proporcao))); min-width: min(100%, 240px);
   touch-action: none; user-select: none; -webkit-user-select: none;
   box-shadow: 0 0 0 3px var(--cor-borda);
 }
@@ -116,7 +146,9 @@
 .fzu-cheio .fzu-palco:not([hidden]), .fzu-deitado .fzu-palco:not([hidden]) {
   flex: 1; min-height: 0; display: flex; flex-direction: column;
 }
-.fzu-cheio .fzu-cena, .fzu-deitado .fzu-cena { width: min(100%, calc((100svh - 230px) * 152 / 168)); }
+.fzu-cheio .fzu-cena, .fzu-deitado .fzu-cena { width: min(100%, calc((100svh - 230px) * var(--proporcao))); }
+.fzu-cheio .fzu-palco:not([hidden]) { justify-content: center; }
+.fzu-cheio .fzu-tela:not([hidden]) { margin: auto 0; width: 100%; }
 @media (orientation: landscape) {
   .fzu-cheio .fzu-palco:not([hidden]), .fzu-deitado .fzu-palco:not([hidden]) {
     display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: auto minmax(0, 1fr);
@@ -126,5 +158,27 @@
   .fzu-cheio .fzu-direcional, .fzu-deitado .fzu-direcional { grid-column: 1; grid-row: 2; align-self: end; margin: 0 0 var(--esp-3); }
 }
 @media (hover: hover) and (pointer: fine) and (min-width: 721px) {
-  .fzu-cheio .fzu-cena { width: min(100%, calc((100svh - 120px) * 152 / 168)); }
+  .fzu-cheio .fzu-cena { width: min(100%, calc((100svh - 120px) * var(--proporcao))); }
+}
+@media (orientation: landscape) {
+  .fzu-cheio .fzu-mapa, .fzu-deitado .fzu-mapa { max-width: min(640px, calc((100svh - 190px) * 4 / 3 + 200px)); }
+  .fzu-cheio .fzu-mapa:has(.fzu-painel), .fzu-deitado .fzu-mapa:has(.fzu-painel) {
+    display: grid; grid-template-columns: minmax(0, calc((100svh - 110px) * 4 / 3)) minmax(180px, 1fr); gap: var(--esp-3); align-items: center;
+  }
+  .fzu-cheio .fzu-mapa__topo, .fzu-deitado .fzu-mapa__topo { grid-column: 1 / -1; margin-bottom: 0; }
+  .fzu-cheio .fzu-painel, .fzu-deitado .fzu-painel { margin-top: 0; grid-template-columns: 1fr; }
+  .fzu-cheio .fzu-painel .botao, .fzu-deitado .fzu-painel .botao { grid-column: 1; grid-row: auto; margin-top: var(--esp-2); }
+  .fzu-cheio .fzu-mapa > .fzu-inicio__acoes, .fzu-deitado .fzu-mapa > .fzu-inicio__acoes { grid-column: 2; margin-top: 0; }
+}
+.fzu-esperanca { max-width: 32ch; margin: 0 auto var(--esp-5); font-size: 12px; line-height: 1.7; color: var(--cor-amarelo); }
+@media (orientation: landscape) {
+  .fzu-cheio .fzu-mapa:has(.fzu-painel), .fzu-deitado .fzu-mapa:has(.fzu-painel) {
+    max-width: none; display: grid; grid-template-columns: minmax(0, calc((100svh - 110px) * 4 / 3)) minmax(180px, 1fr);
+    gap: var(--esp-3); align-items: center;
+  }
+  .fzu-cheio .fzu-mapa__topo, .fzu-deitado .fzu-mapa__topo { grid-column: 1 / -1; margin-bottom: 0; }
+  .fzu-cheio .fzu-mapa__quadro, .fzu-deitado .fzu-mapa__quadro { grid-row: 2 / span 2; }
+  .fzu-cheio .fzu-painel, .fzu-deitado .fzu-painel { margin-top: 0; grid-template-columns: 1fr; align-self: end; }
+  .fzu-cheio .fzu-painel .botao, .fzu-deitado .fzu-painel .botao { grid-column: 1; grid-row: auto; margin-top: var(--esp-2); }
+  .fzu-cheio .fzu-mapa > .fzu-inicio__acoes, .fzu-deitado .fzu-mapa > .fzu-inicio__acoes { grid-column: 2; margin-top: 0; align-self: start; }
 }

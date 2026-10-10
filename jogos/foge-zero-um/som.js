@@ -1,5 +1,5 @@
 /**
- * Efeitos sonoros sintetizados no navegador, sem arquivos de áudio.
+ * Música de fundo e efeitos sonoros sintetizados no navegador, sem arquivos de áudio.
  * O áudio fica em silêncio sempre que a página sai de vista.
  */
 
@@ -7,6 +7,21 @@ let contexto = null;
 let saida = null;
 let ligado = true;
 let alternar = false;
+let saidaMusica = null;
+let agendador = null;
+let proximoTempo = 0;
+let passo = 0;
+
+/* Melodia original em colcheias (notas MIDI; 0 = pausa) e baixo a cada meio compasso. */
+const MELODIA = [
+  69, 0, 72, 0, 76, 0, 72, 74, 76, 0, 74, 0, 72, 0, 69, 0,
+  67, 0, 69, 0, 72, 0, 74, 0, 72, 0, 69, 0, 67, 0, 0, 0,
+  69, 0, 72, 0, 76, 0, 79, 0, 77, 0, 76, 0, 74, 0, 72, 0,
+  74, 0, 72, 0, 71, 0, 67, 0, 69, 0, 0, 0, 0, 0, 0, 0,
+];
+const BAIXO = [45, 45, 41, 43, 45, 45, 43, 40];
+const DURACAO_PASSO = 60 / 132 / 2;
+const frequencia = (nota) => 440 * 2 ** ((nota - 69) / 12);
 
 function garantirContexto() {
   if (contexto) return contexto;
@@ -15,6 +30,9 @@ function garantirContexto() {
   contexto = new Contexto();
   saida = contexto.createGain();
   saida.connect(contexto.destination);
+  saidaMusica = contexto.createGain();
+  saidaMusica.gain.value = 0.45;
+  saidaMusica.connect(saida);
   return contexto;
 }
 
@@ -46,7 +64,45 @@ export function iniciarSom(estaLigado) {
 
 export function definirSom(estaLigado) {
   ligado = estaLigado;
-  if (ligado && garantirContexto()) retomar();
+  if (!ligado) { pararMusica(); return; }
+  if (garantirContexto()) retomar();
+  tocarMusica();
+}
+
+function nota(destino, tipo, freq, inicio, duracao, volume) {
+  const oscilador = contexto.createOscillator();
+  const ganho = contexto.createGain();
+  oscilador.type = tipo;
+  oscilador.frequency.value = freq;
+  ganho.gain.setValueAtTime(0.0001, inicio);
+  ganho.gain.exponentialRampToValueAtTime(volume, inicio + 0.02);
+  ganho.gain.exponentialRampToValueAtTime(0.0001, inicio + duracao);
+  oscilador.connect(ganho).connect(destino);
+  oscilador.start(inicio);
+  oscilador.stop(inicio + duracao + 0.02);
+}
+
+function agendar() {
+  while (proximoTempo < contexto.currentTime + 0.15) {
+    const melodia = MELODIA[passo % MELODIA.length];
+    if (melodia) nota(saidaMusica, "square", frequencia(melodia), proximoTempo, DURACAO_PASSO * 1.6, 0.025);
+    if (passo % 8 === 0) nota(saidaMusica, "triangle", frequencia(BAIXO[(passo / 8) % BAIXO.length]), proximoTempo, DURACAO_PASSO * 7, 0.06);
+    proximoTempo += DURACAO_PASSO;
+    passo++;
+  }
+}
+
+/** Começa a música em loop, se o som estiver ligado. */
+export function tocarMusica() {
+  if (!ligado || agendador || !garantirContexto()) return;
+  proximoTempo = contexto.currentTime + 0.1;
+  passo = 0;
+  agendador = setInterval(agendar, 40);
+}
+
+export function pararMusica() {
+  clearInterval(agendador);
+  agendador = null;
 }
 
 function tom(frequencia, duracao, tipo = "square", volume = 0.035, ate = null, atraso = 0) {

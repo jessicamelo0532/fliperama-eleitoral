@@ -7,6 +7,7 @@
     "meta": 6000000,
     "apresentacao": "Na Assembleia, cada assessor recebe o salário inteiro. O Herdeiro só pede uma parte de volta. Coisa pouca, todo mês.",
     "nesta": "Cada moeda é um pedaço de salário. Recolha tudo antes que a fiscalização chegue.",
+    "voltar": "Voltar ao gabinete",
     "bonus": {
       "tipo": "contracheque",
       "nome": "Contracheque",
@@ -24,6 +25,22 @@
     "revisado": true
   },
   {
+    "id": "contracheque",
+    "tipo": "bonus",
+    "fase": "rachadinha",
+    "nome": "Contracheque",
+    "vidaReal": "Em 2018, um relatório do Coaf apontou R$ 1,2 milhão em movimentações atípicas nas contas de um ex-assessor do então deputado. Foi o ponto de partida da investigação do MP do Rio.",
+    "fontes": [
+      {
+        "titulo": "Gilmar nega pedido para reabrir ação contra Flávio por \"rachadinha\"",
+        "veiculo": "Poder360",
+        "url": "https://www.poder360.com.br/poder-justica/gilmar-nega-pedido-para-reabrir-acao-contra-flavio-por-rachadinha/",
+        "data": "2025-02-27"
+      }
+    ],
+    "revisado": true
+  },
+  {
     "id": "chocolateria",
     "tipo": "fase",
     "nome": "Chocolateria",
@@ -31,6 +48,7 @@
     "valorItem": 2000,
     "apresentacao": "Dinheiro vivo demais chama atenção. Uma loja de bombons resolve: tudo vira venda de chocolate.",
     "nesta": "Cada bombom vale R$ 2 mil e a fiscalização ficou mais rápida. Uma mansão aparece no meio do labirinto.",
+    "voltar": "Voltar à loja",
     "bonus": {
       "tipo": "mansao",
       "nome": "Mansão",
@@ -71,6 +89,7 @@
     "valorItem": 5000,
     "apresentacao": "Um filme sobre o pai pede orçamento de cinema. Sorte que tem banqueiro amigo. Dinheiro público? Imagina.",
     "nesta": "Cada cédula vale R$ 5 mil e a liminar dura menos.",
+    "voltar": "Voltar ao set",
     "bonus": {
       "tipo": "claquete",
       "nome": "Claquete",
@@ -88,6 +107,22 @@
     "revisado": true
   },
   {
+    "id": "claquete",
+    "tipo": "bonus",
+    "fase": "patrocinio",
+    "nome": "Claquete",
+    "vidaReal": "O filme sobre o pai tem orçamento de R$ 134 milhões, segundo a Agência Pública. Para comparar: \"Ainda Estou Aqui\" custou cerca de R$ 45 milhões.",
+    "fontes": [
+      {
+        "titulo": "Flávio Bolsonaro, Vorcaro, Master: o escândalo do filme Dark Horse",
+        "veiculo": "Agência Pública",
+        "url": "https://apublica.org/2026/05/flavio-bolsonaro-vorcaro-master-escandalo-filme-dark-horse-azarao/",
+        "data": "2026-05-14"
+      }
+    ],
+    "revisado": true
+  },
+  {
     "id": "indulto",
     "tipo": "fase",
     "nome": "Indulto",
@@ -95,6 +130,7 @@
     "valorItem": 10000,
     "apresentacao": "Ainda nem ganhou e já está com a caneta na mão: anistia para o pai, antes da posse. Se não passar, indulto para os condenados do 8 de janeiro.",
     "nesta": "Cada caneta vale R$ 10 mil. Nesta fase, o juiz Absolvino anula o processo a cada flagra.",
+    "voltar": "Voltar ao palanque",
     "bonus": {
       "tipo": "decreto",
       "nome": "Decreto",
@@ -108,6 +144,28 @@
         "veiculo": "TSE",
         "url": "https://www.tse.jus.br/",
         "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "decreto",
+    "tipo": "bonus",
+    "fase": "indulto",
+    "nome": "Decreto",
+    "vidaReal": "Indulto é o perdão da pena, dado por decreto do presidente da República. Já a anistia precisa ser aprovada pela Câmara e pelo Senado e sancionada pelo presidente.",
+    "fontes": [
+      {
+        "titulo": "O que é indulto de Natal e como funciona",
+        "veiculo": "A Gazeta",
+        "url": "https://www.agazeta.com.br/es/politica/o-que-e-indulto-de-natal-e-como-funciona-1118",
+        "data": "2018-11-29"
+      },
+      {
+        "titulo": "Entenda o que é a anistia a condenados pelo 8 de Janeiro",
+        "veiculo": "O Povo",
+        "url": "https://www.opovo.com.br/noticias/politica/2024/09/08/amp/entenda-o-que-e-a-anistia-a-condenados-pelo-8-de-janeiro-defendida-em-ato-de-bolsonaro.html",
+        "data": "2024-09-08"
       }
     ],
     "revisado": true

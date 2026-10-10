@@ -8,8 +8,9 @@ import {
 import {
   LARGURA as W, ALTURA as H, TAMANHO_CASA as P, MAPAS, RITMO, POSICAO_BONUS, PORTA_FISCAIS, SALA_FISCAIS,
 } from "./labirinto.js";
-import { sprite, spriteHerdeiro, spriteFiscal, spriteBonus, PASTA, LIMINAR, JUIZ, ITENS } from "./sprites.js";
-import { iniciarSom, definirSom, efeitos } from "./som.js";
+import { sprite, spriteHerdeiro, spriteFiscal, spriteBonus, desenharItem, PASTA, LIMINAR, JUIZ } from "./sprites.js";
+import { iniciarSom, definirSom, tocarMusica, efeitos } from "./som.js";
+import { PONTOS_DO_MAPA, desenharMapa } from "./mapa.js";
 
 const TITULO = "Foge, Zero-Um!";
 const CHAVE_PROGRESSO = "fliperama.foge-zero-um.v1";
@@ -63,16 +64,29 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const sobreposicao = document.getElementById("sobreposicao");
 const avisoCena = document.getElementById("aviso-cena");
-canvas.width = LARGURA_TELA;
-canvas.height = ALTURA_TELA;
+
+/* No celular, a câmera mostra só parte do labirinto, acompanhando o Herdeiro, para tudo ficar maior. */
+const VISTA_APROXIMADA = { colunas: 13, linhas: 15 };
+const vista = { colunas: W, linhas: H, x: 0, y: 0 };
+
+function ajustarVista() {
+  const aproximar = window.innerWidth < 720 || window.innerHeight < 600;
+  const { colunas, linhas } = aproximar ? VISTA_APROXIMADA : { colunas: W, linhas: H };
+  Object.assign(vista, { colunas, linhas });
+  canvas.width = colunas * P;
+  canvas.height = linhas * P;
+  cena.style.setProperty("--proporcao", String(colunas / linhas));
+}
 
 /* ---------- Progresso ---------- */
 
+const PROGRESSO_INICIAL = { recorde: 0, som: true, concluidas: [], ondeEsta: 0 };
+
 function carregarProgresso() {
   try {
-    return { recorde: 0, som: true, ...JSON.parse(localStorage.getItem(CHAVE_PROGRESSO) || "{}") };
+    return { ...PROGRESSO_INICIAL, ...JSON.parse(localStorage.getItem(CHAVE_PROGRESSO) || "{}") };
   } catch {
-    return { recorde: 0, som: true };
+    return { ...PROGRESSO_INICIAL };
   }
 }
 
@@ -367,7 +381,7 @@ function arquivar(fiscal) {
 
 function flagrado(fiscal) {
   jogo.estado = "flagrado";
-  jogo.tempoEstado = 2.3;
+  jogo.tempoEstado = 4.2;
   mostrarAviso(fiscal.flagra[0], fiscal.flagra[1], true);
   efeitos.pego();
 }
@@ -379,7 +393,7 @@ function depoisDoFlagra() {
   atualizarHud();
   if (jogo.mandatos <= 0) { anularProcesso(); return; }
   recomecarRodada();
-  sessaoAberta("Sessão reaberta", faseAtual().nome);
+  sessaoAberta("De volta", faseAtual().nome);
 }
 
 function faseLimpa() {
@@ -445,7 +459,7 @@ function apresentarFase() {
       el("p", { class: "fzu-apresentacao", text: fase.apresentacao }),
       el("p", { class: "fzu-nesta" }, el("strong", { text: "Nesta fase: " }), fase.nesta),
     ],
-    botao: { texto: "Começar", acao: () => { fecharCartao(); sessaoAberta("Está aberta a sessão", `Fase ${jogo.fase + 1} · ${fase.nome}`); } },
+    botao: { texto: "Começar", acao: () => { fecharCartao(); sessaoAberta("Valendo!", `Fase ${jogo.fase + 1} · ${fase.nome}`); } },
   });
 }
 
@@ -455,12 +469,14 @@ function abrirCardBonus(item) {
     rotulo: "Bônus",
     titulo: item.nome,
     conteudo: [blocoVidaReal(item)],
-    botao: { texto: "Voltar ao jogo", acao: () => { fecharCartao(); sessaoAberta("Sessão reaberta", faseAtual().nome); } },
+    botao: { texto: "Voltar ao jogo", acao: () => { fecharCartao(); sessaoAberta("De volta", faseAtual().nome); } },
   });
 }
 
 function faseConcluida() {
   const fase = faseAtual();
+  if (!progresso.concluidas.includes(fase.id)) progresso.concluidas.push(fase.id);
+  salvarProgresso();
   const ultima = jogo.fase === fases.length - 1;
   jogo.estado = "entre-fases";
   abrirCartao({
@@ -469,12 +485,10 @@ function faseConcluida() {
     titulo: fase.nome,
     conteudo: [blocoVidaReal(fase)],
     botao: {
-      texto: ultima ? "Ver resultado" : "Próxima fase",
+      texto: ultima ? "Ver resultado" : "Voltar ao mapa",
       acao: () => {
         fecharCartao();
-        if (ultima) { terminarJogo(); return; }
-        carregarFase(jogo.fase + 1);
-        apresentarFase();
+        if (ultima) terminarJogo(); else telaMapa(jogo.fase + 1);
       },
     },
   });
@@ -487,7 +501,7 @@ function anularProcesso() {
   atualizarHud();
   const retrato = el("canvas", { class: "fzu-juiz", width: "16", height: "16", "aria-hidden": "true" });
   abrirCartao({
-    rotulo: `Decisão monocrática nº ${numeroProcesso(jogo.anulacoes)}/2026`,
+    rotulo: `Decisão do juiz nº ${numeroProcesso(jogo.anulacoes)}/2026`,
     carimbo: "ANULADO",
     titulo: "Processo anulado",
     conteudo: [
@@ -495,13 +509,13 @@ function anularProcesso() {
       el("p", { class: "fzu-contas" }, `Mandatos devolvidos: 3 · Anulações: ${jogo.anulacoes}`),
     ],
     botao: {
-      texto: "Voltar ao plenário",
+      texto: faseAtual().voltar,
       acao: () => {
         jogo.mandatos = 3;
         recomecarRodada();
         atualizarHud();
         fecharCartao();
-        sessaoAberta("Sessão reaberta", "Como se nada tivesse acontecido");
+        sessaoAberta("De volta", "Como se nada tivesse acontecido");
       },
     },
   });
@@ -577,7 +591,9 @@ function telaInicio() {
       el("p", { class: "fzu-inicio__lide", text: "Conduza o Herdeiro Zero-Um pelos corredores do poder e recolha cada centavo antes que a fiscalização chegue." }),
       el("ul", { class: "fzu-elenco" },
         ...elenco.map(([icone, nome, descricao]) => el("li", {}, icone, el("span", {}, el("strong", { text: nome }), ` ${descricao}`)))),
-      el("button", { class: "botao", type: "button", onclick: jogar, disabled: fases.length ? null : "" }, "Jogar"),
+      el("div", { class: "fzu-inicio__acoes" },
+        el("button", { class: "botao", type: "button", onclick: jogar, disabled: fases.length ? null : "" }, progresso.concluidas.length ? "Continuar" : "Jogar"),
+        progresso.concluidas.length > 0 && el("button", { class: "botao botao--fantasma", type: "button", onclick: recomecar }, "Recomeçar")),
       el("p", { class: "fzu-inicio__dica fzu-so-teclado", text: "Setas para andar · Esc para pausar" }),
       el("p", { class: "fzu-inicio__dica fzu-so-toque", text: "Deslize o dedo no labirinto ou use o direcional." }),
       progresso.recorde > 0 && el("p", { class: "fzu-inicio__dica", text: `Recorde: ${formatar(progresso.recorde)}` }),
@@ -588,12 +604,124 @@ function telaInicio() {
 function jogar() {
   registrarAcao("inicio");
   iniciarSom(progresso.som);
-  Object.assign(jogo, { desviado: 0, mandatos: 3, anulacoes: 0 });
+  tocarMusica();
+  Object.assign(jogo, { desviado: 0, anulacoes: 0 });
+  if (!emTelaCheia()) alternarTelaCheia();
+  areaJogo.scrollIntoView({ block: "start", behavior: MOVIMENTO_REDUZIDO ? "auto" : "smooth" });
+  telaMapa(primeiraPendente());
+}
+
+/** Apaga as fases concluídas (recorde e som ficam) e volta ao início. */
+function recomecar() {
+  Object.assign(progresso, { concluidas: [], ondeEsta: 0 });
+  salvarProgresso();
+  telaInicio();
+}
+
+const liberada = (indice) => indice === 0 || progresso.concluidas.includes(fases[indice - 1]?.id);
+const primeiraPendente = () => {
+  const indice = fases.findIndex((fase) => !progresso.concluidas.includes(fase.id));
+  return indice < 0 ? fases.length - 1 : indice;
+};
+
+function entrarNaFase(indice) {
+  jogo.mandatos = 3;
   mostrarPalco();
   montarHud();
-  areaJogo.scrollIntoView({ block: "start", behavior: MOVIMENTO_REDUZIDO ? "auto" : "smooth" });
-  carregarFase(0);
+  ajustarVista();
+  carregarFase(indice);
   apresentarFase();
+}
+
+/* ---------- Mapa das fases ---------- */
+
+let caminhada = null;
+
+function telaMapa(destino) {
+  jogo.estado = "mapa";
+  mostrarTela();
+  const fundoMapa = el("canvas", { class: "fzu-mapa__fundo", width: "160", height: "120", role: "img", "aria-label": "Mapa da campanha com as fases ligadas por uma estrada" });
+  desenharMapa(fundoMapa, fases.map((fase) => fase.id));
+  const boneco = el("canvas", { class: "fzu-mapa__boneco", width: "12", height: "12", "aria-hidden": "true" });
+  const painel = el("div", { class: "fzu-painel", "aria-live": "polite" });
+  const pontos = fases.map((fase, indice) => {
+    const concluida = progresso.concluidas.includes(fase.id);
+    const [x, y] = PONTOS_DO_MAPA[indice];
+    return el("button", {
+      class: `fzu-ponto${concluida ? " fzu-ponto--concluida" : ""}${liberada(indice) ? "" : " fzu-ponto--bloqueada"}`,
+      type: "button", style: `left:${x * 100}%;top:${y * 100}%`,
+      "aria-label": `${indice + 1}. ${fase.nome}: ${concluida ? "concluída" : liberada(indice) ? "liberada" : "bloqueada"}`,
+      onclick: () => (liberada(indice) ? caminharAte(indice) : mostrarPainel(indice)),
+    }, el("span", { class: "pixel", text: concluida ? "✓" : liberada(indice) ? String(indice + 1) : "🔒" }));
+  });
+
+  function posicionarBoneco(x, y, direcao, passo) {
+    boneco.style.left = `${x * 100}%`;
+    boneco.style.top = `${y * 100}%`;
+    const pincel = boneco.getContext("2d");
+    pincel.clearRect(0, 0, 12, 12);
+    pincel.drawImage(spriteHerdeiro(direcao, passo), 0, 0);
+  }
+
+  function mostrarPainel(indice) {
+    const fase = fases[indice];
+    const concluida = progresso.concluidas.includes(fase.id);
+    const situacao = concluida ? "Concluída. Dá para jogar de novo." : liberada(indice) ? "Liberada" : "Bloqueada: conclua a fase anterior";
+    painel.replaceChildren(
+      el("p", { class: "fzu-painel__nome pixel", text: `${indice + 1}. ${fase.nome}` }),
+      el("p", { class: "fzu-painel__situacao", text: situacao }),
+      el("button", {
+        class: "botao", type: "button", disabled: liberada(indice) && progresso.ondeEsta === indice ? null : "",
+        onclick: () => entrarNaFase(indice),
+      }, "Entrar"));
+    pontos.forEach((ponto, i) => ponto.setAttribute("aria-current", String(i === indice)));
+  }
+
+  /* O Herdeiro anda pela estrada, ponto a ponto, até a fase escolhida. */
+  function caminharAte(indice) {
+    if (caminhada) cancelAnimationFrame(caminhada);
+    const inicio = progresso.ondeEsta;
+    if (inicio === indice) { mostrarPainel(indice); return; }
+    const passoIndice = indice > inicio ? 1 : -1;
+    const trechos = [];
+    for (let i = inicio; i !== indice; i += passoIndice) trechos.push([PONTOS_DO_MAPA[i], PONTOS_DO_MAPA[i + passoIndice]]);
+    let trecho = 0;
+    let comeco = null;
+    mostrarPainel(indice);
+    painel.querySelector(".botao").disabled = true;
+    const DURACAO = MOVIMENTO_REDUZIDO ? 1 : 700;
+    function andar(agora) {
+      comeco ??= agora;
+      const t = Math.min(1, (agora - comeco) / DURACAO);
+      const [[x1, y1], [x2, y2]] = trechos[trecho];
+      const direcao = Math.abs(x2 - x1) > Math.abs(y2 - y1) ? (x2 > x1 ? 3 : 1) : (y2 > y1 ? 2 : 0);
+      posicionarBoneco(x1 + (x2 - x1) * t, y1 + (y2 - y1) * t, direcao, Math.floor(agora / 150) % 2);
+      if (t < 1) { caminhada = requestAnimationFrame(andar); return; }
+      trecho++;
+      comeco = null;
+      if (trecho < trechos.length) { caminhada = requestAnimationFrame(andar); return; }
+      caminhada = null;
+      progresso.ondeEsta = indice;
+      salvarProgresso();
+      posicionarBoneco(x2, y2, 2, 0);
+      mostrarPainel(indice);
+    }
+    caminhada = requestAnimationFrame(andar);
+  }
+
+  tela.replaceChildren(
+    el("div", { class: "fzu-mapa" },
+      el("div", { class: "fzu-mapa__topo" },
+        el("p", { class: "fzu-mapa__rotulo pixel", text: "Mapa da campanha" }),
+        el("span", { class: "fzu-hud__botoes" }, botaoTelaCheia(), botaoSom())),
+      el("div", { class: "fzu-mapa__quadro" }, fundoMapa, ...pontos, boneco),
+      painel,
+      el("div", { class: "fzu-inicio__acoes" },
+        el("button", { class: "botao botao--fantasma", type: "button", onclick: telaInicio }, "Início"))));
+  const [x, y] = PONTOS_DO_MAPA[progresso.ondeEsta] ?? PONTOS_DO_MAPA[0];
+  posicionarBoneco(x, y, 2, 0);
+  if (destino !== undefined && destino !== progresso.ondeEsta && liberada(destino)) caminharAte(destino);
+  else mostrarPainel(progresso.ondeEsta);
 }
 
 function terminarJogo() {
@@ -609,8 +737,14 @@ function terminarJogo() {
     texto: `O Herdeiro terminou a campanha sem nenhuma condenação, ${ajuda}. Desviado: ${formatar(jogo.desviado)}. Recorde: ${formatar(progresso.recorde)}.`,
     fontes: cardsNaOrdem.flatMap((item) => item.fontes),
     textoCompartilhar: `Fugi da fiscalização em ${TITULO} e o juiz anulou meu processo ${n} ${n === 1 ? "vez" : "vezes"}. Na vida real, os fatos têm fonte:`,
-    aoJogarDeNovo: jogar,
+    aoJogarDeNovo: () => { Object.assign(progresso, { concluidas: [], ondeEsta: 0 }); salvarProgresso(); jogar(); },
   });
+  if (emTelaCheia()) {
+    const sair = el("button", { class: "botao botao--fantasma", type: "button", onclick: async () => { await alternarTelaCheia(); sair.remove(); } }, "Sair da tela cheia");
+    resultado.querySelector(".resultado__acoes").append(sair);
+  }
+  resultado.querySelector(".resultado__texto").after(
+    el("p", { class: "fzu-esperanca pixel", text: "O fim dessa história quem escreve é você. 25 de outubro: vote Lula, 13." }));
   const resumo = el("section", { class: "fzu-resumo", "aria-label": "Na vida real" },
     el("p", { class: "fzu-vida-real__rotulo pixel", text: "Na vida real" }),
     el("dl", {}, ...cardsNaOrdem.flatMap((item) => [el("dt", { text: item.nome }), el("dd", { text: item.vidaReal })])));
@@ -805,13 +939,13 @@ function desenharFundo() {
 }
 
 function desenharItens() {
-  const desenharItem = ITENS[faseAtual().item];
+  const tipoItem = faseAtual().item;
   const liminarVisivel = MOVIMENTO_REDUZIDO || Math.floor(jogo.relogio * 4) % 2 === 0;
   const imagemLiminar = sprite("liminar", LIMINAR.linhas, LIMINAR.paleta);
   for (let r = 0; r < H; r++) {
     for (let c = 0; c < W; c++) {
       const tipo = itens[r][c];
-      if (tipo === ".") desenharItem(ctx, c * P + 3, r * P + 3);
+      if (tipo === ".") desenharItem(ctx, tipoItem, c * P, r * P);
       else if (tipo === "o" && liminarVisivel) ctx.drawImage(imagemLiminar, c * P + 1, r * P);
     }
   }
@@ -822,7 +956,7 @@ function desenharTexto(texto, cx, cy) {
   ctx.textAlign = "left";
   ctx.textBaseline = "top";
   const largura = Math.ceil(ctx.measureText(texto).width);
-  const x = Math.max(1, Math.min(LARGURA_TELA - largura - 1, Math.round(cx - largura / 2)));
+  const x = Math.max(vista.x + 1, Math.min(vista.x + vista.colunas * P - largura - 1, Math.round(cx - largura / 2)));
   const y = Math.round(cy - 4);
   ctx.fillStyle = "#06120c";
   [[-1, 0], [1, 0], [0, -1], [0, 1], [1, 1]].forEach(([dx, dy]) => ctx.fillText(texto, x + dx, y + dy));
@@ -837,9 +971,19 @@ function desenharComTunel(x, desenhar) {
   if (x < 0) desenhar(x + W);
 }
 
+function posicionarCamera() {
+  const [hx, hy] = posicao(herdeiro);
+  const largura = vista.colunas * P;
+  const altura = vista.linhas * P;
+  vista.x = Math.round(Math.max(0, Math.min(LARGURA_TELA - largura, hx * P + 4 - largura / 2)));
+  vista.y = Math.round(Math.max(0, Math.min(ALTURA_TELA - altura, hy * P + 4 - altura / 2)));
+}
+
 function desenhar() {
   if (!mapa.length) return;
   ctx.imageSmoothingEnabled = false;
+  posicionarCamera();
+  ctx.setTransform(1, 0, 0, 1, -vista.x, -vista.y);
   const piscando = jogo.estado === "limpa" && !MOVIMENTO_REDUZIDO && Math.floor(jogo.relogio * 7) % 2 === 0;
   ctx.drawImage(piscando ? fundoClaro : fundo, 0, 0);
   desenharItens();
@@ -874,6 +1018,7 @@ function desenhar() {
     if (texto.tempo > 0.9 && Math.floor(texto.tempo * 12) % 2) continue;
     desenharTexto(texto.texto, texto.x * P + 4, texto.y * P + 4);
   }
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
 function desenharJuiz() {
@@ -933,6 +1078,7 @@ function ligarControles() {
   document.addEventListener("fullscreenchange", atualizarModoDeTela);
   document.addEventListener("webkitfullscreenchange", atualizarModoDeTela);
   CELULAR_DEITADO.addEventListener?.("change", atualizarModoDeTela);
+  window.addEventListener("resize", ajustarVista);
   atualizarModoDeTela();
 }
 

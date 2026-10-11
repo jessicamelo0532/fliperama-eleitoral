@@ -240,6 +240,15 @@ function avancar(quem, distancia) {
   }
 }
 
+/* Quem pede a curva logo depois de passar do cruzamento ainda vira: o Herdeiro volta um pouquinho e entra no corredor. */
+const TOLERANCIA_DA_CURVA = 0.35;
+
+function virarComTolerancia(h) {
+  if (h.dir < 0 || h.proxima < 0 || h.proxima === h.dir || h.avanco === 0 || h.avanco > TOLERANCIA_DA_CURVA) return;
+  if (!podeEntrar(h.tx + DX[h.proxima], h.ty + DY[h.proxima], h)) return;
+  Object.assign(h, { avanco: 0, dir: h.proxima, ultima: h.proxima });
+}
+
 function decidirHerdeiro(h) {
   if (h.proxima >= 0 && podeEntrar(h.tx + DX[h.proxima], h.ty + DY[h.proxima], h)) h.dir = h.proxima;
   else if (h.dir >= 0 && !podeEntrar(h.tx + DX[h.dir], h.ty + DY[h.dir], h)) h.dir = -1;
@@ -869,6 +878,7 @@ function atualizar(dt) {
   }
 
   if (herdeiro.dir >= 0 && herdeiro.proxima === oposta(herdeiro.dir)) inverter(herdeiro);
+  else virarComTolerancia(herdeiro);
   avancar(herdeiro, ritmo.velocidade * (jogo.tempoLiminar > 0 ? 1.1 : 1) * dt);
   if (jogo.estado !== "jogando") return;
 

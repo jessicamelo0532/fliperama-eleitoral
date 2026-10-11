@@ -164,7 +164,6 @@ class Lutador {
     this.animacao++;
     if (this.brilho > 0) this.brilho--;
     if (this.invulneravel > 0) this.invulneravel--;
-    if (this.protegido > 0) this.protegido--;
     if (this.tempoSequencia > 0 && --this.tempoSequencia === 0) this.sequencia = 0;
     if (!this.noChao) this.cair();
     const margem = this.ehHeroi && this.estado === "nocaute" ? MARGEM_DEITADO : MARGEM;
@@ -654,6 +653,8 @@ export function passoLuta(entrada) {
   else V.controlar(intencao, P);
   P.atualizar(V);
   V.atualizar(P);
+  /* A proteção do título só conta no tempo de luta, não durante falas e avisos. */
+  if (P.protegido > 0) P.protegido--;
   separar(P, V);
   luta.quadrosDeLuta++;
   agendarBonus(P, V);

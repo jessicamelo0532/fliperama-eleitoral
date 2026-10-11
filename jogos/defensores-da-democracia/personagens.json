@@ -68,11 +68,11 @@
     "tipo": "personagem",
     "nome": "Jheni",
     "curto": "JHENI",
-    "profissao": "Estudante de Direito",
-    "historia": "Primeira da família a entrar na faculdade, estuda Direito numa federal com bolsa de iniciação científica. Sabe que, sem a bolsa, teria trocado a sala de aula por um segundo emprego.",
+    "profissao": "Estudante do ensino médio",
+    "historia": "Tem 16 anos, faz o 2º ano numa escola estadual e sonha com uma vaga na universidade pública. Tirou o título assim que pôde: na idade dela o voto não é obrigatório, mas ela não perde esse por nada.",
     "especial": {
-      "nome": "Direito à Educação",
-      "rotulo": "EDUCAÇÃO"
+      "nome": "Primeiro Voto",
+      "rotulo": "1º VOTO"
     },
     "vida": 95,
     "velocidade": 1.2,
@@ -129,12 +129,12 @@
     "revisado": true
   },
   {
-    "id": "rosa",
+    "id": "ana",
     "tipo": "personagem",
-    "nome": "Dona Rosa",
-    "curto": "ROSA",
-    "profissao": "Confeiteira MEI",
-    "historia": "Abriu o próprio negócio de bolos com o MEI e vende pelo celular. Sabe que pequeno empreendedor também precisa de direito, crédito e cliente com salário.",
+    "nome": "Dona Ana",
+    "curto": "ANA",
+    "profissao": "Costureira MEI",
+    "historia": "Quando a costura ainda não pagava as contas, o Bolsa Família garantiu o feijão das crianças. Hoje ela tem uma confecção de uniformes, CNPJ de MEI e não precisa mais do programa.",
     "especial": {
       "nome": "Nota Fiscal",
       "rotulo": "NOTA"

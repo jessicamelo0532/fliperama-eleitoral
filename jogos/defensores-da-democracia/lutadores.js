@@ -18,6 +18,13 @@ const CABECA = {
   f: [6, 8, 10, 10, 10, 10, 10, 9, 8, 6],
 };
 
+function fitaMetrica(R, cor, cx, yOmbro) {
+  for (const x of [cx - 4, cx + 3]) {
+    R(x, yOmbro - 1, 1, 9, cor);
+    for (let y = yOmbro + 1; y < yOmbro + 8; y += 2) R(x, y, 1, 1, "#141414");
+  }
+}
+
 export function desenharLutador(ctx, L, pose, t, facing, ox, oy) {
   const R = (x, y, w, h, cor) => {
     if (!cor || w <= 0 || h <= 0) return;
@@ -70,6 +77,8 @@ export function desenharLutador(ctx, L, pose, t, facing, ox, oy) {
   if (L.saia) linhas(0, yQuadril, [11, 12, 12, 13, 13, 14, 14], L.saia, cx);
   if (L.vestido) linhas(0, yQuadril, [11, 12, 13, 13, 14, 14, 15, 15, 15], L.vestido, cx);
   if (L.avental) { R(cx - 3, yOmbro + 2, 6, 4, L.avental); linhas(0, yOmbro + 6, [7, 7, 8, 8, 9, 9, 10, 10, 10, 10, 10], L.avental, cx); R(cx - 1, yOmbro, 1, 2, L.avental); }
+  if (L.bolso) { R(cx - 3, yQuadril + 1, 6, 4, L.avental); R(cx - 3, yQuadril + 1, 6, 1, L.bolso); R(cx - 3, yQuadril + 1, 1, 3, L.bolso); R(cx + 2, yQuadril + 1, 1, 3, L.bolso); R(cx - 3, yQuadril + 4, 6, 1, L.bolso); }
+  if (L.fitaMetrica) fitaMetrica(R, L.fitaMetrica, cx, yOmbro);
   R(cx - 5, yQuadril - 1, 10, 1, L.cinto);
 
   /* Pescoço e cabeça. */
@@ -340,7 +349,7 @@ export const APARENCIAS = Object.fromEntries(Object.entries({
   jheni: { corpo: "f", pele: "#f2cfae", peleEscura: "#d6ad88", bochecha: "#eaa090", cabelo: "#141414", cabeloClaro: "#2e2e3a", cabeloEstilo: "longo", estrelas: "#f2d34e", blusa: "#7442b3", blusaEscura: "#4e2a7d", calca: "#2a2a3a", calcaEscura: "#1c1c28", mochila: "#e8b923", mochilaEscura: "#b8901a", sapato: "#f0f0f0" },
   edson: { corpo: "m", pele: "#f0c9a0", peleEscura: "#d4a87c", cabelo: "#3a2414", cabeloEstilo: "bone", bone: "#2a6f97", boneEscuro: "#1d5070", blusa: "#1c1c24", blusaEscura: "#101016", estampa: "#f4f1ea", calca: "#7aa7d6", calcaEscura: "#5a87b6", sapato: "#141414" },
   fabiana: { corpo: "f", pele: "#b87a4b", peleEscura: "#9a5f36", bochecha: "#c4704a", cabelo: "#2a1a12", cabeloEstilo: "rabo", blusa: "#e8811a", blusaEscura: "#b85f0c", cracha: true, calca: "#1c1c28", calcaEscura: "#141420", sapato: "#141414" },
-  rosa: { corpo: "f", pele: "#c68642", peleEscura: "#a66a2e", bochecha: "#d98a6a", cabelo: "#3a2a1e", cabeloEstilo: "coque", blusa: "#e85a9b", blusaEscura: "#b83f78", vestido: "#e85a9b", avental: "#f4f1ea", calca: "#c68642", calcaEscura: "#a66a2e", sapato: "#5a2a1a" },
+  ana: { corpo: "f", pele: "#f2cfae", peleEscura: "#d6ad88", bochecha: "#eaa090", cabelo: "#c98a3a", cabeloClaro: "#f0c070", cabeloEscuro: "#7a4a1a", cabeloEstilo: "longo", blusa: "#22b5d8", blusaEscura: "#1689a6", vestido: "#22b5d8", avental: "#1f5c3a", bolso: "#15412a", fitaMetrica: "#f2c84b", calca: "#f2cfae", calcaEscura: "#d6ad88", sapato: "#5a2a1a" },
   antonio: { corpo: "m", pele: "#d9a27a", peleEscura: "#b9825a", cabelo: "#d6d1c4", sobrancelha: "#d6d1c4", cabeloEstilo: "boina", boina: "#3a3a46", bigode: "#e8e4da", blusa: "#d6d1c4", blusaEscura: "#b0aba0", jaqueta: "#7a4a22", mangaEscura: "#5e3b1a", calca: "#4a4a55", calcaEscura: "#3a3a46", sapato: "#2a1a12" },
   lucia: { corpo: "f", pele: "#a86b3c", peleEscura: "#8a532a", bochecha: "#b8603a", cabelo: "#1a1009", cabeloEstilo: "coque", oculos: true, blusa: "#2f63d6", blusaEscura: "#2149a8", calca: "#3a3550", calcaEscura: "#2a2640", sapato: "#5a2a1a" },
   cida: { corpo: "f", pele: "#8d5524", peleEscura: "#6e4019", bochecha: "#a0603a", cabelo: "#2a1a12", cabeloEstilo: "bob", blusa: "#f4f1ea", blusaEscura: "#c9c9d1", cruz: true, calca: "#f4f1ea", calcaEscura: "#c9c9d1", sapato: "#f0f0f0" },
@@ -356,7 +365,7 @@ export const CORES_DO_ESPECIAL = {
   jheni: ["#7442b3", "#f2d34e", "#4e2a7d"],
   edson: ["#1c1c24", "#ffffff", "#2a6f97"],
   fabiana: ["#e8811a", "#ffffff", "#b85f0c"],
-  rosa: ["#ffffff", "#b83f78", "#e85a9b"],
+  ana: ["#ffffff", "#1f5c3a", "#22b5d8"],
   antonio: ["#7a4a22", "#f4f1ea", "#3a2a1e"],
   lucia: ["#1f7a3f", "#ffdf00", "#0b3a1c"],
   cida: ["#ffffff", "#d23c28", "#5f9ccc"],

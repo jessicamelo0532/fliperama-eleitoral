@@ -199,6 +199,7 @@ p { margin: 0 0 var(--esp-4); }
 }
 .categoria--aventura { color: var(--cor-acerto); }
 .categoria--arcade { color: var(--cor-vermelho-claro); }
+.categoria--luta { color: var(--cor-amarelo); }
 
 /* ---------- Estado vazio ---------- */
 .vazio { text-align: center; padding: var(--esp-7) var(--esp-4); }

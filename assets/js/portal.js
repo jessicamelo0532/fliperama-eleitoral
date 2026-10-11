@@ -9,6 +9,7 @@ const CATEGORIAS = [
   { id: "todos", nome: "Todos" },
   { id: "aventura", nome: "Aventura" },
   { id: "arcade", nome: "Arcade" },
+  { id: "luta", nome: "Luta" },
 ];
 const NOME_CATEGORIA = Object.fromEntries(CATEGORIAS.map((c) => [c.id, c.nome]));
 const VISIVEIS = new Set(["publicado", "em-breve"]);

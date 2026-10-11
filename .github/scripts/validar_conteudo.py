@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
-CATEGORIAS = {"aventura", "arcade"}
+CATEGORIAS = {"aventura", "arcade", "luta"}
 STATUS = {"rascunho", "em-breve", "publicado"}
 CAMPOS_JOGO = {"id", "titulo", "descricao", "categoria", "caminho", "status"}
 

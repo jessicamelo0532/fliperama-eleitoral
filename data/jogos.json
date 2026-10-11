@@ -30,9 +30,9 @@
     "id": "defensores-da-democracia",
     "titulo": "Defensores da Democracia",
     "descricao": "Escolha um trabalhador ou estudante e enfrente, numa luta de fliperama, as ameaças à democracia desta eleição.",
-    "categoria": "arcade",
+    "categoria": "luta",
     "caminho": "jogos/defensores-da-democracia/",
-    "miniatura": "assets/img/thumb-padrao.svg",
-    "status": "em-breve"
+    "miniatura": "assets/img/capa-defensores-da-democracia.png",
+    "status": "publicado"
   }
 ]

@@ -11,6 +11,8 @@ const CHAO = 156;
 const GRAVIDADE = 0.32;
 const IMPULSO_PULO = -5.6;
 const MARGEM = 14;
+/* Deitado, o herói ocupa o comprimento do corpo para trás; a margem maior evita que ele saia da tela. */
+const MARGEM_DEITADO = 28;
 const CUSTO_ESPECIAL = 50;
 const MOVIMENTO_REDUZIDO = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -148,7 +150,8 @@ class Lutador {
     if (this.invulneravel > 0) this.invulneravel--;
     if (this.tempoSequencia > 0 && --this.tempoSequencia === 0) this.sequencia = 0;
     if (!this.noChao) this.cair();
-    this.x = limitar(this.x + this.vx, MARGEM, W - MARGEM);
+    const margem = this.ehHeroi && this.estado === "nocaute" ? MARGEM_DEITADO : MARGEM;
+    this.x = limitar(this.x + this.vx, margem, W - margem);
     if (this.estado === "nocaute") { if (this.noChao) this.vx *= 0.8; return; }
     if (this.estado === "vitoria") { this.vx = 0; return; }
     if (this.estado === "ferido") {

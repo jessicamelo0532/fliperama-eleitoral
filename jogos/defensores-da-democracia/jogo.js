@@ -380,7 +380,7 @@ function iniciarAnuncio(grande, sub, quadros, depois, alerta = false) {
   anuncio.classList.toggle("ddd-anuncio--alerta", alerta);
   anuncio.replaceChildren(
     el("div", { class: "ddd-anuncio__grande", text: grande }),
-    sub && el("div", { class: "ddd-anuncio__sub", text: sub }));
+    ...(sub ? [el("div", { class: "ddd-anuncio__sub", text: sub })] : []));
   anuncio.hidden = false;
 }
 
@@ -851,7 +851,7 @@ function nocaute(venceu) {
   efeitos.nocaute();
   anuncio.replaceChildren(
     el("div", { class: "ddd-anuncio__grande", text: venceu ? "K.O.!" : "NOCAUTE" }),
-    venceu && el("div", { class: "ddd-anuncio__sub", text: "A DEMOCRACIA RESISTE!" }));
+    ...(venceu ? [el("div", { class: "ddd-anuncio__sub", text: "A DEMOCRACIA RESISTE!" })] : []));
   anuncio.hidden = false;
 }
 

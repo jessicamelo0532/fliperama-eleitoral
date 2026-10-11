@@ -35,7 +35,7 @@ export function desenharLutador(ctx, L, pose, t, facing, ox, oy) {
     larguras.forEach((w, i) => R(x0 + centro - Math.floor(w / 2), y0 + i, w, 1, cor));
   };
 
-  if (pose === "ko") { deitado(R, L); return; }
+  if (pose === "ko") { desenharDeitado(ctx, L, facing, ox, oy); return; }
 
   const bob = pose === "idle" ? ((t >> 4) & 1) : 0;
   const inclina = { hurt: -2, kick: -1, punch: 1, special: 1 }[pose] ?? 0;
@@ -223,10 +223,26 @@ function mecha(R, L, x0, y, largura) {
   for (let x = x0; x < x0 + largura; x++) R(x, y, 1, 1, corDoCacho(L, x, y));
 }
 
-function deitado(R, L) {
-  R(-24, -10, 10, 9, L.pele); R(-25, -11, 10, 3, L.cabelo);
-  R(-14, -9, 15, 7, L.vestido || L.jaleco || L.blusa);
-  R(1, -7, 13, 5, L.saia || L.vestido || L.calca); R(14, -8, 3, 6, L.sapato);
+const LARGURA_DE_PE = 48;
+const ALTURA_DE_PE = 64;
+const deitados = new WeakMap();
+
+/* O lutador nocauteado é o próprio desenho de pé, girado, para manter roupa, cabelo e rosto de cada personagem. */
+function desenharDeitado(ctx, L, facing, ox, oy) {
+  let imagem = deitados.get(L);
+  if (!imagem) {
+    imagem = document.createElement("canvas");
+    imagem.width = LARGURA_DE_PE;
+    imagem.height = ALTURA_DE_PE;
+    desenharLutador(imagem.getContext("2d"), L, "hurt", 0, 1, LARGURA_DE_PE / 2, ALTURA_DE_PE - 1);
+    deitados.set(L, imagem);
+  }
+  ctx.save();
+  ctx.translate(ox, oy);
+  ctx.scale(facing, 1);
+  ctx.rotate(-Math.PI / 2);
+  ctx.drawImage(imagem, -12, -40);
+  ctx.restore();
 }
 
 /* ---------- Vilões (maiores que os heróis) ---------- */

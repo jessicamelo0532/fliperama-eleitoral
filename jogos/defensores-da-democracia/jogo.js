@@ -100,7 +100,7 @@ function telaInicio() {
       el("p", { class: "ddd-inicio__girar ddd-so-toque" },
         el("span", { class: "ddd-inicio__girar-icone", "aria-hidden": "true", text: "⟳" }),
         "Para uma melhor experiência, vire o celular na horizontal."),
-      el("button", { class: "botao", type: "button", onclick: telaEscolha, disabled: fases.length && personagens.length ? null : "" }, "Jogar"),
+      el("button", { class: "botao", type: "button", onclick: jogar, disabled: fases.length && personagens.length ? null : "" }, "Jogar"),
       comandos(),
       el("p", { class: "ddd-inicio__aviso", text: "Os vilões são ideias, não pessoas. Os fatos que aparecem depois de cada luta têm data e fonte." }))
   );
@@ -652,6 +652,7 @@ function atualizarModoDeTela() {
 
 async function alternarTelaCheia() {
   if (document.fullscreenElement || document.webkitFullscreenElement) {
+    liberarOrientacao();
     await (document.exitFullscreen?.() ?? document.webkitExitFullscreen?.());
   } else if (areaJogo.classList.contains("ddd-imersivo")) {
     areaJogo.classList.remove("ddd-imersivo");
@@ -666,6 +667,21 @@ async function alternarTelaCheia() {
   }
   atualizarModoDeTela();
   if (!palco.hidden) canvas.focus({ preventScroll: true });
+}
+
+const TOQUE = matchMedia("(pointer: coarse)");
+
+/* No celular, o Jogar já abre a tela cheia e deita a tela; onde o navegador não deixa travar a orientação, vale o aviso para virar o celular. */
+async function jogar() {
+  if (TOQUE.matches && !emTelaCheia()) {
+    await alternarTelaCheia();
+    await screen.orientation?.lock?.("landscape").catch(() => {});
+  }
+  telaEscolha();
+}
+
+function liberarOrientacao() {
+  try { screen.orientation?.unlock?.(); } catch { /* navegador sem trava de orientação */ }
 }
 
 function botaoTelaCheia() {

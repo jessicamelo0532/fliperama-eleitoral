@@ -24,6 +24,7 @@
   text-align: left; font-size: 14px; background: var(--cor-superficie-2); border-left: 4px solid var(--cor-amarelo);
 }
 .ddd-inicio__girar-icone { flex: none; font-size: 22px; color: var(--cor-amarelo); }
+.ddd-inicio__acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--esp-4); }
 .ddd-inicio__aviso { margin: var(--esp-4) 0 0; padding-top: var(--esp-3); border-top: 2px dotted var(--cor-borda); color: var(--cor-texto-2); font-size: 13px; }
 .ddd-comandos { max-width: 360px; margin: var(--esp-5) auto 0; padding: var(--esp-3) var(--esp-4); text-align: left; background: var(--cor-superficie-2); border: 2px solid var(--cor-borda); }
 .ddd-comandos__titulo { margin: 0 0 var(--esp-3); font-size: 10px; color: var(--cor-amarelo); text-align: center; }

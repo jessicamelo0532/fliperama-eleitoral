@@ -3,7 +3,7 @@
  * Um trabalhador ou estudante enfrenta cinco ameaças à democracia; cada vitória abre um card "Na vida real".
  */
 
-import { montarMoldura, carregarConteudo, el, renderFontes, mostrarResultado, registrarAcao } from "../../assets/js/moldura.js";
+import { montarMoldura, carregarConteudo, el, renderFontes, mostrarResultado, registrarAcao, botaoCompartilhar } from "../../assets/js/moldura.js";
 import { iniciarSom, definirSom, tocarMusica, pararMusica, efeitos } from "./som.js";
 import {
   novaLuta, passoLuta, passoParado, passoNocaute, desenharLuta, enfurecer, comemorar, falar,
@@ -100,7 +100,9 @@ function telaInicio() {
       el("p", { class: "ddd-inicio__girar ddd-so-toque" },
         el("span", { class: "ddd-inicio__girar-icone", "aria-hidden": "true", text: "⟳" }),
         "Para uma melhor experiência, vire o celular na horizontal."),
-      el("button", { class: "botao", type: "button", onclick: jogar, disabled: fases.length && personagens.length ? null : "" }, "Jogar"),
+      el("div", { class: "ddd-inicio__acoes" },
+        el("button", { class: "botao", type: "button", onclick: jogar, disabled: fases.length && personagens.length ? null : "" }, "Jogar"),
+        botaoCompartilhar("Defensores da Democracia: escolha um trabalhador ou estudante e enfrente as ameaças à democracia desta eleição. Jogue também:")),
       comandos(),
       el("p", { class: "ddd-inicio__aviso", text: "Os vilões são ideias, não pessoas. Os fatos que aparecem depois de cada luta têm data e fonte." }))
   );

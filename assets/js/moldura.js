@@ -186,6 +186,12 @@ export async function compartilhar(texto, url = location.href) {
   }
 }
 
+/** Botão "Compartilhar" que envia o endereço do jogo atual com o texto informado. */
+export function botaoCompartilhar(texto) {
+  const url = location.origin + location.pathname;
+  return el("button", { class: "botao botao--fantasma", type: "button", onclick: () => compartilhar(texto, url) }, "Compartilhar");
+}
+
 export function aviso(mensagem, duracaoMs = 2600) {
   const caixa = el("div", { class: "aviso", role: "status" }, mensagem);
   document.body.append(caixa);

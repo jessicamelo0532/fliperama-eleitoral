@@ -3,7 +3,7 @@
  */
 
 import {
-  el, montarMoldura, carregarConteudo, renderFontes, mostrarResultado, registrarAcao,
+  el, montarMoldura, carregarConteudo, renderFontes, mostrarResultado, registrarAcao, botaoCompartilhar,
 } from "../../assets/js/moldura.js";
 import {
   LARGURA as W, ALTURA as H, TAMANHO_CASA as P, MAPAS, RITMO, POSICAO_BONUS, PORTA_FISCAIS, SALA_FISCAIS,
@@ -602,7 +602,8 @@ function telaInicio() {
         ...elenco.map(([icone, nome, descricao]) => el("li", {}, icone, el("span", {}, el("strong", { text: nome }), ` ${descricao}`)))),
       el("div", { class: "fzu-inicio__acoes" },
         el("button", { class: "botao", type: "button", onclick: jogar, disabled: fases.length ? null : "" }, progresso.concluidas.length ? "Continuar" : "Jogar"),
-        progresso.concluidas.length > 0 && el("button", { class: "botao botao--fantasma", type: "button", onclick: recomecar }, "Recomeçar")),
+        progresso.concluidas.length > 0 && el("button", { class: "botao botao--fantasma", type: "button", onclick: recomecar }, "Recomeçar"),
+        botaoCompartilhar("Foge, Zero-Um!: fuja da fiscalização pelos corredores do poder e veja o que aconteceu na vida real. Jogue também:")),
       el("p", { class: "fzu-inicio__dica fzu-so-teclado", text: "Setas para andar · Esc para pausar" }),
       el("p", { class: "fzu-inicio__dica fzu-so-toque", text: "Deslize o dedo no labirinto ou use o direcional." }),
       progresso.recorde > 0 && el("p", { class: "fzu-inicio__dica", text: `Recorde: ${formatar(progresso.recorde)}` }),

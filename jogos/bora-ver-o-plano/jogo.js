@@ -4,7 +4,7 @@
 
 import kaplay from "https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs";
 import {
-  el, montarMoldura, carregarConteudo, renderFontes, mostrarResultado, registrarAcao, compartilhar,
+  el, montarMoldura, carregarConteudo, renderFontes, mostrarResultado, registrarAcao, compartilhar, botaoCompartilhar,
 } from "../../assets/js/moldura.js";
 import { FASES, LARGURA_BLOCO, SOLIDOS, PORTAS, lerMarcadores } from "./fases.js";
 import * as arte from "./sprites.js";
@@ -133,6 +133,7 @@ function telaInicio() {
       opcoesEl,
       el("div", { class: "bvp-acoes" },
         el("button", { class: "botao", type: "button", onclick: comecar }, temProgresso ? "Continuar" : "Jogar"),
+        botaoCompartilhar("Bora Ver o Plano: passeie pela cidade e descubra o que o plano de governo de Lula propõe para cada área. Jogue também:"),
         temProgresso && el("button", {
           class: "botao botao--fantasma", type: "button",
           onclick: (evento) => {

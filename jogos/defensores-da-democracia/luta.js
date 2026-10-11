@@ -42,12 +42,13 @@ const ESTILO_PROJETIL = {
   onda: ["#f4f1ea", "#7a0f2e", "#5a3a10"],
 };
 
-/* Ajuda ao jogador em cada fase (D31): título de eleitor, urna ou mutirão. */
+/* Ajuda ao jogador em cada fase (D31): o título de eleitor (com uma segunda chance se o primeiro não for pego), a urna ou o mutirão. */
 const BONUS_DA_FASE = { "fake-news": "titulo", desanimo: "titulo", retrocesso: "titulo", escala: "urna", desmonte: "mutirao" };
 const DURACAO_DA_PROTECAO = 300;
 const TEMPO_DO_ITEM_NO_CHAO = 420;
-const DANO_DA_URNA = 0.3;
+const DANO_DA_URNA = 0.25;
 const DANO_POR_AJUDANTE = 0.09;
+const DURACAO_DO_CLARAO = 40;
 /* A cada derrota na mesma fase o vilão volta um pouco mais fraco, até o limite de três ajustes. */
 const AJUSTE_POR_DERROTA = 0.12;
 const MAXIMO_DE_AJUSTES = 3;
@@ -253,7 +254,7 @@ function areaDoCorpo(f) {
   return { x: f.x - f.largura / 2, y: f.y - f.altura, w: f.largura, h: f.altura };
 }
 
-const multiplicadorDeDano = (f) => (f.protegido > 0 ? 1.5 : 1);
+const multiplicadorDeDano = (f) => (f.protegido > 0 ? 1.2 : 1);
 
 function acertar(alvo, autor, dano, empurrao, atordoa, direcao, caixa) {
   if (alvo.estado === "nocaute" || alvo.invulneravel > 0) return;
@@ -458,8 +459,8 @@ export function falar(f, conteudo) {
 
 /* ---------- Ajudas ao jogador ---------- */
 
-function avisar(conteudo) {
-  luta.aviso = { texto: conteudo, tempo: 100 };
+function avisar(conteudo, tempo = 130) {
+  luta.aviso = { texto: conteudo, tempo };
 }
 
 function agendarBonus(P, V) {
@@ -467,8 +468,8 @@ function agendarBonus(P, V) {
   const desdeFuria = luta.furiaEm === null ? -1 : luta.quadrosDeLuta - luta.furiaEm;
   if (luta.bonus === "titulo") {
     const primeiro = luta.itensSoltos === 0 && luta.quadrosDeLuta >= 420;
-    const segundo = luta.itensSoltos === 1 && desdeFuria >= 360 && luta.quadrosDeLuta - luta.ultimoItem >= 300;
-    if (primeiro || segundo) soltarItem("titulo");
+    const outraChance = luta.itensSoltos === 1 && !luta.tituloPego && luta.quadrosDeLuta - luta.ultimoItem >= 600;
+    if (primeiro || outraChance) soltarItem("titulo");
   } else if (luta.bonus === "urna") {
     if (luta.itensSoltos === 0 && desdeFuria >= 240) soltarItem("urna");
   } else if (luta.bonus === "mutirao" && !luta.mutiraoFeito && P.vida < P.vidaMaxima * 0.4) {
@@ -508,6 +509,7 @@ function avancarItem(P, V) {
 
 function protegerHeroi(P) {
   P.protegido = DURACAO_DA_PROTECAO;
+  luta.tituloPego = true;
   avisar("VOTO PROTEGIDO!");
   faiscas(P.x, P.y - 24, "#ffdf00", 14);
   faiscas(P.x, P.y - 24, "#2ecc71", 14);
@@ -516,10 +518,10 @@ function protegerHeroi(P) {
 }
 
 function confirmarVoto(P, V) {
-  avisar("VOTO CONFIRMADO!");
+  avisar("VOTO CONFIRMADO!", 210);
   efeitos.choque?.();
   efeitos.golpeForte?.();
-  luta.clarao = 14;
+  luta.clarao = DURACAO_DO_CLARAO;
   if (!MOVIMENTO_REDUZIDO) luta.tremor = 6;
   luta.torcida = Math.max(luta.torcida, 160);
   if (V.estado === "nocaute") return;
@@ -540,15 +542,25 @@ function chamarMutirao(P, V) {
 }
 
 function avancarAjudantes(V) {
+  if (luta.ajudantes.some((a) => a.fase !== "festa")) {
+    if (V?.estado === "nocaute") encerrarMutirao(true);
+    else if (luta.heroi?.estado === "nocaute") encerrarMutirao(false);
+  }
   for (const a of luta.ajudantes) {
     a.animacao++;
+    if (a.fase === "festa") {
+      a.vy = (a.vy ?? 0) + GRAVIDADE;
+      a.altura = Math.min(0, (a.altura ?? 0) + a.vy);
+      if (a.altura === 0 && luta.quadro % 40 === a.atraso) a.vy = -4.4;
+      continue;
+    }
     if (a.fase === "indo") {
       a.x += a.frente * 3.2;
-      if (V.estado === "nocaute") a.fase = "saindo";
+      if (!V) a.fase = "saindo";
       else if (Math.abs(V.x - a.x) <= V.largura / 2 + 10) Object.assign(a, { fase: "golpe", t: 0 });
     } else if (a.fase === "golpe") {
       a.t++;
-      if (a.t === 6 && V.estado !== "nocaute") {
+      if (a.t === 6 && V && V.estado !== "nocaute") {
         Object.assign(V, { invulneravel: 0, golpe: null, estado: V.estado === "defendendo" ? "parado" : V.estado });
         acertar(V, luta.heroi, V.vidaMaxima * DANO_POR_AJUDANTE, 2.4, 20, a.frente, areaDoCorpo(V));
       }
@@ -579,7 +591,7 @@ export function novaLuta(heroi, fase, derrotas = 0) {
   luta.vilao.posicionar(228, -1);
   Object.assign(luta, { cenario: fase.cenario, projeteis: [], particulas: [], baloes: [], tremor: 0, congelado: 0, torcida: 0, semEnergia: 0, festa: false,
     bonus: BONUS_DA_FASE[fase.id] || null, item: null, ajudantes: [], aviso: null, clarao: 0,
-    quadrosDeLuta: 0, itensSoltos: 0, ultimoItem: 0, furiaEm: null, mutiraoFeito: false });
+    quadrosDeLuta: 0, itensSoltos: 0, ultimoItem: 0, tituloPego: false, furiaEm: null, mutiraoFeito: false });
   return luta;
 }
 
@@ -597,8 +609,21 @@ export function enfurecer() {
   luta.heroi.frente = -luta.vilao.frente;
 }
 
+/* Se o mutirão ainda estiver na arena, os ajudantes comemoram com o herói; se o herói perder, eles saem. */
+function encerrarMutirao(heroiVenceu) {
+  if (!heroiVenceu) {
+    luta.ajudantes.forEach((a) => { if (a.fase !== "festa") a.fase = "saindo"; });
+    return;
+  }
+  luta.ajudantes = luta.ajudantes.filter((a) => a.fase === "festa" || (a.x > 10 && a.x < W - 10));
+  luta.ajudantes.forEach((a, i) => {
+    if (a.fase !== "festa") Object.assign(a, { fase: "festa", x: limitar(a.x, 24, W - 24), vy: 0, altura: 0, atraso: (i * 13) % 40 });
+  });
+}
+
 export function comemorar(vencedor) {
   Object.assign(vencedor, { golpe: null, estado: "vitoria", vx: 0 });
+  encerrarMutirao(vencedor.ehHeroi);
   luta.torcida = vencedor.ehHeroi ? 400 : 0;
   luta.projeteis = [];
   luta.item = null;
@@ -610,6 +635,7 @@ export function passoParado() {
   luta.quadro++;
   luta.heroi?.atualizar(luta.vilao);
   luta.vilao?.atualizar(luta.heroi);
+  avancarAjudantes(luta.vilao);
   passoComum();
 }
 
@@ -647,6 +673,7 @@ export function passoNocaute() {
     luta.heroi.atualizar(luta.vilao);
     luta.vilao.atualizar(luta.heroi);
   }
+  avancarAjudantes(luta.vilao);
   passoComum();
 }
 
@@ -687,6 +714,8 @@ function passoComum() {
 }
 
 export const metadeDaVida = () => luta.vilao.vida <= luta.vilao.vidaMaxima / 2;
+/** Verdadeiro enquanto os heróis do mutirão estão na arena. */
+export const mutiraoEmCena = () => luta.ajudantes.length > 0;
 export const estadoDaLuta = () => luta;
 
 /* ---------- Desenho ---------- */
@@ -746,10 +775,10 @@ function desenharFigura(c, f) {
 
 function desenharAjudante(c, a) {
   contextoSprite.clearRect(0, 0, SPRITE.width, SPRITE.height);
-  const pose = a.fase === "golpe" && a.t >= 4 ? "punch" : "walk";
+  const pose = a.fase === "festa" ? "win" : a.fase === "golpe" && a.t >= 4 ? "punch" : "walk";
   desenharLutador(contextoSprite, a.aparencia, pose, a.animacao, a.frente, ORIGEM_X, ORIGEM_Y);
   pintarSilhueta("#0b0b12");
-  const [dx, dy] = [Math.round(a.x) - ORIGEM_X, CHAO - ORIGEM_Y];
+  const [dx, dy] = [Math.round(a.x) - ORIGEM_X, Math.round(CHAO + (a.altura ?? 0)) - ORIGEM_Y];
   for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) c.drawImage(SILHUETA, dx + ox, dy + oy);
   c.drawImage(SPRITE, dx, dy);
 }
@@ -870,6 +899,6 @@ export function desenharLuta(c, largura = W) {
   luta.ajudantes.forEach((a) => desenharAjudante(c, a));
   luta.baloes.forEach((b) => desenharBalao(c, b, camera, largura));
   c.setTransform(1, 0, 0, 1, 0, 0);
-  if (luta.clarao > 0) { c.fillStyle = `rgba(255,255,255,${luta.clarao / 20})`; c.fillRect(0, 0, c.canvas.width, H); }
+  if (luta.clarao > 0) { c.fillStyle = `rgba(255,255,255,${(0.6 * luta.clarao) / DURACAO_DO_CLARAO})`; c.fillRect(0, 0, c.canvas.width, H); }
   if (luta.aviso) desenharAviso(c, largura);
 }

@@ -7,7 +7,7 @@ import { montarMoldura, carregarConteudo, el, renderFontes, mostrarResultado, re
 import { iniciarSom, definirSom, tocarMusica, pararMusica, efeitos } from "./som.js";
 import {
   novaLuta, passoLuta, passoParado, passoNocaute, desenharLuta, enfurecer, comemorar, falar,
-  metadeDaVida, estadoDaLuta, ligarEfeitos, iniciarFesta, retrato, recorteDoRosto, RECORTE_CORPO,
+  metadeDaVida, mutiraoEmCena, estadoDaLuta, ligarEfeitos, iniciarFesta, retrato, recorteDoRosto, RECORTE_CORPO,
 } from "./luta.js";
 
 const TITULO = "Defensores da Democracia";
@@ -828,7 +828,7 @@ function passo() {
     case "luta": {
       const resultado = passoLuta(entradaDoJogador());
       if (resultado) nocaute(resultado === "vitoria");
-      else if (!jogo.meioFeito && metadeDaVida()) {
+      else if (!jogo.meioFeito && metadeDaVida() && !mutiraoEmCena()) {
         jogo.meioFeito = true;
         enfurecer();
         conversar(roteiro("meio"), () => iniciarAnuncio("FÚRIA!", `${faseAtual().curto} FICOU MAIS RÁPIDO`, 70, () => { soltarTudo(); jogo.estado = "luta"; }));

@@ -93,6 +93,9 @@ function telaInicio() {
       el("ul", { class: "ddd-herois", "aria-label": "Personagens" },
         ...personagens.map((p) => el("li", { title: p.nome }, corpoDoHeroi(p.id, 32, 56)))),
       el("p", { class: "ddd-inicio__lide", text: `Escolha entre ${personagens.length} trabalhadores e estudantes, vença ${fases.length} lutas e descubra, a cada vitória, o que aconteceu de verdade nesta eleição.` }),
+      el("p", { class: "ddd-inicio__girar ddd-so-toque" },
+        el("span", { class: "ddd-inicio__girar-icone", "aria-hidden": "true", text: "⟳" }),
+        "Para jogar melhor, vire o celular na horizontal. O jogo ocupa a tela inteira sozinho."),
       el("button", { class: "botao", type: "button", onclick: telaEscolha, disabled: fases.length && personagens.length ? null : "" }, "Jogar"),
       comandos(),
       el("p", { class: "ddd-inicio__aviso", text: "Os vilões são ideias, não pessoas. Os fatos que aparecem depois de cada luta têm data e fonte." }))
@@ -588,6 +591,16 @@ function ajustarArena() {
 const CELULAR_DEITADO = matchMedia("(orientation: landscape) and (max-height: 520px) and (pointer: coarse)");
 const emTelaCheia = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement || areaJogo.classList.contains("ddd-imersivo"));
 
+/*
+ * Ao deitar o celular, a área do jogo já ocupa a tela toda; o navegador só libera a tela cheia de verdade
+ * depois de um toque, então ela é pedida no próximo toque.
+ */
+function aoGirarCelular() {
+  atualizarModoDeTela();
+  if (!CELULAR_DEITADO.matches || document.fullscreenElement || document.webkitFullscreenElement) return;
+  document.addEventListener("pointerdown", () => { if (CELULAR_DEITADO.matches && !emTelaCheia()) alternarTelaCheia(); }, { once: true });
+}
+
 function atualizarModoDeTela() {
   areaJogo.classList.toggle("ddd-cheio", emTelaCheia());
   areaJogo.classList.toggle("ddd-deitado", CELULAR_DEITADO.matches);
@@ -701,7 +714,7 @@ function ligarControles() {
   document.addEventListener("visibilitychange", () => { if (document.hidden) pausar(); });
   document.addEventListener("fullscreenchange", atualizarModoDeTela);
   document.addEventListener("webkitfullscreenchange", atualizarModoDeTela);
-  CELULAR_DEITADO.addEventListener?.("change", atualizarModoDeTela);
+  CELULAR_DEITADO.addEventListener?.("change", aoGirarCelular);
   CELULAR_EM_PE.addEventListener?.("change", ajustarArena);
   atualizarModoDeTela();
   ajustarArena();

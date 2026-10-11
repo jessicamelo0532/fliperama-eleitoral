@@ -15,6 +15,11 @@
 .ddd-herois { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--esp-1); margin: 0 0 var(--esp-4); padding: 0; list-style: none; }
 .ddd-herois canvas { width: 32px; height: 56px; image-rendering: pixelated; }
 .ddd-inicio__dica { margin: var(--esp-3) 0 0; color: var(--cor-texto-2); font-size: 14px; }
+.ddd-inicio__girar {
+  display: flex; align-items: center; gap: var(--esp-3); max-width: 40ch; margin: 0 auto var(--esp-4); padding: var(--esp-2) var(--esp-3);
+  text-align: left; font-size: 14px; background: var(--cor-superficie-2); border-left: 4px solid var(--cor-amarelo);
+}
+.ddd-inicio__girar-icone { flex: none; font-size: 22px; color: var(--cor-amarelo); }
 .ddd-inicio__aviso { margin: var(--esp-4) 0 0; padding-top: var(--esp-3); border-top: 2px dotted var(--cor-borda); color: var(--cor-texto-2); font-size: 13px; }
 .ddd-comandos { max-width: 360px; margin: var(--esp-5) auto 0; padding: var(--esp-3) var(--esp-4); text-align: left; background: var(--cor-superficie-2); border: 2px solid var(--cor-borda); }
 .ddd-comandos__titulo { margin: 0 0 var(--esp-3); font-size: 10px; color: var(--cor-amarelo); text-align: center; }
@@ -216,7 +221,11 @@
 .ddd-golpe--especial svg { width: 78%; height: 78%; }
 .ddd-golpe--especial.ddd-pronto { opacity: 1; box-shadow: 0 0 0 3px var(--cor-amarelo); }
 .ddd-golpe--soco, .ddd-golpe--chute { background: var(--cor-superficie-2); }
-.ddd-tecla.ativo, .ddd-golpe.ativo { transform: translateY(2px); filter: brightness(1.35); }
+.ddd-tecla:active, .ddd-tecla.ativo, .ddd-golpe:active, .ddd-golpe.ativo {
+  background: var(--cor-vermelho); border-color: var(--cor-vermelho-escuro); transform: translateY(2px);
+}
+.ddd-golpe--especial:active, .ddd-golpe--especial.ativo { background: var(--cor-vermelho-claro); opacity: 1; }
+.ddd-golpe:active .ddd-icone__linha, .ddd-golpe.ativo .ddd-icone__linha { stroke: var(--cor-vermelho); }
 .ddd-teclas { display: none; margin: var(--esp-3) 0 0; text-align: center; font-size: 13px; color: var(--cor-texto-2); }
 @media (hover: hover) and (pointer: fine) {
   .ddd-controles { display: none; }

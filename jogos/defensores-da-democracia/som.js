@@ -12,6 +12,7 @@ let agendador = null;
 let proximoTempo = 0;
 let passo = 0;
 let musicaAtual = "luta";
+const VOLUME_GERAL = 2.4;
 
 /*
  * Músicas originais em colcheias (notas MIDI; 0 = pausa).
@@ -57,9 +58,10 @@ function garantirContexto() {
   if (!Contexto) return null;
   contexto = new Contexto();
   saida = contexto.createGain();
+  saida.gain.value = VOLUME_GERAL;
   saida.connect(contexto.destination);
   saidaMusica = contexto.createGain();
-  saidaMusica.gain.value = 0.45;
+  saidaMusica.gain.value = 0.6;
   saidaMusica.connect(saida);
   ruidoBranco = contexto.createBuffer(1, Math.floor(contexto.sampleRate * 0.4), contexto.sampleRate);
   const amostras = ruidoBranco.getChannelData(0);
@@ -78,7 +80,7 @@ function silenciar() {
 function retomar() {
   if (!contexto || escondido()) return;
   contexto.resume?.();
-  saida.gain.setValueAtTime(1, contexto.currentTime);
+  saida.gain.setValueAtTime(VOLUME_GERAL, contexto.currentTime);
 }
 
 document.addEventListener("visibilitychange", () => (escondido() ? silenciar() : retomar()));

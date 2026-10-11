@@ -119,7 +119,11 @@ function comandos() {
     return copia;
   };
   const rotulado = (botao, rotulo, posicao) => el("span", { class: `ddd-comandos__item ddd-comandos__item--${posicao}` }, botao, el("span", { text: rotulo }));
-  const seta = (texto) => el("span", { class: "ddd-tecla ddd-tecla--mini pixel", "aria-hidden": "true", text: texto });
+  const copiaDoDirecional = () => {
+    const copia = el("span", { class: "ddd-direcional ddd-direcional--mini", "aria-hidden": "true" });
+    copia.innerHTML = document.querySelector(".ddd-controles .ddd-direcional").innerHTML;
+    return copia;
+  };
   return el("section", { class: "ddd-comandos", "aria-label": "Como jogar" },
     el("h3", { class: "ddd-comandos__titulo pixel", text: "Como jogar" }),
     el("table", { class: "ddd-comandos__tabela ddd-so-teclado" },
@@ -131,8 +135,11 @@ function comandos() {
     el("p", { class: "ddd-comandos__nota ddd-so-teclado", text: "Esc pausa o jogo." }),
     el("div", { class: "ddd-comandos__toque ddd-so-toque" },
       el("div", { class: "ddd-comandos__direcional" },
-        rotulado(seta("▲"), "Pular", "cima"), rotulado(seta("◀"), "Andar", "esquerda"),
-        rotulado(seta("▶"), "Andar", "direita"), rotulado(seta("▼"), "Defender", "baixo")),
+        el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--cima", text: "Pular" }),
+        el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--esquerda", text: "Andar" }),
+        copiaDoDirecional(),
+        el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--direita", text: "Andar" }),
+        el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--baixo", text: "Defender" })),
       el("div", { class: "ddd-comandos__acoes" },
         rotulado(copiaDoBotao("especial"), "Especial", "especial"),
         rotulado(copiaDoBotao("soco"), "Soco", "soco"), rotulado(copiaDoBotao("chute"), "Chute", "chute"))),
@@ -448,9 +455,8 @@ function mostrarCreditos() {
   placar.hidden = true;
   palco.classList.add("ddd-palco--creditos");
   iniciarFesta();
-  pararMusica();
   efeitos.euforia();
-  const fogos = setInterval(() => efeitos.euforia(), 3200);
+  tocarMusica("festa");
   const rolo = el("div", { class: "ddd-creditos__rolo" },
     el("p", { class: "ddd-creditos__titulo pixel", text: "A democracia venceu!" }),
     el("p", { class: "ddd-creditos__texto", text: `${jogo.heroi.nome} derrotou a Fake News, o Desânimo, o Retrocesso, o Relógio e a Sombra.` }),
@@ -476,18 +482,15 @@ function mostrarCreditos() {
     anterior = agora;
     rolo.style.transform = `translateY(${Math.round(posicao)}px)`;
     if (posicao > parar()) { requestAnimationFrame(rolar); return; }
-    clearInterval(fogos);
     pular.remove();
     acoes.hidden = false;
-    tocarMusica("festa");
     acoes.querySelector("button").focus({ preventScroll: true });
   };
-  jogo.sairDosFogos = () => clearInterval(fogos);
   requestAnimationFrame(rolar);
 }
 
 function sairDosCreditos(depois) {
-  jogo.sairDosFogos?.();
+  pararMusica();
   creditos.hidden = true;
   creditos.replaceChildren();
   palco.classList.remove("ddd-palco--creditos");
@@ -526,7 +529,7 @@ function montarBarra() {
     campos.fase = el("p", { class: "ddd-barra__fase pixel" }),
     el("div", { class: "ddd-barra__botoes" },
       campos.inicio = el("button", { class: "ddd-botao pixel", type: "button", "aria-label": "Voltar ao início do jogo", onclick: voltarAoInicio }, "INÍCIO"),
-      botaoSom(), botaoTelaCheia(),
+      campos.som = botaoSom(), campos.telaCheia = botaoTelaCheia(),
       campos.pausa = el("button", {
         class: "ddd-botao pixel", type: "button", "aria-label": "Pausar", onclick: () => (jogo.estado === "pausa" ? retomar() : pausar()),
       }, "PAUSA")));
@@ -539,14 +542,17 @@ function montarBarra() {
 
 function atualizarBotoesDaBarra() {
   if (!campos.inicio) return;
-  campos.inicio.hidden = jogo.estado === "inicio";
+  const naCapa = jogo.estado === "inicio";
+  barra.hidden = naCapa;
+  campos.inicio.hidden = naCapa;
+  campos.telaCheia.hidden = naCapa;
+  campos.som.hidden = palco.hidden;
   campos.pausa.hidden = palco.hidden;
   campos.fase.hidden = palco.hidden;
 }
 
 /** Sai de qualquer ponto do jogo e volta para a capa. */
 function voltarAoInicio() {
-  jogo.sairDosFogos?.();
   jogo.conversa = null;
   creditos.hidden = true;
   creditos.replaceChildren();
@@ -691,20 +697,24 @@ function avancarPorToque() {
 }
 
 /*
- * O direcional funciona como uma área só: a posição do dedo decide a direção, inclusive nas diagonais,
- * e dá para deslizar de um lado para o outro sem levantar o dedo. Subir pula; descer defende.
+ * Direcional circular: o manche segue o dedo dentro do círculo e a posição decide a direção,
+ * inclusive nas diagonais. Subir pula (uma vez a cada subida); descer defende.
  */
 function ligarDirecional() {
   const direcional = document.querySelector(".ddd-direcional");
-  const teclas = Object.fromEntries([...direcional.querySelectorAll("[data-acao]")].map((botao) => [botao.dataset.acao, botao]));
+  const manche = direcional.querySelector(".ddd-manche");
+  const setas = Object.fromEntries([...direcional.querySelectorAll("[data-direcao]")].map((seta) => [seta.dataset.direcao, seta]));
   let dedo = null;
   let estavaEmCima = false;
   const aplicar = (evento) => {
     const area = direcional.getBoundingClientRect();
-    const dx = ((evento.clientX - area.left) / area.width) * 2 - 1;
-    const dy = ((evento.clientY - area.top) / area.height) * 2 - 1;
-    const direcoes = { esquerda: dx < -0.33, direita: dx > 0.33, pular: dy < -0.33, defender: dy > 0.33 && Math.abs(dx) <= 0.33 };
-    for (const [acao, ativa] of Object.entries(direcoes)) teclas[acao].classList.toggle("ativo", ativa);
+    let dx = ((evento.clientX - area.left) / area.width) * 2 - 1;
+    let dy = ((evento.clientY - area.top) / area.height) * 2 - 1;
+    const distancia = Math.hypot(dx, dy);
+    if (distancia > 1) { dx /= distancia; dy /= distancia; }
+    manche.style.transform = `translate(calc(-50% + ${dx * area.width * 0.32}px), calc(-50% + ${dy * area.height * 0.32}px))`;
+    const direcoes = { esquerda: dx < -0.35, direita: dx > 0.35, pular: dy < -0.4, defender: dy > 0.4 && Math.abs(dx) <= 0.35 };
+    for (const [acao, ativa] of Object.entries(direcoes)) setas[acao].classList.toggle("ativo", ativa);
     if (jogo.estado !== "luta") return;
     entrada.esquerda = direcoes.esquerda;
     entrada.direita = direcoes.direita;
@@ -715,13 +725,16 @@ function ligarDirecional() {
   const soltarDedo = () => {
     dedo = null;
     estavaEmCima = false;
-    Object.values(teclas).forEach((botao) => botao.classList.remove("ativo"));
+    manche.style.transform = "";
+    direcional.classList.remove("ativo");
+    Object.values(setas).forEach((seta) => seta.classList.remove("ativo"));
     ["esquerda", "direita", "defender"].forEach(soltar);
   };
   direcional.addEventListener("pointerdown", (evento) => {
     evento.preventDefault();
     dedo = evento.pointerId;
     try { direcional.setPointerCapture(dedo); } catch { /* captura indisponível */ }
+    direcional.classList.add("ativo");
     aplicar(evento);
   });
   direcional.addEventListener("pointermove", (evento) => { if (evento.pointerId === dedo) aplicar(evento); });

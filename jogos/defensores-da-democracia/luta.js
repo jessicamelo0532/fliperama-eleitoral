@@ -530,6 +530,8 @@ export function iniciarFesta() {
 function passoComum() {
   if (luta.festa) {
     luta.torcida = 60;
+    const heroi = luta.heroi;
+    if (heroi.noChao && luta.quadro % 40 === 0) Object.assign(heroi, { vy: -4.4, noChao: false });
     if (luta.quadro % 24 === 0) soltarFogos();
   }
   if (luta.tremor > 0) luta.tremor = luta.tremor > 0.5 ? luta.tremor * 0.82 : 0;

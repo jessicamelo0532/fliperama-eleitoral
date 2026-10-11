@@ -31,13 +31,12 @@
             <div id="dialogo" class="ddd-dialogo" hidden></div>
           </div>
           <div id="controles" class="ddd-controles">
-            <div class="ddd-direcional" aria-label="Direcional">
-              <span class="ddd-diagonal ddd-diagonal--esquerda" aria-hidden="true">◤</span>
-              <span class="ddd-diagonal ddd-diagonal--direita" aria-hidden="true">◥</span>
-              <button type="button" class="ddd-tecla ddd-tecla--cima" data-acao="pular" aria-label="Pular">▲</button>
-              <button type="button" class="ddd-tecla ddd-tecla--esquerda" data-acao="esquerda" aria-label="Andar para a esquerda">◀</button>
-              <button type="button" class="ddd-tecla ddd-tecla--direita" data-acao="direita" aria-label="Andar para a direita">▶</button>
-              <button type="button" class="ddd-tecla ddd-tecla--baixo" data-acao="defender" aria-label="Defender">▼</button>
+            <div class="ddd-direcional" role="group" aria-label="Direcional: deslize o dedo para andar, pular e defender">
+              <span class="ddd-seta ddd-seta--cima" data-direcao="pular" aria-hidden="true">▲</span>
+              <span class="ddd-seta ddd-seta--esquerda" data-direcao="esquerda" aria-hidden="true">◀</span>
+              <span class="ddd-seta ddd-seta--direita" data-direcao="direita" aria-hidden="true">▶</span>
+              <span class="ddd-seta ddd-seta--baixo" data-direcao="defender" aria-hidden="true">▼</span>
+              <span class="ddd-manche" aria-hidden="true"></span>
             </div>
             <div class="ddd-acoes">
               <button type="button" class="ddd-golpe ddd-golpe--especial" data-acao="especial" aria-label="Especial">

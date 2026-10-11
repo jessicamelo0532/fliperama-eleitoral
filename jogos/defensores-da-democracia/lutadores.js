@@ -42,7 +42,8 @@ export function desenharLutador(ctx, L, pose, t, facing, ox, oy) {
   cabeloAtras(R, L, cx, yCabeca);
 
   /* Braço de trás. */
-  bracoAtras(R, L, pose, cx, yOmbro);
+  const larguraOmbro = TRONCO[L.corpo || "m"][2] + (L.jaleco ? 2 : 0);
+  bracoAtras(R, L, pose, cx, yOmbro, cx - Math.floor(larguraOmbro / 2) - 2, t);
 
   /* Pernas. */
   pernas(R, L, pose, t, yQuadril);
@@ -57,6 +58,7 @@ export function desenharLutador(ctx, L, pose, t, facing, ox, oy) {
     [[2, 0], [1, 1], [0, 2], [1, 3], [2, 4], [5, 0], [5, 1], [4, 2], [3, 3], [3, 4], [6, 0], [7, 1], [8, 2], [7, 3], [6, 4]]
       .forEach(([dx, dy]) => R(cx - 6 + dx, yOmbro + 3 + dy, 1, 1, L.codigo));
   }
+  if (L.cracha) { R(cx + 1, yOmbro, 1, 4, "#f4f1ea"); R(cx, yOmbro + 4, 3, 3, "#f4f1ea"); R(cx, yOmbro + 5, 3, 1, "#d23c28"); }
   if (L.cruz) { R(cx + 1, yOmbro + 4, 3, 1, "#e5484d"); R(cx + 2, yOmbro + 3, 1, 3, "#e5484d"); }
   if (L.xadrez) { for (let i = -5; i < 6; i += 3) R(cx + i, yOmbro, 1, ALTURA_TRONCO, L.xadrez); R(cx - 5, yOmbro + 6, 11, 1, L.xadrez); }
   if (L.jaqueta) { R(cx - 5, yOmbro, 3, ALTURA_TRONCO - 1, L.jaqueta); R(cx + 2, yOmbro, 3, ALTURA_TRONCO - 1, L.jaqueta); R(cx - 6, yOmbro + 1, 1, 5, L.jaqueta); }
@@ -102,13 +104,15 @@ export function desenharLutador(ctx, L, pose, t, facing, ox, oy) {
 
 function manga(L) { return L.jaleco || L.jaqueta || L.blusa; }
 
-function bracoAtras(R, L, pose, cx, y) {
+/* O braço de trás fica do lado de fora do tronco, para aparecer mesmo atrás do corpo. */
+function bracoAtras(R, L, pose, cx, y, x, t) {
   const cor = L.mangaEscura || L.blusaEscura;
   if (pose === "block") { R(cx + 1, y - 4, 3, 7, cor); R(cx + 1, y - 6, 3, 2, L.peleEscura); return; }
   if (pose === "special") { R(cx + 2, y + 5, 9, 3, cor); R(cx + 11, y + 5, 3, 3, L.peleEscura); return; }
-  if (pose === "win") { R(cx - 6, y - 9, 3, 10, cor); R(cx - 6, y - 12, 3, 3, L.peleEscura); return; }
-  R(cx - 6, y + 1, 3, 9, cor);
-  R(cx - 6, y + 10, 3, 3, L.peleEscura);
+  if (pose === "win") { R(x, y - 9, 3, 10, cor); R(x, y - 12, 3, 3, L.peleEscura); return; }
+  const balanco = pose === "walk" ? -Math.round(Math.sin(t * 0.3) * 1.5) : 0;
+  R(x + balanco, y + 1, 3, 9, cor);
+  R(x + balanco, y + 10, 3, 3, L.peleEscura);
 }
 
 function bracoFrente(R, L, pose, t, cx, y) {
@@ -335,6 +339,7 @@ export const APARENCIAS = Object.fromEntries(Object.entries({
   igor: { corpo: "m", pele: "#c68642", peleEscura: "#a66a2e", cabelo: "#141414", cabeloEstilo: "curto", oculos: true, blusa: "#3a3f4a", blusaEscura: "#2a2e36", codigo: "#7ff5e8", calca: "#2b3a55", calcaEscura: "#1f2a40", sapato: "#f0f0f0" },
   jheni: { corpo: "f", pele: "#f2cfae", peleEscura: "#d6ad88", bochecha: "#eaa090", cabelo: "#141414", cabeloClaro: "#2e2e3a", cabeloEstilo: "longo", estrelas: "#f2d34e", blusa: "#7442b3", blusaEscura: "#4e2a7d", calca: "#2a2a3a", calcaEscura: "#1c1c28", mochila: "#e8b923", mochilaEscura: "#b8901a", sapato: "#f0f0f0" },
   edson: { corpo: "m", pele: "#6b4423", peleEscura: "#4f3018", cabelo: "#111111", cabeloEstilo: "bone", bone: "#2e9e4f", boneEscuro: "#1f7a3a", blusa: "#2e9e4f", blusaEscura: "#1f7a3a", calca: "#2b3a55", calcaEscura: "#1f2a40", mochila: "#e8501a", mochilaEscura: "#b23a10", sapato: "#f0f0f0" },
+  fabiana: { corpo: "f", pele: "#b87a4b", peleEscura: "#9a5f36", bochecha: "#c4704a", cabelo: "#2a1a12", cabeloEstilo: "rabo", blusa: "#e8811a", blusaEscura: "#b85f0c", cracha: true, calca: "#1c1c28", calcaEscura: "#141420", sapato: "#141414" },
   rosa: { corpo: "f", pele: "#c68642", peleEscura: "#a66a2e", bochecha: "#d98a6a", cabelo: "#3a2a1e", cabeloEstilo: "coque", blusa: "#e85a9b", blusaEscura: "#b83f78", vestido: "#e85a9b", avental: "#f4f1ea", calca: "#c68642", calcaEscura: "#a66a2e", sapato: "#5a2a1a" },
   antonio: { corpo: "m", pele: "#d9a27a", peleEscura: "#b9825a", cabelo: "#d6d1c4", sobrancelha: "#d6d1c4", cabeloEstilo: "boina", boina: "#3a3a46", bigode: "#e8e4da", blusa: "#d6d1c4", blusaEscura: "#b0aba0", jaqueta: "#7a4a22", mangaEscura: "#5e3b1a", calca: "#4a4a55", calcaEscura: "#3a3a46", sapato: "#2a1a12" },
   lucia: { corpo: "f", pele: "#a86b3c", peleEscura: "#8a532a", bochecha: "#b8603a", cabelo: "#1a1009", cabeloEstilo: "coque", oculos: true, blusa: "#2f63d6", blusaEscura: "#2149a8", calca: "#3a3550", calcaEscura: "#2a2640", sapato: "#5a2a1a" },
@@ -350,6 +355,7 @@ export const CORES_DO_ESPECIAL = {
   igor: ["#14161d", "#41d1c6", "#41d1c6"],
   jheni: ["#7442b3", "#f2d34e", "#4e2a7d"],
   edson: ["#e8501a", "#ffffff", "#b23a10"],
+  fabiana: ["#e8811a", "#ffffff", "#b85f0c"],
   rosa: ["#ffffff", "#b83f78", "#e85a9b"],
   antonio: ["#7a4a22", "#f4f1ea", "#3a2a1e"],
   lucia: ["#1f7a3f", "#ffdf00", "#0b3a1c"],

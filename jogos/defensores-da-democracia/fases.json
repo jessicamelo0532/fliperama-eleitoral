@@ -49,6 +49,11 @@
         "Pode correr, que eu sou mais rápido que boato.",
         "Entregue: a verdade. Confira antes de mandar para o grupo."
       ],
+      "fabiana": [
+        "Eu confiro preço, troco e nota o dia inteiro. Notícia sem origem não passa no meu caixa.",
+        "O cliente confia em mim porque eu não erro a conta. E você só erra.",
+        "Antes de passar adiante, confira. Com atenção de caixa."
+      ],
       "rosa": [
         "Menina, se eu acreditasse em tudo que chega no celular, já tinha fechado a loja.",
         "Eu confiro até o troco. Imagina uma notícia.",
@@ -140,6 +145,11 @@
         "Trabalho de domingo a domingo, mas voto eu não perco.",
         "Dá tempo de entregar e de votar. Tô acostumado a correr.",
         "Fiz minha entrega: o recado de que todo voto conta."
+      ],
+      "fabiana": [
+        "Tudo igual? Quem vê o preço da comida todo dia sabe que não é.",
+        "Atendo o bairro inteiro e sei: cada voto pesa no carrinho de todo mundo.",
+        "Meu voto é a senha para uma vida melhor."
       ],
       "rosa": [
         "Tanto faz nada. Quem governa mexe no preço do açúcar, do trigo e do gás.",
@@ -233,6 +243,11 @@
         "Rápido como uma entrega: sua borracha não alcança ninguém.",
         "Mulher decide eleição. E decide bem."
       ],
+      "fabiana": [
+        "Mulher sustenta muita casa neste país. E vota também.",
+        "Sou mãe, trabalhadora e eleitora. Sua borracha não dá conta.",
+        "Pode fechar o caixa, retrocesso. Aqui você não passa."
+      ],
       "rosa": [
         "Mulher dona do próprio negócio também é dona do próprio voto.",
         "Na minha cozinha mando eu. Na minha urna também.",
@@ -321,9 +336,14 @@
         "Jornada justa é direito. E direito se defende."
       ],
       "edson": [
-        "Doze horas na moto e você ainda quer mais? Hoje eu bato o ponto em você.",
+        "Doze horas na moto e ainda querem mais? Quem trabalha precisa de limite.",
         "Meu filho está crescendo e eu quase não vejo. Chega!",
         "Pedido entregue: um tempo de folga com a família."
+      ],
+      "fabiana": [
+        "Atender bem exige atenção, e atenção exige descanso. Hoje quem fecha o turno sou eu.",
+        "Quero dois dias de folga para viver, não só para descansar.",
+        "Escala 5x2: dois dias de folga, toda semana."
       ],
       "rosa": [
         "Se ninguém tiver folga, quem vai comprar meu bolo no fim de semana?",
@@ -416,6 +436,11 @@
         "Rodo a cidade inteira. Em todo canto tem gente que defende essa Constituição.",
         "Pode arrancar página, que eu entrego outra cópia.",
         "Entrega final: democracia inteira."
+      ],
+      "fabiana": [
+        "Essa Constituição garante meus direitos de trabalhadora. Você não vai rasgar.",
+        "Cada página arrancada é um direito a menos. Não deixo.",
+        "Fechamento do caixa: democracia inteira, nenhuma página faltando."
       ],
       "rosa": [
         "Foi essa Constituição que garantiu o meu direito de trabalhar e de votar.",

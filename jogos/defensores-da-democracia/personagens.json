@@ -100,7 +100,29 @@
     "velocidade": 1.3,
     "forca": 0.85,
     "pontosFortes": [
+      "fake-news",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "fabiana",
+    "tipo": "personagem",
+    "nome": "Fabiana",
+    "curto": "FABIANA",
+    "profissao": "Caixa de supermercado",
+    "historia": "É a caixa mais atenciosa do supermercado do bairro: conhece os clientes pelo nome e nunca erra um troco. Trabalha seis dias por semana, com uma folga só, e sonha com um fim de semana inteiro com a família.",
+    "especial": {
+      "nome": "Escala 5x2",
+      "rotulo": "5X2"
+    },
+    "vida": 105,
+    "velocidade": 1.0,
+    "forca": 1.0,
+    "pontosFortes": [
       "escala",
+      "retrocesso",
       "desmonte"
     ],
     "fontes": [],

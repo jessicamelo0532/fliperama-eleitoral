@@ -174,16 +174,10 @@ function telaEscolha() {
   }, corpoDoHeroi(p.id, 32, 56), el("span", {},
     el("span", { class: "ddd-card__nome pixel", text: p.nome }),
     el("span", { class: "ddd-card__profissao", text: p.profissao }))));
-  const sortear = el("button", {
-    class: "ddd-card ddd-card--sortear", type: "button",
-    onclick: () => cards[Math.floor(Math.random() * cards.length)].click(),
-  }, el("span", { class: "ddd-card__sorte pixel", "aria-hidden": "true", text: "?" }), el("span", {},
-    el("span", { class: "ddd-card__nome pixel", text: "Sortear" }),
-    el("span", { class: "ddd-card__profissao", text: "Deixa a sorte escolher" })));
   tela.replaceChildren(
     el("div", { class: "ddd-escolha" },
       el("h2", { class: "ddd-escolha__titulo pixel", text: "Escolha quem vai defender a democracia" }),
-      el("div", { class: "ddd-elenco" }, ...cards, sortear),
+      el("div", { class: "ddd-elenco" }, ...cards),
       ficha)
   );
   cards[0]?.focus({ preventScroll: true });
@@ -253,6 +247,9 @@ function fecharCartao() {
   canvas.focus({ preventScroll: true });
 }
 
+/** Trilha de cada fase; a da Sombra é a do chefão. */
+const MUSICA_DA_FASE = { "fake-news": "luta", desanimo: "preguica", retrocesso: "antiga", escala: "relogio", desmonte: "chefe" };
+
 function apresentarFase() {
   const fase = faseAtual();
   novaLuta(jogo.heroi, fase);
@@ -261,7 +258,7 @@ function apresentarFase() {
   placar.hidden = true;
   atualizarBarra();
   const chefao = jogo.fase === fases.length - 1;
-  tocarMusica(chefao ? "chefe" : "luta");
+  tocarMusica(MUSICA_DA_FASE[fase.id] || "luta");
   const rosto = el("canvas", { width: "36", height: "36", "aria-hidden": "true" });
   retrato(rosto, { vilaoId: fase.id, recorte: recorteDoRosto(null, fase.id) });
   const comecar = () => {

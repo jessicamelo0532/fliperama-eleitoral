@@ -40,6 +40,36 @@ const MUSICAS = {
     ],
     baixo: [38, 38, 50, 38, 39, 39, 51, 39, 38, 38, 50, 38, 37, 37, 49, 37],
   },
+  preguica: {
+    bpm: 116, ritmoBaixo: 2, timbre: "triangle",
+    melodia: [
+      60, 0, 0, 63, 0, 65, 0, 0, 67, 0, 65, 0, 63, 0, 60, 0,
+      58, 0, 0, 60, 0, 63, 0, 0, 60, 0, 0, 0, 0, 0, 0, 0,
+      60, 0, 0, 63, 0, 65, 0, 67, 70, 0, 67, 0, 65, 0, 63, 0,
+      65, 0, 63, 0, 60, 0, 58, 0, 60, 0, 0, 0, 55, 0, 58, 0,
+    ],
+    baixo: [36, 43, 39, 43, 34, 41, 38, 41],
+  },
+  antiga: {
+    bpm: 160, ritmoBaixo: 2, timbre: "square",
+    melodia: [
+      67, 0, 71, 0, 74, 0, 71, 0, 72, 0, 69, 0, 66, 0, 62, 0,
+      67, 0, 71, 0, 74, 0, 79, 0, 78, 0, 76, 0, 74, 0, 0, 0,
+      76, 0, 74, 0, 72, 0, 71, 0, 69, 0, 71, 0, 72, 0, 74, 0,
+      71, 0, 67, 0, 69, 0, 66, 0, 67, 0, 0, 0, 62, 0, 0, 0,
+    ],
+    baixo: [43, 50, 43, 50, 38, 50, 38, 50],
+  },
+  relogio: {
+    bpm: 168, ritmoBaixo: 1, timbre: "square", tique: true,
+    melodia: [
+      76, 0, 76, 0, 76, 0, 76, 0, 74, 0, 74, 0, 74, 0, 74, 0,
+      72, 0, 72, 0, 72, 0, 72, 0, 71, 0, 72, 0, 74, 0, 71, 0,
+      76, 0, 77, 0, 76, 0, 74, 0, 72, 0, 74, 0, 72, 0, 71, 0,
+      69, 0, 71, 0, 72, 0, 74, 0, 76, 0, 0, 0, 64, 0, 0, 0,
+    ],
+    baixo: [45, 45, 45, 45, 40, 40, 43, 43, 41, 41, 41, 41, 40, 40, 44, 44],
+  },
   festa: {
     bpm: 140, ritmoBaixo: 2, timbre: "square",
     melodia: [
@@ -122,12 +152,13 @@ function nota(destino, tipo, freq, inicio, duracao, volume) {
 }
 
 function agendar() {
-  const { bpm, ritmoBaixo, timbre, melodia, baixo } = MUSICAS[musicaAtual];
+  const { bpm, ritmoBaixo, timbre, melodia, baixo, tique } = MUSICAS[musicaAtual];
   const duracao = 60 / bpm / 2;
   while (proximoTempo < contexto.currentTime + 0.15) {
     const notaMelodia = melodia[passo % melodia.length];
     if (notaMelodia) nota(saidaMusica, timbre, frequencia(notaMelodia), proximoTempo, duracao * 1.6, timbre === "sawtooth" ? 0.018 : 0.025);
     if (passo % ritmoBaixo === 0) nota(saidaMusica, "triangle", frequencia(baixo[(passo / ritmoBaixo) % baixo.length]), proximoTempo, duracao * ritmoBaixo * 0.9, 0.07);
+    if (tique && passo % 2 === 0) nota(saidaMusica, "square", passo % 4 === 0 ? 1760 : 1320, proximoTempo, 0.03, 0.012);
     proximoTempo += duracao;
     passo++;
   }
@@ -135,7 +166,7 @@ function agendar() {
 
 /**
  * Toca uma música em loop, se o som estiver ligado; troca a atual se já houver uma tocando.
- * @param {"luta"|"chefe"|"festa"} [nome]
+ * @param {"luta"|"preguica"|"antiga"|"relogio"|"chefe"|"festa"} [nome]
  */
 export function tocarMusica(nome = musicaAtual) {
   querMusica = true;

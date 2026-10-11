@@ -338,7 +338,7 @@ function desenharDestaque(c, base, t) {
 /* A faixa fica bem acima da torcida, para os lutadores e as bandeiras não cobrirem o texto. */
 function desenharFaixa(c, [xa, xb], base, texto, t) {
   const balanco = ((t >> 5) & 1);
-  const topo = base - 62 - balanco;
+  const topo = base - 48 - balanco;
   px(c, xa, topo, 1, base - 17 - topo, "#8a6a4a");
   px(c, xb, topo, 1, base - 17 - topo, "#8a6a4a");
   px(c, xa + 1, topo, xb - xa - 1, 9, "#0b0b12");

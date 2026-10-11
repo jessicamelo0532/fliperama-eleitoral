@@ -107,6 +107,9 @@
   background: var(--cor-superficie-2); border: 2px solid var(--cor-borda); cursor: pointer;
 }
 .ddd-botao[aria-pressed="false"] { color: var(--cor-texto-2); }
+.ddd-botao--som { display: inline-flex; align-items: center; gap: 6px; }
+.ddd-botao__icone { width: 14px; height: 14px; fill: currentColor; }
+.ddd-botao--som[aria-pressed="false"] .ddd-botao__icone { opacity: .5; }
 
 /* ---------- Arena ---------- */
 .ddd-cena {
@@ -144,6 +147,8 @@
   gap: var(--esp-2); padding: 0 var(--esp-2); text-align: center; pointer-events: none;
 }
 .ddd-anuncio__grande {
+  align-self: stretch; padding: 10px 0 8px;
+  background: color-mix(in srgb, var(--cor-fundo) 82%, transparent); border-block: 3px solid var(--cor-amarelo);
   font-family: var(--fonte-pixel); font-size: clamp(20px, 6vw, 44px); color: var(--cor-amarelo);
   text-shadow: -3px 0 var(--cor-fundo), 3px 0 var(--cor-fundo), 0 -3px var(--cor-fundo), 0 3px var(--cor-fundo), 5px 5px 0 var(--cor-vermelho);
 }
@@ -169,7 +174,7 @@
 @keyframes ddd-piscar { 50% { opacity: 0; } }
 .ddd-dialogo__seguir { font-size: 8px; color: var(--cor-amarelo); }
 
-.ddd-anuncio--alerta .ddd-anuncio__grande { color: var(--cor-vermelho-claro); animation: ddd-piscar .5s steps(2) 6; }
+.ddd-anuncio--alerta .ddd-anuncio__grande { color: var(--cor-vermelho-claro); border-color: var(--cor-vermelho-claro); animation: ddd-piscar .5s steps(2) 6; }
 .ddd-anuncio--alerta { background: color-mix(in srgb, var(--cor-vermelho-escuro) 35%, transparent); }
 
 /* ---------- Créditos finais ---------- */
@@ -179,7 +184,6 @@
 }
 .ddd-creditos__rolo { position: absolute; left: 0; right: 0; top: 0; display: flex; flex-direction: column; align-items: center; gap: var(--esp-3); padding: 0 var(--esp-4); }
 .ddd-creditos__titulo { margin: 0 0 var(--esp-3); font-size: clamp(16px, 4.5vw, 26px); color: var(--cor-amarelo); text-shadow: 3px 3px 0 var(--cor-verde); }
-.ddd-creditos__fase { margin: var(--esp-4) 0 0; font-size: 11px; color: var(--cor-dourado); }
 .ddd-creditos__texto { margin: 0; max-width: 40ch; font-size: 15px; color: var(--cor-texto); text-shadow: 1px 1px 0 var(--cor-fundo); }
 .ddd-creditos__final { margin: var(--esp-6) 0 0; max-width: 26ch; font-size: clamp(11px, 2.6vw, 15px); line-height: 1.7; color: var(--cor-amarelo); text-shadow: 2px 2px 0 var(--cor-fundo); }
 .ddd-creditos__acoes { position: absolute; left: 0; right: 0; bottom: var(--esp-4); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--esp-3); }

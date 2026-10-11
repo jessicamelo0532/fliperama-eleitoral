@@ -464,10 +464,6 @@ function mostrarCreditos() {
   const rolo = el("div", { class: "ddd-creditos__rolo" },
     el("p", { class: "ddd-creditos__titulo pixel", text: "A democracia venceu!" }),
     el("p", { class: "ddd-creditos__texto", text: `${jogo.heroi.nome} derrotou a Fake News, o Desânimo, o Retrocesso, o Relógio e a Sombra.` }),
-    ...jogo.vencidas.flatMap((fase) => [
-      el("p", { class: "ddd-creditos__fase pixel", text: fase.nome }),
-      el("p", { class: "ddd-creditos__texto", text: fase.vidaReal }),
-    ]),
     el("p", { class: "ddd-creditos__texto", text: "Na vida real, a luta é sem soco: é com voto, informação checada e participação." }),
     el("p", { class: "ddd-creditos__final pixel", text: "O fim dessa história quem escreve é você. 25 de outubro: vote Lula, 13." }));
   const acoes = el("div", { class: "ddd-creditos__acoes", hidden: true },
@@ -532,7 +528,7 @@ function montarBarra() {
   barra.replaceChildren(
     campos.fase = el("p", { class: "ddd-barra__fase pixel" }),
     el("div", { class: "ddd-barra__botoes" },
-      campos.inicio = el("button", { class: "ddd-botao pixel", type: "button", "aria-label": "Voltar ao início do jogo", onclick: voltarAoInicio }, "INÍCIO"),
+      campos.inicio = el("button", { class: "ddd-botao pixel", type: "button", "aria-label": "Voltar ao início do jogo", onclick: voltarAoInicio }, "INICIO"),
       campos.som = botaoSom(), campos.telaCheia = botaoTelaCheia(),
       campos.pausa = el("button", {
         class: "ddd-botao pixel", type: "button", "aria-label": "Pausar", onclick: () => (jogo.estado === "pausa" ? retomar() : pausar()),
@@ -598,18 +594,31 @@ function atualizarPlacar() {
   document.querySelector(".ddd-golpe--especial")?.classList.toggle("ddd-pronto", pronto);
 }
 
+const NOTA_MUSICAL = "M9 2h11v4H13v11.5a3.5 3.5 0 1 1-2-3.2V2z";
+
+function iconeDeSom() {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.classList.add("ddd-botao__icone");
+  const caminho = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  caminho.setAttribute("d", NOTA_MUSICAL);
+  svg.append(caminho);
+  return svg;
+}
+
 function botaoSom() {
-  const rotulo = () => (progresso.som ? "♪ SOM" : "♪ MUDO");
+  const texto = el("span", { text: progresso.som ? "SOM" : "MUDO" });
   const botao = el("button", {
-    class: "ddd-botao pixel", type: "button", "aria-pressed": String(progresso.som), "aria-label": "Som",
+    class: "ddd-botao ddd-botao--som pixel", type: "button", "aria-pressed": String(progresso.som), "aria-label": "Som",
     onclick: () => {
       progresso.som = !progresso.som;
       salvarProgresso();
       definirSom(progresso.som);
-      botao.textContent = rotulo();
+      texto.textContent = progresso.som ? "SOM" : "MUDO";
       botao.setAttribute("aria-pressed", String(progresso.som));
     },
-  }, rotulo());
+  }, iconeDeSom(), texto);
   return botao;
 }
 

@@ -25,5 +25,14 @@
     "caminho": "jogos/foge-zero-um/",
     "miniatura": "assets/img/capa-foge-zero-um.png",
     "status": "publicado"
+  },
+  {
+    "id": "defensores-da-democracia",
+    "titulo": "Defensores da Democracia",
+    "descricao": "Escolha um trabalhador ou estudante e enfrente, numa luta de fliperama, as ameaças à democracia desta eleição.",
+    "categoria": "arcade",
+    "caminho": "jogos/defensores-da-democracia/",
+    "miniatura": "assets/img/thumb-padrao.svg",
+    "status": "em-breve"
   }
 ]

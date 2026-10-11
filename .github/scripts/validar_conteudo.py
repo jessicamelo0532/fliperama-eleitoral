@@ -63,7 +63,7 @@ def validar_conteudo(caminho):
         if not isinstance(fontes, list):
             erros.append(f"{rotulo}: 'fontes' deve ser uma lista")
             continue
-        if item.get("revisado") is True and not fontes:
+        if item.get("revisado") is True and not fontes and item.get("tipo") != "personagem":
             erros.append(f"{rotulo}: item revisado sem fonte")
         for fonte in fontes:
             if not str(fonte.get("url", "")).startswith("https://"):

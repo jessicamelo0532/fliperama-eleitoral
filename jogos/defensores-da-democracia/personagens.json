@@ -1,0 +1,238 @@
+[
+  {
+    "id": "melo",
+    "tipo": "personagem",
+    "nome": "Melo",
+    "curto": "MELO",
+    "profissao": "Bibliotecária",
+    "historia": "Trocou o silêncio da biblioteca pelo barulho do rock nas horas vagas e voltou a estudar, agora tecnologia. Usa as duas coisas para organizar informação e derrubar mentira.",
+    "especial": {
+      "nome": "Fonte Confiável",
+      "rotulo": "FONTE"
+    },
+    "vida": 100,
+    "velocidade": 1.05,
+    "forca": 1.0,
+    "pontosFortes": [
+      "fake-news",
+      "retrocesso",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "almeida",
+    "tipo": "personagem",
+    "nome": "Professor Almeida",
+    "curto": "ALMEIDA",
+    "profissao": "Professor pesquisador",
+    "historia": "Dá aula de física na universidade federal e coordena um laboratório que quase fechou quando as bolsas foram cortadas. Acredita em evidência, rock alto e café forte.",
+    "especial": {
+      "nome": "Método Científico",
+      "rotulo": "CIÊNCIA"
+    },
+    "vida": 105,
+    "velocidade": 0.95,
+    "forca": 1.1,
+    "pontosFortes": [
+      "fake-news",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "igor",
+    "tipo": "personagem",
+    "nome": "Igor",
+    "curto": "IGOR",
+    "profissao": "Profissional de T.I.",
+    "historia": "Trabalha com segurança digital e passa as madrugadas derrubando golpes e vídeos falsos que circulam em grupos de família.",
+    "especial": {
+      "nome": "Firewall",
+      "rotulo": "FIREWALL"
+    },
+    "vida": 95,
+    "velocidade": 1.15,
+    "forca": 0.95,
+    "pontosFortes": [
+      "fake-news",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "jheni",
+    "tipo": "personagem",
+    "nome": "Jheni",
+    "curto": "JHENI",
+    "profissao": "Estudante de Direito",
+    "historia": "Primeira da família a entrar na faculdade, estuda Direito numa federal com bolsa de iniciação científica. Sabe que, sem a bolsa, teria trocado a sala de aula por um segundo emprego.",
+    "especial": {
+      "nome": "Direito à Educação",
+      "rotulo": "EDUCAÇÃO"
+    },
+    "vida": 95,
+    "velocidade": 1.2,
+    "forca": 0.9,
+    "pontosFortes": [
+      "desanimo",
+      "retrocesso",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "edson",
+    "tipo": "personagem",
+    "nome": "Edson",
+    "curto": "EDSON",
+    "profissao": "Entregador de aplicativo",
+    "historia": "Roda 12 horas por dia na moto, sem folga fixa. Quer jornada justa e tempo para ver o filho crescer.",
+    "especial": {
+      "nome": "Chegou Seu Pedido",
+      "rotulo": "PEDIDO"
+    },
+    "vida": 95,
+    "velocidade": 1.3,
+    "forca": 0.85,
+    "pontosFortes": [
+      "escala",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "rosa",
+    "tipo": "personagem",
+    "nome": "Dona Rosa",
+    "curto": "ROSA",
+    "profissao": "Confeiteira MEI",
+    "historia": "Abriu o próprio negócio de bolos com o MEI e vende pelo celular. Sabe que pequeno empreendedor também precisa de direito, crédito e cliente com salário.",
+    "especial": {
+      "nome": "Nota Fiscal",
+      "rotulo": "NOTA"
+    },
+    "vida": 105,
+    "velocidade": 0.9,
+    "forca": 1.1,
+    "pontosFortes": [
+      "escala",
+      "retrocesso",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "antonio",
+    "tipo": "personagem",
+    "nome": "Seu Antônio",
+    "curto": "ANTÔNIO",
+    "profissao": "Metalúrgico aposentado",
+    "historia": "Viveu a ditadura, ajudou a reconstruir a democracia nas greves do ABC e hoje ensina os netos a nunca aceitar golpe.",
+    "especial": {
+      "nome": "Ditadura Nunca Mais",
+      "rotulo": "NUNCA MAIS"
+    },
+    "vida": 110,
+    "velocidade": 0.85,
+    "forca": 1.15,
+    "pontosFortes": [
+      "desanimo",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "lucia",
+    "tipo": "personagem",
+    "nome": "Professora Lúcia",
+    "curto": "LÚCIA",
+    "profissao": "Professora de escola pública",
+    "historia": "Ensina história no ensino fundamental e ouve todo ano que \"doutrina\" os alunos. Responde com a Constituição na mão.",
+    "especial": {
+      "nome": "Aula de Constituição",
+      "rotulo": "CF88"
+    },
+    "vida": 100,
+    "velocidade": 1.0,
+    "forca": 1.0,
+    "pontosFortes": [
+      "retrocesso",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "cida",
+    "tipo": "personagem",
+    "nome": "Cida",
+    "curto": "CIDA",
+    "profissao": "Enfermeira do SUS",
+    "historia": "Trabalhou na linha de frente da pandemia enquanto ouvia que a vacina era perigosa.",
+    "especial": {
+      "nome": "Vacina",
+      "rotulo": "VACINA"
+    },
+    "vida": 105,
+    "velocidade": 1.0,
+    "forca": 0.95,
+    "pontosFortes": [
+      "desanimo",
+      "retrocesso",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "raimundo",
+    "tipo": "personagem",
+    "nome": "Seu Raimundo",
+    "curto": "RAIMUNDO",
+    "profissao": "Agricultor familiar",
+    "historia": "Planta banana e abóbora no interior do Pará e vende parte da colheita para a merenda das escolas. Sabe que comida no prato começa na roça de quem trabalha a terra.",
+    "especial": {
+      "nome": "Colheita Farta",
+      "rotulo": "COLHEITA"
+    },
+    "vida": 110,
+    "velocidade": 0.9,
+    "forca": 1.15,
+    "pontosFortes": [
+      "escala",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  },
+  {
+    "id": "josue",
+    "tipo": "personagem",
+    "nome": "Josué",
+    "curto": "JOSUÉ",
+    "profissao": "Missionário do Bairro",
+    "historia": "Sabe que ser cristão vai muito além das aparências. Não aceita que usem a fé para espalhar ódio e mentira. Para ele, amar o próximo inclui quem pensa diferente, e isso inclui proteger os mais vulneráveis.",
+    "especial": {
+      "nome": "Graça e Paz",
+      "rotulo": "PAZ"
+    },
+    "vida": 100,
+    "velocidade": 1.05,
+    "forca": 1.0,
+    "pontosFortes": [
+      "fake-news",
+      "desanimo",
+      "desmonte"
+    ],
+    "fontes": [],
+    "revisado": true
+  }
+]

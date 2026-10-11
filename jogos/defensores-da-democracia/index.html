@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Defensores da Democracia · Fliperama Eleitoral</title>
+  <meta name="description" content="Escolha um trabalhador ou estudante e enfrente, numa luta de fliperama, as ameaças à democracia desta eleição.">
+  <meta name="theme-color" content="#8A0000">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header id="cabecalho" class="cabecalho"></header>
+
+  <main>
+    <div class="conteiner">
+      <div id="barra-jogo" class="barra-jogo"></div>
+      <div id="area-jogo" class="area-jogo moldura-pixel ddd">
+        <div id="tela" class="ddd-tela" aria-live="polite"></div>
+
+        <div id="palco" class="ddd-palco" hidden>
+          <div id="barra" class="ddd-barra"></div>
+          <div id="cena" class="ddd-cena">
+            <canvas id="canvas" width="320" height="180" tabindex="0" role="img" aria-label="Arena da luta"></canvas>
+            <div id="placar" class="ddd-placar" aria-hidden="true"></div>
+            <div id="anuncio" class="ddd-anuncio" role="status" hidden></div>
+            <div id="dialogo" class="ddd-dialogo" hidden></div>
+          </div>
+          <div id="controles" class="ddd-controles">
+            <div class="ddd-direcional" aria-label="Direcional">
+              <button type="button" class="ddd-tecla ddd-tecla--cima" data-acao="pular" aria-label="Pular">▲</button>
+              <button type="button" class="ddd-tecla ddd-tecla--esquerda" data-acao="esquerda" aria-label="Andar para a esquerda">◀</button>
+              <button type="button" class="ddd-tecla ddd-tecla--direita" data-acao="direita" aria-label="Andar para a direita">▶</button>
+              <button type="button" class="ddd-tecla ddd-tecla--baixo" data-acao="defender" aria-label="Defender">▼</button>
+            </div>
+            <div class="ddd-acoes">
+              <button type="button" class="ddd-golpe ddd-golpe--especial" data-acao="especial" aria-label="Especial">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ddd-icone__claro" d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5L7 14l-5.3-5 7.2-.9z"/></svg>
+              </button>
+              <button type="button" class="ddd-golpe ddd-golpe--soco" data-acao="soco" aria-label="Soco">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect class="ddd-icone__claro" x="2.5" y="9" width="5.5" height="9" rx="1.5"/><rect class="ddd-icone__claro" x="7" y="4" width="14.5" height="13.5" rx="5.5"/><path class="ddd-icone__linha" d="M7.6 9.5v8M9 12.6c2.6-.6 5.2 0 6.8 1.9M13 5v4M16.5 5v4"/></svg>
+              </button>
+              <button type="button" class="ddd-golpe ddd-golpe--chute" data-acao="chute" aria-label="Chute">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ddd-icone__traco" d="M6 3.5l5 8.5h5.5"/><path class="ddd-icone__claro" d="M15 8.6h5.2a3 3 0 0 1 3 3v2.4H15z"/><path class="ddd-icone__movimento" d="M1.5 15.5h5M3 19h5"/></svg>
+              </button>
+            </div>
+          </div>
+          <div id="sobreposicao" class="ddd-sobreposicao" hidden></div>
+          <div id="creditos" class="ddd-creditos" aria-live="polite" hidden></div>
+          <p class="ddd-teclas">Setas + Z X C ou W A S D + J K L · ▼ ou S defende · Esc pausa</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="rodape" class="rodape"></footer>
+
+  <noscript><p style="text-align:center;padding:16px">Ative o JavaScript para jogar.</p></noscript>
+  <script type="module" src="jogo.js"></script>
+</body>
+</html>

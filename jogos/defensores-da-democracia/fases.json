@@ -1,0 +1,462 @@
+[
+  {
+    "id": "fake-news",
+    "nome": "A Fake News",
+    "curto": "FAKE NEWS",
+    "cenario": "centro",
+    "apresentacao": "Um celular-monstro que só fala por mensagem encaminhada: tudo é urgente, nada tem fonte e o áudio sempre tem cinco minutos.",
+    "gritos": [
+      "URGENTE!",
+      "COMPARTILHA!",
+      "RECEBI NO GRUPO!"
+    ],
+    "provocacao": "Enquanto você confere, eu já fui compartilhada mil vezes!",
+    "dialogos": {
+      "inicio": [
+        "URGENTE! Quem faltou no primeiro turno não pode votar no segundo! Compartilha!",
+        "Conferir? Recebi no grupo, então é verdade!"
+      ],
+      "meio": [
+        "Tá bom, tá bom... mas e se for verdade?"
+      ],
+      "fim": [
+        "Não... sem compartilhamento eu não sou nada!"
+      ]
+    },
+    "falas": {
+      "melo": [
+        "Bibliotecária que estuda tecnologia não cai em corrente: eu confiro a fonte e os dados do arquivo.",
+        "No repositório, toda pesquisa tem autor, data e referência. A sua mensagem não tem nada disso.",
+        "Confira antes de encaminhar. E bota um rock para comemorar!"
+      ],
+      "almeida": [
+        "Afirmação sem evidência é hipótese. E a sua nem isso é.",
+        "Vamos testar: qual é a fonte, a data e quem publicou?",
+        "Experimento concluído: era mentira. Confira sempre a origem da mensagem."
+      ],
+      "igor": [
+        "Conheço esse golpe. Já derrubei uns dez desses hoje no grupo da família.",
+        "Link estranho, áudio sem autor... meu firewall já te bloqueou.",
+        "Mensagem urgente demais é sinal de alerta. Confira antes de encaminhar."
+      ],
+      "jheni": [
+        "Isso aí não tem base nenhuma. Cadê a fonte?",
+        "Na faculdade a gente aprende: quem acusa tem que provar.",
+        "Confira em canal oficial antes de compartilhar. Informação de verdade é direito de todos."
+      ],
+      "edson": [
+        "Recebo cem mensagens por dia no celular. Essa aí eu não encaminho.",
+        "Pode correr, que eu sou mais rápido que boato.",
+        "Entregue: a verdade. Confira antes de mandar para o grupo."
+      ],
+      "rosa": [
+        "Menina, se eu acreditasse em tudo que chega no celular, já tinha fechado a loja.",
+        "Eu confiro até o troco. Imagina uma notícia.",
+        "Mensagem boa é igual bolo bom: tem que ter receita confiável."
+      ],
+      "antonio": [
+        "No meu tempo, a mentira vinha no rádio. Hoje vem no celular. Não caio.",
+        "Já vi muita mentira derrubar gente boa. Comigo não.",
+        "Conta para os netos: antes de passar adiante, confere."
+      ],
+      "lucia": [
+        "Isso é boato. E boato a gente corrige com informação.",
+        "Na sala de aula eu ensino: pergunte sempre quem disse e quando.",
+        "Lição de hoje: conferir antes de compartilhar."
+      ],
+      "cida": [
+        "Já vi boato fazer gente ter medo de vacina. Com você eu não brinco.",
+        "Mentira também adoece. E eu sei cuidar disso.",
+        "Informação certa protege. Confira antes de passar adiante."
+      ],
+      "raimundo": [
+        "Na roça a gente aprende: não se planta semente que não conhece.",
+        "Mentira é praga. E praga a gente arranca pela raiz.",
+        "Antes de espalhar, confira. Igual semente boa."
+      ],
+      "josue": [
+        "Está escrito: \"Não dirás falso testemunho contra o teu próximo\". Isso vale para o grupo da igreja também.",
+        "Jesus disse: \"Conhecereis a verdade, e a verdade vos libertará\". A sua mensagem só confunde.",
+        "Quem ama o próximo não espalha mentira. Confira antes de compartilhar."
+      ]
+    },
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "desanimo",
+    "nome": "O Desânimo",
+    "curto": "DESÂNIMO",
+    "cenario": "quintal",
+    "apresentacao": "Um sofá gigante e sonolento, de controle remoto na mão. Ele convence todo mundo de que votar não muda nada e que é melhor ficar em casa.",
+    "gritos": [
+      "NEM VOU!",
+      "TANTO FAZ!",
+      "É TUDO IGUAL!"
+    ],
+    "provocacao": "Viu? Cansou. Agora deita aqui e deixa os outros decidirem.",
+    "dialogos": {
+      "inicio": [
+        "Domingo de eleição? Ah, nem vou. É tudo igual mesmo...",
+        "Senta aqui no sofá. Votar dá muito trabalho."
+      ],
+      "meio": [
+        "Bocejo... por que você ainda não desistiu?"
+      ],
+      "fim": [
+        "Tá bom... talvez eu dê uma passadinha na seção..."
+      ]
+    },
+    "falas": {
+      "melo": [
+        "Tudo igual? Eu organizo dados o dia inteiro. Nada é igual.",
+        "Leio as propostas no papel e na tela. Informação é o melhor remédio contra o desânimo.",
+        "Levanta desse sofá! Conhecimento aberto, voto consciente e rock no volume máximo."
+      ],
+      "almeida": [
+        "Um voto é um dado. Milhões de votos mudam o resultado. É matemática.",
+        "Até sofá obedece à física: com força suficiente, ele sai do lugar.",
+        "Hipótese confirmada: quem vota decide. Bora para a urna."
+      ],
+      "igor": [
+        "Não votar é deixar o sistema rodar sem você no controle.",
+        "Reiniciando o seu ânimo... carregando... pronto.",
+        "Desliga a TV e separa o título. Domingo é dia de votar."
+      ],
+      "jheni": [
+        "Votar é direito. E direito que a gente não usa, alguém usa por nós.",
+        "Minha bolsa veio de política pública. E política se decide no voto.",
+        "Domingo eu voto. E levo minha família comigo."
+      ],
+      "edson": [
+        "Trabalho de domingo a domingo, mas voto eu não perco.",
+        "Dá tempo de entregar e de votar. Tô acostumado a correr.",
+        "Fiz minha entrega: o recado de que todo voto conta."
+      ],
+      "rosa": [
+        "Tanto faz nada. Quem governa mexe no preço do açúcar, do trigo e do gás.",
+        "Minha clientela depende de salário. E salário depende de quem governa.",
+        "Fecha a loja uma horinha e vai votar. Depois a gente comemora com bolo."
+      ],
+      "antonio": [
+        "Eu lutei para ter o direito de votar. Não vou desperdiçar.",
+        "Já houve tempo em que a gente não podia escolher. Eu lembro.",
+        "Levanta, rapaz. Democracia se faz com gente na fila da seção."
+      ],
+      "lucia": [
+        "Todo ano eu ensino: o voto é a voz de quem não tem cargo.",
+        "Desânimo se combate com conhecimento. E eu sou professora.",
+        "Domingo, todo mundo na urna. É tarefa de casa."
+      ],
+      "cida": [
+        "No SUS eu vejo todo dia: quem governa faz diferença na vida das pessoas.",
+        "Cansada eu fico. Desanimada, nunca.",
+        "Remédio para desânimo: ir votar e chamar os vizinhos."
+      ],
+      "raimundo": [
+        "Quem planta não desiste na primeira chuva fraca.",
+        "Se eu desanimasse, não tinha banana na merenda das escolas.",
+        "Voto é igual semente: a gente planta hoje e colhe depois."
+      ],
+      "josue": [
+        "O bairro inteiro vai votar. Eu mesmo vou chamar de porta em porta.",
+        "Ânimo, irmão! Quem desiste não ajuda o próximo.",
+        "Graça e paz. E domingo, todo mundo na seção."
+      ]
+    },
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "retrocesso",
+    "nome": "O Retrocesso",
+    "curto": "RETROCESSO",
+    "cenario": "escola",
+    "apresentacao": "Uma figura de cartola e terno de outro século, com uma borracha gigante. Quer apagar direitos que custaram muita luta.",
+    "gritos": [
+      "NO MEU TEMPO...",
+      "APAGA!",
+      "VOLTA PRA TRÁS!"
+    ],
+    "provocacao": "Viu? É só passar a borracha e tudo volta a ser como antes.",
+    "dialogos": {
+      "inicio": [
+        "Mulher votando? No meu tempo não era assim. Vou apagar isso tudo!",
+        "Tudo se apaga com uma boa borracha!"
+      ],
+      "meio": [
+        "Minha borracha não está funcionando!"
+      ],
+      "fim": [
+        "Não... o futuro chegou..."
+      ]
+    },
+    "falas": {
+      "melo": [
+        "Na estante da biblioteca tem muita mulher que mudou a história. Você não apaga nenhuma.",
+        "Tem cientista, programadora e escritora no meu acervo. Sua borracha não alcança.",
+        "Lugar de mulher é onde ela quiser: na biblioteca, na tecnologia e na urna."
+      ],
+      "almeida": [
+        "Marie Curie ganhou dois prêmios Nobel. Quer apagar isso também?",
+        "Na ciência, o que vale é a pesquisa, não quem pesquisa. Na urna, todo voto vale igual.",
+        "A história da ciência ensina: cada conquista abre caminho para a próxima. Direito das mulheres também."
+      ],
+      "igor": [
+        "Apagar dado já é grave. Apagar eleitora é pior ainda.",
+        "Backup feito: nenhuma eleitora vai sumir do sistema.",
+        "Atualização concluída. Versão antiga não roda mais aqui."
+      ],
+      "jheni": [
+        "Sou a primeira mulher da família na faculdade. Não vou deixar você apagar isso.",
+        "Igualdade está na Constituição. Pode ler, eu espero.",
+        "Minha avó votou, minha mãe votou, e eu também vou votar."
+      ],
+      "edson": [
+        "Minha mãe me criou sozinha e vota desde sempre. Respeita!",
+        "Rápido como uma entrega: sua borracha não alcança ninguém.",
+        "Mulher decide eleição. E decide bem."
+      ],
+      "rosa": [
+        "Mulher dona do próprio negócio também é dona do próprio voto.",
+        "Na minha cozinha mando eu. Na minha urna também.",
+        "Pode guardar a borracha. Aqui ninguém volta para trás."
+      ],
+      "antonio": [
+        "Minha companheira marchou ao meu lado nas greves. Voto dela ninguém apaga.",
+        "Já vi muito homem de cartola querer mandar em tudo. Perdeu.",
+        "Lugar de mulher é onde ela quiser. Aprendi isso em casa."
+      ],
+      "lucia": [
+        "Eu ensino a história do voto feminino. Ela não tem volta.",
+        "Cada aluna minha vai crescer sabendo que pode votar e ser votada.",
+        "Aula encerrada: direito das mulheres não se apaga."
+      ],
+      "cida": [
+        "Mulher é maioria na enfermagem e nas urnas. Respeita.",
+        "Cuido de todo mundo. Mas de você, não, retrocesso.",
+        "Mulher na urna é saúde da democracia."
+      ],
+      "raimundo": [
+        "Minha mulher toca a roça comigo, de igual para igual.",
+        "Na terra, mulher e homem plantam juntos. Na urna também.",
+        "Borracha nenhuma apaga o trabalho delas."
+      ],
+      "josue": [
+        "A Bíblia tem Débora, Ester e Rute. Mulher sempre teve voz.",
+        "Amar o próximo é respeitar a voz dela também.",
+        "Graça e paz, e voto para todas."
+      ]
+    },
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "escala",
+    "nome": "O Relógio",
+    "curto": "RELÓGIO",
+    "cenario": "fabrica",
+    "apresentacao": "Um relógio de ponto gigante que não para de bater. Para ele, descanso é desperdício e folga é luxo.",
+    "gritos": [
+      "BATE O PONTO!",
+      "SEM FOLGA!",
+      "HORA EXTRA!"
+    ],
+    "provocacao": "Levanta! Amanhã tem mais. E depois de amanhã também.",
+    "dialogos": {
+      "inicio": [
+        "Folga? Só semana que vem. E na outra também.",
+        "Descanso? Isso não está na escala!"
+      ],
+      "meio": [
+        "Tic-tac! Tic-tac! Mais rápido!"
+      ],
+      "fim": [
+        "Meus ponteiros... pararam..."
+      ]
+    },
+    "falas": {
+      "melo": [
+        "Quem trabalha sem parar não tem tempo nem para ler um livro.",
+        "Conhecimento também se faz no descanso.",
+        "Hora de fechar o expediente. Amanhã a biblioteca abre de novo."
+      ],
+      "almeida": [
+        "Gente descansada trabalha melhor. Isso qualquer pesquisa mostra.",
+        "Até meu laboratório desliga as máquinas para não queimar.",
+        "Fim do expediente. A física também precisa de pausa."
+      ],
+      "igor": [
+        "Até servidor tem pausa para manutenção. Imagina gente.",
+        "Detectei sobrecarga. Iniciando desligamento do vilão.",
+        "Desconectado. Agora vai descansar, relógio."
+      ],
+      "jheni": [
+        "Descanso semanal é direito de quem trabalha.",
+        "Como vou estudar se tiver que trabalhar sete dias por semana?",
+        "Jornada justa é direito. E direito se defende."
+      ],
+      "edson": [
+        "Doze horas na moto e você ainda quer mais? Hoje eu bato o ponto em você.",
+        "Meu filho está crescendo e eu quase não vejo. Chega!",
+        "Pedido entregue: um tempo de folga com a família."
+      ],
+      "rosa": [
+        "Se ninguém tiver folga, quem vai comprar meu bolo no fim de semana?",
+        "Cliente descansado é cliente feliz. E com tempo para festa.",
+        "Folga para todo mundo. E bolo para comemorar."
+      ],
+      "antonio": [
+        "Fiz greve por jornada justa. Não vou ver isso andar para trás.",
+        "Já enfrentei relógio de fábrica muito maior que você.",
+        "Hora da saída! Isso a gente conquistou na luta."
+      ],
+      "lucia": [
+        "Meus alunos merecem ter os pais em casa no fim de semana.",
+        "Corrigindo prova de madrugada eu aprendi: descanso é sagrado.",
+        "O sinal tocou: fim do expediente."
+      ],
+      "cida": [
+        "Plantão atrás de plantão adoece até quem cuida.",
+        "Gente exausta erra. Na saúde, isso custa caro.",
+        "Descanso também é remédio."
+      ],
+      "raimundo": [
+        "Na roça quem manda é o sol. Você, não.",
+        "Até a terra descansa entre uma colheita e outra.",
+        "Pronto. Agora quem descansa é você."
+      ],
+      "josue": [
+        "Está em Lucas: \"Digno é o trabalhador do seu salário\".",
+        "Quem trabalha merece respeito. E respeito inclui tempo para descansar.",
+        "Graça, paz e folga de verdade para quem trabalha."
+      ]
+    },
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  },
+  {
+    "id": "desmonte",
+    "nome": "A Sombra",
+    "curto": "SOMBRA",
+    "cenario": "tres",
+    "apresentacao": "Uma sombra de terno, sem rosto, que arranca páginas da Constituição. Quer mudar as regras do jogo para nunca mais perder.",
+    "gritos": [
+      "ARRANCA!",
+      "EMENDA NELA!",
+      "EU MANDO!"
+    ],
+    "provocacao": "Sem regras, quem manda sou eu.",
+    "dialogos": {
+      "inicio": [
+        "Essa Constituição tem página demais. Vou arrancar umas!",
+        "Regra é para quem perde!"
+      ],
+      "meio": [
+        "Chega! Vou rasgar o livro inteiro!"
+      ],
+      "fim": [
+        "Impossível... derrotado por gente comum?"
+      ]
+    },
+    "falas": {
+      "melo": [
+        "Esse livro tem cópia guardada em cada pessoa que conhece os seus direitos.",
+        "Tem coisa ali que nenhuma emenda pode tirar. E o povo não vai deixar.",
+        "Gente comum sustenta a democracia. Todo dia, não só na eleição."
+      ],
+      "almeida": [
+        "Regra que serve para todos não muda só porque alguém quer.",
+        "Ação e reação: quanto mais você arranca, mais a gente defende.",
+        "Experimento repetido muitas vezes: quando o povo se une, vence."
+      ],
+      "igor": [
+        "Tentativa de invasão detectada. Constituição protegida.",
+        "Essas páginas têm cópia de segurança: a memória do povo.",
+        "Acesso negado. Aqui você não altera nada."
+      ],
+      "jheni": [
+        "Eu estudo essa Constituição todo dia. Não vou deixar você rasgar.",
+        "Cláusula pétrea, ouviu? Voto direto, secreto, universal e periódico.",
+        "Direito não se arranca. Se defende."
+      ],
+      "edson": [
+        "Rodo a cidade inteira. Em todo canto tem gente que defende essa Constituição.",
+        "Pode arrancar página, que eu entrego outra cópia.",
+        "Entrega final: democracia inteira."
+      ],
+      "rosa": [
+        "Foi essa Constituição que garantiu o meu direito de trabalhar e de votar.",
+        "Receita boa não se muda no meio do bolo.",
+        "Pronto. A regra continua valendo para todo mundo."
+      ],
+      "antonio": [
+        "Eu vi o que acontece quando rasgam as regras. Nunca mais.",
+        "Ditadura nunca mais! Nem com página arrancada, nem com emenda.",
+        "Meus netos vão crescer em democracia. Garanti isso hoje."
+      ],
+      "lucia": [
+        "Vamos à aula: essa Constituição tem cláusulas que ninguém pode abolir.",
+        "Eu trago a Constituição na mão. E ela pesa mais que você.",
+        "Aprendam, crianças: democracia se defende todo dia."
+      ],
+      "cida": [
+        "O SUS está nessa Constituição. Não vou deixar arrancar.",
+        "Saúde é direito de todos. Está escrito, e eu defendo.",
+        "Constituição inteira, povo protegido."
+      ],
+      "raimundo": [
+        "Constituição é como raiz: segura a árvore inteira.",
+        "Pode puxar. Raiz funda não sai.",
+        "Arrancou nada. A raiz continua firme."
+      ],
+      "josue": [
+        "Fé não combina com autoritarismo. Respeite o povo.",
+        "Proteger os mais vulneráveis também está nessa Constituição.",
+        "Graça e paz. E a democracia de pé."
+      ]
+    },
+    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "fontes": [
+      {
+        "titulo": "Tribunal Superior Eleitoral",
+        "veiculo": "TSE",
+        "url": "https://www.tse.jus.br/",
+        "data": "2026-10-10"
+      }
+    ],
+    "revisado": true
+  }
+]

@@ -85,13 +85,13 @@
         "Quem ama o próximo não espalha mentira. Confira antes de compartilhar."
       ]
     },
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Quem faltou no 1º turno pode votar no 2º, em 25/10/2026. E o TSE não manda e-mail sobre cancelamento de título.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
+        "titulo": "Faltam 18 dias: ausência no 1º turno não impede voto no 2º",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/faltam-18-dias-ausencia-no-1o-turno-nao-impede-voto-no-2o",
+        "data": "2026-10-07"
       }
     ],
     "revisado": true
@@ -182,13 +182,25 @@
         "Graça e paz. E domingo, todo mundo na seção."
       ]
     },
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Mais de 33 milhões de eleitores (21%) não votaram no 1º turno, em 4/10/2026: a maior abstenção desde 1998. Quem faltou pode votar no 2º turno.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
+        "titulo": "Faltam 18 dias: ausência no 1º turno não impede voto no 2º",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/faltam-18-dias-ausencia-no-1o-turno-nao-impede-voto-no-2o",
+        "data": "2026-10-07"
+      },
+      {
+        "titulo": "Mais de 33 milhões não votaram no 1º turno; abstenção é a maior desde 1998",
+        "veiculo": "Diario de Pernambuco",
+        "url": "https://www.diariodepernambuco.com.br/politica/2026/10/11725920-mais-de-33-milhoes-nao-votaram-no-1-turno-abstencao-e-a-maior-desde-1998.html",
+        "data": "2026-10-05"
+      },
+      {
+        "titulo": "Primeiro turno teve maior abstenção eleitoral em 28 anos",
+        "veiculo": "O Povo / DW",
+        "url": "https://www.opovo.com.br/noticias/mundo/2026/10/06/primeiro-turno-teve-maior-abstencao-eleitoral-em-28-anos.html",
+        "data": "2026-10-06"
       }
     ],
     "revisado": true
@@ -279,13 +291,31 @@
         "Graça e paz, e voto para todas."
       ]
     },
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Em junho de 2026, um influenciador bolsonarista disse que \"mulher vota estatisticamente muito mal\". Segundo a FGV, 87% dos posts analisados em grupos do Telegram eram contra o voto feminino. Mulheres são 52,8% do eleitorado.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
+        "titulo": "\"Mulheres votam mal\": a engrenagem digital que quer retirar 52% do eleitorado das urnas",
+        "veiculo": "O Povo+",
+        "url": "https://mais.opovo.com.br/reportagens-especiais/pauta-eleicoes-2026/2026/10/03/mulheres-votam-mal-a-engrenagem-digital-que-quer-retirar-52-do-eleitorado-das-urnas.html",
+        "data": "2026-10-03"
+      },
+      {
+        "titulo": "Paulo Figueiredo afirma que mulheres solteiras votam mal",
+        "veiculo": "Congresso em Foco",
+        "url": "https://www.congressoemfoco.com.br/noticia/120083/paulo-figueiredo-afirma-que-mulheres-solteiras-votam-mal",
+        "data": "2026-06-30"
+      },
+      {
+        "titulo": "Como a caça conservadora ao voto feminino alimenta a violência contra a mulher",
+        "veiculo": "Agência Pública",
+        "url": "https://apublica.org/2026/08/como-discurso-politico-questiona-papel-da-mulher-e-estimula-violencia/",
+        "data": "2026-08-28"
+      },
+      {
+        "titulo": "Brasil tem mais de 158 milhões de eleitoras e eleitores aptos a votar",
         "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/faltam-30-dias-brasil-tem-mais-de-158-milhoes-de-eleitoras-e-eleitores-aptos-a-votar",
+        "data": "2026-09-04"
       }
     ],
     "revisado": true
@@ -376,13 +406,25 @@
         "Graça, paz e folga de verdade para quem trabalha."
       ]
     },
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Em 6/10/2026, o candidato do PL disse ter proposta \"infinitamente melhor\" que o fim da 6x1. Ele assina a PEC 12/2026, de seu coordenador de campanha: salário, férias e 13º só pelas horas trabalhadas.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "titulo": "Flávio defende trabalho por hora como alternativa ao fim da escala 6x1",
+        "veiculo": "Congresso em Foco",
+        "url": "https://www.congressoemfoco.com.br/noticia/123034/flavio-defende-trabalho-por-hora-como-alternativa-ao-fim-da-escala-6x1",
+        "data": "2026-10-06"
+      },
+      {
+        "titulo": "Com 6x1 no Senado, Flávio chama proposta do governo Lula de \"oportunista\" e defende jornada flexível",
+        "veiculo": "Folha de Pernambuco / Agência O Globo",
+        "url": "https://www.folhape.com.br/politica/com-6x1-no-senado-flavio-chama-proposta-do-governo-lula-de/516875/",
+        "data": "2026-10-06"
+      },
+      {
+        "titulo": "Rogerio Marinho propõe PEC que flexibiliza jornada de trabalho",
+        "veiculo": "Agência Senado",
+        "url": "https://www12.senado.leg.br/noticias/materias/2026/05/28/rogerio-marinho-propoe-pec-que-flexibiliza-jornada-de-trabalho",
+        "data": "2026-05-28"
       }
     ],
     "revisado": true
@@ -473,13 +515,25 @@
         "Graça e paz. E a democracia de pé."
       ]
     },
-    "vidaReal": "Card de teste. O texto com o fato, a data e a fonte entra depois da revisão.",
+    "vidaReal": "Em 6/10/2026, em Goiânia, o candidato do PL disse contar com um Congresso mais à direita \"para a gente mudar a Constituição\". Em agosto, prometeu anistia ao pai.",
     "fontes": [
       {
-        "titulo": "Tribunal Superior Eleitoral",
-        "veiculo": "TSE",
-        "url": "https://www.tse.jus.br/",
-        "data": "2026-10-10"
+        "titulo": "Em Goiânia, Flávio Bolsonaro diz que quer mudar a Constituição se for eleito",
+        "veiculo": "Jornal Opção",
+        "url": "https://www.jornalopcao.com.br/politica/flavio-bolsonaro-quer-mudar-constituicao-goiania-876482/",
+        "data": "2026-10-07"
+      },
+      {
+        "titulo": "\"Mudar a Constituição\": aliados tentam minimizar fala de Flávio Bolsonaro",
+        "veiculo": "Diario de Pernambuco / Estado de Minas",
+        "url": "https://www.diariodepernambuco.com.br/politica/2026/10/11726057-mudar-a-constituicao-aliados-tentam-minimizar-fala-de-flavio-bolsonaro.html",
+        "data": "2026-10-07"
+      },
+      {
+        "titulo": "Flávio Bolsonaro promete anistia ao pai no Jornal Nacional",
+        "veiculo": "Bem Paraná",
+        "url": "https://www.bemparana.com.br/eleicoes-2026/flavio-bolsonaro-promete-anistia-ao-pai-e-se-esquiva-de-resultado-eleitoral-e-do-master-no-jn/",
+        "data": "2026-08-28"
       }
     ],
     "revisado": true

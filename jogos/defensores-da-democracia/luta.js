@@ -610,7 +610,7 @@ export function retrato(destino, { heroi, vilaoId, ferido = false, recorte }) {
 
 /** Recorte do rosto (x, y, largura, altura) no canvas de sprite, para os diálogos. */
 export function recorteDoRosto(heroi, vilaoId) {
-  if (heroi) return [ORIGEM_X - 12, ORIGEM_Y - 52, 26, 26];
+  if (heroi) return [ORIGEM_X - 13, ORIGEM_Y - 50, 26, 26];
   const altura = VILOES[vilaoId].altura;
   return [ORIGEM_X - 18, ORIGEM_Y - altura - 4, 36, 36];
 }

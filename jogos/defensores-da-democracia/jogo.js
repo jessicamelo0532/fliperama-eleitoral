@@ -94,7 +94,7 @@ function telaInicio() {
       el("h2", { class: "ddd-inicio__titulo pixel" }, "DEFENSORES", el("span", { text: "DA DEMOCRACIA" })),
       el("p", { class: "ddd-inicio__lide", text: "Mentira no grupo da família, direito ameaçado, folga que nunca chega. As ameaças à democracia viraram monstros, e quem sai para enfrentá-los é gente comum." }),
       el("ul", { class: "ddd-herois", "aria-label": "Personagens" },
-        ...personagens.map((p) => el("li", { title: p.nome }, corpoDoHeroi(p.id, 32, 56)))),
+        ...personagens.map((p, i) => el("li", { class: `ddd-herois__moldura ddd-herois__moldura--${i % 2 ? "amarela" : "verde"}`, title: p.nome }, rostoDoHeroi(p.id)))),
       el("p", { class: "ddd-inicio__lide", text: `Escolha entre ${personagens.length} trabalhadores e estudantes, vença ${fases.length} lutas e descubra, a cada vitória, o que aconteceu de verdade nesta eleição.` }),
       el("p", { class: "ddd-inicio__girar ddd-so-toque" },
         el("span", { class: "ddd-inicio__girar-icone", "aria-hidden": "true", text: "⟳" }),
@@ -142,14 +142,21 @@ function comandos() {
         el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--baixo", text: "Defender" })),
       el("div", { class: "ddd-comandos__acoes" },
         rotulado(copiaDoBotao("especial"), "Especial", "especial"),
+        rotulado(copiaDoBotao("pular"), "Pular", "pulo"),
         rotulado(copiaDoBotao("soco"), "Soco", "soco"), rotulado(copiaDoBotao("chute"), "Chute", "chute"))),
-    el("p", { class: "ddd-comandos__nota", text: "O especial gasta meia barra de energia, que enche quando você acerta golpes." }));
+    el("p", { class: "ddd-comandos__nota", text: "Pule duas vezes seguidas para dar o pulo duplo. O especial gasta meia barra de energia, que enche quando você acerta golpes." }));
 }
 
 function atributo(rotulo, valor, maximo) {
   return el("span", { class: "ddd-atributo" },
     el("span", { text: rotulo }),
     el("i", { "aria-hidden": "true" }, el("b", { style: `width:${Math.round(Math.min(1, valor / maximo) * 100)}%` })));
+}
+
+function rostoDoHeroi(id) {
+  const imagem = el("canvas", { width: "26", height: "26", "aria-hidden": "true" });
+  retrato(imagem, { heroi: id, recorte: recorteDoRosto(id) });
+  return imagem;
 }
 
 function corpoDoHeroi(id, largura, altura) {

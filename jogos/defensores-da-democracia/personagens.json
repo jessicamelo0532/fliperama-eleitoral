@@ -90,17 +90,17 @@
     "tipo": "personagem",
     "nome": "Edson",
     "curto": "EDSON",
-    "profissao": "Entregador de aplicativo",
-    "historia": "Roda 12 horas por dia na moto, sem folga fixa. Quer jornada justa e tempo para ver o filho crescer.",
+    "profissao": "Motorista de aplicativo",
+    "historia": "Roda 12 horas por dia dirigindo por aplicativo, sem folga fixa e sem proteção nenhuma se adoecer ou sofrer um acidente. Quer regras justas: remuneração digna, previdência e tempo para ver o filho crescer.",
     "especial": {
-      "nome": "Chegou Seu Pedido",
-      "rotulo": "PEDIDO"
+      "nome": "Corrida Confirmada",
+      "rotulo": "CORRIDA"
     },
     "vida": 95,
     "velocidade": 1.3,
     "forca": 0.85,
     "pontosFortes": [
-      "fake-news",
+      "escala",
       "desmonte"
     ],
     "fontes": [],

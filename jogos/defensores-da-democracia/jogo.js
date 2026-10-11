@@ -76,16 +76,19 @@ const faseAtual = () => fases[jogo.fase];
 function mostrarTela() {
   palco.hidden = true;
   tela.hidden = false;
+  atualizarBotoesDaBarra();
 }
 
 function mostrarPalco() {
   tela.hidden = true;
   palco.hidden = false;
+  atualizarBotoesDaBarra();
 }
 
 function telaInicio() {
   jogo.estado = "inicio";
   mostrarTela();
+  atualizarBotoesDaBarra();
   tela.replaceChildren(
     el("div", { class: "ddd-inicio" },
       el("h2", { class: "ddd-inicio__titulo pixel" }, "DEFENSORES", el("span", { text: "DA DEMOCRACIA" })),
@@ -95,7 +98,7 @@ function telaInicio() {
       el("p", { class: "ddd-inicio__lide", text: `Escolha entre ${personagens.length} trabalhadores e estudantes, vença ${fases.length} lutas e descubra, a cada vitória, o que aconteceu de verdade nesta eleição.` }),
       el("p", { class: "ddd-inicio__girar ddd-so-toque" },
         el("span", { class: "ddd-inicio__girar-icone", "aria-hidden": "true", text: "⟳" }),
-        "Para jogar melhor, vire o celular na horizontal. O jogo ocupa a tela inteira sozinho."),
+        "Para uma melhor experiência, vire o celular na horizontal."),
       el("button", { class: "botao", type: "button", onclick: telaEscolha, disabled: fases.length && personagens.length ? null : "" }, "Jogar"),
       comandos(),
       el("p", { class: "ddd-inicio__aviso", text: "Os vilões são ideias, não pessoas. Os fatos que aparecem depois de cada luta têm data e fonte." }))
@@ -109,13 +112,13 @@ const COMANDOS_TECLADO = [
 
 function comandos() {
   const tecla = (texto) => el("kbd", { class: "ddd-tecla-pc pixel", text: texto });
-  const linha = (visual, rotulo) => el("li", {}, el("span", { class: "ddd-comandos__visual" }, ...visual), el("span", { text: rotulo }));
   const copiaDoBotao = (acao) => {
     const original = document.querySelector(`[data-acao="${acao}"]`);
     const copia = el("span", { class: `${original.className} ddd-golpe--mini`, "aria-hidden": "true" });
     copia.innerHTML = original.innerHTML;
     return copia;
   };
+  const rotulado = (botao, rotulo, posicao) => el("span", { class: `ddd-comandos__item ddd-comandos__item--${posicao}` }, botao, el("span", { text: rotulo }));
   const seta = (texto) => el("span", { class: "ddd-tecla ddd-tecla--mini pixel", "aria-hidden": "true", text: texto });
   return el("section", { class: "ddd-comandos", "aria-label": "Como jogar" },
     el("h3", { class: "ddd-comandos__titulo pixel", text: "Como jogar" }),
@@ -126,13 +129,13 @@ function comandos() {
         el("td", {}, ...setas.map(tecla)),
         el("td", {}, ...letras.map(tecla)))))),
     el("p", { class: "ddd-comandos__nota ddd-so-teclado", text: "Esc pausa o jogo." }),
-    el("ul", { class: "ddd-comandos__lista ddd-so-toque" },
-      linha([seta("◀"), seta("▶")], "Andar"),
-      linha([seta("▲")], "Pular"),
-      linha([seta("▼")], "Defender"),
-      linha([copiaDoBotao("soco")], "Soco"),
-      linha([copiaDoBotao("chute")], "Chute"),
-      linha([copiaDoBotao("especial")], "Especial")),
+    el("div", { class: "ddd-comandos__toque ddd-so-toque" },
+      el("div", { class: "ddd-comandos__direcional" },
+        rotulado(seta("▲"), "Pular", "cima"), rotulado(seta("◀"), "Andar", "esquerda"),
+        rotulado(seta("▶"), "Andar", "direita"), rotulado(seta("▼"), "Defender", "baixo")),
+      el("div", { class: "ddd-comandos__acoes" },
+        rotulado(copiaDoBotao("especial"), "Especial", "especial"),
+        rotulado(copiaDoBotao("soco"), "Soco", "soco"), rotulado(copiaDoBotao("chute"), "Chute", "chute"))),
     el("p", { class: "ddd-comandos__nota", text: "O especial gasta meia barra de energia, que enche quando você acerta golpes." }));
 }
 
@@ -184,11 +187,11 @@ function mostrarFicha(alvo, p) {
   alvo.replaceChildren(
     el("article", { class: "ddd-ficha", "aria-label": p.nome },
       corpoDoHeroi(p.id, 32, 56),
-      el("div", {},
+      el("div", { class: "ddd-ficha__texto" },
         el("h3", { class: "pixel", text: p.nome }),
         el("p", { class: "ddd-ficha__profissao", text: p.profissao }),
         el("p", { class: "ddd-ficha__historia", text: p.historia })),
-      el("div", {},
+      el("div", { class: "ddd-ficha__dados" },
         el("div", { class: "ddd-atributos" },
           atributo("Vida", p.vida, 110), atributo("Velocidade", p.velocidade, 1.3), atributo("Força", p.forca, 1.15)),
         el("p", { class: "ddd-ficha__especial pixel", text: `★ ${p.especial.nome}` }),
@@ -215,9 +218,8 @@ function comecarCampanha(heroi) {
   jogo.fase = 0;
   jogo.vencidas = [];
   tocarMusica();
-  if (!emTelaCheia()) alternarTelaCheia();
+  areaJogo.scrollIntoView({ block: "start", behavior: MOVIMENTO_REDUZIDO ? "auto" : "smooth" });
   mostrarPalco();
-  montarBarra();
   apresentarFase();
 }
 
@@ -522,14 +524,40 @@ const campos = {};
 function montarBarra() {
   barra.replaceChildren(
     campos.fase = el("p", { class: "ddd-barra__fase pixel" }),
-    el("div", { class: "ddd-barra__botoes" }, botaoSom(), botaoTelaCheia(), el("button", {
-      class: "ddd-botao pixel", type: "button", "aria-label": "Pausar", onclick: () => (jogo.estado === "pausa" ? retomar() : pausar()),
-    }, "PAUSA")));
+    el("div", { class: "ddd-barra__botoes" },
+      campos.inicio = el("button", { class: "ddd-botao pixel", type: "button", "aria-label": "Voltar ao início do jogo", onclick: voltarAoInicio }, "INÍCIO"),
+      botaoSom(), botaoTelaCheia(),
+      campos.pausa = el("button", {
+        class: "ddd-botao pixel", type: "button", "aria-label": "Pausar", onclick: () => (jogo.estado === "pausa" ? retomar() : pausar()),
+      }, "PAUSA")));
   const lado = (classe, chave) => el("div", { class: `ddd-placar__lado ddd-placar__lado--${classe}` },
     el("div", { class: "ddd-vida" }, campos[`rastro-${chave}`] = el("b"), campos[`vida-${chave}`] = el("i")),
     campos[`nome-${chave}`] = el("div", { class: "ddd-placar__nome" }),
     chave === "heroi" && (campos.energia = el("div", { class: "ddd-energia" }, campos.nivel = el("i"))));
   placar.replaceChildren(lado("heroi", "heroi"), campos.placarFase = el("div", { class: "ddd-placar__fase" }), lado("vilao", "vilao"));
+}
+
+function atualizarBotoesDaBarra() {
+  if (!campos.inicio) return;
+  campos.inicio.hidden = jogo.estado === "inicio";
+  campos.pausa.hidden = palco.hidden;
+  campos.fase.hidden = palco.hidden;
+}
+
+/** Sai de qualquer ponto do jogo e volta para a capa. */
+function voltarAoInicio() {
+  jogo.sairDosFogos?.();
+  jogo.conversa = null;
+  creditos.hidden = true;
+  creditos.replaceChildren();
+  sobreposicao.hidden = true;
+  sobreposicao.replaceChildren();
+  dialogo.hidden = true;
+  anuncio.hidden = true;
+  palco.classList.remove("ddd-palco--dialogo", "ddd-palco--creditos");
+  soltarTudo();
+  pararMusica();
+  telaInicio();
 }
 
 const rastro = { heroi: 100, vilao: 100 };
@@ -590,16 +618,6 @@ function ajustarArena() {
 
 const CELULAR_DEITADO = matchMedia("(orientation: landscape) and (max-height: 520px) and (pointer: coarse)");
 const emTelaCheia = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement || areaJogo.classList.contains("ddd-imersivo"));
-
-/*
- * Ao deitar o celular, a área do jogo já ocupa a tela toda; o navegador só libera a tela cheia de verdade
- * depois de um toque, então ela é pedida no próximo toque.
- */
-function aoGirarCelular() {
-  atualizarModoDeTela();
-  if (!CELULAR_DEITADO.matches || document.fullscreenElement || document.webkitFullscreenElement) return;
-  document.addEventListener("pointerdown", () => { if (CELULAR_DEITADO.matches && !emTelaCheia()) alternarTelaCheia(); }, { once: true });
-}
 
 function atualizarModoDeTela() {
   areaJogo.classList.toggle("ddd-cheio", emTelaCheia());
@@ -672,6 +690,45 @@ function avancarPorToque() {
   if (jogo.estado === "dialogo") avancarConversa();
 }
 
+/*
+ * O direcional funciona como uma área só: a posição do dedo decide a direção, inclusive nas diagonais,
+ * e dá para deslizar de um lado para o outro sem levantar o dedo. Subir pula; descer defende.
+ */
+function ligarDirecional() {
+  const direcional = document.querySelector(".ddd-direcional");
+  const teclas = Object.fromEntries([...direcional.querySelectorAll("[data-acao]")].map((botao) => [botao.dataset.acao, botao]));
+  let dedo = null;
+  let estavaEmCima = false;
+  const aplicar = (evento) => {
+    const area = direcional.getBoundingClientRect();
+    const dx = ((evento.clientX - area.left) / area.width) * 2 - 1;
+    const dy = ((evento.clientY - area.top) / area.height) * 2 - 1;
+    const direcoes = { esquerda: dx < -0.33, direita: dx > 0.33, pular: dy < -0.33, defender: dy > 0.33 && Math.abs(dx) <= 0.33 };
+    for (const [acao, ativa] of Object.entries(direcoes)) teclas[acao].classList.toggle("ativo", ativa);
+    if (jogo.estado !== "luta") return;
+    entrada.esquerda = direcoes.esquerda;
+    entrada.direita = direcoes.direita;
+    entrada.defender = direcoes.defender;
+    if (direcoes.pular && !estavaEmCima) apertar("pular");
+    estavaEmCima = direcoes.pular;
+  };
+  const soltarDedo = () => {
+    dedo = null;
+    estavaEmCima = false;
+    Object.values(teclas).forEach((botao) => botao.classList.remove("ativo"));
+    ["esquerda", "direita", "defender"].forEach(soltar);
+  };
+  direcional.addEventListener("pointerdown", (evento) => {
+    evento.preventDefault();
+    dedo = evento.pointerId;
+    try { direcional.setPointerCapture(dedo); } catch { /* captura indisponível */ }
+    aplicar(evento);
+  });
+  direcional.addEventListener("pointermove", (evento) => { if (evento.pointerId === dedo) aplicar(evento); });
+  ["pointerup", "pointercancel", "lostpointercapture"].forEach((tipo) => direcional.addEventListener(tipo, (evento) => { if (evento.pointerId === dedo) soltarDedo(); }));
+  direcional.addEventListener("contextmenu", (evento) => evento.preventDefault());
+}
+
 function ligarControles() {
   document.addEventListener("keydown", (evento) => {
     if (palco.hidden) return;
@@ -696,7 +753,8 @@ function ligarControles() {
     if (acao) soltar(acao);
   });
 
-  document.querySelectorAll("[data-acao]").forEach((botao) => {
+  ligarDirecional();
+  document.querySelectorAll(".ddd-acoes [data-acao]").forEach((botao) => {
     const acao = botao.dataset.acao;
     botao.addEventListener("pointerdown", (evento) => {
       evento.preventDefault();
@@ -714,7 +772,7 @@ function ligarControles() {
   document.addEventListener("visibilitychange", () => { if (document.hidden) pausar(); });
   document.addEventListener("fullscreenchange", atualizarModoDeTela);
   document.addEventListener("webkitfullscreenchange", atualizarModoDeTela);
-  CELULAR_DEITADO.addEventListener?.("change", aoGirarCelular);
+  CELULAR_DEITADO.addEventListener?.("change", atualizarModoDeTela);
   CELULAR_EM_PE.addEventListener?.("change", ajustarArena);
   atualizarModoDeTela();
   ajustarArena();
@@ -812,6 +870,7 @@ async function iniciar() {
     return;
   }
   ctx.imageSmoothingEnabled = false;
+  montarBarra();
   telaInicio();
   requestAnimationFrame(quadro);
 }

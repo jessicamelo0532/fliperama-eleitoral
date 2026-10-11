@@ -132,7 +132,7 @@ class Lutador {
         efeitos.pulo?.();
       }
     } else {
-      this.vx = limitar(this.vx + direcao * 0.05, -2.2, 2.2);
+      this.vx = limitar(this.vx + direcao * 0.18, -2.2, 2.2);
       if (c.pular && this.ehHeroi && !this.puloDuplo) {
         c.consumir?.("pular");
         Object.assign(this, { vy: IMPULSO_PULO * 0.85, puloDuplo: true });

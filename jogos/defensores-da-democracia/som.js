@@ -13,6 +13,7 @@ let proximoTempo = 0;
 let passo = 0;
 let musicaAtual = "luta";
 const VOLUME_GERAL = 2.4;
+let querMusica = false;
 
 /*
  * Músicas originais em colcheias (notas MIDI; 0 = pausa).
@@ -97,9 +98,14 @@ export function iniciarSom(estaLigado) {
 
 export function definirSom(estaLigado) {
   ligado = estaLigado;
-  if (!ligado) { pararMusica(); return; }
+  if (!ligado) { interromperAgendador(); return; }
   if (garantirContexto()) retomar();
-  tocarMusica();
+  if (querMusica) tocarMusica();
+}
+
+function interromperAgendador() {
+  clearInterval(agendador);
+  agendador = null;
 }
 
 function nota(destino, tipo, freq, inicio, duracao, volume) {
@@ -132,6 +138,7 @@ function agendar() {
  * @param {"luta"|"chefe"|"festa"} [nome]
  */
 export function tocarMusica(nome = musicaAtual) {
+  querMusica = true;
   if (nome !== musicaAtual) { musicaAtual = nome; passo = 0; }
   if (!ligado || agendador || !garantirContexto()) return;
   proximoTempo = contexto.currentTime + 0.1;
@@ -140,8 +147,8 @@ export function tocarMusica(nome = musicaAtual) {
 }
 
 export function pararMusica() {
-  clearInterval(agendador);
-  agendador = null;
+  querMusica = false;
+  interromperAgendador();
 }
 
 function tom(frequencia, duracao, tipo = "square", volume = 0.035, ate = null, atraso = 0) {

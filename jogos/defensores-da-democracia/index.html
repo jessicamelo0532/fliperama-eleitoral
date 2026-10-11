@@ -20,10 +20,10 @@
     <div class="conteiner">
       <div id="barra-jogo" class="barra-jogo"></div>
       <div id="area-jogo" class="area-jogo moldura-pixel ddd">
+        <div id="barra" class="ddd-barra"></div>
         <div id="tela" class="ddd-tela" aria-live="polite"></div>
 
         <div id="palco" class="ddd-palco" hidden>
-          <div id="barra" class="ddd-barra"></div>
           <div id="cena" class="ddd-cena">
             <canvas id="canvas" width="320" height="180" tabindex="0" role="img" aria-label="Arena da luta"></canvas>
             <div id="placar" class="ddd-placar" aria-hidden="true"></div>
@@ -32,6 +32,8 @@
           </div>
           <div id="controles" class="ddd-controles">
             <div class="ddd-direcional" aria-label="Direcional">
+              <span class="ddd-diagonal ddd-diagonal--esquerda" aria-hidden="true">◤</span>
+              <span class="ddd-diagonal ddd-diagonal--direita" aria-hidden="true">◥</span>
               <button type="button" class="ddd-tecla ddd-tecla--cima" data-acao="pular" aria-label="Pular">▲</button>
               <button type="button" class="ddd-tecla ddd-tecla--esquerda" data-acao="esquerda" aria-label="Andar para a esquerda">◀</button>
               <button type="button" class="ddd-tecla ddd-tecla--direita" data-acao="direita" aria-label="Andar para a direita">▶</button>

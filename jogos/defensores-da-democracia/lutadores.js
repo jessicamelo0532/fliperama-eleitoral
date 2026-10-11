@@ -321,8 +321,8 @@ const VILOES = {
     R(20, -58, 8, 20, terno);
     R(24, -46, 15, 13, "#1f9a48"); R(24, -46, 15, 1, "#146b33"); R(26, -42, 11, 2, "#ffd23f"); R(26, -38, 11, 1, "#ffd23f"); R(24, -33, 15, 2, "#f4f1ea");
     for (let i = 0; i < 3; i++) {
-      const voo = (t * 0.5 + i * 23) % 60;
-      R(-6 + i * 12 + Math.round(Math.sin((t + i * 40) * 0.07) * 4), -84 - voo * 0.6, 4, 5, "#f4f1ea");
+      const voo = (t * 0.4 + i * 21) % 50;
+      R(-20 + i * 14 + Math.round(Math.sin((t + i * 40) * 0.07) * 6), -80 - Math.round(Math.abs(Math.sin((voo / 50) * Math.PI)) * 8), 4, 5, "#f4f1ea");
     }
   },
 

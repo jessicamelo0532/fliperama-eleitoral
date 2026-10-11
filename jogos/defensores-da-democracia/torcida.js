@@ -20,7 +20,7 @@ const TORCIDAS = {
     base: 120, grade: "#e8c547", semente: 5,
     cores: ["#2f63d6", "#ffd23f", "#22a84f", "#ff8a1f", "#f4f4f6", "#9b59b6"],
     comuns: ["celular", "celular", "celular", "sacola", "comum", "comum"],
-    especiais: [{ tipo: "ambulante", x: 112 }],
+    especiais: [{ tipo: "ambulante", x: 248 }],
     faixa: { texto: "CHECA ANTES DE ENVIAR", x: 160 },
     placas: ["FONTE?", "CHECA!", "É FAKE"],
   },
@@ -59,7 +59,7 @@ const TORCIDAS = {
 };
 
 /* Torcedores de vermelho espalhados pela arena, nas mesmas posições em todos os cenários. */
-const GRUPO_FIXO = [16, 52, 110, 178, 238, 296];
+const GRUPO_FIXO = [16, 44, 90, 234, 266, 300];
 const POSICAO_DESTAQUE = 70;
 
 /* ---------- Geração ---------- */
@@ -102,6 +102,10 @@ function montarTorcida(id) {
   comuns.filter((_, i) => i % 5 === 2).forEach((p, i) => { p.placa = config.placas[i % config.placas.length]; });
   comuns.filter((_, i) => i % 7 === 4).slice(0, 2).forEach((p) => { p.placa = null; p.tipo = "bandeira-vermelha"; });
 
+  for (const p of pessoas) {
+    const sobFaixa = p.x > pontasDaFaixa[0] - 12 && p.x < pontasDaFaixa[1] + 4;
+    if (sobFaixa && ["bandeira", "ombros"].includes(p.tipo)) p.tipo = "comum";
+  }
   for (const especial of config.especiais) pessoas.push({ ...sortearPessoa(r, config), ...especial });
   const segurando = pontasDaFaixa.map((x) => ({ x, ...sortearPessoa(r, config), tipo: "faixa" }));
   const grupo = GRUPO_FIXO.map((x) => ({ x, ...sortearPessoa(r, config), camisa: VERMELHO, tipo: "bandeira-brasil" }));
@@ -331,11 +335,12 @@ function desenharDestaque(c, base, t) {
   px(c, x - 1, y - 17, 2, 1, "#8a3a2a");
 }
 
+/* A faixa fica bem acima da torcida, para os lutadores e as bandeiras não cobrirem o texto. */
 function desenharFaixa(c, [xa, xb], base, texto, t) {
   const balanco = ((t >> 5) & 1);
-  const topo = base - 30 - balanco;
-  px(c, xa, topo, 1, 14, "#8a6a4a");
-  px(c, xb, topo, 1, 14, "#8a6a4a");
+  const topo = base - 62 - balanco;
+  px(c, xa, topo, 1, base - 17 - topo, "#8a6a4a");
+  px(c, xb, topo, 1, base - 17 - topo, "#8a6a4a");
   px(c, xa + 1, topo, xb - xa - 1, 9, "#0b0b12");
   px(c, xa + 2, topo + 1, xb - xa - 3, 7, "#fbf8ef");
   escrever(c, texto, Math.round((xa + xb) / 2 - larguraTexto(texto) / 2), topo + 2, "#c81d25");

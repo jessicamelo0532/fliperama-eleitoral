@@ -58,7 +58,7 @@ export function preencherCabecalho() {
         el("img", { class: "bandeira", src: urlDaRaiz("assets/img/bandeira-brasil.svg"), alt: "", width: 30, height: 21 }),
         "FLIPERAMA ", el("span", {}, "ELEITORAL")),
       el("nav", { class: "nav-topo", "aria-label": "Principal" },
-        linkDoTopo("index.html", "INÍCIO"),
+        linkDoTopo("index.html", "JOGOS"),
         linkDoTopo("sobre.html", "SOBRE"))
     )
   );

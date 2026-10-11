@@ -62,6 +62,7 @@ const jogo = {
   heroi: null,
   fase: 0,
   vencidas: [],
+  derrotas: 0,
   tempo: 0,
   aoTerminarAnuncio: null,
   meioFeito: false,
@@ -144,7 +145,7 @@ function comandos() {
         rotulado(copiaDoBotao("especial"), "Especial", "especial"),
         rotulado(copiaDoBotao("pular"), "Pular", "pulo"),
         rotulado(copiaDoBotao("soco"), "Soco", "soco"), rotulado(copiaDoBotao("chute"), "Chute", "chute"))),
-    el("p", { class: "ddd-comandos__nota", text: "Pule duas vezes seguidas para dar o pulo duplo. O especial gasta meia barra de energia, que enche quando você acerta golpes." }));
+    el("p", { class: "ddd-comandos__nota", text: "Pule duas vezes seguidas para dar o pulo duplo. O especial gasta meia barra de energia, que enche quando você acerta golpes. Fique de olho: em cada fase aparece uma ajuda diferente." }));
 }
 
 function atributo(rotulo, valor, maximo) {
@@ -225,6 +226,7 @@ function comecarCampanha(heroi) {
   jogo.heroi = heroi;
   jogo.fase = 0;
   jogo.vencidas = [];
+  jogo.derrotas = 0;
   tocarMusica();
   areaJogo.scrollIntoView({ block: "start", behavior: MOVIMENTO_REDUZIDO ? "auto" : "smooth" });
   mostrarPalco();
@@ -259,7 +261,7 @@ const MUSICA_DA_FASE = { "fake-news": "luta", desanimo: "preguica", retrocesso: 
 
 function apresentarFase() {
   const fase = faseAtual();
-  novaLuta(jogo.heroi, fase);
+  novaLuta(jogo.heroi, fase, jogo.derrotas);
   jogo.meioFeito = false;
   jogo.estado = "cartao";
   placar.hidden = true;
@@ -312,7 +314,7 @@ function mostrarVidaReal() {
     botoes: [[ultima ? "Ver o final" : "Próxima fase", () => {
       fecharCartao();
       if (ultima) mostrarCreditos();
-      else { jogo.fase++; apresentarFase(); }
+      else { jogo.fase++; jogo.derrotas = 0; apresentarFase(); }
     }]],
   });
 }
@@ -327,6 +329,7 @@ function dicaDePersonagem(fase) {
 function mostrarDerrota() {
   const fase = faseAtual();
   jogo.estado = "cartao";
+  jogo.derrotas++;
   placar.hidden = true;
   efeitos.derrota();
   abrirCartao({

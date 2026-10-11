@@ -42,6 +42,16 @@ const ESTILO_PROJETIL = {
   onda: ["#f4f1ea", "#7a0f2e", "#5a3a10"],
 };
 
+/* Ajuda ao jogador em cada fase (D31): título de eleitor, urna ou mutirão. */
+const BONUS_DA_FASE = { "fake-news": "titulo", desanimo: "titulo", retrocesso: "titulo", escala: "urna", desmonte: "mutirao" };
+const DURACAO_DA_PROTECAO = 300;
+const TEMPO_DO_ITEM_NO_CHAO = 420;
+const DANO_DA_URNA = 0.3;
+const DANO_POR_AJUDANTE = 0.09;
+/* A cada derrota na mesma fase o vilão volta um pouco mais fraco, até o limite de três ajustes. */
+const AJUSTE_POR_DERROTA = 0.12;
+const MAXIMO_DE_AJUSTES = 3;
+
 const sortear = (lista) => lista[Math.floor(Math.random() * lista.length)];
 const limitar = (v, min, max) => (v < min ? min : v > max ? max : v);
 const sobrepoe = (a, b) => a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
@@ -59,6 +69,10 @@ const luta = {
   tremor: 0,
   congelado: 0,
   torcida: 0,
+  bonus: null,
+  item: null,
+  ajudantes: [],
+  aviso: null,
 };
 
 let efeitos = {};
@@ -80,6 +94,7 @@ class Lutador {
     this.sequencia = 0;
     this.tempoSequencia = 0;
     this.invulneravel = 0;
+    this.protegido = 0;
     this.tempoIa = 0;
     this.intencaoMantida = {};
     this.recarga = vilao?.recarga ?? 0;
@@ -148,6 +163,7 @@ class Lutador {
     this.animacao++;
     if (this.brilho > 0) this.brilho--;
     if (this.invulneravel > 0) this.invulneravel--;
+    if (this.protegido > 0) this.protegido--;
     if (this.tempoSequencia > 0 && --this.tempoSequencia === 0) this.sequencia = 0;
     if (!this.noChao) this.cair();
     const margem = this.ehHeroi && this.estado === "nocaute" ? MARGEM_DEITADO : MARGEM;
@@ -193,7 +209,7 @@ class Lutador {
       const caixa = caixaDoGolpe(this, d.caixa);
       if (sobrepoe(caixa, areaDoCorpo(oponente))) {
         g.acertou = true;
-        acertar(oponente, this, d.dano * this.forca, d.empurrao, d.atordoa, this.frente, caixa);
+        acertar(oponente, this, d.dano * this.forca * multiplicadorDeDano(this), d.empurrao, d.atordoa, this.frente, caixa);
       }
     }
     if (g.t >= d.preparo + d.ativo + d.recuperacao) {
@@ -237,9 +253,17 @@ function areaDoCorpo(f) {
   return { x: f.x - f.largura / 2, y: f.y - f.altura, w: f.largura, h: f.altura };
 }
 
+const multiplicadorDeDano = (f) => (f.protegido > 0 ? 1.5 : 1);
+
 function acertar(alvo, autor, dano, empurrao, atordoa, direcao, caixa) {
   if (alvo.estado === "nocaute" || alvo.invulneravel > 0) return;
   const [cx, cy] = [caixa.x + caixa.w / 2, caixa.y + caixa.h / 2];
+  if (alvo.protegido > 0) {
+    faiscas(cx, cy, "#2ecc71", 6);
+    texto(cx, cy - 8, "PROTEGIDO");
+    efeitos.defesa?.();
+    return;
+  }
   if (alvo.estado === "defendendo" && alvo.frente === -direcao) {
     alvo.vida = Math.max(Math.min(alvo.vida, 1), alvo.vida - dano * 0.2);
     alvo.vx = direcao * empurrao * 0.7;
@@ -345,7 +369,7 @@ function lancarProjetil(f) {
   const [sx, sy] = [f.x + f.frente * (f.largura / 2 + 8), f.y - (doHeroi ? 30 : Math.round(f.altura * 0.55))];
   const criar = (extra) => luta.projeteis.push({
     doHeroi, autor: f, tipo: config.tipo, rotulo: sortear(config.rotulos), x: sx, y: sy,
-    vx: f.frente * (config.velocidade || 2.4), vy: 0, gravidade: 0, t: 0, dano: (doHeroi ? 12 : 10) * f.forca,
+    vx: f.frente * (config.velocidade || 2.4), vy: 0, gravidade: 0, t: 0, dano: (doHeroi ? 12 : 10) * f.forca * multiplicadorDeDano(f),
     cores: doHeroi ? CORES_DO_ESPECIAL[f.id] : ESTILO_PROJETIL[config.tipo], ...extra,
   });
   if (config.tipo === "arco" || config.tipo === "almofada") {
@@ -432,21 +456,130 @@ export function falar(f, conteudo) {
   luta.baloes.push({ autor: f, texto: conteudo, tempo: 90 });
 }
 
+/* ---------- Ajudas ao jogador ---------- */
+
+function avisar(conteudo) {
+  luta.aviso = { texto: conteudo, tempo: 100 };
+}
+
+function agendarBonus(P, V) {
+  if (!luta.bonus || luta.item || V.estado === "nocaute" || P.estado === "nocaute") return;
+  const desdeFuria = luta.furiaEm === null ? -1 : luta.quadrosDeLuta - luta.furiaEm;
+  if (luta.bonus === "titulo") {
+    const primeiro = luta.itensSoltos === 0 && luta.quadrosDeLuta >= 420;
+    const segundo = luta.itensSoltos === 1 && desdeFuria >= 360 && luta.quadrosDeLuta - luta.ultimoItem >= 300;
+    if (primeiro || segundo) soltarItem("titulo");
+  } else if (luta.bonus === "urna") {
+    if (luta.itensSoltos === 0 && desdeFuria >= 240) soltarItem("urna");
+  } else if (luta.bonus === "mutirao" && !luta.mutiraoFeito && P.vida < P.vidaMaxima * 0.4) {
+    chamarMutirao(P, V);
+  }
+}
+
+/* A torcida joga o item na arena, longe o bastante do herói para ele precisar ir buscar. */
+function soltarItem(tipo) {
+  const P = luta.heroi;
+  let x = 60 + Math.random() * (W - 120);
+  if (Math.abs(x - P.x) < 40) x = limitar(P.x + (P.x < W / 2 ? 60 : -60), 40, W - 40);
+  luta.item = { tipo, x, y: 104, vy: -1.8, noChao: false, tempo: TEMPO_DO_ITEM_NO_CHAO };
+  luta.itensSoltos++;
+  luta.ultimoItem = luta.quadrosDeLuta;
+  avisar(tipo === "titulo" ? "PEGUE O TÍTULO!" : "PEGUE A URNA!");
+  efeitos.escolha?.();
+}
+
+function avancarItem(P, V) {
+  const item = luta.item;
+  if (!item) return;
+  if (!item.noChao) {
+    item.vy += 0.15;
+    item.y += item.vy;
+    if (item.y >= CHAO) { Object.assign(item, { y: CHAO, noChao: true }); poeira(item.x, 4); }
+  } else if (--item.tempo <= 0) {
+    luta.item = null;
+    return;
+  }
+  const caixa = { x: item.x - 9, y: item.y - 16, w: 18, h: 16 };
+  if (P.estado === "nocaute" || !sobrepoe(caixa, areaDoCorpo(P))) return;
+  luta.item = null;
+  if (item.tipo === "titulo") protegerHeroi(P);
+  else confirmarVoto(P, V);
+}
+
+function protegerHeroi(P) {
+  P.protegido = DURACAO_DA_PROTECAO;
+  avisar("VOTO PROTEGIDO!");
+  faiscas(P.x, P.y - 24, "#ffdf00", 14);
+  faiscas(P.x, P.y - 24, "#2ecc71", 14);
+  efeitos.vitoria?.();
+  luta.torcida = Math.max(luta.torcida, 120);
+}
+
+function confirmarVoto(P, V) {
+  avisar("VOTO CONFIRMADO!");
+  efeitos.choque?.();
+  efeitos.golpeForte?.();
+  luta.clarao = 14;
+  if (!MOVIMENTO_REDUZIDO) luta.tremor = 6;
+  luta.torcida = Math.max(luta.torcida, 160);
+  if (V.estado === "nocaute") return;
+  Object.assign(V, { invulneravel: 0, golpe: null, estado: "parado" });
+  acertar(V, P, V.vidaMaxima * DANO_DA_URNA, 4, 40, V.x >= P.x ? 1 : -1, areaDoCorpo(V));
+}
+
+/* Três outros heróis entram correndo por trás do jogador, dão um golpe cada um no vilão e saem pelo outro lado. */
+function chamarMutirao(P, V) {
+  luta.mutiraoFeito = true;
+  const lado = V.x >= P.x ? -1 : 1;
+  const inicio = lado < 0 ? -16 : W + 16;
+  const outros = Object.keys(APARENCIAS).filter((id) => id !== P.id).sort(() => Math.random() - 0.5).slice(0, 3);
+  luta.ajudantes = outros.map((id, i) => ({ aparencia: APARENCIAS[id], x: inicio + lado * i * 28, frente: -lado, fase: "indo", t: 0, animacao: 0 }));
+  avisar("MUTIRÃO!");
+  efeitos.vitoria?.();
+  luta.torcida = Math.max(luta.torcida, 300);
+}
+
+function avancarAjudantes(V) {
+  for (const a of luta.ajudantes) {
+    a.animacao++;
+    if (a.fase === "indo") {
+      a.x += a.frente * 3.2;
+      if (V.estado === "nocaute") a.fase = "saindo";
+      else if (Math.abs(V.x - a.x) <= V.largura / 2 + 10) Object.assign(a, { fase: "golpe", t: 0 });
+    } else if (a.fase === "golpe") {
+      a.t++;
+      if (a.t === 6 && V.estado !== "nocaute") {
+        Object.assign(V, { invulneravel: 0, golpe: null, estado: V.estado === "defendendo" ? "parado" : V.estado });
+        acertar(V, luta.heroi, V.vidaMaxima * DANO_POR_AJUDANTE, 2.4, 20, a.frente, areaDoCorpo(V));
+      }
+      if (a.t >= 16) a.fase = "saindo";
+    } else {
+      a.x += a.frente * 3.6;
+    }
+  }
+  luta.ajudantes = luta.ajudantes.filter((a) => a.fase !== "saindo" || (a.x > -30 && a.x < W + 30));
+}
+
 /* ---------- API da luta ---------- */
 
 /**
  * Prepara uma luta nova.
  * @param {object} heroi item de personagens.json
  * @param {object} fase item de fases.json
+ * @param {number} [derrotas] derrotas seguidas nesta fase, para o ajuste de dificuldade
  */
-export function novaLuta(heroi, fase) {
-  const vilao = { ...VILOES[fase.id], id: fase.id, gritos: fase.gritos };
+export function novaLuta(heroi, fase, derrotas = 0) {
+  const ajuste = AJUSTE_POR_DERROTA * Math.min(derrotas, MAXIMO_DE_AJUSTES);
+  const base = VILOES[fase.id];
+  const vilao = { ...base, vida: Math.round(base.vida * (1 - ajuste)), velocidade: base.velocidade * (1 - ajuste / 2), id: fase.id, gritos: fase.gritos };
   luta.heroi = new Lutador({ ehHeroi: true, id: heroi.id, vida: heroi.vida, velocidade: heroi.velocidade, forca: heroi.forca, aparencia: APARENCIAS[heroi.id], especial: heroi.especial, vantagem: heroi.pontosFortes.includes(fase.id) });
   luta.vilao = new Lutador({ ehHeroi: false, id: fase.id, vida: vilao.vida, velocidade: vilao.velocidade, forca: vilao.dano, vilao });
   luta.vilao.golpes = golpesDoVilao(vilao);
   luta.heroi.posicionar(96, 1);
   luta.vilao.posicionar(228, -1);
-  Object.assign(luta, { cenario: fase.cenario, projeteis: [], particulas: [], baloes: [], tremor: 0, congelado: 0, torcida: 0, semEnergia: 0, festa: false });
+  Object.assign(luta, { cenario: fase.cenario, projeteis: [], particulas: [], baloes: [], tremor: 0, congelado: 0, torcida: 0, semEnergia: 0, festa: false,
+    bonus: BONUS_DA_FASE[fase.id] || null, item: null, ajudantes: [], aviso: null, clarao: 0,
+    quadrosDeLuta: 0, itensSoltos: 0, ultimoItem: 0, furiaEm: null, mutiraoFeito: false });
   return luta;
 }
 
@@ -458,6 +591,7 @@ export function enfurecer() {
     Object.assign(f, { golpe: null, estado: "parado", vx: 0, vy: 0, y: CHAO, noChao: true, brilho: 0, invulneravel: 0 });
   }
   luta.vilao.furioso = true;
+  luta.furiaEm = luta.quadrosDeLuta;
   luta.vilao.velocidade *= 1.2;
   luta.vilao.frente = luta.heroi.x > luta.vilao.x ? 1 : -1;
   luta.heroi.frente = -luta.vilao.frente;
@@ -467,6 +601,7 @@ export function comemorar(vencedor) {
   Object.assign(vencedor, { golpe: null, estado: "vitoria", vx: 0 });
   luta.torcida = vencedor.ehHeroi ? 400 : 0;
   luta.projeteis = [];
+  luta.item = null;
   luta.baloes = [];
 }
 
@@ -494,6 +629,10 @@ export function passoLuta(entrada) {
   P.atualizar(V);
   V.atualizar(P);
   separar(P, V);
+  luta.quadrosDeLuta++;
+  agendarBonus(P, V);
+  avancarItem(P, V);
+  avancarAjudantes(V);
   avancarProjeteis();
   passoComum();
   if (V.estado === "nocaute") return "vitoria";
@@ -540,6 +679,8 @@ function passoComum() {
   if (luta.tremor > 0) luta.tremor = luta.tremor > 0.5 ? luta.tremor * 0.82 : 0;
   if (luta.torcida > 0) luta.torcida--;
   if (luta.semEnergia > 0) luta.semEnergia--;
+  if (luta.clarao > 0) luta.clarao--;
+  if (luta.aviso && --luta.aviso.tempo <= 0) luta.aviso = null;
   for (const b of luta.baloes) b.tempo--;
   luta.baloes = luta.baloes.filter((b) => b.tempo > 0);
   avancarParticulas();
@@ -588,13 +729,63 @@ function pintarLutador(f) {
   desenharVilao(contextoSprite, f.id, f.animacao, f.frente, ORIGEM_X, ORIGEM_Y, poseVilao);
 }
 
+/* Protegido pelo título, o contorno do herói alterna entre verde e amarelo. */
+function corDoContorno(f) {
+  if (!(f.protegido > 0) || (f.protegido < 60 && luta.quadro & 4)) return "#0b0b12";
+  return luta.quadro & 8 ? "#ffdf00" : "#2ecc71";
+}
+
 function desenharFigura(c, f) {
   pintarLutador(f);
-  pintarSilhueta("#0b0b12");
+  pintarSilhueta(corDoContorno(f));
   const [dx, dy] = [Math.round(f.x) - ORIGEM_X, Math.round(f.y) - ORIGEM_Y];
   for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) c.drawImage(SILHUETA, dx + ox, dy + oy);
   const piscando = (f.brilho > 0 && f.brilho & 2) || (f.invulneravel > 0 && f.estado !== "ferido" && f.invulneravel & 4);
   if (piscando) { pintarSilhueta("#ffffff"); c.drawImage(SILHUETA, dx, dy); } else c.drawImage(SPRITE, dx, dy);
+}
+
+function desenharAjudante(c, a) {
+  contextoSprite.clearRect(0, 0, SPRITE.width, SPRITE.height);
+  const pose = a.fase === "golpe" && a.t >= 4 ? "punch" : "walk";
+  desenharLutador(contextoSprite, a.aparencia, pose, a.animacao, a.frente, ORIGEM_X, ORIGEM_Y);
+  pintarSilhueta("#0b0b12");
+  const [dx, dy] = [Math.round(a.x) - ORIGEM_X, CHAO - ORIGEM_Y];
+  for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) c.drawImage(SILHUETA, dx + ox, dy + oy);
+  c.drawImage(SPRITE, dx, dy);
+}
+
+function desenharItem(c, item) {
+  if (item.noChao && item.tempo < 90 && luta.quadro & 4) return;
+  const x = Math.round(item.x);
+  const y = Math.round(item.y) - (item.noChao ? (luta.quadro >> 4) & 1 : 0);
+  if (item.tipo === "titulo") {
+    px(c, x - 7, y - 11, 14, 10, "#0b0b12");
+    px(c, x - 6, y - 10, 12, 8, "#1f8a44");
+    px(c, x - 5, y - 9, 10, 6, "#f4f1ea");
+    px(c, x - 4, y - 8, 2, 2, "#e8b923");
+    px(c, x - 1, y - 8, 5, 1, "#1f5a2a");
+    px(c, x - 1, y - 6, 5, 1, "#1f5a2a");
+    px(c, x - 4, y - 5, 8, 1, "#1f5a2a");
+  } else {
+    px(c, x - 9, y - 16, 18, 16, "#0b0b12");
+    px(c, x - 8, y - 15, 16, 14, "#d8d8de");
+    px(c, x - 8, y - 15, 16, 1, "#f4f4f6");
+    px(c, x - 6, y - 13, 7, 6, "#1b2a3a");
+    px(c, x - 5, y - 12, 5, 4, "#7fd1ff");
+    for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) px(c, x + 2 + i * 2, y - 13 + j * 2, 1, 1, "#3a3a46");
+    px(c, x + 2, y - 6, 5, 2, "#2ecc71");
+    px(c, x - 6, y - 5, 7, 2, "#9a9aa4");
+  }
+  if (luta.quadro % 10 < 5) px(c, x + 5 - (luta.quadro % 20 < 10 ? 12 : 0), y - 18, 1, 1, "#ffffff");
+}
+
+function desenharAviso(c, largura) {
+  const { texto: conteudo, tempo } = luta.aviso;
+  if (tempo < 20 && tempo & 2) return;
+  const w = larguraTexto(conteudo, 2);
+  const x = Math.round((largura - w) / 2);
+  px(c, x - 6, 30, w + 12, 16, "rgba(11,11,18,.82)");
+  escreverComContorno(c, conteudo, x, 33, "#ffdf00", 2);
 }
 
 /** Desenha o lutador parado num canvas pequeno, para cards e diálogos. */
@@ -664,6 +855,7 @@ export function desenharLuta(c, largura = W) {
   c.setTransform(1, 0, 0, 1, sx - Math.round(camera), sy);
   desenharCenario(c, luta.cenario, luta.quadro);
   desenharTorcida(c, luta.cenario, luta.quadro, luta.torcida > 0);
+  if (luta.item) desenharItem(c, luta.item);
   const figuras = [luta.vilao, luta.heroi].filter(Boolean);
   for (const f of figuras) {
     const w = Math.max(6, Math.round(f.largura + 2 - (CHAO - f.y) / 6));
@@ -675,6 +867,9 @@ export function desenharLuta(c, largura = W) {
     if (p.texto) escreverComContorno(c, p.texto, Math.round(p.x - larguraTexto(p.texto) / 2), Math.round(p.y), p.cor);
     else px(c, p.x, p.y, p.tam, p.tam, p.cor);
   }
+  luta.ajudantes.forEach((a) => desenharAjudante(c, a));
   luta.baloes.forEach((b) => desenharBalao(c, b, camera, largura));
   c.setTransform(1, 0, 0, 1, 0, 0);
+  if (luta.clarao > 0) { c.fillStyle = `rgba(255,255,255,${luta.clarao / 20})`; c.fillRect(0, 0, c.canvas.width, H); }
+  if (luta.aviso) desenharAviso(c, largura);
 }

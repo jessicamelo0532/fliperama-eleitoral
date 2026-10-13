@@ -109,8 +109,8 @@ function telaInicio() {
 }
 
 const COMANDOS_TECLADO = [
-  [["◀", "▶"], ["A", "D"], "Andar"], [["▲"], ["W"], "Pular"], [["▼"], ["S"], "Defender"],
-  [["Z"], ["J"], "Soco"], [["X"], ["K"], "Chute"], [["C"], ["L"], "Especial"],
+  [["◀", "▶"], "Andar"], [["▲"], "Pular"], [["▼"], "Defender"],
+  [["Z"], "Soco"], [["X"], "Chute"], [["C"], "Especial"],
 ];
 
 function comandos() {
@@ -130,11 +130,9 @@ function comandos() {
   return el("section", { class: "ddd-comandos", "aria-label": "Como jogar" },
     el("h3", { class: "ddd-comandos__titulo pixel", text: "Como jogar" }),
     el("table", { class: "ddd-comandos__tabela ddd-so-teclado" },
-      el("thead", {}, el("tr", {}, el("th", { text: "" }), el("th", { text: "Setas + Z X C" }), el("th", { text: "W A S D + J K L" }))),
-      el("tbody", {}, ...COMANDOS_TECLADO.map(([setas, letras, rotulo]) => el("tr", {},
+      el("tbody", {}, ...COMANDOS_TECLADO.map(([teclas, rotulo]) => el("tr", {},
         el("th", { scope: "row", text: rotulo }),
-        el("td", {}, ...setas.map(tecla)),
-        el("td", {}, ...letras.map(tecla)))))),
+        el("td", {}, ...teclas.map(tecla)))))),
     el("p", { class: "ddd-comandos__nota ddd-so-teclado", text: "Esc pausa o jogo." }),
     el("div", { class: "ddd-comandos__toque ddd-so-toque" },
       el("div", { class: "ddd-comandos__direcional" },
@@ -698,9 +696,8 @@ function botaoTelaCheia() {
 const MANTIDAS = ["esquerda", "direita", "defender"];
 const entrada = { esquerda: false, direita: false, defender: false, pular: 0, soco: 0, chute: 0, especial: 0 };
 const TECLAS = {
-  ArrowLeft: "esquerda", KeyA: "esquerda", ArrowRight: "direita", KeyD: "direita",
-  ArrowUp: "pular", KeyW: "pular", Space: "pular", ArrowDown: "defender", KeyS: "defender",
-  KeyJ: "soco", KeyZ: "soco", KeyK: "chute", KeyX: "chute", KeyL: "especial", KeyC: "especial",
+  ArrowLeft: "esquerda", ArrowRight: "direita", ArrowUp: "pular", ArrowDown: "defender",
+  KeyZ: "soco", KeyX: "chute", KeyC: "especial",
 };
 
 function apertar(acao) {

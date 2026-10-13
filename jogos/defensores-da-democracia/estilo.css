@@ -28,11 +28,18 @@
 .ddd-inicio__aviso { margin: var(--esp-4) 0 0; padding-top: var(--esp-3); border-top: 2px dotted var(--cor-borda); color: var(--cor-texto-2); font-size: 13px; }
 .ddd-comandos { max-width: 360px; margin: var(--esp-5) auto 0; padding: var(--esp-3) var(--esp-4); text-align: left; background: var(--cor-superficie-2); border: 2px solid var(--cor-borda); }
 .ddd-comandos__titulo { margin: 0 0 var(--esp-3); font-size: 10px; color: var(--cor-amarelo); text-align: center; }
-.ddd-comandos__tabela { width: 100%; border-collapse: collapse; font-size: 14px; }
-.ddd-comandos__tabela th, .ddd-comandos__tabela td { padding: 3px 4px; text-align: left; font-weight: 400; }
-.ddd-comandos__tabela thead th { font-size: 12px; color: var(--cor-texto-2); }
-.ddd-comandos__tabela td { white-space: nowrap; }
-.ddd-comandos__tabela kbd + kbd { margin-left: 3px; }
+.ddd-comandos__teclado { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--esp-4); }
+.ddd-comandos__golpes { display: grid; gap: var(--esp-2); margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.ddd-comandos__golpes li { display: flex; align-items: center; gap: var(--esp-2); }
+.ddd-comandos__setas { display: grid; grid-template-columns: repeat(5, auto); justify-content: center; justify-items: center; align-items: center; gap: 3px; font-size: 12px; color: var(--cor-texto-2); }
+.ddd-comandos__setas .ddd-comandos__rotulo--cima { grid-area: 1 / 2 / 2 / 5; }
+.ddd-comandos__seta--cima { grid-area: 2 / 3; }
+.ddd-comandos__rotulo--andar-esquerda { grid-area: 3 / 1; }
+.ddd-comandos__seta--esquerda { grid-area: 3 / 2; }
+.ddd-comandos__seta--baixo { grid-area: 3 / 3; }
+.ddd-comandos__seta--direita { grid-area: 3 / 4; }
+.ddd-comandos__rotulo--andar-direita { grid-area: 3 / 5; }
+.ddd-comandos__rotulo--defender { grid-area: 4 / 2 / 5 / 5; }
 .ddd-comandos__toque { display: flex; justify-content: space-between; align-items: center; gap: var(--esp-4); }
 .ddd-comandos__direcional { display: grid; grid-template: auto auto auto / auto auto auto; align-items: center; justify-items: center; gap: 2px 4px; font-size: 11px; color: var(--cor-texto-2); }
 .ddd-comandos__rotulo--cima { grid-area: 1 / 2; }
@@ -49,7 +56,8 @@
 .ddd-comandos__item--baixo { grid-area: 3 / 2; }
 .ddd-comandos__nota { margin: var(--esp-3) 0 0; font-size: 13px; color: var(--cor-texto-2); }
 .ddd-tecla-pc {
-  min-width: 24px; padding: 4px 6px; font-size: 9px; text-align: center; color: var(--cor-texto);
+  display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+  width: 28px; height: 28px; padding: 0; font-size: 9px; color: var(--cor-texto);
   background: var(--cor-fundo); border: 2px solid var(--cor-borda); border-bottom-width: 4px;
 }
 .ddd-comandos .ddd-golpe--mini { width: 32px; height: 32px; opacity: 1; }

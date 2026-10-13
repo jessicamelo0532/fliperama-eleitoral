@@ -108,10 +108,7 @@ function telaInicio() {
   );
 }
 
-const COMANDOS_TECLADO = [
-  [["◀", "▶"], "Andar"], [["▲"], "Pular"], [["▼"], "Defender"],
-  [["Z"], "Soco"], [["X"], "Chute"], [["C"], "Especial"],
-];
+const GOLPES_NO_TECLADO = [["Z", "Soco"], ["X", "Chute"], ["C", "Especial"]];
 
 function comandos() {
   const tecla = (texto) => el("kbd", { class: "ddd-tecla-pc pixel", text: texto });
@@ -129,10 +126,19 @@ function comandos() {
   };
   return el("section", { class: "ddd-comandos", "aria-label": "Como jogar" },
     el("h3", { class: "ddd-comandos__titulo pixel", text: "Como jogar" }),
-    el("table", { class: "ddd-comandos__tabela ddd-so-teclado" },
-      el("tbody", {}, ...COMANDOS_TECLADO.map(([teclas, rotulo]) => el("tr", {},
-        el("th", { scope: "row", text: rotulo }),
-        el("td", {}, ...teclas.map(tecla)))))),
+    el("div", { class: "ddd-so-teclado" },
+      el("div", { class: "ddd-comandos__teclado" },
+        el("ul", { class: "ddd-comandos__golpes" },
+          ...GOLPES_NO_TECLADO.map(([letra, rotulo]) => el("li", {}, tecla(letra), el("span", { text: rotulo })))),
+        el("div", { class: "ddd-comandos__setas" },
+          el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--cima", text: "Pular" }),
+          el("span", { class: "ddd-comandos__seta ddd-comandos__seta--cima" }, tecla("▲")),
+          el("span", { class: "ddd-comandos__seta ddd-comandos__seta--esquerda" }, tecla("◀")),
+          el("span", { class: "ddd-comandos__seta ddd-comandos__seta--baixo" }, tecla("▼")),
+          el("span", { class: "ddd-comandos__seta ddd-comandos__seta--direita" }, tecla("▶")),
+          el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--andar-esquerda", text: "Andar" }),
+          el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--andar-direita", text: "Andar" }),
+          el("span", { class: "ddd-comandos__rotulo ddd-comandos__rotulo--defender", text: "Defender" })))),
     el("p", { class: "ddd-comandos__nota ddd-so-teclado", text: "Esc pausa o jogo." }),
     el("div", { class: "ddd-comandos__toque ddd-so-toque" },
       el("div", { class: "ddd-comandos__direcional" },
